@@ -1968,14 +1968,20 @@ footer{min-height:auto}
       return;
     }
 
+    // Build Viber URL with form data
+      const viberText = "Hi, I'd like to request a quotation." + "%0A%0AName: " + params.from_name + "%0AClinic: " + params.clinic + "%0APhone: " + params.phone + "%0ACategory: " + params.category + "%0AMessage: " + params.message;
+      const viberUrl = "https://viber.me/+639173199572";
+
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-      showToast('✓ Inquiry sent! We\'ll contact you within 24 hours.');
+      showToast('✓ Inquiry sent! Opening Viber...');
       ['f-firstname','f-lastname','f-clinic','f-phone','f-category','f-message']
         .forEach(id => document.getElementById(id).value = '');
+      window.open(viberUrl, '_blank');
     } catch (err) {
       console.error('EmailJS error:', err);
-      showToast('Failed to send. Please call us at +63 917 319 9572.', true);
+      showToast('Opening Viber to send your inquiry...');
+      window.open(viberUrl, '_blank');
     } finally {
       btn.disabled    = false;
       btn.textContent = 'Send Inquiry →';
