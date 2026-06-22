@@ -1974,14 +1974,12 @@ footer{min-height:auto}
 
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-      showToast('✓ Inquiry sent! Opening Viber...');
+      showToast('✓ Inquiry sent! We\'ll contact you within 24 hours.');
       ['f-firstname','f-lastname','f-clinic','f-phone','f-category','f-message']
         .forEach(id => document.getElementById(id).value = '');
-      window.open(viberUrl, '_blank');
     } catch (err) {
       console.error('EmailJS error:', err);
-      showToast('Opening Viber to send your inquiry...');
-      window.open(viberUrl, '_blank');
+      showToast('Failed to send. Please contact us via Viber at +63 917 319 9572.', true);
     } finally {
       btn.disabled    = false;
       btn.textContent = 'Send Inquiry →';
