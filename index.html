@@ -1969,10 +1969,6 @@ footer{min-height:auto}
       return;
     }
 
-    // Build Viber URL with form data
-      const viberText = "Hi, I'd like to request a quotation." + "%0A%0AName: " + params.from_name + "%0AClinic: " + params.clinic + "%0APhone: " + params.phone + "%0ACategory: " + params.category + "%0AMessage: " + params.message;
-      const viberUrl = "https://viber.me/+639173199572";
-
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
       showToast('✓ Inquiry sent! We\'ll contact you within 24 hours.');
@@ -1986,23 +1982,6 @@ footer{min-height:auto}
       btn.textContent = 'Send Inquiry →';
     }
   }
-
-  // ─── PORTAL LOGIN ────────────────────────────────────────────────────────────
-
-
-
-
-
-
-  function openTracker() {
-    const html    = document.getElementById('tracker-html').textContent;
-    const frame   = document.getElementById('tracker-frame');
-    const overlay = document.getElementById('tracker-overlay');
-    frame.srcdoc  = html;
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
 
 
 
