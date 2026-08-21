@@ -94,6 +94,7 @@ nav.scrolled{box-shadow:var(--shadow-md)}
 .drawer-info{font-size:13px;color:var(--mid);display:flex;flex-direction:column;gap:8px}
 .drawer-info a{color:var(--red);text-decoration:none;font-weight:600}
 @media(min-width:901px){.hamburger,.drawer{display:none!important}}
+@media(min-width:901px) and (max-width:1150px){.nav-phone{display:none}.nav-links{gap:1px}.nav-links a{padding:6px 8px;font-size:13px}}
 #hero{min-height:100vh;padding-top:72px;background:var(--white);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 5vw 80px 7vw;position:relative;z-index:1}
 .hero-left::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 10% 50%,rgba(184,0,31,.05) 0%,transparent 65%);pointer-events:none}
@@ -360,6 +361,62 @@ footer{background:#0D0D0D;padding:64px 6vw 28px}
 #hero{min-height:100vh;display:grid}
 #trust-bar{min-height:auto;scroll-snap-align:none}
 footer{min-height:auto}
+
+/* ─── CURRENT PROMOTIONS ─────────────────────────────────────────────────── */
+.promotions-list{margin-top:44px;display:flex;flex-direction:column;gap:24px}
+.promo-grid{display:grid;grid-template-columns:1.1fr 1fr;background:var(--white);border-radius:var(--r-xl);overflow:hidden;border:1.5px solid var(--border);box-shadow:var(--shadow-lg)}
+.promo-media{background:var(--blush);display:flex;align-items:center;justify-content:center;padding:32px}
+.promo-media img{width:100%;height:auto;max-width:420px;border-radius:var(--r-lg);box-shadow:var(--shadow-md);display:block}
+.promo-content{padding:44px 44px;display:flex;flex-direction:column;justify-content:center}
+.promo-tag{display:inline-flex;align-items:center;background:var(--white);border:1px solid var(--rose);color:var(--red);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:6px 14px;border-radius:40px;width:fit-content;margin-bottom:16px}
+.promo-title{font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);font-weight:700;color:var(--charcoal);line-height:1.2;margin-bottom:12px}
+.promo-copy{font-size:15.5px;color:var(--mid);line-height:1.7;margin-bottom:28px}
+.promo-cta-row{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){.promo-grid{grid-template-columns:1fr}.promo-content{padding:32px 28px}}
+@media(max-width:600px){.promo-media{padding:24px}.promo-content{padding:28px 22px}}
+
+/* ─── RECENT DELIVERIES (mirrors .promo-grid card language) ─────────────── */
+.deliveries-list{margin-top:44px}
+.delivery-media{background:var(--blush);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px}
+.delivery-content{padding:44px 44px;display:flex;flex-direction:column;justify-content:center}
+.delivery-tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
+.delivery-tag{background:var(--white);border:1px solid var(--rose);color:var(--red);font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px}
+@media(max-width:900px){.delivery-content{padding:32px 28px}}
+@media(max-width:600px){.delivery-media{padding:24px}.delivery-content{padding:28px 22px}}
+
+/* Delivery photo carousel: fixed-size frame, crossfaded slides, no layout shift */
+.delivery-carousel{position:relative;width:100%;max-width:420px}
+.delivery-carousel-viewport{position:relative;display:block;width:100%;height:340px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-md);cursor:pointer;border:none;padding:0;background:var(--light);transition:box-shadow .2s}
+.delivery-carousel-viewport:hover{box-shadow:var(--shadow-red)}
+.delivery-carousel-viewport:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.delivery-carousel-slide{position:absolute;inset:0;display:block;opacity:0;transition:opacity .6s ease}
+.delivery-carousel-slide.is-active{opacity:1;z-index:1}
+.delivery-carousel-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.85);border:1px solid var(--border);color:var(--charcoal);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;box-shadow:var(--shadow-sm);transition:background .2s,color .2s,box-shadow .2s}
+.carousel-arrow:hover{background:#fff;color:var(--red);box-shadow:var(--shadow-md)}
+.carousel-arrow:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.carousel-prev{left:10px}
+.carousel-next{right:10px}
+.carousel-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;z-index:2}
+.carousel-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.65);border:1px solid rgba(0,0,0,.15);padding:0;cursor:pointer;transition:background .2s,width .2s,border-radius .2s}
+.carousel-dot.is-active{background:var(--red);border-color:var(--red);width:18px;border-radius:4px}
+.carousel-dot:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+@media(max-width:600px){.delivery-carousel{max-width:100%}.delivery-carousel-viewport{height:230px}}
+@media(prefers-reduced-motion:reduce){.delivery-carousel-slide{transition:none}}
+
+/* ─── DELIVERY PHOTO LIGHTBOX ────────────────────────────────────────────── */
+.lightbox{position:fixed;inset:0;background:rgba(10,10,10,.92);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;padding:5vw}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox-img{max-width:min(90vw,900px);max-height:85vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);object-fit:contain}
+.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(255,255,255,.22)}
+.lightbox-close:focus-visible,.lightbox-prev:focus-visible,.lightbox-next:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.lightbox-close{top:24px;right:24px;width:44px;height:44px;font-size:24px}
+.lightbox-prev,.lightbox-next{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:24px}
+.lightbox-prev{left:24px}
+.lightbox-next{right:24px}
+.lightbox-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:13px;font-weight:600;letter-spacing:.5px}
+@media(max-width:600px){.lightbox-prev,.lightbox-next{width:40px;height:40px;font-size:19px;left:10px}.lightbox-next{left:auto;right:10px}.lightbox-close{top:14px;right:14px}}
 </style>
 </head>
 <body>
@@ -373,7 +430,9 @@ footer{min-height:auto}
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#categories">Products</a></li>
+      <li><a href="#promotions">Promotions</a></li>
       <li><a href="#why">Why Us</a></li>
+      <li><a href="#deliveries">Deliveries</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
@@ -390,7 +449,9 @@ footer{min-height:auto}
 <div class="drawer" id="mobileDrawer">
   <ul class="drawer-links">
     <li><a href="#categories"    onclick="closeMenu()">Products</a></li>
+    <li><a href="#promotions"    onclick="closeMenu()">Promotions</a></li>
     <li><a href="#hemodialysis"  onclick="closeMenu()">Hemodialysis</a></li>
+    <li><a href="#deliveries"    onclick="closeMenu()">Deliveries</a></li>
     <li><a href="#about"         onclick="closeMenu()">About</a></li>
     <li><a href="#service-areas" onclick="closeMenu()">Service Areas</a></li>
     <li><a href="#contact"       onclick="closeMenu()">Contact</a></li>
@@ -482,6 +543,37 @@ footer{min-height:auto}
     <div class="stat-item reveal"><div class="stat-num">100%</div><div class="stat-label">FDA-Sourced</div><div class="stat-sub">Registered manufacturers only</div></div>
   </div>
 </section>
+
+<!-- CURRENT PROMOTIONS -->
+<section id="promotions" class="section">
+  <div class="section-center reveal">
+    <div class="section-eyebrow">Current Promotions</div>
+    <h2 class="section-h2">Special Offers from <em>Layali</em></h2>
+    <p class="section-lead" style="margin-left:auto;margin-right:auto">Take advantage of current product promotions and volume offers from Layali Medical Supply.</p>
+  </div>
+
+  <!-- Promotion 1: Influvac Trivalent. To add another promotion later, duplicate
+       this .promo-grid block (with a new id) inside .promotions-list. -->
+  <div class="promotions-list reveal">
+    <div class="promo-grid">
+      <div class="promo-media">
+        <picture>
+          <source srcset="images/promotions/influvac-promotion.webp" type="image/webp">
+          <img src="images/promotions/influvac-promotion.jpg" alt="Layali Medical Supply Influvac Trivalent flu vaccine promotion flyer — buy 10 doses get 1 free, ₱730 per dose, 2024/2025 season" width="1000" height="1000" loading="lazy">
+        </picture>
+      </div>
+      <div class="promo-content">
+        <div class="promo-tag">Flu Season Promotion</div>
+        <h3 class="promo-title">Influvac Trivalent &mdash; Flu Season Promotion</h3>
+        <p class="promo-copy">Buy 10 doses and receive 1 dose FREE.</p>
+        <div class="promo-cta-row">
+          <a href="#contact" class="btn btn-red">Inquire About This Promotion</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="products" class="section" style="background:var(--light)">
   <div class="section-center reveal" style="margin-bottom:48px">
     <div class="section-eyebrow">Full Catalog</div>
@@ -1580,6 +1672,77 @@ footer{min-height:auto}
   </div>
 </section>
 
+<!-- RECENT DELIVERIES -->
+<section id="deliveries" class="section">
+  <div class="section-center reveal">
+    <div class="section-eyebrow">Recent Deliveries</div>
+    <h2 class="section-h2">Supplies Delivered. <em>Healthcare Supported.</em></h2>
+    <p class="section-lead" style="margin-left:auto;margin-right:auto">A look at medical supplies prepared and delivered by Layali Medical Supply.</p>
+  </div>
+
+  <!-- Delivery feature card: intentionally mirrors the .promo-grid card
+       structure/spacing used by Current Promotions above, so the two
+       sections read as sister components. -->
+  <div class="deliveries-list reveal">
+    <div class="promo-grid">
+      <div class="delivery-media">
+        <!-- Auto-rotating delivery photo showcase: 4 stacked, crossfaded
+             slides inside one fixed-size frame so the card never shifts. -->
+        <div class="delivery-carousel" id="deliveryCarousel">
+          <button type="button" class="delivery-carousel-viewport" id="deliveryCarouselViewport" onclick="openLightboxFromCarousel()" aria-label="View larger photo">
+            <picture class="delivery-carousel-slide is-active" data-index="0" aria-hidden="false">
+              <source srcset="images/deliveries/delivery-01-primary.webp" type="image/webp">
+              <img src="images/deliveries/delivery-01-primary.jpg" alt="Medical supplies packed for delivery, including bundled gauze swabs, face masks, and PPE cartons inside a Layali Medical Supply delivery vehicle" width="1100" height="1467" loading="eager">
+            </picture>
+            <picture class="delivery-carousel-slide" data-index="1" aria-hidden="true">
+              <source srcset="images/deliveries/delivery-02.webp" type="image/webp">
+              <img src="images/deliveries/delivery-02.jpg" alt="Boxes of 3-ply face masks with earloop stacked for delivery" width="700" height="933" loading="lazy">
+            </picture>
+            <picture class="delivery-carousel-slide" data-index="2" aria-hidden="true">
+              <source srcset="images/deliveries/delivery-03.webp" type="image/webp">
+              <img src="images/deliveries/delivery-03.jpg" alt="Sealed 3M medical supply cartons prepared for delivery" width="700" height="933" loading="lazy">
+            </picture>
+            <picture class="delivery-carousel-slide" data-index="3" aria-hidden="true">
+              <source srcset="images/deliveries/delivery-04.webp" type="image/webp">
+              <img src="images/deliveries/delivery-04.jpg" alt="Boxes of alcohol prep pads stacked for delivery" width="700" height="933" loading="lazy">
+            </picture>
+          </button>
+          <button type="button" class="carousel-arrow carousel-prev" onclick="carouselNav(-1)" aria-label="Previous delivery photo">&#8249;</button>
+          <button type="button" class="carousel-arrow carousel-next" onclick="carouselNav(1)" aria-label="Next delivery photo">&#8250;</button>
+          <div class="carousel-dots" role="tablist" aria-label="Select delivery photo">
+            <button type="button" class="carousel-dot is-active" onclick="carouselGoTo(0)" aria-label="Show photo 1 of 4" aria-selected="true"></button>
+            <button type="button" class="carousel-dot" onclick="carouselGoTo(1)" aria-label="Show photo 2 of 4" aria-selected="false"></button>
+            <button type="button" class="carousel-dot" onclick="carouselGoTo(2)" aria-label="Show photo 3 of 4" aria-selected="false"></button>
+            <button type="button" class="carousel-dot" onclick="carouselGoTo(3)" aria-label="Show photo 4 of 4" aria-selected="false"></button>
+          </div>
+        </div>
+      </div>
+      <div class="delivery-content">
+        <h3 class="promo-title">Medical Supplies &amp; Consumables</h3>
+        <p class="promo-copy" style="margin-bottom:0">Medical supplies and consumables prepared and loaded for delivery.</p>
+        <div class="delivery-tags">
+          <span class="delivery-tag">Medical Consumables</span>
+          <span class="delivery-tag">PPE</span>
+          <span class="delivery-tag">Gauze</span>
+          <span class="delivery-tag">Alcohol Prep Pads</span>
+        </div>
+        <div class="promo-cta-row">
+          <button type="button" class="btn btn-red" onclick="openLightbox(0)">View Delivery Photos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY PHOTO LIGHTBOX -->
+<div class="lightbox" id="deliveryLightbox" role="dialog" aria-modal="true" aria-label="Delivery photo viewer" aria-hidden="true">
+  <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo viewer">&times;</button>
+  <button type="button" class="lightbox-prev" onclick="lightboxNav(-1)" aria-label="Previous photo">&#8249;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button type="button" class="lightbox-next" onclick="lightboxNav(1)" aria-label="Next photo">&#8250;</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
 <!-- FDA CREDENTIALS & PARTNERS -->
 <section id="credentials" class="section">
   <div class="section-center reveal">
@@ -1874,6 +2037,125 @@ footer{min-height:auto}
       card.style.display = match ? 'flex' : 'none';
     });
   }
+
+  // ─── DELIVERY PHOTO LIGHTBOX ─────────────────────────────────────────────────
+  const deliveryPhotos = [
+    { src: 'images/deliveries/delivery-01-primary.jpg', alt: 'Medical supplies packed for delivery, including bundled gauze swabs, face masks, and PPE cartons inside a Layali Medical Supply delivery vehicle' },
+    { src: 'images/deliveries/delivery-02.jpg', alt: 'Boxes of 3-ply face masks with earloop stacked for delivery' },
+    { src: 'images/deliveries/delivery-03.jpg', alt: 'Sealed 3M medical supply cartons prepared for delivery' },
+    { src: 'images/deliveries/delivery-04.jpg', alt: 'Boxes of alcohol prep pads stacked for delivery' },
+  ];
+  let lightboxIndex = 0;
+
+  function updateLightbox() {
+    const photo = deliveryPhotos[lightboxIndex];
+    const img = document.getElementById('lightboxImg');
+    img.src = photo.src;
+    img.alt = photo.alt;
+    document.getElementById('lightboxCounter').textContent = (lightboxIndex + 1) + ' / ' + deliveryPhotos.length;
+  }
+
+  function openLightbox(index) {
+    lightboxIndex = index;
+    updateLightbox();
+    const lb = document.getElementById('deliveryLightbox');
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', lightboxKeyHandler);
+  }
+
+  function closeLightbox() {
+    const lb = document.getElementById('deliveryLightbox');
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', lightboxKeyHandler);
+  }
+
+  function lightboxNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + deliveryPhotos.length) % deliveryPhotos.length;
+    updateLightbox();
+  }
+
+  function lightboxKeyHandler(e) {
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') lightboxNav(-1);
+    else if (e.key === 'ArrowRight') lightboxNav(1);
+  }
+
+  // Click outside the image (on the dark backdrop) closes the lightbox
+  document.getElementById('deliveryLightbox').addEventListener('click', function (e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  // ─── DELIVERY PHOTO CAROUSEL ──────────────────────────────────────────────────
+  (function () {
+    const slides = Array.from(document.querySelectorAll('.delivery-carousel-slide'));
+    if (slides.length === 0) return;
+
+    const viewport = document.getElementById('deliveryCarouselViewport');
+    const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let index = 0;
+    let timer = null;
+
+    function render() {
+      slides.forEach((slide, i) => {
+        const active = i === index;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+      dots.forEach((dot, i) => {
+        const active = i === index;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      const activeImg = slides[index].querySelector('img');
+      if (viewport && activeImg) viewport.setAttribute('aria-label', 'View larger photo: ' + activeImg.alt);
+    }
+
+    function stopTimer() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    function startTimer() {
+      stopTimer();
+      if (reduceMotion) return;
+      timer = setInterval(() => { index = (index + 1) % slides.length; render(); }, 4000);
+    }
+
+    window.carouselGoTo = function (i) {
+      index = (i + slides.length) % slides.length;
+      render();
+      startTimer();
+    };
+
+    window.carouselNav = function (dir) {
+      window.carouselGoTo(index + dir);
+    };
+
+    window.openLightboxFromCarousel = function () {
+      openLightbox(index);
+    };
+
+    const carouselEl = document.getElementById('deliveryCarousel');
+    carouselEl.addEventListener('mouseenter', stopTimer);
+    carouselEl.addEventListener('mouseleave', startTimer);
+
+    // Lightweight touch-swipe support (no library)
+    let touchStartX = 0;
+    viewport.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    viewport.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) window.carouselNav(dx < 0 ? 1 : -1);
+    }, { passive: true });
+
+    render();
+    startTimer();
+  })();
 
   // ─── MOBILE MENU ─────────────────────────────────────────────────────────────
   function toggleMenu() {
