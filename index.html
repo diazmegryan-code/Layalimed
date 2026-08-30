@@ -1961,6 +1961,7 @@ footer{min-height:auto}
         <span class="ferr">Please select a product category.</span>
       </div>
       <div class="fg" id="fg-message"><label>Message / Requirements</label><textarea id="f-message" placeholder="List the products or quantities you need..."></textarea><span class="ferr">Please describe your requirements.</span></div>
+      <div class="fg" id="fg-website" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true"><label for="f-website">Leave this field blank</label><input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"/></div>
       <button class="form-btn" id="submitBtn" onclick="handleSubmit()">Send Inquiry &rarr;</button>
       <p class="form-wa-note">Prefer instant reply? <a href="https://viber.me/+639173199572?text=Hi%2C%20I%27d%20like%20to%20request%20a%20quotation." target="_blank" rel="noopener">Message us on Viber &rarr;</a></p>
     </div>
@@ -2248,8 +2249,12 @@ footer{min-height:auto}
   // Your template variables should match: {{from_name}}, {{clinic}}, {{phone}},
   // {{category}}, {{message}}
   const EMAILJS_PUBLIC_KEY  = 'sqspYeoqrAUlpMG81';
-  const EMAILJS_SERVICE_ID  = 'service_wvatfra'; 
+  const EMAILJS_SERVICE_ID  = 'service_wvatfra';
   const EMAILJS_TEMPLATE_ID = 'template_vr2e83d';
+
+  // Public MedCRM lead-intake endpoint (unauthenticated by design -- see
+  // backend/src/routes/leads-public.js in the medcrm repo). Not a secret.
+  const CRM_API_URL = 'https://medcrm-production.up.railway.app/api/leads';
 
   (function initEmailJS() {
     const s = document.createElement('script');
@@ -2264,18 +2269,48 @@ footer{min-height:auto}
       return;
     }
 
+    // Honeypot -- see #fg-website above. Bots that fill every field trip
+    // this; real visitors never do. Feign success instead of erroring, so
+    // a bot gets no signal to retry without it.
+    if (document.getElementById('f-website').value.trim() !== '') {
+      showToast('✓ Inquiry sent! We\'ll contact you within 24 hours.');
+      document.querySelectorAll('#fg-firstname input,#fg-lastname input,#fg-clinic input,#fg-phone input,#fg-category select,#fg-message textarea')
+        .forEach(el => el.value = '');
+      return;
+    }
+
     const btn = document.getElementById('submitBtn');
     btn.disabled    = true;
     btn.textContent = 'Sending…';
 
+    const firstName = document.getElementById('f-firstname').value.trim();
+    const lastName  = document.getElementById('f-lastname').value.trim();
+
     const params = {
-      from_name: document.getElementById('f-firstname').value.trim() + ' ' +
-                 document.getElementById('f-lastname').value.trim(),
+      from_name: firstName + ' ' + lastName,
       clinic:    document.getElementById('f-clinic').value.trim(),
       phone:     document.getElementById('f-phone').value.trim(),
       category:  document.getElementById('f-category').value,
       message:   document.getElementById('f-message').value.trim(),
     };
+
+    // MedCRM lead intake is an addition, not a replacement -- fired
+    // independently of EmailJS below and deliberately not awaited/chained,
+    // so a slow or unreachable CRM never delays the "Sending…" state or the
+    // EmailJS success/fail toast that follows.
+    fetch(CRM_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        first_name: firstName,
+        last_name:  lastName,
+        clinic:     params.clinic,
+        phone:      params.phone,
+        category:   params.category,
+        message:    params.message,
+        website:    document.getElementById('f-website').value,
+      }),
+    }).catch(err => console.error('CRM lead intake error:', err));
 
     // If EmailJS keys are still placeholders, simulate success for demo purposes
     if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
