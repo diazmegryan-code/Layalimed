@@ -4,6 +4,8 @@
 
 **Status:** The catalog architecture decisions below are **APPROVED and LOCKED** by the business. This document reflects the final, locked structure. It supersedes the simplified 5+5 taxonomy previously described as "final" in `docs/CONTENT-ASSET-REQUIREMENTS.md`.
 
+**Catalog count convention (LOCKED):** The supplied catalog contains **21 source categories and 119 actual numbered catalog entries/rows**. Source numbering extends through **#196**, but #196 is the highest source item number — it is **not** the product count. Many entries group multiple sizes, gauges, formulations, or other variants, so the final SKU count is **TBD** until verified brand/model/size/packaging data is collected.
+
 **What this document does and does not do:**
 - It reproduces every category and every item/variant from the supplied catalog (Part A), verbatim, with the source item numbers preserved for traceability.
 - It maps every item into the locked website architecture (Part B), without deleting, inventing, renaming, or merging any product out of existence.
@@ -29,7 +31,7 @@
 
 ## Part A — Full Original Catalog (verbatim, by source category)
 
-Unchanged from the original catalog document. 21 source categories, 196 numbered items/variant-groups (item numbers 1–63, 65, 66, 69, 70, 76, 78, 80, 81, 83–86, 107, 108 do not appear in the supplied document — the numbering gaps are in the original file as delivered, nothing was lost in extraction).
+Unchanged from the original catalog document. **21 source categories, 119 actual numbered catalog entries/rows.** Source numbering extends through #196 and contains gaps; those gaps are in the original file as delivered, and nothing was lost in extraction.
 
 ### Intravenous - IV Solutions
 | # | Item / Variant |
@@ -343,7 +345,7 @@ These were flagged in the prior version of this document and were not addressed 
 
 ## Part D — Reconciliation Summary (final, locked)
 
-| Original catalog category | Final website category | # items/variants | Status |
+| Original catalog category | Final website category | # catalog entries | Status |
 |---|---|---|---|
 | Intravenous - IV Solutions | 01 Medical Consumables → Injection & Infusion → IV Solutions | 4 | Locked (decision 1) |
 | Consumables - Medical Consumables & Supplies | 01 Medical Consumables → Injection & Infusion / PPE & Infection Control / Wound Care / Patient Care | 9 | Locked; antiseptics cross-listing still open |
@@ -367,7 +369,7 @@ These were flagged in the prior version of this document and were not addressed 
 | Hemodialysis - Specimen & Lab Supplies | 02 Hemodialysis (full catalog only) | 5 | Locked (decision 3) |
 | Hemodialysis - Dialysis Machine Consumables | 02 Hemodialysis (full catalog only) | 7 | Locked |
 
-**Totals:** 21 source categories → 196 items/variant-groups, all accounted for above. 0 deleted, 0 invented, 0 silently renamed.
+**Totals:** 21 source categories → **119 actual numbered catalog entries/rows**, all accounted for above. Source numbering extends through **#196**. 0 deleted, 0 invented, 0 silently renamed. Final SKU count remains TBD because many entries group multiple variants.
 
 ---
 
@@ -377,7 +379,7 @@ These were flagged in the prior version of this document and were not addressed 
   - Medical Consumables — 4 curated cards (3-Ply Earloop Masks, Alcohol Prep Pads, Wound Care Essentials, Patient Care Consumables)
   - Hemodialysis — 5 interactive gateways per decision 6: Dialyzers, Bloodline Sets, AV Fistula Needles, Concentrates & Bicarbonate, Dialysis Center Essentials
   - These are marketing/navigation gateways, not the catalog, and do not represent the complete offering in either category.
-- **Full Catalog (not yet built):** all 196 items/variants, organized under the five locked top-level groups (01–05) and their subcategories per Part B.
+- **Full Catalog (not yet built):** all **119 source catalog entries**, organized under the five locked top-level groups (01–05) and their subcategories per Part B. Many entries contain grouped variants; the final SKU count is TBD.
 - **Medical Equipment (03) and Procedure & Surgical Supplies (04):** real catalog groups, fully browsable once built, with no dedicated homepage section required.
 - **Medications (05):** its own distinct catalog grouping, kept visibly separate from ordinary consumables, once the catalog experience is designed.
 
