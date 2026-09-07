@@ -104,8 +104,8 @@ document.querySelectorAll('.drawer-links a').forEach((a) => a.addEventListener('
     setTimeout(() => { if (heroTl.progress() < 1) heroTl.progress(1); }, 2500);
 
     // Subtle hero parallax
-    gsap.to('.hero-visual img', {
-      yPercent: 8,
+    gsap.to('.hero-collage', {
+      yPercent: 6,
       ease: 'none',
       scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
     });
@@ -216,6 +216,57 @@ document.querySelectorAll('.drawer-links a').forEach((a) => a.addEventListener('
   window.navLightbox = navLightbox;
 
   lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+})();
+
+/* ─── HEMODIALYSIS SIGNATURE SECTION: vertical tabs ─────────────────────
+   WAI-ARIA vertical tabs pattern with roving tabindex + arrow-key nav.
+   Hover previews on hover-capable pointers only; click/tap and keyboard
+   focus both commit the selection, so touch and keyboard users get the
+   same result as a mouse hover on desktop. */
+(function hdSignature() {
+  const tabs = Array.from(document.querySelectorAll('.hd-tab'));
+  const panels = Array.from(document.querySelectorAll('.hd-visual-inner'));
+  if (!tabs.length || !panels.length) return;
+
+  const canHover = window.matchMedia('(hover: hover)').matches;
+
+  function activate(key) {
+    tabs.forEach((t) => {
+      const isActive = t.dataset.hd === key;
+      t.classList.toggle('is-active', isActive);
+      t.setAttribute('aria-selected', String(isActive));
+      t.tabIndex = isActive ? 0 : -1;
+    });
+    panels.forEach((p) => {
+      const isActive = p.dataset.hdActive === key;
+      if (isActive && p.hidden) {
+        p.hidden = false;
+        if (!prefersReducedMotion && window.gsap) {
+          gsap.fromTo(p, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
+        }
+      } else if (!isActive) {
+        p.hidden = true;
+      }
+    });
+  }
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activate(tab.dataset.hd));
+    if (canHover) {
+      tab.addEventListener('mouseenter', () => activate(tab.dataset.hd));
+    }
+    tab.addEventListener('keydown', (e) => {
+      let target = null;
+      if (e.key === 'ArrowDown') target = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowUp') target = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') target = tabs[0];
+      else if (e.key === 'End') target = tabs[tabs.length - 1];
+      else return;
+      e.preventDefault();
+      target.focus();
+      activate(target.dataset.hd);
+    });
+  });
 })();
 
 /* ─── SEARCH OVERLAY (client-side, scoped to homepage content) ─────────── */
@@ -348,7 +399,7 @@ async function handleSubmit() {
   // Honeypot -- see #fg-website. Bots that fill every field trip this;
   // real visitors never do. Feign success instead of erroring.
   if (document.getElementById('f-website').value.trim() !== '') {
-    showToast("✓ Inquiry sent! We'll contact you within 24 hours.");
+    showToast("✓ Inquiry sent! We'll contact you soon.");
     document.querySelectorAll('#fg-firstname input,#fg-lastname input,#fg-clinic input,#fg-phone input,#fg-category select,#fg-message textarea')
       .forEach((el) => (el.value = ''));
     return;
@@ -389,7 +440,7 @@ async function handleSubmit() {
     setTimeout(() => {
       btn.disabled = false;
       btn.textContent = 'Send Inquiry →';
-      showToast("✓ Inquiry sent! We'll contact you within 24 hours.");
+      showToast("✓ Inquiry sent! We'll contact you soon.");
       document.querySelectorAll('#fg-firstname input,#fg-lastname input,#fg-clinic input,#fg-phone input,#fg-category select,#fg-message textarea')
         .forEach((el) => (el.value = ''));
     }, 1200);
@@ -398,7 +449,7 @@ async function handleSubmit() {
 
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-    showToast("✓ Inquiry sent! We'll contact you within 24 hours.");
+    showToast("✓ Inquiry sent! We'll contact you soon.");
     ['f-firstname', 'f-lastname', 'f-clinic', 'f-phone', 'f-category', 'f-message']
       .forEach((id) => (document.getElementById(id).value = ''));
   } catch (err) {

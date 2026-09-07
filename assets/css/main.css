@@ -206,13 +206,6 @@ em.accent{color:var(--red);font-style:italic}
 
 .hero-visual{position:relative;overflow:hidden;background:var(--charcoal)}
 .hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-visual-tag{
-  position:absolute;left:28px;bottom:28px;
-  background:rgba(17,18,20,.72);backdrop-filter:blur(6px);
-  color:var(--on-dark);padding:12px 18px;font-size:12.5px;letter-spacing:.4px;
-  display:flex;align-items:center;gap:10px;
-}
-.hero-visual-tag::before{content:"";width:6px;height:6px;background:var(--red)}
 
 @media (max-width:960px){
   #hero{grid-template-columns:1fr}
@@ -245,22 +238,10 @@ em.accent{color:var(--red);font-style:italic}
 }
 .world--dark .chip{border-color:var(--border-dark);color:var(--on-dark)}
 
-/* ---- product grids (shared shape, different palette) ---- */
-.product-grid{
-  max-width:var(--container);margin:56px auto 0;padding:0 var(--edge);
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:var(--border);
-}
-.world--dark .product-grid{background:var(--border-dark)}
-.product-card{
-  background:var(--white);padding:0;display:flex;flex-direction:column;
-  position:relative;
-}
-.world--dark .product-card{background:var(--charcoal-2)}
+/* ---- reusable product text/photo primitives (shared, different palette) ---- */
 .product-photo{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--off)}
 .world--dark .product-photo{background:var(--charcoal-3)}
 .product-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-out)}
-.product-card:hover .product-photo img{transform:scale(1.045)}
 .product-photo--placeholder{
   display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
   background-image:repeating-linear-gradient(135deg,var(--border) 0 1px,transparent 1px 14px);
@@ -271,13 +252,13 @@ em.accent{color:var(--red);font-style:italic}
 .placeholder-tag{
   position:absolute;top:12px;left:12px;background:var(--red);color:#fff;
   font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  padding:4px 8px;
+  padding:4px 8px;z-index:2;
 }
-.product-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:6px;flex:1}
+.placeholder-tag--corner{position:absolute;top:20px;right:20px;left:auto}
 .product-cat{font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)}
 .world--dark .product-cat{color:#FF7A87}
 .product-name{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.25}
-.product-desc{font-size:13px;color:var(--mid);line-height:1.6;flex:1}
+.product-desc{font-size:13px;color:var(--mid);line-height:1.6}
 .world--dark .product-desc{color:var(--on-dark-mid)}
 .product-cta{
   margin-top:14px;align-self:flex-start;background:none;border:none;
@@ -288,8 +269,96 @@ em.accent{color:var(--red);font-style:italic}
 .world--dark .product-cta{color:var(--on-dark);border-color:var(--border-dark)}
 .world--dark .product-cta:hover{color:#FF7A87;border-color:#FF7A87}
 
-@media (max-width:1080px){.product-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.product-grid{grid-template-columns:1fr}}
+/* ---- inline icon + text (phone / location, etc.) ---- */
+.icon-line{display:inline-flex;align-items:center;gap:8px}
+.icon-line svg{flex:0 0 auto}
+
+/* ================= CONSUMABLES: editorial feature + list ================= */
+.consumables-editorial{margin-top:56px;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:start}
+.consumables-feature{display:flex;flex-direction:column}
+.consumables-feature-photo{aspect-ratio:5/4;overflow:hidden;background:var(--off)}
+.consumables-feature-photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease-out)}
+.consumables-feature:hover .consumables-feature-photo img{transform:scale(1.03)}
+.consumables-feature-copy{padding-top:24px;max-width:44ch}
+.consumables-feature-copy .h3{margin:8px 0 10px}
+
+.consumables-list{list-style:none;display:flex;flex-direction:column}
+.consumables-list-item{
+  display:grid;grid-template-columns:84px 1fr auto;align-items:center;gap:18px;
+  padding:24px 0;border-bottom:1px solid var(--border);
+}
+.consumables-list-item:first-child{padding-top:4px}
+.consumables-list-photo{width:84px;height:84px;overflow:hidden;background:var(--off);flex:0 0 84px}
+.consumables-list-photo img{width:100%;height:100%;object-fit:cover}
+.consumables-list-photo--placeholder{
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;
+  background-image:repeating-linear-gradient(135deg,var(--border) 0 1px,transparent 1px 10px);
+}
+.consumables-list-photo--placeholder .placeholder-label{font-size:9px;letter-spacing:.5px}
+.consumables-list-copy .product-cat{display:block;margin-bottom:4px}
+.consumables-list-copy .product-name{font-size:17px;margin-bottom:4px}
+.consumables-list-copy .product-desc{max-width:42ch}
+.consumables-list-item .product-cta{margin-top:0;white-space:nowrap}
+
+@media (max-width:900px){
+  .consumables-editorial{grid-template-columns:1fr;gap:40px}
+  .consumables-list-item{grid-template-columns:64px 1fr;row-gap:10px}
+  .consumables-list-photo{width:64px;height:64px;flex:0 0 64px}
+  .consumables-list-item .product-cta{grid-column:2;justify-self:start}
+}
+
+/* ================= HERO: editorial placeholder composition ================= */
+.hero-visual--placeholder{
+  background:var(--charcoal);color:var(--on-dark);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:48px;gap:28px;
+}
+.hero-collage{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:auto auto;gap:1px;background:var(--border-dark);width:100%;max-width:420px}
+.hero-collage-item{
+  background:var(--charcoal);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:14px;padding:28px 16px;text-align:center;
+}
+.hero-collage-item--lg{grid-row:1 / 3}
+.hero-collage-item svg{width:44px;height:44px;color:var(--on-dark-mid)}
+.hero-collage-item--lg svg{width:58px;height:58px}
+.hero-collage-item span{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--on-dark-mid)}
+.hero-visual-note{font-size:12px;color:var(--on-dark-mid);text-align:center;max-width:32ch}
+
+/* ================= HEMODIALYSIS: signature interactive section ================= */
+.hd-heading{max-width:640px}
+.hd-num{display:block;font-family:var(--serif);font-weight:700;font-size:20px;color:#FF7A87;margin-bottom:6px}
+.hd-title{font-family:var(--serif);font-weight:700;font-size:clamp(44px,7vw,96px);line-height:.98;letter-spacing:-.01em}
+.hd-tagline{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.2vw,28px);color:var(--on-dark-mid);margin-top:14px}
+
+.hd-interactive{margin-top:64px;display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:stretch}
+.hd-tablist{display:flex;flex-direction:column;border-top:1px solid var(--border-dark)}
+.hd-tab{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:none;border:none;border-bottom:1px solid var(--border-dark);
+  color:var(--on-dark-mid);font-family:var(--serif);font-weight:600;font-size:clamp(18px,2vw,24px);
+  padding:22px 4px;text-align:left;transition:color .25s var(--ease),padding-left .25s var(--ease);
+}
+.hd-tab-arrow{font-family:var(--sans);font-size:15px;opacity:0;transform:translateX(-6px);transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.hd-tab:hover,.hd-tab:focus-visible,.hd-tab.is-active{color:var(--on-dark);padding-left:14px}
+.hd-tab:hover .hd-tab-arrow,.hd-tab:focus-visible .hd-tab-arrow,.hd-tab.is-active .hd-tab-arrow{opacity:1;transform:translateX(0);color:#FF7A87}
+.hd-tab:focus-visible{outline:1px solid #FF7A87;outline-offset:-4px}
+
+.hd-visual{position:relative;background:var(--charcoal-2);border:1px solid var(--border-dark);min-height:420px}
+.hd-visual-inner{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:20px;padding:40px;text-align:center;
+}
+.hd-visual-inner[hidden]{display:none}
+.hd-icon{width:96px;height:96px;color:var(--on-dark-mid)}
+.hd-visual-inner .product-desc{max-width:36ch}
+.hd-visual-inner .placeholder-tag{position:static;margin-bottom:4px}
+
+@media (max-width:900px){
+  .hd-interactive{grid-template-columns:1fr;gap:0}
+  .hd-visual{order:2;margin-top:0;min-height:320px}
+  .hd-tablist{order:1}
+  .hd-tab{padding:18px 4px}
+}
 
 /* ================= LIGHT → DARK TRANSITION ================= */
 #transition{
