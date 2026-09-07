@@ -4,6 +4,8 @@
 
 **Scope note:** Nothing in this document is real inventory, real specifications, or a confirmed business fact unless it is explicitly marked as already verified. Every row is a request for the business to supply or confirm information — none of it should be treated as ready to publish as-is.
 
+**Catalog update:** the business has since supplied its actual, final product catalog (196 items/variants across 21 categories). Section 1 below still accurately describes the *current homepage's* placeholders (unchanged). Section 2's taxonomy is superseded — see [`docs/FINAL-PRODUCT-CATALOG-MAPPING.md`](FINAL-PRODUCT-CATALOG-MAPPING.md) for the real catalog and its proposed website mapping. Once that mapping is approved and a full catalog experience is designed, this document's asset audit will need a much larger follow-up pass covering all approved categories, not just the four homepage placeholders below.
+
 ---
 
 ## 1. Asset & Content Requirement Audit
@@ -79,9 +81,16 @@ Already fulfilled with real photography — no placeholder here. Listed for comp
 
 ---
 
-## 2. Proposed Product Taxonomy (Launch Scope)
+## 2. Proposed Product Taxonomy (Launch Scope) — SUPERSEDED
 
-This is the full, locked taxonomy for Layali 2.0 — no categories beyond these two groups. **No specific products, SKUs, or brand names are proposed here** — that inventory must come from the business.
+> **This section is superseded.** The 5+5 taxonomy below was a Phase 1 homepage design simplification, written before the business supplied its actual product catalog. It is **not** the final taxonomy and should not be treated as the complete Medical Consumables or Hemodialysis offering.
+>
+> The authoritative catalog — every real category, every product/variant, and the proposed mapping into website navigation — now lives in **[`docs/FINAL-PRODUCT-CATALOG-MAPPING.md`](FINAL-PRODUCT-CATALOG-MAPPING.md)**. That document covers 21 source categories and 196 items/variants, including a full breakdown of Hemodialysis (17 real subcategories, not 5) and a separate Medications grouping. Refer to it, not to the list below, for taxonomy decisions.
+>
+> The homepage itself has not changed: it still shows the same small curated set of Medical Consumables cards and Hemodialysis tabs described in Section 1 above. Those remain **marketing/navigation gateways**, not the catalog. The full catalog experience (where the taxonomy below is expanded to the real one) is future work, not yet built.
+
+<details>
+<summary>Original Phase 1 taxonomy (kept for history — do not use for planning)</summary>
 
 **MEDICAL CONSUMABLES**
 1. Injection & Infusion
@@ -97,7 +106,7 @@ This is the full, locked taxonomy for Layali 2.0 — no categories beyond these 
 4. Concentrates
 5. Treatment Consumables
 
-**Recommended minimum content per subcategory for a credible launch:** at least 2–4 real products with a name, category, and short descriptor, plus at least one photo each. Subcategories with zero real products at launch should either be represented honestly as "Category coming soon" or excluded from featured placement until stocked — per the project's product-truthfulness rule, a subcategory should not display specific product cards with placeholder photos if the business does not actually carry any items in that line yet.
+</details>
 
 ---
 
