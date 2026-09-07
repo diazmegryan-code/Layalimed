@@ -4,7 +4,17 @@
 
 **Scope note:** Nothing in this document is real inventory, real specifications, or a confirmed business fact unless it is explicitly marked as already verified. Every row is a request for the business to supply or confirm information — none of it should be treated as ready to publish as-is.
 
-**Catalog update:** the business has since supplied its actual, final product catalog (196 items/variants across 21 categories). Section 1 below still accurately describes the *current homepage's* placeholders (unchanged). Section 2's taxonomy is superseded — see [`docs/FINAL-PRODUCT-CATALOG-MAPPING.md`](FINAL-PRODUCT-CATALOG-MAPPING.md) for the real catalog and its proposed website mapping. Once that mapping is approved and a full catalog experience is designed, this document's asset audit will need a much larger follow-up pass covering all approved categories, not just the four homepage placeholders below.
+**Catalog update:** the business has since supplied its actual, final product catalog (196 items/variants across 21 categories), and the resulting website catalog architecture is now **approved and locked**. Section 1 below still accurately describes the *current homepage's* placeholders (unchanged). Section 2's taxonomy is superseded — see [`docs/FINAL-PRODUCT-CATALOG-MAPPING.md`](FINAL-PRODUCT-CATALOG-MAPPING.md) for the full catalog and its final, locked website mapping. Once a full catalog experience is designed and built, this document's asset audit will need a much larger follow-up pass covering all locked categories, not just the four homepage placeholders below.
+
+**Locked top-level catalog architecture** (full detail and per-item mapping in `FINAL-PRODUCT-CATALOG-MAPPING.md`):
+```
+01  Medical Consumables
+02  Hemodialysis
+03  Medical Equipment
+04  Procedure & Surgical Supplies
+05  Medications
+```
+Homepage positioning remains **Medical Consumables + Hemodialysis only** — Medical Equipment, Procedure & Surgical Supplies, and Medications are real catalog groups but do not get dedicated homepage sections.
 
 ---
 

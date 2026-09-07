@@ -1,21 +1,35 @@
 # Layali 2.0 — Final Product Catalog Mapping
 
-**Source document:** `Layali_Complete_Website_Product_Catalog.docx` (supplied by the business — the single source of truth for products, as of this document).
+**Source document:** `Layali_Complete_Website_Product_Catalog.docx` (supplied by the business — the single source of truth for products).
 
-**Status:** This document supersedes the simplified 5+5 taxonomy previously described as "final" in `docs/CONTENT-ASSET-REQUIREMENTS.md`. That taxonomy was a Phase 1 homepage design simplification, not the real catalog. Nothing in the homepage has been changed as part of this document — this is a mapping and planning exercise only.
+**Status:** The catalog architecture decisions below are **APPROVED and LOCKED** by the business. This document reflects the final, locked structure. It supersedes the simplified 5+5 taxonomy previously described as "final" in `docs/CONTENT-ASSET-REQUIREMENTS.md`.
 
 **What this document does and does not do:**
 - It reproduces every category and every item/variant from the supplied catalog (Part A), verbatim, with the source item numbers preserved for traceability.
-- It proposes a website grouping for every item (Part B), without deleting, inventing, renaming, or merging any product out of existence.
-- It flags every place a grouping decision is a judgment call rather than an obvious fit, for your approval (Part C, and inline notes).
+- It maps every item into the locked website architecture (Part B), without deleting, inventing, renaming, or merging any product out of existence.
+- It records the seven locked architecture decisions and their resolution (Part C), plus two smaller items that remain open (not part of the seven).
 - It does **not** invent any product, brand, specification, or indication beyond what the source document states.
-- It does **not** change `index.html`, CSS, or JS.
+- It does **not** change `index.html`, CSS, or JS. No catalog pages have been built.
+
+---
+
+## Final Customer-Facing Top-Level Catalog Architecture (LOCKED)
+
+```
+01  Medical Consumables
+02  Hemodialysis
+03  Medical Equipment
+04  Procedure & Surgical Supplies
+05  Medications
+```
+
+**Homepage positioning remains Medical Consumables + Hemodialysis only.** Medical Equipment, Procedure & Surgical Supplies, and Medications are real catalog groups, fully represented in the full catalog/navigation once built, but do not need major homepage sections. This does not change the current homepage — no homepage code has been modified.
 
 ---
 
 ## Part A — Full Original Catalog (verbatim, by source category)
 
-21 source categories, 196 numbered items/variant-groups (item numbers 1–63, 65, 66, 69, 70, 76, 78, 80, 81, 83–86, 107, 108 do not appear in the supplied document — the numbering in the source file itself skips these; nothing was lost in this extraction, the gaps are in the original document as delivered).
+Unchanged from the original catalog document. 21 source categories, 196 numbered items/variant-groups (item numbers 1–63, 65, 66, 69, 70, 76, 78, 80, 81, 83–86, 107, 108 do not appear in the supplied document — the numbering gaps are in the original file as delivered, nothing was lost in extraction).
 
 ### Intravenous - IV Solutions
 | # | Item / Variant |
@@ -222,113 +236,149 @@
 
 ---
 
-## Part B — Proposed Website Grouping
+## Part B — Locked Website Grouping
 
-The site keeps **three top-level catalog groups**: **Medical Consumables**, **Hemodialysis**, and **Medications** (medications called out as their own group per your instruction, not blended into ordinary disposables). A fourth bucket, **Other / Out of Current Homepage Scope**, holds items that don't cleanly fit the locked Consumables + Hemodialysis positioning and need a decision before they're placed anywhere permanent.
+### B.1 — 01 MEDICAL CONSUMABLES
 
-Every row below states which source category it came from, so nothing is re-numbered away from its origin.
-
-### B.1 — MEDICAL CONSUMABLES (website group)
-
-| Proposed website subcategory | Source category → items | Notes |
+| Website subcategory | Source category → items | Notes |
 |---|---|---|
-| **Injection & Infusion** *(existing homepage subcat)* | IV Solutions (64, 67, 68, 71); Consumables & Supplies → Syringes (73), Needles (74), IV Cannula/Tubing (75), Macroset/Microset/Soluset (87) | Straightforward fit — these are the core injection/infusion consumables. |
-| **PPE & Infection Control** *(existing homepage subcat)* | Consumables & Supplies → Surgical Masks/N95 (72), Examining Gloves (79), Alcohol/Povidone-Iodine/Chlorhexidine (82 — primary placement) | |
-| **Wound Care** *(existing homepage subcat)* | Consumables & Supplies → Cotton Balls & Gauze Pads (77) | See ambiguity note C.1 for whether antiseptics (82) and/or Suture Materials/Sterile Drapes (100, 101) should cross-list here. |
-| **Patient Care** *(existing homepage subcat)* | Consumables & Supplies → Nasal Cannula/Face Mask/NRM (88) | Thin subcategory under the general catalog alone — see C.2. |
-| **Laboratory / Specimen** *(existing homepage subcat)* | *(none in the general catalog)* | **No general-catalog items map here.** The only Specimen & Lab items in the source document are listed under Hemodialysis (185–189). See ambiguity note C.3. |
-| **Diagnostic Equipment** *(proposed new subcategory — needs approval)* | Basic Diagnostic Equipment → all of 89–99 (Stethoscope, BP Apparatus, Pulse Oximeter, Thermometer, Glucometer w/ Strips, Weighing Scale, Height Measuring Device, Penlight, ECG Machine, Nebulizing Machine, Oxygen Tank w/ Regulator) | These are durable equipment, not consumables. See ambiguity note C.4. |
-| **Procedure & Surgical Supplies** *(proposed new subcategory — needs approval)* | Minor Surgical/Procedure Supplies → Suture Materials (100), Sterile Drapes (101), Scalpel Blades (103), Forceps (104), Needle Holders (105), Mayo Scissors (106) | Forceps/Needle Holders/Mayo Scissors are reusable instruments, not disposable consumables. See ambiguity note C.5. Lidocaine (102) is proposed for Medications instead — see below. |
+| **Injection & Infusion** | Consumables & Supplies → Syringes (73), Needles (74), IV Cannula/Tubing (75), Macroset/Microset/Soluset (87) | Core injection/infusion consumables. |
+| **Injection & Infusion → IV Solutions** *(recognizable sub-filter, per locked decision 1)* | IV Solutions → PNSS (64), PLR (67), D5W (68), Sterile Water for Injection (71) | Filed under Injection & Infusion as the parent subcategory, but kept as its own visible filter/tag ("IV Solutions") within it, so it stays a recognizable grouping rather than disappearing into a generic list. |
+| **PPE & Infection Control** | Consumables & Supplies → Surgical Masks/N95 (72), Examining Gloves (79), Alcohol/Povidone-Iodine/Chlorhexidine (82) | |
+| **Wound Care** | Consumables & Supplies → Cotton Balls & Gauze Pads (77) | Antiseptics (82) are filed under PPE & Infection Control as primary; whether they should also cross-list here is a minor open item (see "Remaining Open Items" below) — not one of the seven locked decisions. |
+| **Patient Care** | Consumables & Supplies → Nasal Cannula/Face Mask/NRM (88) | Remains a thin subcategory from the general catalog alone; noted as a minor open item, not blocking. |
 
-### B.2 — HEMODIALYSIS (website group)
+**Removed from Medical Consumables (locked decision 3):** Laboratory / Specimen is no longer a Medical Consumables homepage category. The general (non-Hemodialysis) catalog never had matching items for it. Hemodialysis-specific specimen/lab items (185–189) remain exactly where the source catalog places them, inside Hemodialysis (see B.2).
 
-All 17 original Hemodialysis source categories are kept as real subcategories — none are deleted or merged away. For navigation, they're proposed to sit under a small number of high-level groups so the catalog page isn't a flat list of 17 tabs. This grouping is a UX proposal only; the underlying subcategories remain fully intact and separately browsable either way.
+**Moved out of Medical Consumables into their own top-level groups (locked decisions 2 & 4):** Diagnostic Equipment and Minor Surgical/Procedure Supplies are no longer Medical Consumables subcategories — see B.3 and B.4.
 
-| Proposed high-level nav group | Source subcategories kept underneath (unchanged) | Item count |
+### B.2 — 02 HEMODIALYSIS
+
+All 17 original Hemodialysis source subcategories remain fully represented in the full catalog — none deleted, none merged away. Emergency & Routine HD Medications is the one exception: per locked decision 7, it moves out to its own top-level **05 Medications** group (B.5), separate from ordinary Hemodialysis disposables.
+
+**Full-catalog subcategories (16, unchanged from source):**
+
+| Subcategory | Source items |
+|---|---|
+| Dialyzers / Artificial Kidneys | 109–115 |
+| Bloodline Sets | 116–120 |
+| AV Fistula Needles | 121–124 |
+| Dialysis Catheters | 125–130 |
+| Acid Concentrates & Bicarbonate | 131–134 |
+| Anticoagulation & Priming Fluids | 135–140 |
+| Syringes & Needles | 141–143 |
+| IV Supplies | 144–147 |
+| Dressing Supplies | 148–154 |
+| Personal Protective Equipment | 155–159 |
+| Surface Disinfection | 160–164 |
+| Water Treatment Monitoring | 165–169 |
+| Waste Disposal | 170–173 |
+| Catheter Lock Solutions | 183–184 |
+| Specimen & Lab Supplies | 185–189 |
+| Dialysis Machine Consumables | 190–196 |
+
+**Homepage gateways (LOCKED, design concept only — no homepage code changed in this pass):**
+
+```
+Dialyzers →
+Bloodline Sets →
+AV Fistula Needles →
+Concentrates & Bicarbonate →
+Dialysis Center Essentials →
+```
+
+- **Dialyzers**, **Bloodline Sets**, **AV Fistula Needles**, and **Concentrates & Bicarbonate** map directly to the like-named full-catalog subcategories above (Concentrates & Bicarbonate = "Acid Concentrates & Bicarbonate," 131–134).
+- **"Dialysis Center Essentials" is a homepage navigation/marketing gateway only** — it is not a source catalog category and does not replace one. It's a curated entry point intended to represent day-to-day HD consumables at a glance (candidates to feature under it: Dressing Supplies, IV Supplies, Syringes & Needles, PPE — to be finalized when the gateway's linked content is actually built). It must always link through to the real, complete subcategories in the full catalog, not stand in for them.
+- Dialysis Catheters, Personal Protective Equipment, Surface Disinfection, Water Treatment Monitoring, Waste Disposal, Catheter Lock Solutions, and Specimen & Lab Supplies do not have their own homepage gateway tile — they remain fully browsable in the full Hemodialysis catalog.
+
+### B.3 — 03 MEDICAL EQUIPMENT (new top-level group, locked decision 4)
+
+| Subcategory | Source category → items |
+|---|---|
+| Diagnostic Equipment | Basic Diagnostic Equipment → Stethoscope (89), BP Apparatus/Sphygmomanometer (90), Pulse Oximeter (91), Thermometer (92), Glucometer with Strips (93), Weighing Scale (94), Height Measuring Device (95), Penlight (96), ECG Machine (97), Nebulizing Machine (98), Oxygen Tank with Regulator (99) |
+
+Does not need a major homepage section — discoverable through the full catalog/navigation.
+
+### B.4 — 04 PROCEDURE & SURGICAL SUPPLIES (new top-level group, locked decisions 2 & 5)
+
+| Subcategory | Source items | Notes |
 |---|---|---|
-| Dialyzers & Vascular Access | Dialyzers / Artificial Kidneys (109–115); Bloodline Sets (116–120); AV Fistula Needles (121–124); Dialysis Catheters (125–130) | 24 |
-| Dialysis Fluids & Concentrates | Acid Concentrates & Bicarbonate (131–134); Anticoagulation & Priming Fluids (135–140) | 10 |
-| Treatment Consumables | Syringes & Needles (141–143); IV Supplies (144–147); Dressing Supplies (148–154) | 14 |
-| Infection Control & Safety | Personal Protective Equipment (155–159); Surface Disinfection (160–164); Waste Disposal (170–173) | 14 |
-| Water Treatment & Machine Care | Water Treatment Monitoring (165–169); Dialysis Machine Consumables (190–196) | 12 |
-| Specimen & Lab Supplies | Specimen & Lab Supplies (185–189) | 5 |
-| Catheter Lock Solutions | Catheter Lock Solutions (183–184) | 2 |
+| Procedure Consumables | Suture Materials (100), Sterile Drapes (101), Scalpel Blades (103) | Single-use/disposable procedure items. |
+| Procedure Consumables — medication | Lidocaine (102) | Filed here as in the source document (it's listed under Minor Surgical/Procedure Supplies, not Emergency & Routine HD Medications). Since it is a medication, whether it should also be cross-tagged into the Medications group is a minor open item — see "Remaining Open Items" below; it has not been moved without approval. |
+| **Instruments** *(locked decision 5)* | Forceps (104), Needle Holders (105), Mayo Scissors (106) | Reusable surgical instruments, explicitly separated from disposables per the locked decision. |
 
-*(Medications — Emergency & Routine HD Medications, 174–182 — is intentionally excluded from this table; see B.3.)*
-
-**Important note on the current homepage:** the approved Phase 1 homepage's five interactive Hemodialysis tabs (Dialyzers, Blood Tubing Sets, AV Fistula Needles, Concentrates, Treatment Consumables) were written during Phase 1 *before* this final catalog existed. Four of the five line up reasonably with real categories above (Dialyzers, Bloodline Sets, AV Fistula Needles, Acid Concentrates & Bicarbonate). The fifth, **"Treatment Consumables," does not correspond to any single real category** — it was a Phase 1 placeholder label. The real catalog has 17 Hemodialysis subcategories, not 5. Per your instruction, the current five-tab interaction is kept as-is as a *design concept* for now, but it should not be read as representing the complete Hemodialysis offering, and the mismatched fifth tab is flagged here for a future decision (see C.6).
-
-### B.3 — MEDICATIONS (website group — kept separate, per your instruction)
+### B.5 — 05 MEDICATIONS (locked decision 7)
 
 | Source category → items | Notes |
 |---|---|
-| Hemodialysis - Emergency & Routine HD Medications (174–182): Erythropoietin (EPO), Iron sucrose & Ferric carboxymaltose, Calcium gluconate, Dextrose 50% & Sodium bicarbonate, Hydrocortisone & Diphenhydramine, Epinephrine & Atropine, Dopamine & Norepinephrine, Ondansetron/Paracetamol, Midodrine & Mannitol | Presented as its own clearly labeled catalog grouping — not styled or listed like ordinary disposable consumables. No indications, dosing, or clinical claims are added beyond the item names as supplied. |
+| Hemodialysis - Emergency & Routine HD Medications (174–182): Erythropoietin (EPO), Iron sucrose & Ferric carboxymaltose, Calcium gluconate, Dextrose 50% & Sodium bicarbonate, Hydrocortisone & Diphenhydramine, Epinephrine & Atropine, Dopamine & Norepinephrine, Ondansetron/Paracetamol, Midodrine & Mannitol | Its own top-level catalog group, not mixed into Medical Consumables or presented like ordinary disposables, per the locked decision. No indications, dosing, or clinical claims are added beyond the item names as supplied. |
 
-**Ambiguous, flagged for approval (not moved without your say-so):**
-- Heparin vial & syringes (135), Low molecular weight heparin (136), Prefilled heparin syringes (137), Citrate lock solution (138) — currently under "Anticoagulation & Priming Fluids"
-- Heparin lock (183), Citrate lock (184) — currently under "Catheter Lock Solutions"
-- Lidocaine (102) — currently under "Minor Surgical/Procedure Supplies"
+**Not moved here (still open, not part of the seven locked decisions):** Heparin vial & syringes (135), Low molecular weight heparin (136), Prefilled heparin syringes (137), Citrate lock solution (138), Heparin lock (183), Citrate lock (184), and Lidocaine (102) are all pharmacological agents filed under their original Hemodialysis/Procedure categories in the source document. They remain there pending a future decision on whether to cross-tag or move them into Medications (see "Remaining Open Items").
 
-These are all pharmacological agents and could arguably belong under Medications too. They are left in their original source categories in this document pending your decision (see C.7).
+---
 
-### B.4 — OTHER / OUT OF CURRENT HOMEPAGE SCOPE
+## Part C — The Seven Locked Architecture Decisions
 
-| Item(s) | Why it's flagged | Options |
+| # | Decision | Status |
 |---|---|---|
-| Basic Diagnostic Equipment (89–99, full category) | Durable equipment, not a consumable; doesn't fit "Medical Consumables" or "Hemodialysis" as currently scoped | (a) Approve as a new "Diagnostic Equipment" Medical Consumables subcategory (per B.1), or (b) exclude from the website catalog for now |
-| Scalpel Blades (103), Forceps (104), Needle Holders (105), Mayo Scissors (106) | Reusable surgical instruments, not disposable consumables | (a) Approve as part of a new "Procedure & Surgical Supplies" subcategory (per B.1), or (b) exclude from the website catalog for now |
+| 1 | IV Solutions → Medical Consumables → Injection & Infusion, preserved as a recognizable subcategory/filter | **RESOLVED / APPROVED** — see B.1 |
+| 2 | Minor Surgical/Procedure Supplies → separate top-level group "Procedure & Surgical Supplies," not forced into Medical Consumables | **RESOLVED / APPROVED** — see B.4 |
+| 3 | Laboratory/Specimen removed as a general Medical Consumables homepage category; HD-specific specimen/lab items stay in Hemodialysis | **RESOLVED / APPROVED** — see B.1, B.2 |
+| 4 | Diagnostic Equipment → separate top-level group "Medical Equipment"; no major homepage section required | **RESOLVED / APPROVED** — see B.3 |
+| 5 | Surgical instruments (Forceps, Needle Holders, Mayo Scissors) → Procedure & Surgical Supplies → Instruments | **RESOLVED / APPROVED** — see B.4 |
+| 6 | Hemodialysis homepage keeps the approved dark interactive design; five gateways are now Dialyzers, Bloodline Sets, AV Fistula Needles, Concentrates & Bicarbonate, Dialysis Center Essentials; "Dialysis Center Essentials" is a marketing gateway only, not a replacement for the source categories; all 17 original Hemodialysis categories remain represented in the full catalog | **RESOLVED / APPROVED** — see B.2 |
+| 7 | Medications → separate top-level group "Medications," not mixed into ordinary Medical Consumables; no invented indications/claims/dosing/specifications | **RESOLVED / APPROVED** — see B.5 |
 
-Nothing in this table has been deleted from the catalog — it is fully listed in Part A. It's held here only because it doesn't have an approved home yet.
+All seven are locked. No homepage, CSS, or JS changes have been made to implement decision 6's renamed gateway label yet — that is future build work, tracked here as an approved specification.
+
+### Remaining Open Items (not part of the seven — smaller, non-blocking)
+
+These were flagged in the prior version of this document and were not addressed by the seven locked decisions. They remain open:
+
+- **Antiseptics cross-listing:** should "Alcohol, Povidone-Iodine, Chlorhexidine" (82) also be cross-listed under Wound Care, in addition to PPE & Infection Control?
+- **Patient Care depth:** Patient Care has only one general-catalog entry (Nasal Cannula/Face Mask/NRM, 88). Is there more inventory in this line, or should homepage framing be adjusted to match what's actually stocked?
+- **Heparin / citrate lock / Lidocaine as Medications:** should these pharmacological items (currently filed under their original Hemodialysis/Procedure categories, per the source document) also be cross-tagged or moved into the Medications group?
 
 ---
 
-## Part C — Ambiguities Requiring Your Approval
+## Part D — Reconciliation Summary (final, locked)
 
-1. **Antiseptics cross-listing (item 82):** "Alcohol, Povidone-Iodine, Chlorhexidine" is proposed under PPE & Infection Control. Should it also (or instead) appear under Wound Care, since these are also wound-prep antiseptics?
-2. **Patient Care depth:** With only "Nasal Cannula / Face Mask / NRM" (88) mapped to it from the general catalog, Patient Care is a very thin subcategory. Is there more inventory in this line that wasn't in the supplied catalog, or should this subcategory's homepage framing be adjusted to match what's actually stocked?
-3. **Laboratory / Specimen has no general-catalog items:** every Specimen & Lab item in the source document (185–189) is filed under Hemodialysis, not the general catalog. Should the homepage's "Laboratory / Specimen" Medical Consumables subcategory be retired, repointed to the Hemodialysis specimen items, or left as a placeholder until general lab inventory exists?
-4. **Diagnostic Equipment (89–99):** approve as a new Medical Consumables subcategory, or treat as out of scope for this site (equipment/instrument sales vs. consumable supply)?
-5. **Procedure & Surgical Supplies (100, 101, 103–106):** approve as a new Medical Consumables subcategory (noting it mixes disposables like sutures/drapes with reusable instruments like forceps/scissors), or treat as out of scope?
-6. **Homepage's "Treatment Consumables" HD tab:** the real catalog has no category by this name. Once the full Hemodialysis catalog experience is built, should this fifth homepage tab be relabeled to match a real category (e.g. swapped for "Dressing Supplies" or "IV Supplies"), or should the homepage interaction be expanded/changed to represent the catalog more accurately? No homepage change is being made now — this is flagged for the next design phase.
-7. **Heparin, citrate lock, and Lidocaine as Medications:** should these be dual-tagged or moved into the Medications grouping, or stay filed under their original Hemodialysis procedural categories as in the source document?
-
----
-
-## Part D — Reconciliation Summary
-
-| Original catalog category | Proposed website category | # items/variants | Ambiguous? |
+| Original catalog category | Final website category | # items/variants | Status |
 |---|---|---|---|
-| Intravenous - IV Solutions | Medical Consumables → Injection & Infusion | 4 | No |
-| Consumables - Medical Consumables & Supplies | Medical Consumables → Injection & Infusion / PPE & Infection Control / Wound Care / Patient Care (split across subcats, see B.1) | 9 | Partial — see C.1, C.2 |
-| Equipment - Basic Diagnostic Equipment | Medical Consumables → "Diagnostic Equipment" (new, proposed) or Other/Out of Scope | 11 | **Yes — see C.4** |
-| Procedure - Minor Surgical / Procedure Supplies | Medical Consumables → "Procedure & Surgical Supplies" (new, proposed); Lidocaine proposed for Medications | 7 | **Yes — see C.5, C.7** |
-| Hemodialysis - Dialyzers / Artificial Kidneys | Hemodialysis → Dialyzers & Vascular Access | 7 | No |
-| Hemodialysis - Bloodline Sets | Hemodialysis → Dialyzers & Vascular Access | 5 | No |
-| Hemodialysis - AV Fistula Needles | Hemodialysis → Dialyzers & Vascular Access | 4 | No |
-| Hemodialysis - Dialysis Catheters | Hemodialysis → Dialyzers & Vascular Access | 6 | No |
-| Hemodialysis - Acid Concentrates & Bicarbonate | Hemodialysis → Dialysis Fluids & Concentrates | 4 | No |
-| Hemodialysis - Anticoagulation & Priming Fluids | Hemodialysis → Dialysis Fluids & Concentrates | 6 | Partial — see C.7 (Heparin/citrate items) |
-| Hemodialysis - Syringes & Needles | Hemodialysis → Treatment Consumables (nav group) | 3 | No |
-| Hemodialysis - IV Supplies | Hemodialysis → Treatment Consumables (nav group) | 4 | No |
-| Hemodialysis - Dressing Supplies | Hemodialysis → Treatment Consumables (nav group) | 7 | No |
-| Hemodialysis - Personal Protective Equipment | Hemodialysis → Infection Control & Safety | 5 | No |
-| Hemodialysis - Surface Disinfection | Hemodialysis → Infection Control & Safety | 5 | No |
-| Hemodialysis - Water Treatment Monitoring | Hemodialysis → Water Treatment & Machine Care | 5 | No |
-| Hemodialysis - Waste Disposal | Hemodialysis → Infection Control & Safety | 4 | No |
-| Hemodialysis - Emergency & Routine HD Medications | **Medications** (separate top-level group) | 9 | No |
-| Hemodialysis - Catheter Lock Solutions | Hemodialysis → Dialyzers & Vascular Access, or Medications | 2 | **Yes — see C.7** |
-| Hemodialysis - Specimen & Lab Supplies | Hemodialysis → Specimen & Lab Supplies | 5 | Also see C.3 (Consumables side has no equivalent) |
-| Hemodialysis - Dialysis Machine Consumables | Hemodialysis → Water Treatment & Machine Care | 7 | No |
+| Intravenous - IV Solutions | 01 Medical Consumables → Injection & Infusion → IV Solutions | 4 | Locked (decision 1) |
+| Consumables - Medical Consumables & Supplies | 01 Medical Consumables → Injection & Infusion / PPE & Infection Control / Wound Care / Patient Care | 9 | Locked; antiseptics cross-listing still open |
+| Equipment - Basic Diagnostic Equipment | 03 Medical Equipment → Diagnostic Equipment | 11 | Locked (decision 4) |
+| Procedure - Minor Surgical / Procedure Supplies | 04 Procedure & Surgical Supplies → Procedure Consumables / Instruments | 7 | Locked (decisions 2, 5); Lidocaine's Medications cross-tag still open |
+| Hemodialysis - Dialyzers / Artificial Kidneys | 02 Hemodialysis → Dialyzers | 7 | Locked (decision 6) |
+| Hemodialysis - Bloodline Sets | 02 Hemodialysis → Bloodline Sets | 5 | Locked (decision 6) |
+| Hemodialysis - AV Fistula Needles | 02 Hemodialysis → AV Fistula Needles | 4 | Locked (decision 6) |
+| Hemodialysis - Dialysis Catheters | 02 Hemodialysis (full catalog only) | 6 | Locked |
+| Hemodialysis - Acid Concentrates & Bicarbonate | 02 Hemodialysis → Concentrates & Bicarbonate | 4 | Locked (decision 6) |
+| Hemodialysis - Anticoagulation & Priming Fluids | 02 Hemodialysis (full catalog only) | 6 | Locked; Heparin/citrate Medications cross-tag still open |
+| Hemodialysis - Syringes & Needles | 02 Hemodialysis (full catalog only) | 3 | Locked |
+| Hemodialysis - IV Supplies | 02 Hemodialysis (full catalog only) | 4 | Locked |
+| Hemodialysis - Dressing Supplies | 02 Hemodialysis (full catalog only) | 7 | Locked |
+| Hemodialysis - Personal Protective Equipment | 02 Hemodialysis (full catalog only) | 5 | Locked |
+| Hemodialysis - Surface Disinfection | 02 Hemodialysis (full catalog only) | 5 | Locked |
+| Hemodialysis - Water Treatment Monitoring | 02 Hemodialysis (full catalog only) | 5 | Locked |
+| Hemodialysis - Waste Disposal | 02 Hemodialysis (full catalog only) | 4 | Locked |
+| Hemodialysis - Emergency & Routine HD Medications | 05 Medications | 9 | Locked (decision 7) |
+| Hemodialysis - Catheter Lock Solutions | 02 Hemodialysis (full catalog only) | 2 | Locked; Medications cross-tag still open |
+| Hemodialysis - Specimen & Lab Supplies | 02 Hemodialysis (full catalog only) | 5 | Locked (decision 3) |
+| Hemodialysis - Dialysis Machine Consumables | 02 Hemodialysis (full catalog only) | 7 | Locked |
 
 **Totals:** 21 source categories → 196 items/variant-groups, all accounted for above. 0 deleted, 0 invented, 0 silently renamed.
 
 ---
 
-## Part E — Homepage vs. Full Catalog (explicit distinction)
+## Part E — Homepage vs. Full Catalog (final)
 
-- **Homepage Featured (current, unchanged in this pass):** a small curated set — 4 Medical Consumables cards (3-Ply Earloop Masks, Alcohol Prep Pads, Wound Care Essentials, Patient Care Consumables) and 5 Hemodialysis tabs (Dialyzers, Blood Tubing Sets, AV Fistula Needles, Concentrates, Treatment Consumables). These are marketing/navigation gateways, not the catalog.
-- **Full Catalog (not yet built):** all 196 items/variants across every category in Part A, organized per the groupings proposed in Part B once approved. This is the future catalog/product experience referenced in your instructions — not part of this documentation pass's scope to build.
-- **Medications (not yet built):** the 9-item Emergency & Routine HD Medications set, to be presented as its own distinct grouping, separate from ordinary consumables, once the catalog experience is designed.
-- **Other/Out of current homepage scope:** Diagnostic Equipment and surgical instruments (Part B.4), pending your decision on whether they belong in the Medical Consumables catalog at all.
+- **Homepage (unchanged in this pass):**
+  - Medical Consumables — 4 curated cards (3-Ply Earloop Masks, Alcohol Prep Pads, Wound Care Essentials, Patient Care Consumables)
+  - Hemodialysis — 5 interactive gateways per decision 6: Dialyzers, Bloodline Sets, AV Fistula Needles, Concentrates & Bicarbonate, Dialysis Center Essentials
+  - These are marketing/navigation gateways, not the catalog, and do not represent the complete offering in either category.
+- **Full Catalog (not yet built):** all 196 items/variants, organized under the five locked top-level groups (01–05) and their subcategories per Part B.
+- **Medical Equipment (03) and Procedure & Surgical Supplies (04):** real catalog groups, fully browsable once built, with no dedicated homepage section required.
+- **Medications (05):** its own distinct catalog grouping, kept visibly separate from ordinary consumables, once the catalog experience is designed.
 
-No page beyond the existing homepage has been built. This document is the planning reference for that future work.
+No page beyond the existing homepage has been built. This document remains the planning reference for that future work.
