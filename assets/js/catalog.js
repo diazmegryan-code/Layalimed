@@ -129,7 +129,10 @@ function searchCatalog(query) {
   const q = query.trim().toLowerCase();
   if (!q) return [];
   return CATALOG.filter((p) => {
-    const haystack = [p.catalogEntry, p.sourceCategory, p.websiteSubcategory, p.websiteGroup, ...(p.discoveryTags || [])]
+    const verifiedText = (p.verifiedProducts || [])
+      .flatMap((vp) => [vp.manufacturer, vp.brand, vp.modelReference, ...(vp.variants || [])])
+      .filter(Boolean);
+    const haystack = [p.catalogEntry, p.sourceCategory, p.websiteSubcategory, p.websiteGroup, ...(p.discoveryTags || []), ...verifiedText]
       .join(' ').toLowerCase();
     return haystack.includes(q);
   });
@@ -279,6 +282,41 @@ function renderVerifiedDetails(p) {
   return `<dl class="cat-details">${rows.map(([k, v]) => `<div class="cat-detail-row"><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(String(v))}</dd></div>`).join('')}</dl>`;
 }
 
+/* ─── VERIFIED MANUFACTURER PRODUCTS ─────────────────────────────────────
+   A catalog entry may list one or more real, sourced manufacturer/brand
+   examples under "verifiedProducts" (added for the pilot batch — see
+   docs/PRODUCT-SOURCE-REGISTER.md for the research trail). The generic
+   Layali catalog entry (catalogEntry, above) always stays the visually
+   primary heading; manufacturer/brand is rendered secondary underneath.
+   sourceUrl is intentionally never rendered here — it's research-only. */
+function renderOneVerifiedProduct(vp) {
+  const rows = [];
+  if (vp.modelReference) rows.push(['Model', vp.modelReference]);
+  if (vp.packSizeUom) rows.push(['Pack size', vp.packSizeUom]);
+  if (vp.verifiedSpecs) {
+    Object.entries(vp.verifiedSpecs).forEach(([k, v]) => {
+      if (v !== null && v !== undefined && v !== '') rows.push([k, v]);
+    });
+  }
+  const detailsHtml = rows.length
+    ? `<dl class="cat-details">${rows.map(([k, v]) => `<div class="cat-detail-row"><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(String(v))}</dd></div>`).join('')}</dl>`
+    : '';
+  const variantsHtml = (vp.variants && vp.variants.length)
+    ? `<div class="cat-variants">${vp.variants.map((v) => `<span class="cat-variant-chip">${escapeHtml(v)}</span>`).join('')}</div>`
+    : '';
+  return `<div class="cat-verified-item">
+        <span class="cat-verified-mfr">${escapeHtml(vp.manufacturer)}</span>
+        <span class="cat-verified-brand">${escapeHtml(vp.brand)}</span>
+        ${variantsHtml}
+        ${detailsHtml}
+      </div>`;
+}
+
+function renderVerifiedProducts(p) {
+  if (!p.verifiedProducts || !p.verifiedProducts.length) return '';
+  return `<div class="cat-verified-block">${p.verifiedProducts.map(renderOneVerifiedProduct).join('')}</div>`;
+}
+
 function renderCard(p) {
   const variantsHtml = (p.variants && p.variants.length)
     ? `<div class="cat-variants">${p.variants.map((v) => `<span class="cat-variant-chip">${escapeHtml(v)}</span>`).join('')}</div>`
@@ -286,8 +324,9 @@ function renderCard(p) {
   const groupLabel = p.websiteGroup !== state.group && state.view !== 'group' ? `${escapeHtml(p.websiteGroup)} · ` : '';
   const quoteHref = 'index.html?product=' + encodeURIComponent(p.catalogEntry) + '&category=' + encodeURIComponent(p.websiteSubcategory) + '#quote';
   const detailsHtml = renderVerifiedDetails(p);
+  const verifiedProductsHtml = renderVerifiedProducts(p);
 
-  const hasSpecs = !!detailsHtml;
+  const hasSpecs = !!detailsHtml || !!verifiedProductsHtml;
   const pendingParts = [];
   if (!p.image) pendingParts.push('photo');
   if (!hasSpecs) pendingParts.push('specifications');
@@ -304,6 +343,7 @@ function renderCard(p) {
         <h3 class="product-name">${escapeHtml(p.catalogEntry)}</h3>
         ${variantsHtml}
         ${detailsHtml}
+        ${verifiedProductsHtml}
         ${pendingHtml}
         <a href="${quoteHref}" class="product-cta">Request Quote</a>
       </div>

@@ -107,6 +107,18 @@ body{background:var(--white)}
   border:1px solid var(--border);padding:4px 10px;text-transform:uppercase;
 }
 
+/* ---------- verified manufacturer products (secondary to the generic
+   catalog entry, which stays the card's primary heading) ---------- */
+.cat-verified-block{
+  display:flex;flex-direction:column;gap:14px;margin-top:4px;
+  padding-top:12px;border-top:1px solid var(--border);
+}
+.cat-verified-item{display:flex;flex-direction:column;gap:4px}
+.cat-verified-mfr{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid)}
+.cat-verified-brand{font-size:14px;font-weight:600;color:var(--ink)}
+.cat-verified-item .cat-details{margin-top:2px}
+.cat-verified-item .cat-variants{margin-top:2px}
+
 /* ---------- empty state ---------- */
 .cat-empty{padding:80px var(--edge);text-align:center;max-width:520px;margin:0 auto}
 .cat-empty h3{font-family:var(--serif);font-weight:700;font-size:24px;margin-bottom:12px}
