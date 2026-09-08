@@ -230,13 +230,23 @@ function renderResults(products, headingText, _unused) {
    data record explicitly provides one. If a provided path fails to load,
    the card falls back to the same placeholder used when no image exists
    at all (see wireImageFallbacks). */
+function findPhotoSource(p) {
+  if (p.image) return { image: p.image, imageWebp: p.imageWebp, alt: p.catalogEntry };
+  const withImage = (p.verifiedProducts || []).find((vp) => vp.image);
+  if (withImage) {
+    return { image: withImage.image, imageWebp: withImage.imageWebp, alt: `${p.catalogEntry} — ${withImage.brand}` };
+  }
+  return null;
+}
+
 function renderPhoto(p) {
-  if (p.image) {
-    const webpSource = p.imageWebp ? `<source srcset="${escapeAttr(p.imageWebp)}" type="image/webp">` : '';
+  const photo = findPhotoSource(p);
+  if (photo) {
+    const webpSource = photo.imageWebp ? `<source srcset="${escapeAttr(photo.imageWebp)}" type="image/webp">` : '';
     return `<div class="product-photo cat-photo">
         <picture>
           ${webpSource}
-          <img src="${escapeAttr(p.image)}" alt="${escapeAttr(p.catalogEntry)}" loading="lazy" data-cat-img>
+          <img src="${escapeAttr(photo.image)}" alt="${escapeAttr(photo.alt)}" loading="lazy" data-cat-img>
         </picture>
       </div>`;
   }
@@ -328,7 +338,7 @@ function renderCard(p) {
 
   const hasSpecs = !!detailsHtml || !!verifiedProductsHtml;
   const pendingParts = [];
-  if (!p.image) pendingParts.push('photo');
+  if (!findPhotoSource(p)) pendingParts.push('photo');
   if (!hasSpecs) pendingParts.push('specifications');
   const pendingHtml = pendingParts.length
     ? `<span class="cat-status-pill">${pendingParts.join(' & ')} pending verification</span>`
