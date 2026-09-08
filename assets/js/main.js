@@ -332,6 +332,29 @@ document.querySelectorAll('.drawer-links a').forEach((a) => a.addEventListener('
   });
 })();
 
+/* ─── QUOTE PREFILL FROM CATALOG ─────────────────────────────────────────
+   If a visitor arrives from a catalog product's "Request Quote" link
+   (index.html?product=...&category=...#quote), prefill the message field
+   and, if the category text happens to match an existing dropdown option
+   exactly, preselect it. This never touches validation or submission —
+   it only sets initial field values before the visitor reviews the form. */
+(function prefillFromCatalog() {
+  const params = new URLSearchParams(window.location.search);
+  const product = params.get('product');
+  const category = params.get('category');
+  if (!product && !category) return;
+
+  const messageEl = document.getElementById('f-message');
+  if (messageEl && product) {
+    messageEl.value = `I'd like a quote for: ${product}${category ? ' (' + category + ')' : ''}\n\n`;
+  }
+  const categoryEl = document.getElementById('f-category');
+  if (categoryEl && category) {
+    const match = Array.from(categoryEl.options).find((o) => o.text === category);
+    if (match) categoryEl.value = match.value;
+  }
+})();
+
 /* ─── QUOTE FORM: validation + EmailJS + MedCRM dual-submit ────────────────
    Preserved as-is from the production form (index.html, main branch) —
    same field ids, same EmailJS keys, same MedCRM endpoint. Only the
