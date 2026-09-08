@@ -77,15 +77,35 @@ body{background:var(--white)}
 @media (max-width:560px){.cat-grid{grid-template-columns:1fr}}
 
 .cat-card{background:var(--white);display:flex;flex-direction:column;position:relative}
-.cat-card .product-photo{aspect-ratio:1/1}
+.cat-card .product-photo{aspect-ratio:1/1;background:var(--off)}
+.cat-card .product-photo picture,
+.cat-card .product-photo img{display:block;width:100%;height:100%;object-fit:cover}
 .cat-card-body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
 .cat-card-group{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mid)}
 .cat-ref{position:absolute;top:12px;right:12px;font-size:10px;color:var(--mid);background:rgba(255,255,255,.85);padding:3px 7px;z-index:2}
 
+/* pending-photo slot: quieter and more considered than a bare hatch box —
+   a small line-icon centered above the label, consistent with the site's
+   thin-stroke editorial icon language used elsewhere (hero collage, HD panels) */
+.cat-photo-empty{gap:10px}
+.cat-photo-icon{width:34px;height:34px;color:var(--border);opacity:.9}
+
 .cat-variants{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
 .cat-variant-chip{border:1px solid var(--border);font-size:11px;padding:4px 9px;color:var(--mid)}
 
-.cat-pending-note{font-size:12px;color:var(--mid);font-style:italic;margin-top:2px}
+/* verified details (brand/manufacturer/model/pack size/specs) — only
+   rendered when a record actually supplies them */
+.cat-details{margin-top:2px;display:flex;flex-direction:column;gap:3px}
+.cat-detail-row{display:flex;gap:6px;font-size:12px;color:var(--ink)}
+.cat-detail-row dt{color:var(--mid);font-weight:500}
+.cat-detail-row dt::after{content:":"}
+.cat-detail-row dd{margin:0}
+
+.cat-status-pill{
+  display:inline-flex;align-self:flex-start;margin-top:2px;
+  font-size:10.5px;letter-spacing:.4px;color:var(--mid);
+  border:1px solid var(--border);padding:4px 10px;text-transform:uppercase;
+}
 
 /* ---------- empty state ---------- */
 .cat-empty{padding:80px var(--edge);text-align:center;max-width:520px;margin:0 auto}

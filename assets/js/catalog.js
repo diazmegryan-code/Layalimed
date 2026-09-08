@@ -41,11 +41,11 @@ document.querySelectorAll('.drawer-links a').forEach((a) => a.addEventListener('
 
 /* ─── CATALOG GROUPS (fixed order/labels — the locked architecture) ─────── */
 const GROUPS = [
-  { slug: 'consumables', name: 'Medical Consumables', num: '01', desc: 'Daily-use clinical consumables for clinics, RHUs, and hospitals.' },
-  { slug: 'hemodialysis', name: 'Hemodialysis', num: '02', desc: 'Dialyzers, bloodlines, concentrates, and treatment consumables for dialysis care.' },
-  { slug: 'equipment', name: 'Medical Equipment', num: '03', desc: 'Basic diagnostic equipment for clinical use.' },
-  { slug: 'procedure', name: 'Procedure & Surgical Supplies', num: '04', desc: 'Minor surgical and procedure supplies, including reusable instruments.' },
-  { slug: 'medications', name: 'Medications', num: '05', desc: 'A separate, clearly labeled grouping — kept apart from ordinary consumables.' },
+  { slug: 'consumables', name: 'Medical Consumables', num: '01', desc: 'Injection & Infusion, PPE & Infection Control, Wound Care, and Patient Care categories.' },
+  { slug: 'hemodialysis', name: 'Hemodialysis', num: '02', desc: 'Dialyzers, bloodline sets, vascular access, concentrates, and other categories in this group.' },
+  { slug: 'equipment', name: 'Medical Equipment', num: '03', desc: 'Diagnostic equipment items.' },
+  { slug: 'procedure', name: 'Procedure & Surgical Supplies', num: '04', desc: 'Procedure consumables and reusable instruments.' },
+  { slug: 'medications', name: 'Medications', num: '05', desc: 'A distinct grouping, kept separate from other catalog categories.' },
 ];
 const slugToName = Object.fromEntries(GROUPS.map((g) => [g.slug, g.name]));
 const nameToSlug = Object.fromEntries(GROUPS.map((g) => [g.name, g.slug]));
@@ -215,6 +215,68 @@ function renderResults(products, headingText, _unused) {
   }
   empty.hidden = true;
   grid.innerHTML = products.map(renderCard).join('');
+  wireImageFallbacks(grid);
+}
+
+/* ─── IMAGE SLOT ──────────────────────────────────────────────────────────
+   Convention for future verified product photography (see
+   images/products/README.md): a record may set
+     "image":     "images/products/<sourceId>.jpg"   (required to show a photo)
+     "imageWebp": "images/products/<sourceId>.webp"  (optional, progressive enhancement)
+   Nothing here invents a path — a card only ever shows a photo when the
+   data record explicitly provides one. If a provided path fails to load,
+   the card falls back to the same placeholder used when no image exists
+   at all (see wireImageFallbacks). */
+function renderPhoto(p) {
+  if (p.image) {
+    const webpSource = p.imageWebp ? `<source srcset="${escapeAttr(p.imageWebp)}" type="image/webp">` : '';
+    return `<div class="product-photo cat-photo">
+        <picture>
+          ${webpSource}
+          <img src="${escapeAttr(p.image)}" alt="${escapeAttr(p.catalogEntry)}" loading="lazy" data-cat-img>
+        </picture>
+      </div>`;
+  }
+  return `<div class="product-photo product-photo--placeholder cat-photo-empty">
+        <svg class="cat-photo-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="6" y="10" width="36" height="28" rx="2"/><circle cx="16" cy="20" r="3.5"/><path d="M42 30l-10-9-9 8-6-5-11 9"/></svg>
+        <span class="placeholder-label">Photo pending</span>
+      </div>`;
+}
+
+/* If an <img> with a real src fails to load (bad/missing file), swap it
+   for the exact same placeholder markup used when no image was provided
+   at all — a broken reference degrades gracefully, never to a broken-
+   image icon or blank box. */
+function wireImageFallbacks(container) {
+  container.querySelectorAll('img[data-cat-img]').forEach((img) => {
+    img.addEventListener('error', () => {
+      const wrap = img.closest('.product-photo');
+      if (!wrap) return;
+      wrap.className = 'product-photo product-photo--placeholder cat-photo-empty';
+      wrap.innerHTML = '<svg class="cat-photo-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="6" y="10" width="36" height="28" rx="2"/><circle cx="16" cy="20" r="3.5"/><path d="M42 30l-10-9-9 8-6-5-11 9"/></svg><span class="placeholder-label">Photo pending</span>';
+    }, { once: true });
+  });
+}
+
+/* ─── VERIFIED FIELDS ─────────────────────────────────────────────────────
+   Brand, manufacturer, model, pack size, and specs are rendered only when
+   the data record explicitly supplies them. None of these fields exist in
+   the catalog yet — every row below currently evaluates to nothing — but
+   the moment verified data is added to product-catalog.json, it will
+   appear automatically with no further code changes. */
+function renderVerifiedDetails(p) {
+  const rows = [];
+  if (p.brand) rows.push(['Brand', p.brand]);
+  if (p.manufacturer) rows.push(['Manufacturer', p.manufacturer]);
+  if (p.modelReference) rows.push(['Model', p.modelReference]);
+  if (p.packSizeUom) rows.push(['Pack size', p.packSizeUom]);
+  if (p.verifiedSpecs && typeof p.verifiedSpecs === 'object') {
+    Object.entries(p.verifiedSpecs).forEach(([k, v]) => {
+      if (v !== null && v !== undefined && v !== '') rows.push([k, v]);
+    });
+  }
+  if (!rows.length) return '';
+  return `<dl class="cat-details">${rows.map(([k, v]) => `<div class="cat-detail-row"><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(String(v))}</dd></div>`).join('')}</dl>`;
 }
 
 function renderCard(p) {
@@ -223,17 +285,26 @@ function renderCard(p) {
     : '';
   const groupLabel = p.websiteGroup !== state.group && state.view !== 'group' ? `${escapeHtml(p.websiteGroup)} · ` : '';
   const quoteHref = 'index.html?product=' + encodeURIComponent(p.catalogEntry) + '&category=' + encodeURIComponent(p.websiteSubcategory) + '#quote';
+  const detailsHtml = renderVerifiedDetails(p);
+
+  const hasSpecs = !!detailsHtml;
+  const pendingParts = [];
+  if (!p.image) pendingParts.push('photo');
+  if (!hasSpecs) pendingParts.push('specifications');
+  const pendingHtml = pendingParts.length
+    ? `<span class="cat-status-pill">${pendingParts.join(' & ')} pending verification</span>`
+    : '';
+
   return `
     <article class="cat-card">
       <span class="cat-ref">Ref. ${p.sourceId}</span>
-      <div class="product-photo product-photo--placeholder">
-        <span class="placeholder-label">Photo pending</span>
-      </div>
+      ${renderPhoto(p)}
       <div class="cat-card-body">
         <span class="cat-card-group">${groupLabel}${escapeHtml(p.websiteSubcategory)}</span>
         <h3 class="product-name">${escapeHtml(p.catalogEntry)}</h3>
         ${variantsHtml}
-        <p class="cat-pending-note">Specifications and photography pending verification.</p>
+        ${detailsHtml}
+        ${pendingHtml}
         <a href="${quoteHref}" class="product-cta">Request Quote</a>
       </div>
     </article>`;
