@@ -119,6 +119,17 @@ body{background:var(--white)}
 .cat-verified-item .cat-details{margin-top:2px}
 .cat-verified-item .cat-variants{margin-top:2px}
 
+/* When a record shows more than one manufacturer photo, each one gets its
+   own small labeled thumbnail so the photo-to-manufacturer link is never
+   ambiguous -- single-manufacturer cards are unaffected by this rule. */
+.cat-verified-item--with-thumb{flex-direction:row;gap:12px;align-items:flex-start}
+.cat-verified-thumb{
+  flex:0 0 56px;width:56px;height:56px;overflow:hidden;background:var(--off);
+  border:1px solid var(--border);
+}
+.cat-verified-thumb picture,.cat-verified-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.cat-verified-text{display:flex;flex-direction:column;gap:4px;min-width:0}
+
 /* ---------- empty state ---------- */
 .cat-empty{padding:80px var(--edge);text-align:center;max-width:520px;margin:0 auto}
 .cat-empty h3{font-family:var(--serif);font-weight:700;font-size:24px;margin-bottom:12px}

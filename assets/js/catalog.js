@@ -299,7 +299,7 @@ function renderVerifiedDetails(p) {
    Layali catalog entry (catalogEntry, above) always stays the visually
    primary heading; manufacturer/brand is rendered secondary underneath.
    sourceUrl is intentionally never rendered here — it's research-only. */
-function renderOneVerifiedProduct(vp) {
+function renderOneVerifiedProduct(vp, showOwnThumb) {
   const rows = [];
   if (vp.modelReference) rows.push(['Model', vp.modelReference]);
   if (vp.packSizeUom) rows.push(['Pack size', vp.packSizeUom]);
@@ -314,17 +314,39 @@ function renderOneVerifiedProduct(vp) {
   const variantsHtml = (vp.variants && vp.variants.length)
     ? `<div class="cat-variants">${vp.variants.map((v) => `<span class="cat-variant-chip">${escapeHtml(v)}</span>`).join('')}</div>`
     : '';
-  return `<div class="cat-verified-item">
+  const textBlock = `
         <span class="cat-verified-mfr">${escapeHtml(vp.manufacturer)}</span>
         <span class="cat-verified-brand">${escapeHtml(vp.brand)}</span>
         ${variantsHtml}
-        ${detailsHtml}
+        ${detailsHtml}`;
+
+  // When a record shows more than one manufacturer photo, the single shared
+  // photo at the top of the card can no longer make clear which photo
+  // belongs to which manufacturer. In that case (only), each manufacturer
+  // also gets its own small labeled thumbnail right next to its name --
+  // the smallest change that keeps the association unambiguous without
+  // altering the single-manufacturer card layout used everywhere else.
+  if (showOwnThumb && vp.image) {
+    const webpSource = vp.imageWebp ? `<source srcset="${escapeAttr(vp.imageWebp)}" type="image/webp">` : '';
+    return `<div class="cat-verified-item cat-verified-item--with-thumb">
+        <div class="cat-verified-thumb">
+          <picture>
+            ${webpSource}
+            <img src="${escapeAttr(vp.image)}" alt="${escapeAttr(vp.manufacturer + ' ' + vp.brand)}" loading="lazy" data-cat-img>
+          </picture>
+        </div>
+        <div class="cat-verified-text">${textBlock}
+        </div>
+      </div>`;
+  }
+  return `<div class="cat-verified-item">${textBlock}
       </div>`;
 }
 
 function renderVerifiedProducts(p) {
   if (!p.verifiedProducts || !p.verifiedProducts.length) return '';
-  return `<div class="cat-verified-block">${p.verifiedProducts.map(renderOneVerifiedProduct).join('')}</div>`;
+  const multiImage = p.verifiedProducts.filter((vp) => vp.image).length > 1;
+  return `<div class="cat-verified-block">${p.verifiedProducts.map((vp) => renderOneVerifiedProduct(vp, multiImage)).join('')}</div>`;
 }
 
 function renderCard(p) {

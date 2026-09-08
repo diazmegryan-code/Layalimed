@@ -34,7 +34,7 @@ at the end of this document for what was and wasn't obtained, and why.
 - **Official source:** https://www.nipro-group.com/en/our-offer/products-services/elisio-h-dialyzer (accessed during this task)
 - **Fields taken from source:** brand name (ELISIO-H), 8 surface-area size variants (0.9–2.5 m²), membrane material (polyethersulfone/Polynephron), housing material (polypropylene, BPA/DEHP-free), classification (single-use, high-flux), packaging (24/case)
 - **Not verified / left out:** exact sterilization method (not stated on the fetched page), performance/clearance figures (Kuf, KoA, etc.) — not pulled from a data sheet this session
-- **Image:** none obtained. A teaser image exists on the Nipro page but was not downloaded — the Fresenius FX CorDiax photo below was used as this catalog entry's representative image instead (see Image Decision).
+- **Image:** obtained (added in a follow-up pass). Official teaser photo (`nipro-group.com/sites/default/files/2019-11/Elisio - Teaser.jpg`, 2000×1600 original) showing an ELISIO-19H unit with visible "ELISIO-19H" and "Nipro" branding, unaltered. Optimized to `images/products/109-nipro-elisio-h.jpg` / `.webp` (1200×960). Kept as a **second** verified product alongside Fresenius FX CorDiax on the same canonical #109 record — see the UI note at the end of this document on how the two are kept visually distinct.
 
 ### Fresenius Medical Care FX CorDiax
 - **Official source:** https://freseniusmedicalcare.com/en-gb/healthcare-professionals/haemodialysis/dialyser/fx-cordiax-dialysers/ (accessed during this task)
@@ -53,6 +53,13 @@ at the end of this document for what was and wasn't obtained, and why.
 - **Note:** #116 (Arterial bloodline), #117 (Venous bloodline), #119 (Pediatric tubing set), and #120 (Online HDF tubing set) were deliberately **not** given verified manufacturer data this pass — CombiSet is a general adult set most directly matching #118; the pediatric and HDF-specific variants would need their own distinct verified products, which weren't researched this session.
 - **Image:** none obtained.
 
+### Nipro NiproSet Blood Tubing Set (added in a follow-up pass)
+- **Official source:** https://www.nipro-group.com/en/our-offer/products-services/niproset-blood-tubing-set (accessed during this task)
+- **Fields taken from source:** brand name (NiproSet), material (clear PVC tubing), compatibility framing (machine-specific, individually pre-labeled per equipment)
+- **Why only #118:** the official page explicitly states *"All blood tubing sets are machine-specific; we invite you to consult a Nipro representative for more details"* and does **not** itself distinguish arterial/venous/pediatric/online-HDF variants by name. Per the instruction not to force one product across multiple entries without support, NiproSet was mapped only to #118 ("Adult blood tubing set" — the closest match to a general/adult set), not to #116, #117, #119, or #120.
+- **Second manufacturer on #118:** this is now the second verified product on the #118 record, alongside Fresenius CombiSet True Flow — both remain under the one canonical Layali entry, no duplicate records created.
+- **Image:** none obtained. The product's own page did not expose a distinct hero photo of its own (only thumbnails of unrelated Nipro renal-care products appeared in its "related products" carousel); rather than guess which unlabeled thumbnail might be it, no image was attached.
+
 ---
 
 ## #121 — 15G / 16G / 17G AV fistula needles
@@ -60,7 +67,7 @@ at the end of this document for what was and wasn't obtained, and why.
 ### Nipro SafeTouch AVF Needle
 - **Official source:** https://www.nipro-group.com/en/our-offer/products-services/safetouchtm-avf-needle (accessed during this task)
 - **Fields taken from source:** gauge sizes (14G/15G/16G/17G — the source list includes 14G in addition to Layali's stated 15/16/17G), needle length options (20/25/32mm), tubing length options (150mm or 300mm), sterilization (gamma), safety mechanism description
-- **Image:** none obtained.
+- **Image:** obtained (added in a follow-up pass). Official teaser photo (`nipro-group.com/sites/default/files/2019-12/SAFETOUCH AVF NEEDLE - Teaser.jpg`, 2000×1600 original) showing the green-winged SafeTouch AVF needle assembly, unaltered. Optimized to `images/products/121.jpg` / `.webp` (1200×960).
 
 ---
 
@@ -70,7 +77,7 @@ at the end of this document for what was and wasn't obtained, and why.
 - **Official source:** https://www.nipro-group.com/en/our-offer/products-services/bioholetm-safetouch-tuliptm-avf-needle (accessed during this task)
 - **Fields taken from source:** gauge sizes (14–17G), needle length (25/32mm), tubing length (300mm), buttonhole-specific design (siliconized dull needle, integrated scab remover), sterilization (gamma), latex-free/DEHP-free
 - **Note:** #124 ("Sharp needles & blunt needles") was **not** given verified data this pass — its mapping to a specific Nipro SKU (vs. the sharp SafeTouch already used for #121, or this blunt BIOHOLE needle) was judged ambiguous enough to leave for a follow-up decision rather than force a fit.
-- **Image:** none obtained.
+- **Image:** obtained (added in a follow-up pass). Official teaser photo (`nipro-group.com/sites/default/files/2019-12/BIOHOLE NEEDLE - Tulip - Teaser.jpg`, 2000×1600 original) showing the white-winged BIOHOLE Tulip needle assembly — visually distinct from the SafeTouch AVF needle photo above, confirming these are genuinely different products, not the same photo reused. Unaltered. Optimized to `images/products/123.jpg` / `.webp` (1200×960).
 
 ---
 
@@ -92,6 +99,16 @@ at the end of this document for what was and wasn't obtained, and why.
 - **Note:** bibag is a **dry** bicarbonate system, not a liquid one — it was mapped to #134 ("Bicarbonate powder & cartridges"), not #133 ("Liquid bicarbonate"). #133 was **not** given verified data this pass; a distinct liquid-bicarbonate product would need separate research.
 - **"5008" flag:** the task brief referenced "bibag 5008 650g." The official page fetched this session confirms bibag compatibility only with the 2008-series machines (2008T, 2008T BlueStar, 2008K@home) — **5008-series compatibility was not confirmed** by this source and was not added to `verifiedSpecs`. If bibag is also used with 5008-series machines in other markets, that would need its own source confirmation.
 - **Image:** obtained. Official hero product photo (`.../concentrates/bibag/FMCNA_ProductResize__0028_Photography_BiBag_20190107_0007_Hero.jpg`, 2400×1200 original) showing both the 650 g and 900 g bags side by side with visible "bibag" branding, unaltered. Saved as `images/products/originals/134-fresenius-bibag-original.jpg`, optimized to `images/products/134.jpg` / `.webp` (1200×600).
+
+---
+
+## #133 — Liquid bicarbonate (added in a follow-up pass)
+
+### Fresenius Medical Care Liquid Sodium Bicarbonate Concentrate
+- **Official source:** https://freseniusmedicalcare.com/en-us/products/disposables/concentrates/liquid-sodium-bicarbonate-concentrate/ (accessed during this task, fetched directly) — this is a genuine, distinct official Fresenius product page named exactly "Liquid Sodium Bicarbonate Concentrate," a direct match for Layali's #133 entry.
+- **Fields taken from source:** product name, dilution system (45X three-stream, mixed with a compatible acid concentrate), regulatory notice ("Federal (US) law restricts these devices to sale by or on the order of a physician")
+- **Image: deliberately NOT used — important finding.** The page's own hero photo (`.../liquid-sodiuim-bicarbonate/FMCNA_ProductResize__0030_..._Centrisol_PartB_..._Hero.jpg`, 2400×1200) shows a bottle whose printed label reads **"Centrisol® Liquid Bicarbonate Concentrate, Part B, MB-330-L"** with the manufacturer identified on the label as **"MINNTECH RENAL SYSTEMS / MEDIVATORS INC."** — not Fresenius, and not one of the five manufacturers approved for this pilot (Nipro, Fresenius Medical Care, Terumo, 3M, Ansell). Even though the photo is hosted on Fresenius's own official domain, publishing it under a "Fresenius Medical Care" brand label would misattribute a different company's product. No image was used for #133; the text facts above are still legitimately Fresenius's own (the page and product line are presented as Fresenius's own offering), but the specific bottle photo was excluded. This is worth the business's attention if it matters commercially (e.g. whether Fresenius resells a Minntech/Medivators-manufactured product under this line).
+- **Not verified / left out:** specific concentration/formulation numbers were not read from this page this session.
 
 ---
 
@@ -121,17 +138,17 @@ at the end of this document for what was and wasn't obtained, and why.
 - **Official source:** https://www.terumo-europe.com/en/medical-care-solutions/products/product-type/needles-and-syringes/terumo-agani-safety-hypodermic-needle (accessed during this task, fetched directly)
 - **Fields taken from source:** color-coding standard (ISO 6009), packaging (100/unit box, 800/carton), sterilization (EO), shelf life (5 years)
 - **Deliberately left ambiguous:** exact gauge sizes. Layali's own catalog entry says "various gauges" and the fetched page did not itself list a gauge table (referenced in a separate brochure not opened this session) — per the explicit instruction to keep ambiguous source descriptions ambiguous, no gauge numbers were added.
-- **Image:** none obtained.
+- **Image:** obtained (added in a follow-up pass). Product image embedded directly in the official Terumo Agani Safety Hypodermic Needle page's HTML (`terumo-europe.com/.../needles-and-syringes/media_1fbc07505597392c62efe8668eb66e40639682337.png`, 1821×735 original), showing the teal safety-shield needle assembly consistent with the page's own description of the safety mechanism, unaltered. Optimized to `images/products/74.jpg` / `.webp` (1200×484).
 
 ---
 
 ## #75 — IV Cannula / IV Tubing
 
-### Terumo Surflo I.V. Catheter
-- **Official source:** https://www.terumo-europe.com/en-emea/products/surflo%E2%84%A2-i-v-catheter (accessed during this task, fetched directly)
-- **Fields taken from source:** product variant names (Surflo straight, Surflo S-Plus, Surflo-W winged, Surflo-WP winged & ported), materials (ETFE for straight, FEP for winged variants)
-- **Not verified / left out:** specific gauge sizes (14–24G) were referenced only via third-party distributor product codes (McKesson, Merit Pharmaceutical) in search results, not confirmed on Terumo's own page this session — omitted per the "official source only" rule.
-- **Image:** none obtained.
+### Terumo SurFlash Polyurethane I.V. Catheter (replaces "Terumo Surflo I.V. Catheter" — see note)
+- **Official source:** https://www.terumotmp.com/products/iv-catheters/surflash-polyurethane-iv-catheters.html (accessed during this task, fetched directly)
+- **Brand change note:** the previously recorded "Surflo I.V. Catheter" (terumo-europe.com) would not render its page content in this session despite repeated attempts (cookie-consent/JS rendering issue), so no image could be obtained for it. Terumo's US SurFlash Polyurethane I.V. Catheter — a distinct but equally official, equally real Terumo IV catheter product line — was directly fetched instead, with both text data and an official image successfully confirmed. The `brand` field was updated accordingly rather than attaching an unrelated product's image under the "Surflo" name.
+- **Fields taken from source:** product name (SurFlash Polyurethane I.V. Catheter), material (polyurethane), packaging (50/box, 4 boxes/case = 200), gauge range confirmed directly in an official product-code table (14G, 16G, 16G×2½", 18G, 18G×2", 18G×2½", 20G, 20G×1¼", 20G×2", 22G, 24G)
+- **Image:** obtained. Official product photo (`terumotmp.com/.../surflash-polyurethane-iv-catheters/_jcr_content/image.img.jpg`, 800×800 original), alt text "SurFlash® Polyurethane I.V. Catheters," unaltered (not upscaled beyond its native 800×800). Saved as `images/products/75.jpg` / `.webp`.
 
 ---
 
@@ -150,11 +167,11 @@ at the end of this document for what was and wasn't obtained, and why.
 
 | Source ID | Item | Why left as a placeholder |
 |---|---|---|
-| #110 | Low-flux dialyzer | The Nipro ELISIO-L product page URL guessed from the ELISIO-H pattern did not resolve to a working page this session; no distinct low-flux product was independently verified in the time available. |
-| #116, #117, #119, #120 | Bloodline set variants (arterial/venous lines, pediatric, online HDF) | CombiSet True Flow (used for #118) is the general adult set; the arterial/venous line, pediatric, and HDF-specific variants would need their own distinct verified SKUs, not researched this session. |
+| #110 | Low-flux dialyzer | The Nipro ELISIO-L product page URL guessed from the ELISIO-H pattern did not resolve to a working page in either pass; no distinct low-flux product was independently verified. |
+| #116, #117, #119, #120 | Bloodline set variants (arterial/venous lines, pediatric, online HDF) | Neither CombiSet True Flow nor NiproSet (both used for #118) distinguish these as separate named products on their official pages — both are general/adult/machine-specific sets. Confirmed again in the follow-up pass: NiproSet's own page explicitly says sets are "machine-specific" without breaking out arterial/venous/pediatric/HDF variants. |
 | #124 | Sharp needles & blunt needles | Ambiguous which Nipro product (or products) most precisely maps here without conflating it with #121/#123; left for a follow-up decision. |
-| #133 | Liquid bicarbonate | bibag (used for #134) is a *dry* bicarbonate system, not liquid — a distinct liquid bicarbonate product was not researched this session. |
 | #132 formulation numbers | Potassium K2/K3/K4 exact concentrations | NaturaLyte's own official page didn't list a formulation table this session; only third-party distributor listings did, which don't meet the "official source" bar. |
+| #133 bottle photo | Liquid Sodium Bicarbonate Concentrate image | An official Fresenius page exists and its text was verified and added, but its own hero photo shows a "Centrisol / Minntech / Medivators"-branded bottle, not Fresenius, and not an approved-manufacturer product for this pilot — the image was deliberately excluded (see the #133 section above for the full explanation). |
 
 ---
 
@@ -186,12 +203,40 @@ No packaging, branding, labels, or product appearance were altered in any
 image — only resizing, JPEG/WebP re-encoding, and (for the one PNG with
 transparency) flattening onto a white background were performed.
 
-**Remaining placeholders:** all other pilot entries (#118, #121, #123,
-#131, #132) and the Nipro ELISIO-H reference under #109 still show "Photo
-pending" — no image was located/downloaded for them in either pass.
+**Second pass (this batch):** per continued instruction not to pause for
+copyright approval, five more official images were obtained. Per the
+instruction not to keep additional large `originals/` files unless
+technically necessary, this batch's full-resolution downloads were **not**
+committed to the repository — only the optimized JPG/WebP pairs, with full
+provenance recorded in each entry above instead:
+
+| Source ID | Manufacturer / Product | Local files |
+|---|---|---|
+| #109 (2nd product) | Nipro ELISIO-H | `images/products/109-nipro-elisio-h.jpg` / `.webp` |
+| #121 | Nipro SafeTouch AVF Needle | `images/products/121.jpg` / `.webp` |
+| #123 | Nipro BIOHOLE SafeTouch Tulip AVF Needle | `images/products/123.jpg` / `.webp` |
+| #74 | Terumo Agani Safety Hypodermic Needle | `images/products/74.jpg` / `.webp` |
+| #75 | Terumo SurFlash Polyurethane I.V. Catheter | `images/products/75.jpg` / `.webp` |
+
+One additional image was found but deliberately **not** used: the official
+Fresenius #133 (Liquid Sodium Bicarbonate Concentrate) page's own hero photo
+shows a bottle branded by a different, non-approved company (Minntech/
+Medivators/Centrisol) — see the #133 section above.
+
+**UI adjustment made because of #109 now having two manufacturer photos:**
+with two verified products (Nipro and Fresenius) each carrying their own
+image, a single shared photo at the top of the card could no longer make
+clear which photo belonged to which manufacturer. Each manufacturer block
+now also shows its own small labeled thumbnail directly beside its name
+whenever a record has more than one manufacturer photo — single-manufacturer
+cards (the common case) are unaffected and render exactly as before.
+
+**Remaining placeholders:** #116, #117, #119, #120 (bloodline variants),
+#124 (sharp/blunt needles), and the #133 bottle photo still show/lack
+"Photo pending" or the corresponding gap, per the table above.
 
 ## Date accessed
 
-All sources above were accessed during this single work session (see the
-commit history on `layali-2.0-redesign` for the exact date of the commit that
-introduced this document).
+All sources above were accessed across two work sessions on the same
+branch (see the commit history on `layali-2.0-redesign` for the exact
+dates of the commits that introduced and extended this document).
