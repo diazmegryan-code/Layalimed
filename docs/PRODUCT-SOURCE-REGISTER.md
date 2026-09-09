@@ -50,7 +50,7 @@ at the end of this document for what was and wasn't obtained, and why.
 - **Official source:** https://freseniusmedicalcare.com/en-us/products/disposables/bloodlines/combiset/ (accessed during this task)
 - **Fields taken from source:** brand name (CombiSet True Flow), pump segment size (14 in × 8 mm), compatible machine series (2008 Series)
 - **Not verified / left out:** specific priming volumes (a search snippet referenced 82 cc arterial / 60 cc venous from a third-party/PDF source, but this was not independently confirmed against the official page fetched this session, so it was omitted rather than guessed)
-- **Note:** #116 (Arterial bloodline), #117 (Venous bloodline), #119 (Pediatric tubing set), and #120 (Online HDF tubing set) were deliberately **not** given verified manufacturer data this pass — CombiSet is a general adult set most directly matching #118; the pediatric and HDF-specific variants would need their own distinct verified products, which weren't researched this session.
+- **Note:** at the time of this pass (Batch 2), #116 (Arterial bloodline), #117 (Venous bloodline), #119 (Pediatric tubing set), and #120 (Online HDF tubing set) were deliberately **not** given verified manufacturer data — CombiSet is a general adult set most directly matching #118; the pediatric and HDF-specific variants would need their own distinct verified products, which hadn't been researched yet. *(#120 was subsequently resolved in Batch 3 with a distinct Fresenius product — see the #120 section below. #116, #117, and #119 remain pending.)*
 - **Image:** none obtained.
 
 ### Nipro NiproSet Blood Tubing Set (added in a follow-up pass)
@@ -76,7 +76,7 @@ at the end of this document for what was and wasn't obtained, and why.
 ### Nipro BIOHOLE SafeTouch Tulip AVF Needle
 - **Official source:** https://www.nipro-group.com/en/our-offer/products-services/bioholetm-safetouch-tuliptm-avf-needle (accessed during this task)
 - **Fields taken from source:** gauge sizes (14–17G), needle length (25/32mm), tubing length (300mm), buttonhole-specific design (siliconized dull needle, integrated scab remover), sterilization (gamma), latex-free/DEHP-free
-- **Note:** #124 ("Sharp needles & blunt needles") was **not** given verified data this pass — its mapping to a specific Nipro SKU (vs. the sharp SafeTouch already used for #121, or this blunt BIOHOLE needle) was judged ambiguous enough to leave for a follow-up decision rather than force a fit.
+- **Note:** at the time of this pass (Batch 2), #124 ("Sharp needles & blunt needles") was **not** given verified data — its mapping to a specific Nipro SKU (vs. the sharp SafeTouch already used for #121, or this blunt BIOHOLE needle) was judged ambiguous enough to leave for a follow-up decision rather than force a fit. *(Resolved in Batch 3 — see the #124 section below.)*
 - **Image:** obtained (added in a follow-up pass). Official teaser photo (`nipro-group.com/sites/default/files/2019-12/BIOHOLE NEEDLE - Tulip - Teaser.jpg`, 2000×1600 original) showing the white-winged BIOHOLE Tulip needle assembly — visually distinct from the SafeTouch AVF needle photo above, confirming these are genuinely different products, not the same photo reused. Unaltered. Optimized to `images/products/123.jpg` / `.webp` (1200×960).
 
 ---
@@ -122,10 +122,12 @@ it is shown to customers.
 - **Not verified / left out:** specific concentration/formulation numbers were not read from this page this session; the exact commercial relationship (if any) between Fresenius and Centrisol/Minntech/Medivators.
 
 ### Status
-#133 is pending, exactly like #110, #116, #117, #119, #120, and #124. A
-future pass should either (a) confirm the real relationship/manufacturer
-behind what Fresenius presents on this page, or (b) find a distinct,
-unambiguously Fresenius-branded liquid bicarbonate product instead.
+#133 remains unresolved and should continue to use the normal pending
+catalog state until the actual manufacturer/product identity is
+independently verified. A future pass should either (a) confirm the real
+relationship/manufacturer behind what Fresenius presents on this page, or
+(b) find a distinct, unambiguously Fresenius-branded liquid bicarbonate
+product instead.
 
 ---
 
@@ -180,15 +182,16 @@ unambiguously Fresenius-branded liquid bicarbonate product instead.
 
 ---
 
-## Entries considered for this pilot but left as placeholders (no verified data added)
+## Entries considered for this pilot but left as placeholders (status as of Batch 2 — see Batch 3 below for what has since changed)
 
 | Source ID | Item | Why left as a placeholder |
 |---|---|---|
-| #110 | Low-flux dialyzer | The Nipro ELISIO-L product page URL guessed from the ELISIO-H pattern did not resolve to a working page in either pass; no distinct low-flux product was independently verified. |
-| #116, #117, #119, #120 | Bloodline set variants (arterial/venous lines, pediatric, online HDF) | Neither CombiSet True Flow nor NiproSet (both used for #118) distinguish these as separate named products on their official pages — both are general/adult/machine-specific sets. Confirmed again in the follow-up pass: NiproSet's own page explicitly says sets are "machine-specific" without breaking out arterial/venous/pediatric/HDF variants. |
-| #124 | Sharp needles & blunt needles | Ambiguous which Nipro product (or products) most precisely maps here without conflating it with #121/#123; left for a follow-up decision. |
-| #132 formulation numbers | Potassium K2/K3/K4 exact concentrations | NaturaLyte's own official page didn't list a formulation table this session; only third-party distributor listings did, which don't meet the "official source" bar. |
-| #133 | Liquid bicarbonate | An official Fresenius page exists, but its own hero photo identifies the actual product as "Centrisol / Minntech Renal Systems / Medivators Inc.," not Fresenius, and the real manufacturer/distribution relationship hasn't been independently established. A `verifiedProducts` record naming Fresenius was added in an earlier pass and has been **removed** — #133 is fully pending again, with no manufacturer shown to customers (see the #133 section above for the full explanation). |
+| #110 | Low-flux dialyzer | *(Resolved in Batch 3 — see the #110 section below.)* At the time of Batch 2, the Nipro ELISIO-L product page URL guessed from the ELISIO-H pattern did not resolve to a working page; no distinct low-flux product had yet been independently verified. |
+| #116, #117, #119 | Bloodline set variants (arterial/venous lines, pediatric) | Neither CombiSet True Flow nor NiproSet (both used for #118) distinguish these as separate named products on their official pages — both are general/adult/machine-specific sets. Confirmed again in Batch 3: NiproSet's own ordering brochure differentiates sets only by compatible machine, never by arterial-only/venous-only/pediatric. Still pending. |
+| #120 | Online HDF tubing set | *(Resolved in Batch 3 — see the #120 section below.)* At the time of Batch 2, neither CombiSet nor NiproSet's pages named an online-HDF-specific set. |
+| #124 | Sharp needles & blunt needles | *(Resolved in Batch 3 — see the #124 section below.)* At the time of Batch 2, it was ambiguous which Nipro product(s) most precisely mapped here without conflating it with #121/#123. |
+| #132 formulation numbers | Potassium K2/K3/K4 exact concentrations | NaturaLyte's own official page didn't list a formulation table; only third-party distributor listings did, which don't meet the "official source" bar. Re-checked directly against the official SDS in Batch 3 — still not found there either. Still unresolved. |
+| #133 | Liquid bicarbonate | An official Fresenius page exists, but its own hero photo identifies the actual product as "Centrisol / Minntech Renal Systems / Medivators Inc.," not Fresenius, and the real manufacturer/distribution relationship hasn't been independently established. A `verifiedProducts` record naming Fresenius was added in an earlier pass and has been **removed** — #133 is fully pending again, with no manufacturer shown to customers (see the #133 section above for the full explanation). Untouched in Batch 3; still pending. |
 
 ---
 
