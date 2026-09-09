@@ -102,13 +102,30 @@ at the end of this document for what was and wasn't obtained, and why.
 
 ---
 
-## #133 — Liquid bicarbonate (added in a follow-up pass)
+## #133 — Liquid bicarbonate (research finding — NOT published to customers)
 
-### Fresenius Medical Care Liquid Sodium Bicarbonate Concentrate
-- **Official source:** https://freseniusmedicalcare.com/en-us/products/disposables/concentrates/liquid-sodium-bicarbonate-concentrate/ (accessed during this task, fetched directly) — this is a genuine, distinct official Fresenius product page named exactly "Liquid Sodium Bicarbonate Concentrate," a direct match for Layali's #133 entry.
-- **Fields taken from source:** product name, dilution system (45X three-stream, mixed with a compatible acid concentrate), regulatory notice ("Federal (US) law restricts these devices to sale by or on the order of a physician")
-- **Image: deliberately NOT used — important finding.** The page's own hero photo (`.../liquid-sodiuim-bicarbonate/FMCNA_ProductResize__0030_..._Centrisol_PartB_..._Hero.jpg`, 2400×1200) shows a bottle whose printed label reads **"Centrisol® Liquid Bicarbonate Concentrate, Part B, MB-330-L"** with the manufacturer identified on the label as **"MINNTECH RENAL SYSTEMS / MEDIVATORS INC."** — not Fresenius, and not one of the five manufacturers approved for this pilot (Nipro, Fresenius Medical Care, Terumo, 3M, Ansell). Even though the photo is hosted on Fresenius's own official domain, publishing it under a "Fresenius Medical Care" brand label would misattribute a different company's product. No image was used for #133; the text facts above are still legitimately Fresenius's own (the page and product line are presented as Fresenius's own offering), but the specific bottle photo was excluded. This is worth the business's attention if it matters commercially (e.g. whether Fresenius resells a Minntech/Medivators-manufactured product under this line).
-- **Not verified / left out:** specific concentration/formulation numbers were not read from this page this session.
+**Correction (this pass):** an earlier commit added a customer-facing
+`verifiedProducts` record for #133 naming "Fresenius Medical Care" as the
+manufacturer. That has been **removed** from `product-catalog.json` — #133
+is back to its plain generic canonical entry ("Liquid bicarbonate") with no
+`verifiedProducts`, the same pending state as any other unresolved entry.
+The reasoning below is why, and is kept here for traceability only; none of
+it is shown to customers.
+
+### What was found
+- **Page:** https://freseniusmedicalcare.com/en-us/products/disposables/concentrates/liquid-sodium-bicarbonate-concentrate/ (accessed during this task, fetched directly) — an official Fresenius Medical Care page, hosted and presented by Fresenius, titled exactly "Liquid Sodium Bicarbonate Concentrate."
+- **But the product photographed on that page is not Fresenius-branded.** Its own hero photo (`.../liquid-sodiuim-bicarbonate/FMCNA_ProductResize__0030_..._Centrisol_PartB_..._Hero.jpg`, 2400×1200) shows a bottle whose printed label reads **"Centrisol® Liquid Bicarbonate Concentrate, Part B, MB-330-L"**, identifying the manufacturer on the label as **"MINNTECH RENAL SYSTEMS / MEDIVATORS INC."** — a different company, and not one of the five manufacturers approved for this pilot (Nipro, Fresenius Medical Care, Terumo, 3M, Ansell).
+- **The precise relationship between Fresenius and Centrisol/Minntech/Medivators for this specific product has not been independently established** — it could be a private-label/resale arrangement, an OEM relationship, a legacy/acquired product line, or something else. This session did not verify which, and did not attempt to guess.
+- Because the `verifiedProducts.manufacturer` field is presented to customers as an actual manufacturer attribution, and that attribution could not be confidently assigned to either company (Fresenius doesn't match the label; Centrisol/Minntech/Medivators is outside the approved pilot scope and unverified), **no manufacturer is currently shown to customers for #133.**
+- Per instruction, "Centrisol," "Minntech," and "Medivators" have **not** been introduced into `product-catalog.json` — they appear only in this research document, pending independent verification of the actual relationship/product identity.
+- **Text facts that were briefly recorded and are now removed from the catalog data:** dilution system (45X three-stream, mixed with a compatible acid concentrate), regulatory notice ("Federal (US) law restricts these devices to sale by or on the order of a physician"). These may still be accurate for whatever product actually ships under this Fresenius page, but were removed from `product-catalog.json` along with the manufacturer attribution rather than left half-attached to no one.
+- **Not verified / left out:** specific concentration/formulation numbers were not read from this page this session; the exact commercial relationship (if any) between Fresenius and Centrisol/Minntech/Medivators.
+
+### Status
+#133 is pending, exactly like #110, #116, #117, #119, #120, and #124. A
+future pass should either (a) confirm the real relationship/manufacturer
+behind what Fresenius presents on this page, or (b) find a distinct,
+unambiguously Fresenius-branded liquid bicarbonate product instead.
 
 ---
 
@@ -171,7 +188,7 @@ at the end of this document for what was and wasn't obtained, and why.
 | #116, #117, #119, #120 | Bloodline set variants (arterial/venous lines, pediatric, online HDF) | Neither CombiSet True Flow nor NiproSet (both used for #118) distinguish these as separate named products on their official pages — both are general/adult/machine-specific sets. Confirmed again in the follow-up pass: NiproSet's own page explicitly says sets are "machine-specific" without breaking out arterial/venous/pediatric/HDF variants. |
 | #124 | Sharp needles & blunt needles | Ambiguous which Nipro product (or products) most precisely maps here without conflating it with #121/#123; left for a follow-up decision. |
 | #132 formulation numbers | Potassium K2/K3/K4 exact concentrations | NaturaLyte's own official page didn't list a formulation table this session; only third-party distributor listings did, which don't meet the "official source" bar. |
-| #133 bottle photo | Liquid Sodium Bicarbonate Concentrate image | An official Fresenius page exists and its text was verified and added, but its own hero photo shows a "Centrisol / Minntech / Medivators"-branded bottle, not Fresenius, and not an approved-manufacturer product for this pilot — the image was deliberately excluded (see the #133 section above for the full explanation). |
+| #133 | Liquid bicarbonate | An official Fresenius page exists, but its own hero photo identifies the actual product as "Centrisol / Minntech Renal Systems / Medivators Inc.," not Fresenius, and the real manufacturer/distribution relationship hasn't been independently established. A `verifiedProducts` record naming Fresenius was added in an earlier pass and has been **removed** — #133 is fully pending again, with no manufacturer shown to customers (see the #133 section above for the full explanation). |
 
 ---
 
@@ -221,7 +238,12 @@ provenance recorded in each entry above instead:
 One additional image was found but deliberately **not** used: the official
 Fresenius #133 (Liquid Sodium Bicarbonate Concentrate) page's own hero photo
 shows a bottle branded by a different, non-approved company (Minntech/
-Medivators/Centrisol) — see the #133 section above.
+Medivators/Centrisol) — see the #133 section above. A `verifiedProducts`
+record naming Fresenius as #133's manufacturer was briefly added in that
+same pass despite this finding; it has since been **removed**, since the
+manufacturer field is a customer-facing attribution and the real
+relationship between Fresenius and Centrisol/Minntech/Medivators for this
+product was never established. #133 is fully pending again.
 
 **UI adjustment made because of #109 now having two manufacturer photos:**
 with two verified products (Nipro and Fresenius) each carrying their own
@@ -231,9 +253,11 @@ now also shows its own small labeled thumbnail directly beside its name
 whenever a record has more than one manufacturer photo — single-manufacturer
 cards (the common case) are unaffected and render exactly as before.
 
-**Remaining placeholders:** #116, #117, #119, #120 (bloodline variants),
-#124 (sharp/blunt needles), and the #133 bottle photo still show/lack
-"Photo pending" or the corresponding gap, per the table above.
+**Remaining placeholders:** #110 (low-flux dialyzer), #116, #117, #119,
+#120 (bloodline variants), #124 (sharp/blunt needles), and #133 (liquid
+bicarbonate — manufacturer attribution removed, see above) are all fully
+pending, with no `verifiedProducts` record and the normal "Photo pending"
+placeholder shown to customers.
 
 ## Date accessed
 
