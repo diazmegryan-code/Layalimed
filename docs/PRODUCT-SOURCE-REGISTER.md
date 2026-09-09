@@ -253,14 +253,110 @@ now also shows its own small labeled thumbnail directly beside its name
 whenever a record has more than one manufacturer photo — single-manufacturer
 cards (the common case) are unaffected and render exactly as before.
 
-**Remaining placeholders:** #110 (low-flux dialyzer), #116, #117, #119,
-#120 (bloodline variants), #124 (sharp/blunt needles), and #133 (liquid
-bicarbonate — manufacturer attribution removed, see above) are all fully
-pending, with no `verifiedProducts` record and the normal "Photo pending"
-placeholder shown to customers.
+**Status as of the end of Batch 2:** #110, #116, #117, #119, #120, #124,
+and #133 were all fully pending. Batch 3 (below) resolves #110, #120, and
+#124 with verified manufacturer data; #116, #117, #119, and #133 remain
+pending; #111 and #125–130 (not previously attempted) are addressed for
+the first time in Batch 3, with #111 partially resolved (text only) and
+#125–130 remaining pending.
+
+---
+
+# Batch 3 — Hemodialysis catalog completion (dialyzers, bloodlines, needles, catheters, concentrates)
+
+Scope: source IDs 110, 111, 116, 117, 119, 120, 124, 125–134. Priority was
+correct mapping over coverage — several entries in this range were
+investigated and deliberately left pending rather than force-fit.
+
+## #110 — Low-flux dialyzer
+
+### Nipro SUREFLUX L
+- **Official sources:** product page https://www.nipro-group.com/en/our-offer/products-services/surefluxtm (fetched directly) and the official Nipro Medical Europe brochure PDF linked from it (`nipro-group.com/sites/default/files/2019-12/SureFlux - UX-E-L - New Layout - 19Dec2018 - EN - Approved_Original_435.pdf`, fetched and read as images)
+- **Why SUREFLUX L, not ELISIO-L:** the task asked to investigate ELISIO-L directly; no working official ELISIO-L-specific page could be located this session (URL patterns guessed from the ELISIO-H page did not resolve, same issue as in Batch 2). SUREFLUX L is independently well-documented and was used instead. ELISIO-H was **not** used for #110, per instruction.
+- **Fields taken from source:** SUREFLUX comes in three flux lines (L = low-flux, E = mid-flux, UX = high-flux). The Low-flux (L) line's exact model/size table, read directly from the brochure: 03L (0.3 m²), 05L (0.5 m²), 07L (0.7 m²), 09L (0.9 m²), 11L (1.1 m²), 13L (1.3 m²), 15L (1.5 m²), 17L (1.7 m²), 19L (1.9 m²), 21L (2.1 m²). Membrane: Cellulose Triacetate. Housing: Polypropylene. Sterilization: Dry Gamma. Packaging: 24 pcs/box.
+- **Image:** obtained. Official teaser photo (`nipro-group.com/sites/default/files/2019-12/SUREFLUX - Teaser.jpg`, 2000×1600 original) showing a single SUREFLUX-19L unit with clearly printed "SUREFLUX-19L" and "NIPRO HEMODIALYZER" branding, unaltered. Optimized to `images/products/110.jpg` / `.webp` (1200×960).
+
+## #111 — Pediatric dialyzer
+
+### Nipro SUREFLUX (text only, no specific model claimed)
+- **Official source:** https://www.nipro-group.com/en/our-offer/products-services/surefluxtm (fetched directly) — the same page states outright: *"Suitable for HD, HF, (online) HDF, and pediatric applications."*
+- **Why no specific model/variant and no image:** the instruction was explicit not to equate "small dialyzer" with "pediatric" by inference. Nipro's page confirms pediatric suitability for the SUREFLUX line as a whole but does not name a distinct pediatric SKU separate from its regular L/E/UX size lineup. Rather than pick the smallest size (e.g. 03L) and label it "the pediatric one" (an inference this session was told to avoid), the manufacturer's own general statement is recorded as-is, with no variant list and no image. Fresenius pediatric-hemodialysis material was also checked (see #119 below) — it describes a pediatric-capable *machine* (5008 CorDiax Paed), not a distinct pediatric dialyzer product, so it wasn't used here either.
+- **Not verified / left out:** any specific pediatric dialyzer model number, surface area, or priming volume.
+
+## #116, #117 — Arterial / Venous bloodline (still pending)
+
+No new mapping. Re-confirmed via the official NiproSet ordering brochure (`nipro-group.picturepark.com/v/z2ugQ2m5/...pdf`, fetched and read as images): every NiproSet item number is a **combined** arterial+venous set distinguished only by compatible machine (Baxter, Fresenius 2008 series, B. Braun Dialog) and pump position (pre-pump/post-pump) — e.g. `BL+A209Y/V803` = "Fresenius 2008 series/8mm/Pre-Pump." No arterial-only or venous-only product exists in this catalog. Per instruction, a combined A/V set does not justify separate #116/#117 records, so both remain pending.
+
+## #119 — Pediatric tubing set (still pending)
+
+Investigated Fresenius's pediatric hemodialysis material (`freseniusmedicalcare.com/en/healthcare-professionals/pediatric-dialysis/pediatric-hemodialysis/`, via search). It describes the **5008 CorDiax Paed**, a pediatric-capable hemodialysis *machine* ("treat young patients starting from 10 kg of dry weight"), not a distinct pediatric bloodline *set* product. A third-party listing referenced a "CombiSet Hemodialysis Low Volume Bloodline," which could plausibly be pediatric-relevant, but this was only found on a reseller site (Medline), not an official Fresenius product page, so it was not used. Per instruction ("only map this if an identifiable product/set can be independently verified" and "do not force pediatric machine information into a [tubing] record unless the actual [set] is identified"), #119 remains pending.
+
+## #120 — Online HDF tubing set
+
+### Fresenius 5008X CAREset bloodline
+- **Official source:** https://freseniusmedicalcare.com/en-us/products/in-center-hemodialysis-equipment/5008x-caresystem/ (fetched directly)
+- **Fields taken from source:** the page explicitly states *"5008X CAREset bloodline safely delivers sterile non-pyrogenic substitution fluid generated with the 5008X CAREsystem"* — a bloodline product specifically and explicitly tied to online (high-volume) HDF, not inferred from ordinary HD tubing.
+- **Image: deliberately NOT used.** The only sizeable image on this page is a marketing photo of a physician and patient, and the page's own text explicitly labels it **"AI generated image."** Per the project's rule against AI-generated imagery, it was not used, even resized/cropped. No other image of the bloodline set itself was found on this page.
+
+## #121, #123 — no changes
+
+Untouched this batch, exactly as committed in Batch 2 (Nipro SafeTouch AVF Needle and Nipro BIOHOLE SafeTouch Tulip AVF Needle, respectively).
+
+## #124 — Sharp needles & blunt needles
+
+### Nipro STANDARD AVF NEEDLE (sharp)
+- **Official source:** https://www.nipro-group.com/en/our-offer/products-services/standard-avf-needle (fetched directly)
+- **Fields taken from source:** "ultra-sharp, siliconized 3-bevel needle," no active safety mechanism described (distinguishing it from #121's SafeTouch, which has one), packaging (2-pack/single-pack/single needle), gamma sterilization
+- **Image:** obtained. Official teaser photo (`nipro-group.com/sites/default/files/2019-12/STANDARD AVF NEEDLE - Teaser.jpg`, 2000×1600 original), unaltered. Optimized to `images/products/124-standard-avf.jpg` / `.webp` (1200×960).
+
+### Nipro BIOHOLE AVF NEEDLE (blunt)
+- **Official source:** https://www.nipro-group.com/en/our-offer/products-services/bioholetm-avf-needle-bioholetm-avf-single-needle (fetched directly)
+- **Fields taken from source:** explicitly described as a "blunt, siliconized needle" for the buttonhole technique, with "white occlusion clamp allows easy distinction with standard and safety needles" — the page itself distinguishes this plain BIOHOLE needle from both standard (sharp) and safety (Tulip) variants. Packaging (regular or single dull needle), gamma sterilization.
+- **Distinct from #123:** this is the plain BIOHOLE needle, not the BIOHOLE SafeTouch Tulip already used for #123 — confirmed visually distinct (different wing color/shape) and functionally distinct (no safety mechanism described here, vs. Tulip's active safety mechanism).
+- **Image:** obtained. Official product photo (`nipro-group.com/sites/default/files/2019-12/Biohole needle 14G-Red.png`, 754×2000 original) clearly showing a rounded/blunt needle tip (visually confirmed, not just from the text description), unaltered aside from flattening its transparency onto white. Optimized to `images/products/124-biohole-plain.jpg` / `.webp` (452×1200).
+
+### Rejected: reusing #121/#123's safety-mechanism needles for #124
+Not done — #124 needed the plain (non-safety) sharp and blunt needles specifically, to avoid duplicating the already-distinct #121 and #123 records under a third catalog entry.
+
+## #125–130 — Dialysis catheters and accessories (all pending)
+
+### Rejected mapping: Nipro SAFETOUCH DIALYSIS CATH PLUS
+Investigated as the task's suggested starting point. **Important finding:** despite its name, this is not a central-venous dialysis catheter. Its official page (https://www.nipro-group.com/en/our-offer/products-services/safetouch-dialysis-cath-plus) describes an "auto priming hemostatic valve" and a needle-stick "safety mechanism," and its own product photo (`nipro-group.com/sites/default/files/2022-05/Safetouch Dialysis Cath PLUS_High Res_3229.jpg`) shows a lineup of **needle** devices labeled with a gauge/length spec ("15G × 1.8" × 25mm...") — a vascular-access needle product, not a tunneled or temporary CVC catheter, catheter cap, clamp, or dressing kit. It was **not** mapped to any of #125–130.
+- A brief search for an official Fresenius CVC catheter product did not surface one within this session's time budget.
+- Per instruction ("do not apply one catheter image/product across all six... only map exact products"), all of #125 (double lumen catheter kits), #126 (temporary HD catheter), #127 (tunneled catheter kits), #128 (catheter caps & clamps), #129 (catheter dressing kits), and #130 (Tegaderm/chlorhexidine dressings) remain pending. None of Nipro/Fresenius/Terumo/3M/Ansell's catalogs were confirmed to include an exact match for any of these six within this session.
+
+## #131, #132 — no changes; K2/K3/K4 still unresolved
+
+Re-checked this batch: fetched the official Fresenius NaturaLyte Liquid Acid Concentrate SDS PDF directly (`freseniusmedicalcare.com/content/dam/fmcna/live/products/disposables/concentrates/naturalyte-liquid-acid/2026-07-16 SDS NaturaLyte Liquid Acid Concentrate.pdf`) specifically looking for a K2/K3/K4-style formulation table. None was found in the extracted content (an SDS is a safety data sheet, not a commercial ordering guide, and doesn't list product-variant codes). Only third-party/reseller listings name specific formulations, which don't meet the official-source bar. #131 and #132's existing NaturaLyte `verifiedProducts` records are unchanged from Batch 2.
+
+## #133 — unchanged, still pending
+
+Not touched this batch, per instruction. Still exactly as corrected previously: no `verifiedProducts` record; the Centrisol/Minntech/Medivators finding remains documented above, unresolved.
+
+## #134 — Bicarbonate powder & cartridges — second manufacturer added
+
+### Nipro NIPROCART A2F 760 (added alongside the existing Fresenius bibag — bibag retained, not replaced)
+- **Official source:** https://www.nipro-group.com/en/our-offer/products-services/niprocart (fetched directly)
+- **Fields taken from source:** "a cartridge containing sodium bicarbonate powder that produces dialysate online when combined with acid concentrate and pure water"; exact model and weight read directly off the product label in the official photo: "NiproCart A2F 760 / NaHCO3 760g"
+- **Image:** obtained. Official product photo (`nipro-group.com/sites/default/files/2020-07/NiproCart 760.png`, 638×1279 original) showing a fully legible label with "NiproCart A2F 760," "NaHCO3 760g," and "NIPRO RENAL SOLUTIONS SPAIN, S.R.L." branding, unaltered aside from flattening its transparency onto white. Optimized to `images/products/134-niprocart.jpg` / `.webp` (599×1200).
+
+## Batch 3 summary of what changed
+
+| Source ID | Before Batch 3 | After Batch 3 |
+|---|---|---|
+| #110 | Pending | Nipro SUREFLUX L (image) |
+| #111 | Not attempted | Nipro SUREFLUX (text only, no image) |
+| #116, #117 | Pending | Still pending (re-confirmed) |
+| #119 | Pending | Still pending (re-confirmed) |
+| #120 | Pending | Fresenius 5008X CAREset bloodline (text only, no image) |
+| #124 | Pending | Nipro STANDARD AVF NEEDLE + Nipro BIOHOLE AVF NEEDLE (both imaged) |
+| #125–130 | Not attempted | Investigated, all still pending (rejected mapping documented) |
+| #131, #132 | NaturaLyte verified; K2/K3/K4 unresolved | Unchanged |
+| #133 | Pending (corrected in prior commit) | Unchanged, still pending |
+| #134 | Fresenius bibag only | Fresenius bibag (unchanged) + Nipro NIPROCART A2F 760 (image) added |
 
 ## Date accessed
 
-All sources above were accessed across two work sessions on the same
+Sources above were accessed across three work sessions on the same
 branch (see the commit history on `layali-2.0-redesign` for the exact
 dates of the commits that introduced and extended this document).
