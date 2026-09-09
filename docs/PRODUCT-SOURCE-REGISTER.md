@@ -382,15 +382,39 @@ correct mapping over coverage, as with every prior batch. Two new
 manufacturers were researched and introduced this batch — see "New
 manufacturers introduced in Batch 4" below.
 
-## #125 — Double lumen catheter kits, #126 — Temporary HD catheter
+## #125 — Double lumen catheter kits
 
 ### Teleflex (Arrow) Arrowg+ard Blue™ Acute Hemodialysis Catheter — ErgoPack™ Complete Kit
 - **Official source:** https://teleflex.com/usa/en/product-areas/vascular-access/central-access/acute-hemodialysis-catheters/index.html (fetched directly), cross-checked against the page's own "Order Information" table (fetched via JS from the live DOM)
 - **New manufacturer:** Teleflex (Arrow brand) was not one of the five original pilot manufacturers. It was researched under this batch's explicit "research permission only" grant (suggested candidates: BD/Bard, Teleflex/Arrow, Medtronic/Covidien) after confirming that none of Nipro/Fresenius/Terumo/3M/Ansell make a genuine central-venous hemodialysis catheter (see "Rejected" notes below). No Layali distributorship, partnership, or authorization is stated or implied anywhere in the data.
-- **Why the same product is attached to both #125 and #126:** the Arrowg+ard Blue Acute Hemodialysis Catheter is genuinely and simultaneously (a) a double-lumen catheter sold as a complete kit, and (b) an acute/temporary (non-tunneled) hemodialysis catheter — both are official Teleflex descriptions of the one real product line, confirmed on its own official product page (categorized by Teleflex itself under "Acute Hemodialysis Catheters," distinct from its separate "Short-Term CVC," "PICC," and "Long-Term CVC (JACC)" categories). This is not a forced duplication: no new canonical catalog record was created, and the same verifiedProducts object is intentionally referenced from both #125 and #126.
 - **Fields taken from source:** two-lumen design, 12Fr/14Fr sizes with multiple lengths (13/16/20/25cm), Arrowg+ard Blue™ antimicrobial technology (chlorhexidine + silver sulfadiazine coated catheter), rotating suture hub, staggered exit ports, Blue FlexTip design, straight or You-Bend™ extension line options. Order-info table confirmed exact item numbers (e.g. CDC-26122-XCN1A = "AGB Hemodialysis 2-L Straight: 12Fr X 25CM, ErgoPack™ Complete with Tegaderm™ CHG Dressing," 5/case) — confirming the product ships as a complete kit and independently cross-confirming that 3M Tegaderm CHG Dressing (see #130) is genuinely bundled with this catheter family, from a source unrelated to 3M's own marketing.
 - **Not verified / left out:** any clinical/efficacy claims from the page (CLABSI reduction, clinical study references) — deliberately omitted per the no-clinical-claims rule; only catalog-identification facts were kept.
 - **Image:** obtained. Official kit-tray photo (`teleflex.com/.../acute-hemodialysis-catheters/VA-Dialysis-12F-2L-NonPI-AGB-CHG-straight.png`, 580×386 original), showing the ARROW-branded procedure tray with catheter, drapes, syringes, and dressing packets, unaltered. Saved to `images/products/125-126-arrow-agb.jpg` / `.webp` (580×386 — under the 1200px cap, not upscaled).
+
+## #126 — Temporary HD catheter (returned to pending — correction)
+
+**Correction (post-Batch-4 review):** an earlier pass attached the same
+Teleflex (Arrow) Arrowg+ard Blue™ Acute Hemodialysis Catheter — ErgoPack™
+Complete Kit `verifiedProducts` record to both #125 and #126, reasoning
+that the product is genuinely both a double-lumen kit and a temporary/
+acute catheter. On review, this was corrected: the catalog standard
+requires one canonical manufacturer-product placement per real product,
+not attachment across multiple canonical Layali source entries even when
+both descriptions are technically true. The exact commercial
+configuration verified — the ErgoPack™ Complete Kit — is most precisely a
+*kit* product, making #125 (Double lumen catheter kits) the correct single
+canonical placement. The `verifiedProducts` record has been **removed**
+from #126, which is back to its normal pending state.
+
+The Arrowg+ard Blue catheter genuinely is also an acute/temporary
+(non-tunneled) hemodialysis catheter — that fact is not in dispute, and
+remains recorded under #125's own specs (`Use: Acute / temporary
+(non-tunneled) central venous hemodialysis access`). #126 simply is not
+where the manufacturer-product record itself lives. #126 remains open for
+a future independently verified temporary HD catheter product whose own
+commercial configuration is distinct enough (e.g. sold as a bare catheter
+rather than a named kit) to justify its own canonical placement, rather
+than reusing #125's kit-specific record.
 
 ### Rejected: Nipro Canada / CardioMed "TempCath" hemodialysis catheter
 Investigated at https://nipro.ca/product/tempcath-hemodialysis-catheter/ as a way to keep the catheter family inside the original five pilot manufacturers (Nipro). **Rejected** because the page's own text is internally inconsistent about who makes it: one paragraph reads *"CardioMed's TempCath hemodialysis catheters..."* while the page's own "Description" heading reads *"Nipro Canada's TempCath hemodialysis catheters..."* — the same page attributes the product to two different companies. The product photo (`nipro.ca/wp-content/uploads/2017/08/CM-5033B.jpg`) shows no legible manufacturer branding that would resolve the ambiguity. Per the precedent set by the #133 Centrisol/Minntech finding (never publish a manufacturer attribution that cannot be confidently assigned), this product was **not** added to the catalog. Documented here so a future batch does not re-attempt it without first resolving the CardioMed-vs-Nipro-Canada relationship directly with Nipro.
@@ -471,13 +495,20 @@ Investigated whether Terumo (already used for #75, SurFlash Polyurethane I.V. Ca
 - **Fields taken from source:** catalog code 17-369C ("3-Way Stopcock with Caps"), 50/box, rotating cocks, clear body for flow-path visibility, pressure and chemical resistant.
 - **Image:** deliberately **not** used. The only product photo found on Nipro's own sites (`nipro.ca/wp-content/uploads/2025/06/17-469N-Edited-V2-Edit.png`) is explicitly captioned as showing "17-469N," a different item in the same family (a 4-way large-bore stopcock), not the 3-way stopcock (17-369C) actually mapped here. Rather than show the wrong configuration under this entry, no image was attached.
 
-## #147 — Pressure transducer tubing
+## #147 — Pressure transducer tubing (pending — correction)
 
-### Nipro TP-Sure™ Transducer Protector
+### Rejected: Nipro TP-Sure™ Transducer Protector
+**Correction (post-Batch-4 review):** an earlier pass attached this
+product to #147 as its closest available match. That mapping has been
+**removed** — the catalog standard does not allow "closest available
+product" mappings, only exact product matches, and this document's own
+original note already identified the mismatch (see below). #147 is back
+to its normal pending state with no `verifiedProducts` entry.
 - **Official source:** https://www.nipro-group.com/en/our-offer/products-services/tp-sure-transducer-protector (fetched directly)
-- **Important naming caveat:** Nipro's own product is a **transducer protector** (an inline filter/housing device positioned between a blood tubing set and the hemodialysis machine's pressure monitor), not bare "pressure transducer tubing." It is recorded here as the closest verified official Nipro product for this line item — not a claim that it is literally tubing. Anyone extending this record in a future batch should preserve this distinction rather than blur it.
-- **Fields taken from source:** 0.1 micron hydrophobic filter (bacterial/viral barrier), latex-free, 100/box, described by Nipro as "designed to be clear all throughout" for flow-path visibility, used to protect the pressure monitor and help maintain fluid-pathway sterility.
+- **Why rejected:** Nipro's own product is a **transducer protector** — an inline filter/housing device positioned between a blood tubing set and the hemodialysis machine's pressure monitor — not "pressure transducer tubing" itself. It is an adjacent pressure-monitoring accessory, not the actual tubing represented by the Layali source entry, so it does not meet the exact-match bar even though it is a genuine, well-documented official Nipro product.
+- **Fields (kept for future reference, not customer-facing):** 0.1 micron hydrophobic filter (bacterial/viral barrier), latex-free, 100/box, described by Nipro as "designed to be clear all throughout" for flow-path visibility, used to protect the pressure monitor and help maintain fluid-pathway sterility.
 - **Image:** none obtained — no dedicated product photo exists on the fetched page (only unrelated "related product" thumbnails).
+- **Note for future batches:** if Nipro, or any approved manufacturer, is found to sell the actual pressure-monitoring line/tubing itself (as opposed to the inline protector/filter accessory), that would be the correct exact match for #147. TP-Sure should not be re-proposed for this entry without that distinction changing.
 
 ## #148 — Sterile gauze & cotton balls (pending)
 
@@ -532,7 +563,7 @@ No other new manufacturers were introduced. BD/Bard and Medtronic/Covidien were 
 | Source ID | Before Batch 4 | After Batch 4 |
 |---|---|---|
 | #125 | Pending | Teleflex (Arrow) Arrowg+ard Blue AGB Catheter — ErgoPack Complete Kit (imaged) |
-| #126 | Pending | Same Teleflex (Arrow) product as #125 (imaged; intentionally shared, not duplicated) |
+| #126 | Pending | Still pending (corrected — no longer shares #125's record; see #126 section) |
 | #127 | Pending | Teleflex (Arrow) Arrow-Clark VectorFlow Chronic HD Catheter (imaged) |
 | #128 | Pending | Still pending (ICU Medical ClearGuard HD Caps identified but not added — manufacturer out of scope) |
 | #129 | Pending | Still pending (no standalone kit product found in scope) |
@@ -542,7 +573,7 @@ No other new manufacturers were introduced. BD/Bard and Medtronic/Covidien were 
 | #144 | Pending | Still pending (no distinct match; #75 not duplicated) |
 | #145 | Pending | Terumo Terufusion Administration Set (text only) |
 | #146 | Pending | Nipro Three-Way Stopcock 17-369C (text only) |
-| #147 | Pending | Nipro TP-Sure Transducer Protector (text only; naming caveat documented) |
+| #147 | Pending | Still pending (corrected — Nipro TP-Sure Transducer Protector rejected as not an exact match; see #147 section) |
 | #148, #149, #151, #154 | Pending | Still pending (not researched this batch) |
 | #150 | Pending | 3M Micropore Surgical Tape (imaged) |
 | #152 | Pending | 3M Tegaderm I.V. Transparent Film Dressing with Border (imaged) |
