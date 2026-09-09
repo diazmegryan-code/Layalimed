@@ -10,7 +10,15 @@ None of the URLs listed here are rendered on the website. `catalog.js` stores
 `sourceUrl` on each `verifiedProducts` entry but never displays it.
 
 **Approved manufacturers for this pilot:** Nipro, Fresenius Medical Care,
-Terumo, 3M, Ansell. No other manufacturers were introduced.
+Terumo, 3M, Ansell. No other manufacturers were introduced in Batches 1–3.
+
+**Additional manufacturer introduced in Batch 4:** Teleflex (Arrow brand) —
+researched and added under Batch 4's explicit "research permission only"
+grant, specifically for dialysis catheter entries (#125–127) after
+confirming none of the original five make a genuine central-venous
+hemodialysis catheter. See the Batch 4 section below for full reasoning.
+This does not change the status of the original five as the primary pilot
+manufacturers; Teleflex is documented separately wherever it appears.
 
 **Relationship disclaimer:** Nothing in this pilot states or implies that
 Layali Medical Supply is an authorized distributor, exclusive distributor,
@@ -363,3 +371,183 @@ Not touched this batch, per instruction. Still exactly as corrected previously: 
 Sources above were accessed across three work sessions on the same
 branch (see the commit history on `layali-2.0-redesign` for the exact
 dates of the commits that introduced and extended this document).
+
+---
+
+# Batch 4 — Dialysis catheters, anticoagulation/priming, IV/access
+# consumables, dressing supplies
+
+Scope requested: #125–130, #135–140, #144–147, #148–154. Priority was
+correct mapping over coverage, as with every prior batch. Two new
+manufacturers were researched and introduced this batch — see "New
+manufacturers introduced in Batch 4" below.
+
+## #125 — Double lumen catheter kits, #126 — Temporary HD catheter
+
+### Teleflex (Arrow) Arrowg+ard Blue™ Acute Hemodialysis Catheter — ErgoPack™ Complete Kit
+- **Official source:** https://teleflex.com/usa/en/product-areas/vascular-access/central-access/acute-hemodialysis-catheters/index.html (fetched directly), cross-checked against the page's own "Order Information" table (fetched via JS from the live DOM)
+- **New manufacturer:** Teleflex (Arrow brand) was not one of the five original pilot manufacturers. It was researched under this batch's explicit "research permission only" grant (suggested candidates: BD/Bard, Teleflex/Arrow, Medtronic/Covidien) after confirming that none of Nipro/Fresenius/Terumo/3M/Ansell make a genuine central-venous hemodialysis catheter (see "Rejected" notes below). No Layali distributorship, partnership, or authorization is stated or implied anywhere in the data.
+- **Why the same product is attached to both #125 and #126:** the Arrowg+ard Blue Acute Hemodialysis Catheter is genuinely and simultaneously (a) a double-lumen catheter sold as a complete kit, and (b) an acute/temporary (non-tunneled) hemodialysis catheter — both are official Teleflex descriptions of the one real product line, confirmed on its own official product page (categorized by Teleflex itself under "Acute Hemodialysis Catheters," distinct from its separate "Short-Term CVC," "PICC," and "Long-Term CVC (JACC)" categories). This is not a forced duplication: no new canonical catalog record was created, and the same verifiedProducts object is intentionally referenced from both #125 and #126.
+- **Fields taken from source:** two-lumen design, 12Fr/14Fr sizes with multiple lengths (13/16/20/25cm), Arrowg+ard Blue™ antimicrobial technology (chlorhexidine + silver sulfadiazine coated catheter), rotating suture hub, staggered exit ports, Blue FlexTip design, straight or You-Bend™ extension line options. Order-info table confirmed exact item numbers (e.g. CDC-26122-XCN1A = "AGB Hemodialysis 2-L Straight: 12Fr X 25CM, ErgoPack™ Complete with Tegaderm™ CHG Dressing," 5/case) — confirming the product ships as a complete kit and independently cross-confirming that 3M Tegaderm CHG Dressing (see #130) is genuinely bundled with this catheter family, from a source unrelated to 3M's own marketing.
+- **Not verified / left out:** any clinical/efficacy claims from the page (CLABSI reduction, clinical study references) — deliberately omitted per the no-clinical-claims rule; only catalog-identification facts were kept.
+- **Image:** obtained. Official kit-tray photo (`teleflex.com/.../acute-hemodialysis-catheters/VA-Dialysis-12F-2L-NonPI-AGB-CHG-straight.png`, 580×386 original), showing the ARROW-branded procedure tray with catheter, drapes, syringes, and dressing packets, unaltered. Saved to `images/products/125-126-arrow-agb.jpg` / `.webp` (580×386 — under the 1200px cap, not upscaled).
+
+### Rejected: Nipro Canada / CardioMed "TempCath" hemodialysis catheter
+Investigated at https://nipro.ca/product/tempcath-hemodialysis-catheter/ as a way to keep the catheter family inside the original five pilot manufacturers (Nipro). **Rejected** because the page's own text is internally inconsistent about who makes it: one paragraph reads *"CardioMed's TempCath hemodialysis catheters..."* while the page's own "Description" heading reads *"Nipro Canada's TempCath hemodialysis catheters..."* — the same page attributes the product to two different companies. The product photo (`nipro.ca/wp-content/uploads/2017/08/CM-5033B.jpg`) shows no legible manufacturer branding that would resolve the ambiguity. Per the precedent set by the #133 Centrisol/Minntech finding (never publish a manufacturer attribution that cannot be confidently assigned), this product was **not** added to the catalog. Documented here so a future batch does not re-attempt it without first resolving the CardioMed-vs-Nipro-Canada relationship directly with Nipro.
+
+## #127 — Tunneled catheter kits
+
+### Teleflex (Arrow) Arrow-Clark™ VectorFlow® Chronic Hemodialysis Catheter
+- **Official source:** https://www.teleflex.com/usa/en/product-areas/interventional/hemodialysis/arrow-clark-vectorflow-chronic-hemodialysis-catheter/index.html (fetched directly)
+- **Fields taken from source:** explicitly described as "tunneled hemodialysis catheter," indicated for "long-term vascular access for hemodialysis and apheresis," symmetrical tip design, retrograde and antegrade insertion platforms, preferentially placed in the internal jugular vein (subclavian as an alternative; catheters >40cm for femoral insertion), intended for adult patients. Kit contents per the official brochure search snippet: catheter, SmartSeal™ Dialysis Sheath, spring wire guide, introducer needle, tissue dilators, Luer Lock caps, tunneler, safety scalpel, Tegaderm® dressing.
+- **Distinct from #125/#126:** confirmed on a separate official Teleflex product page under a different product-area path ("interventional/hemodialysis" vs. "vascular-access/central-access") — genuinely a different catheter family (tunneled/chronic vs. acute/temporary), not the same product relabeled.
+- **Trademark note:** the page's own footer states "VectorFlow is a registered trademark of Aegis Medical Technologies LLC." Teleflex/Arrow is the company that markets, sells, and presents this product on its own official domain, so manufacturer attribution follows Teleflex (Arrow), consistent with how the site already treats products whose trademark chain involves a licensing arrangement (e.g. the 3M/Solventum transition). Flagged here for transparency, not treated as disqualifying.
+- **Image:** obtained. Official annotated product diagram (`teleflex.com/.../vectorflow_callout.png`, 850×373 original) showing the actual catheter with its red/blue lumens, ARROW-branded suture wing, and manufacturer's own technical callouts (symmetrical tip, sidehole design, minimal recirculation) — similar in nature to the annotated-diagram treatment already accepted for #130 in this batch. Unaltered. Saved to `images/products/127-vectorflow.jpg` / `.webp` (850×373).
+- **Considered but not used:** a marketing hero banner (`vectorflow-product-page-banner.jpg`) with the tagline "Designed for performance" baked into the image — rejected in favor of the technical callout diagram, consistent with the project's preference against promotional/tagline imagery as a catalog photo.
+
+## #128 — Catheter caps & clamps (pending)
+
+Investigated ICU Medical ClearGuard™ HD Caps (a genuine standalone antimicrobial catheter-cap product) and a Curemed Nordic replacement catheter clamp, but neither manufacturer is among the five original pilot manufacturers or the three suggested catheter-research candidates (BD/Bard, Teleflex/Arrow, Medtronic/Covidien) for this batch. The Arrow-Clark VectorFlow kit (see #127) includes "Luer Lock Caps" as a kit component, but these are not sold or documented as a standalone product with their own specifications. Per instruction ("leave pending if no clean match" and never introduce a manufacturer merely because it appears in search results), #128 remains pending.
+
+## #129 — Catheter dressing kits (pending)
+
+Investigated "central line dressing change kit" / "CVC dressing kit" products. All genuine standalone kit products found (Medical Action Industries, Medline, Bioseal, Busse Hospital Disposables, McKesson) are outside every manufacturer permitted for this batch. None of the five pilot manufacturers or Teleflex/Arrow sell a standalone "catheter dressing kit" as its own product (3M sells individual dressings, not assembled kits; the Arrow-Clark VectorFlow kit is a catheter-placement kit, not a dressing-change kit). #129 remains pending rather than mapping an individual dressing product to a "kit" entry.
+
+## #130 — Tegaderm/chlorhexidine dressings
+
+### 3M Tegaderm™ CHG Chlorhexidine Gluconate I.V. Securement Dressing
+- **Official sources:** three official 3M PDF documents fetched directly and read as images/pages — package insert (confirms indication: "central venous or arterial catheters"), product guide for model 1657 (confirms exact dimensions and pack size), and a 3M Regulatory Data Sheet (confirms the full model list: 1657, 1657R, 1658, 1658NS, 1658R, 1659, 1659R, 1660, 1660R). All fetched from `multimedia.3m.com`, which continues to host legacy 3M-branded document assets independent of the Solventum corporate spinoff (see the "3M/Solventum" note below).
+- **Fields taken from source:** CHG gel pad size 1-3/16" x 1-1/2" (model 1657), overall dressing size 3-1/3" x 4-1/3" (model 1657), 25 dressings/box, 4 boxes/case, 2% w/w chlorhexidine gluconate gel pad, indicated for central venous or arterial catheters.
+- **Independent corroboration:** Teleflex's own official Arrow AGB Hemodialysis Catheter order-info table (see #125/#126 above) lists "ErgoPack™ Complete with Tegaderm™ CHG Dressing" as a real, purchasable kit configuration — an independent, non-3M source confirming Tegaderm CHG is genuinely used with hemodialysis catheters, from a different manufacturer's own commercial documentation.
+- **Not verified / left out:** a search-snippet claim that the indication text specifically says "dialysis catheters" was not independently confirmed in the three documents actually read this session — only "central venous or arterial catheters" was directly verified, so that is the only indication phrase recorded.
+- **3M / Solventum note:** 3M's medical/healthcare business has been spun off into "Solventum" (solventum.com); legacy 3m.com/medical product pages now 404, but PDF assets on multimedia.3m.com remain accessible and the product still carries the 3M™ trademark on its own packaging and documentation. Manufacturer attribution follows the product's own branding (3M), consistent with how #150/#152/#153 are also attributed to 3M despite being fetched from solventum.com.
+- **Image:** obtained via a new technique for this project — the official product-guide PDF page was rendered to a high-resolution JPEG via `pdftoppm` (300 DPI), and the product-photo region was cropped out (1340×1030 before final resize), retaining 3M's own diagram annotation lines unaltered (not stripped or redrawn). Optimized to `images/products/130.jpg` / `.webp` (1200×922).
+
+## #135 — Heparin vial & syringes (pending)
+
+No pharmaceutical manufacturer of injectable heparin exists among the five pilot manufacturers, Teleflex/Arrow, or any other manufacturer this batch was authorized to research. Per instruction not to imply a syringe manufacturer makes the drug, and not to guess, #135 remains pending.
+
+## #136 — Low molecular weight heparin (pending)
+
+Same reasoning as #135 — no approved manufacturer in scope makes an LMWH product. Left pending per the explicit "do not guess" instruction for this entry.
+
+## #137 — Prefilled heparin syringes (pending)
+
+Identified BD PosiFlush™ Prefilled Heparin Lock Flush Syringe as a genuine, well-documented commercial product during research, but BD/Bard's new-manufacturer research permission for this batch was scoped specifically to the dialysis catheter entries (#125–130), not to medications/priming products. Rather than extend that permission on its own judgment, this entry is left pending, with the BD PosiFlush finding recorded here for a future batch to evaluate with explicit authorization.
+
+## #138 — Citrate lock solution (pending)
+
+Identified Citra-Lock™ as a genuine branded citrate/catheter-lock solution product, but its manufacturer is outside every manufacturer permitted for this batch. No citrate lock product was found from any of the five pilot manufacturers or Teleflex/Arrow. Left pending.
+
+## #139 — Normal saline 0.9% 1L & 500mL
+
+### Nipro 0.9% Sodium Chloride Injection, USP
+- **Official source:** https://www.nipro-group.com/en/our-offer/products-services/09-sodium-chloride-injection-usp (fetched directly) — a Nipro Medical Corporation product (Renal Care / Renal Solutions line), not a different Fresenius entity.
+- **Important distinction documented for future batches:** a search also surfaced a "Fresenius Injection IV Solution .9% Sodium Chloride 1000ml Bags" product, but its actual manufacturer is **Fresenius Kabi** — a separate legal entity/brand from **Fresenius Medical Care** (this pilot's approved manufacturer, which focuses on dialysis equipment/disposables, not general IV pharmaceuticals). Fresenius Kabi was deliberately **not** used or introduced this batch to avoid the same kind of manufacturer misattribution the #133 Centrisol finding warned against. Using the Nipro product instead avoided this issue entirely, since Nipro is already an approved pilot manufacturer.
+- **Fields taken from source:** 1000 mL sterile, single-use, flexible container; manufacturer-stated use is "priming, recirculating, or reinfusing" in hemodialysis; not made with latex or BPA; 12 pcs/case (individually overwrapped); made in the USA.
+- **Not verified / left out:** a 500 mL variant. Only the 1000 mL container is confirmed on Nipro's official page — the 500 mL size in Layali's source entry is **not** claimed to exist as a verified Nipro product.
+- **Architecture note:** no new canonical record was created; #139 remains the sole Hemodialysis-side entry for normal saline, per instruction.
+- **Image:** none obtained — no product photo was found on the official Nipro page (only unrelated "related product" thumbnails).
+
+## #140 — Sterile water / D5W (pending)
+
+Same Fresenius Kabi / Fresenius Medical Care distinction noted under #139 applies here — no D5W or sterile water product was found from Nipro or any other approved manufacturer this batch. Left pending; no new canonical record created or altered.
+
+## #144 — IV cannula & extension tubing (pending)
+
+Investigated whether Terumo (already used for #75, SurFlash Polyurethane I.V. Catheter) or another approved manufacturer offers a distinct cannula+extension-tubing combination product specific to this HD source entry. No such distinctly-named combination product was found this session. Per the explicit instruction not to blindly duplicate #75 into #144 without a documented, non-misleading reason, #144 was left pending rather than force a reference.
+
+## #145 — IV set
+
+### Terumo Terufusion™ Administration Set
+- **Official source:** https://www.terumo-europe.com/en/medical-care-solutions/products/product-type/infusion-pumps-and-accessories/administration-set (fetched directly)
+- **Fields taken from source:** sharp 2-way spike for bag/bottle penetration, adjustable roller clamp with priming notch, Y-site with needleless connecting device, does not contain DEHP, designed for use with Terumo's Terufusion infusion pump line.
+- **Image:** none obtained — no product-only photo was found on the official page.
+
+## #146 — Three-way stopcock
+
+### Nipro Three-Way Stopcock
+- **Official sources:** https://nipro.ca/product/stopcocks/ and https://niproasia.com.sg/product/three-way-stopcock/ (both fetched directly)
+- **Fields taken from source:** catalog code 17-369C ("3-Way Stopcock with Caps"), 50/box, rotating cocks, clear body for flow-path visibility, pressure and chemical resistant.
+- **Image:** deliberately **not** used. The only product photo found on Nipro's own sites (`nipro.ca/wp-content/uploads/2025/06/17-469N-Edited-V2-Edit.png`) is explicitly captioned as showing "17-469N," a different item in the same family (a 4-way large-bore stopcock), not the 3-way stopcock (17-369C) actually mapped here. Rather than show the wrong configuration under this entry, no image was attached.
+
+## #147 — Pressure transducer tubing
+
+### Nipro TP-Sure™ Transducer Protector
+- **Official source:** https://www.nipro-group.com/en/our-offer/products-services/tp-sure-transducer-protector (fetched directly)
+- **Important naming caveat:** Nipro's own product is a **transducer protector** (an inline filter/housing device positioned between a blood tubing set and the hemodialysis machine's pressure monitor), not bare "pressure transducer tubing." It is recorded here as the closest verified official Nipro product for this line item — not a claim that it is literally tubing. Anyone extending this record in a future batch should preserve this distinction rather than blur it.
+- **Fields taken from source:** 0.1 micron hydrophobic filter (bacterial/viral barrier), latex-free, 100/box, described by Nipro as "designed to be clear all throughout" for flow-path visibility, used to protect the pressure monitor and help maintain fluid-pathway sterility.
+- **Image:** none obtained — no dedicated product photo exists on the fetched page (only unrelated "related product" thumbnails).
+
+## #148 — Sterile gauze & cotton balls (pending)
+
+No official 3M, Ansell, Nipro, Fresenius, or Terumo product for sterile gauze sponges or cotton balls was found this session (3M's own product listings under this search term were unrelated cleaning/sanding sponges). Left pending.
+
+## #149 — ABD pads (pending)
+
+Not researched this batch due to time/scope constraints across the full Batch 4 list; no manufacturer match attempted. Left pending.
+
+## #150 — Micropore & silk tape
+
+### 3M Micropore™ Surgical Tape
+- **Official source:** https://www.solventum.com/en-us/home/f/b10057822/ (product family page; corrected from a placeholder URL used mid-session — this is the verified official page for the standard 1530-series Micropore Surgical Tape)
+- **Fields taken from source:** manufacturer-stated use ("secures light-weight dressings and non-critical tubes"), paper tape material, gentle-to-skin adhesive.
+- **Image:** obtained. Official application/lifestyle photo (`s7d9.scene7.com/is/image/mmmspinco/msd-patient-management-micropore-surgical-tape-bplus-image-01-en-us`, 1280×1280 original) showing the tape being applied over a gauze dressing on a patient's arm by a gloved clinician, unaltered aside from cropping out a green marketing-copy banner at the bottom of the original image. Not a pristine product-only photo, but genuine official 3M imagery, consistent with similar lifestyle/application photos already accepted in earlier batches. Cropped to 1280×830, optimized to `images/products/150.jpg` / `.webp` (1200×778).
+- **Not used:** the "silk tape" half of this generic Layali entry — no 3M or other approved-manufacturer silk tape product was identified, so the verifiedProducts record covers only the Micropore (paper tape) portion, consistent with the instruction that a verified product may cover only part of a generic entry.
+- **Considered but not used:** an alternate Solventum image (`...-image-02-en-us`, "Multi-purpose tape" variant) — the image-01 photo was judged clearer and more directly tied to the "secures dressings/tubes" use case relevant to this catalog.
+
+## #151 — Elastic bandage (pending)
+
+Not researched this batch due to time/scope constraints. Left pending.
+
+## #152 — Transparent film dressing
+
+### 3M Tegaderm™ I.V. Transparent Film Dressing with Border
+- **Official source:** https://www.solventum.com/en-us/home/f/b00035596/ (fetched directly)
+- **Deliberately distinct from #130:** this is 3M's plain (non-antimicrobial, non-CHG) transparent film dressing family — confirmed both by the product copy (no chlorhexidine or gel-pad mentioned anywhere on the page) and by the product photo actually obtained, which shows a plain transparent pad with no visible gel pad — physically distinct from #130's CHG dressing (which has a visible tinted gel pad in its own photo). The two records are not duplicates of the same underlying product.
+- **Fields taken from source:** catalog numbers 1610, 1633, 1635, 1635NS, 1655, 1655NS with their exact sizes; "picture-frame" delivery liner; manufacturer-stated wear time "can be safely left on central venous catheters for up to seven days"; not made with natural rubber latex.
+- **Not verified / left out:** any clinical citation details beyond the wear-time fact already directly stated on the product page.
+- **Image:** obtained. Official packshot photo (`s7d9.scene7.com/is/image/mmmspinco/1614-Tegaderm-packshot-pic-3M-001`, 1280×708 original) showing the actual dressing on its release liner with a visible 3M identifier printed on the liner, unaltered. Optimized to `images/products/152.jpg` / `.webp` (1200×664).
+
+## #153 — Chlorhexidine & alcohol swabs
+
+### 3M SoluPrep™ QD Small Swab
+- **Official source:** https://www.solventum.com/en-ca/home/f/b00041801/ (fetched directly; the en-us equivalent URL 404'd, so the en-ca page was used instead — same 3M/Solventum product family)
+- **Exact-match caveat:** the product page's general copy describes the broader SoluPrep Swab family at 2% w/v CHG / 70% v/v IPA (catalog numbers 102.03, 10107, 10203, 10208, 10209), but the actual product photo obtained shows a specific labeled unit reading "SoluPrep™ QD Swab," product code **102.02**, **0.5% w/v** chlorhexidine gluconate + 70% v/v isopropyl alcohol, 1.6 mL single unit dose. The `verifiedSpecs` below deliberately match what is printed on the photographed unit, not the 2% CHG copy from the general page — the same principle used for the #79 Ansell brand-name correction (let the actual obtained image define the exact model recorded).
+- **Fields taken from source:** flat tip design ("for easy cleaning under catheters"), peel-apart packaging, latex-free, for hospital/healthcare professional use only.
+- **Image:** obtained. Official packaging photo (`s7d9.scene7.com/is/image/mmmspinco/102-02_02_ip_center`, 1280×1280 original) showing the fully legible product label with "3M," "SoluPrep QD Swab," product code, DIN number, and composition, unaltered. Optimized to `images/products/153.jpg` / `.webp` (1200×1200).
+
+## #154 — Povidone iodine (pending)
+
+Not researched this batch due to time/scope constraints. Left pending.
+
+## New manufacturers introduced in Batch 4
+
+**Teleflex (Arrow brand)** — introduced under this batch's explicit "research permission only" grant for dialysis catheters, after confirming none of the five original pilot manufacturers make a genuine central-venous hemodialysis catheter. Used for #125, #126, #127. As with the original five, nothing in this data states or implies that Layali Medical Supply is an authorized distributor, partner, or representative of Teleflex/Arrow — these are catalog-identification records only.
+
+No other new manufacturers were introduced. BD/Bard and Medtronic/Covidien were both researched as candidates (BD's Power-Trialysis and HemoStar catheter lines, and BD's PosiFlush prefilled heparin syringe, all look like genuine potential matches) but were **not** added, since Teleflex/Arrow alone already covered #125–127 cleanly and introducing additional catheter manufacturers in the same batch was judged unnecessary manufacturer sprawl. These are recorded here as viable candidates for a future batch if Teleflex/Arrow ever proves insufficient for a new entry.
+
+## Batch 4 summary of what changed
+
+| Source ID | Before Batch 4 | After Batch 4 |
+|---|---|---|
+| #125 | Pending | Teleflex (Arrow) Arrowg+ard Blue AGB Catheter — ErgoPack Complete Kit (imaged) |
+| #126 | Pending | Same Teleflex (Arrow) product as #125 (imaged; intentionally shared, not duplicated) |
+| #127 | Pending | Teleflex (Arrow) Arrow-Clark VectorFlow Chronic HD Catheter (imaged) |
+| #128 | Pending | Still pending (ICU Medical ClearGuard HD Caps identified but not added — manufacturer out of scope) |
+| #129 | Pending | Still pending (no standalone kit product found in scope) |
+| #130 | Pending | 3M Tegaderm CHG Dressing family, models 1657 et al. (imaged) |
+| #135–138, #140 | Pending | Still pending (conservative; no in-scope manufacturer match) |
+| #139 | Pending | Nipro 0.9% Sodium Chloride Injection, USP, 1000 mL (text only) |
+| #144 | Pending | Still pending (no distinct match; #75 not duplicated) |
+| #145 | Pending | Terumo Terufusion Administration Set (text only) |
+| #146 | Pending | Nipro Three-Way Stopcock 17-369C (text only) |
+| #147 | Pending | Nipro TP-Sure Transducer Protector (text only; naming caveat documented) |
+| #148, #149, #151, #154 | Pending | Still pending (not researched this batch) |
+| #150 | Pending | 3M Micropore Surgical Tape (imaged) |
+| #152 | Pending | 3M Tegaderm I.V. Transparent Film Dressing with Border (imaged) |
+| #153 | Pending | 3M SoluPrep QD Small Swab (imaged) |
+
+## Date accessed (Batch 4)
+
+Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `f9641abeb07ade94df56e20c4f684ec10b1501d9`.
