@@ -31,6 +31,11 @@ specific entry. See the Batch 5 section below for full reasoning.
 (#154 only) — confirmed via the official FDA DailyMed structured product
 label for Betadine® Solution Swabsticks. See the Batch 6 section below.
 
+**Additional manufacturers introduced in Batch 7:** Baxter (#64, #68,
+#71, #87), B. Braun (#67, #87), and Dynarex Corporation (#77, #82) — the
+first batch to research and verify non-dialysis (Medical Consumables)
+products. See the Batch 7 section below for full reasoning.
+
 **Relationship disclaimer:** Nothing in this pilot states or implies that
 Layali Medical Supply is an authorized distributor, exclusive distributor,
 official partner, or manufacturer representative of any of the five
@@ -894,3 +899,139 @@ No other new manufacturers were accepted this batch. Medical Action Industries/H
 ## Date accessed (Batch 6)
 
 Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `05b9ceb9922c579227a9adda5ef070fa1e622dc3`.
+
+---
+
+# Batch 7 — Non-dialysis catalog expansion: IV solutions, cotton/gauze,
+# antiseptics, infusion sets (Medical Consumables)
+
+Scope requested: #64, #67, #68, #71, #77, #82, #87, #88 (Medical
+Consumables), with #89-99 (Medical Equipment) as a secondary objective if
+time permitted. Continuing from HEAD `80e9b711bb458217bd9553ff155f061b79de5772`.
+This is the first batch to leave the Hemodialysis group and work the
+non-dialysis catalog; the entire dialysis unresolved set (#116, #117,
+#119, #126, #129, #133, #147, #148, #149, #157, #158, #159, #191-195) was
+explicitly left untouched per instruction. Three new manufacturers were
+introduced (Baxter, B. Braun, Dynarex Corporation), each with strong
+official-source evidence. Medical Equipment (#89-99) was not reached this
+batch given the volume of solid, defensible research already produced in
+Priority A-D — quality over coverage, per instruction.
+
+## #64 — PNSS
+
+### Baxter 0.9% Sodium Chloride Injection, USP (VIAFLEX Plastic Container)
+- **New manufacturer:** Baxter — a well-established IV-fluid manufacturer, explicitly authorized as a research candidate this batch.
+- **Official source:** https://catalog.baxter.com/baxterUS/en/Products/Infusion-&-Nutrition/IV-Solutions/0-9%-Sodium-Chloride-Injection,-USP,-1000-mL-VIAFLEX-Plastic-Container/p/2B1324X (fetched directly; the URL's special characters require percent-encoding to load — plain navigation to the human-readable URL returns a 400 error).
+- **Distinct from #139:** #139 (Nipro's 0.9% Sodium Chloride Injection, USP) is a different manufacturer's different commercial product, framed by Nipro specifically for hemodialysis priming/recirculating/reinfusing use. This Baxter product is a general-purpose IV fluid-replenishment product, not attached to #139, and #139's Nipro record was left completely unchanged. No duplication.
+- **Fields taken from source:** item number 2B1324X, NDC 0338-0049-04, VIAFLEX plastic container, osmolarity 308 mOsmol/L, pH 5.0 (Baxter's own catalog states "pH 5" as a spec field), latex-free, 14/case.
+- **Image:** obtained. Official catalog product photo (`catalog.baxter.com/medias/MPT-2B1324X-d.jpg`, 680×1200 as served) showing the actual bag with fully legible "0.9% Sodium Chloride Injection USP, 1000 mL, Baxter" label, unaltered. Optimized to `images/products/64-baxter.jpg` / `.webp` (680×1200, not upscaled). Note: Baxter's catalog carries a standard disclaimer that "images and labels are for illustrative purposes only and may not be an exact representation of the product" — this is Baxter's own general legal boilerplate rather than a specific claim this particular photo is wrong; the image was still verified by eye to show the correct product name, volume, and branding for this exact item number.
+
+## #67 — PLR
+
+### B. Braun Lactated Ringer's Injection USP (E3® IV Container)
+- **New manufacturer:** B. Braun.
+- **Official source:** https://www.bbraunusa.com/en/products/b5/lactated-ringer-39sinjectionusp1000ml.html (fetched directly).
+- **Product identification only:** no clinical description of what Lactated Ringer's is used for, no dosing, no administration guidance was added — only the manufacturer's own neutral indication phrase ("a source of electrolytes and water for hydration") was kept, matching the precedent already set for #139's Nipro saline record.
+- **Fields taken from source:** product code E7500, NDC 00264-7750-07, specific gravity 1.006, not made with natural rubber latex/PVC/DEHP.
+- **Image:** obtained. Official product photo (`bbraunusa.com/adobe/dynamicmedia/.../lactated-ringer-sinjectionusp1000ml.jpg`, 1000×1000 original) showing the actual bag with a fully legible label (product code, NDC, full electrolyte composition table, B|BRAUN branding), unaltered. Optimized to `images/products/67-bbraun.jpg` / `.webp` (1000×1000).
+
+## #68 — D5W
+
+### Baxter 5% Dextrose Injection, USP (VIAFLEX Plastic Container)
+- **Official source:** https://catalog.baxter.com/baxterUS/en/Products/Infusion-Therapies-&-Technologies/IV-Solutions/5%-Dextrose-Injection,-USP,-1000-mL-VIAFLEX-Plastic-Container/p/2B0064X (fetched directly).
+- **Fields taken from source:** item number 2B0064X, NDC 0338-0017-04, osmolarity 252 mOsmol/L, pH 4.0, latex-free, 14/case. No dosage/administration guidance added.
+- **Image:** obtained. Official catalog photo (`catalog.baxter.com/medias/MPT-2B0064X-d.jpg`, 900×1200 as served) showing the actual bag with legible "5% Dextrose Injection USP, 1000 mL, Baxter" label, unaltered. Optimized to `images/products/68-baxter.jpg` / `.webp` (900×1200).
+
+## #71 — Sterile Water for Injection
+
+### Baxter Sterile Water for Injection, USP (VIAFLEX Plastic Container, For Drug Diluent Use Only)
+- **Official source:** https://catalog.baxter.com/baxterUS/en/Products/Infusion-&-Nutrition/IV-Solutions/Sterile-Water-for-Injection,-USP,-1000-mL-VIAFLEX-Plastic-Container-For-Drug-Diluent-Use-Only/p/2B0304X (fetched directly).
+- **Exact-form verification (the task's specific caution):** this is confirmed to be the **injection** form, not irrigation and not bacteriostatic — the product's own name states "Sterile Water for Injection, USP... For Drug Diluent Use Only," and its official osmolarity spec is 0 mOsmol/L (i.e., plain water with no added electrolytes or bacteriostatic agent). This was not interchanged with Baxter's separate "0.9% Sodium Chloride Irrigation" or any bacteriostatic-water product line, both of which are distinct catalog items.
+- **Fields taken from source:** item number 2B0304X, NDC 0338-0013-04, pH 5.5, latex-free, 14/case.
+- **Image:** obtained. Official catalog photo (`catalog.baxter.com/medias/MPT-2B0304X-d.jpg`, 798×1200 as served) showing the actual bag with large red "Sterile Water" text and the full "Sterile Water for Injection USP / FOR DRUG DILUENT USE ONLY / 1000 mL" label, unaltered. Optimized to `images/products/71-baxter.jpg` / `.webp` (798×1200).
+
+## #77 — Cotton Balls & Gauze Pads (partial coverage)
+
+### Dynarex Cotton Ball (item 3169) — accepted, imaged
+- **New manufacturer:** Dynarex Corporation.
+- **Official source:** https://dynarex.com/products/disposable-medical-supplies/general-advanced-wound-care/3169-cotton-ball (fetched directly).
+- **Fields taken from source:** item 3169 (Large, 1000/box, 2 boxes/case) and item 3170 (Medium, 2000/box, 2 boxes/case); 100% cotton; not made with natural rubber latex or DEHP.
+- **Image:** obtained. Official product photo (`assets.1.commercebuild.com/.../big_3169-Cotton-Balls_Frt_72dpi.png`, 393×393 original — filename confirms it is specifically the photographed model 3169) showing the actual bag with fully legible "dynarex COTTON BALLS, Item 3169, Large, 1000" label, unaltered. Saved to `images/products/77-dynarex-cotton.jpg` / `.webp` (393×393, not upscaled).
+
+### Dynarex Gauze Pad family — accepted, text only
+- **Official source:** https://dynarex.com/products/disposable-medical-supplies/surgical-procedural/3354-gauze-pad--sterile-1s (fetched directly) — a single page listing the full official model/size/ply/pack table for the whole gauze-pad family (sterile 1's, sterile 2's, sterile 10's, X-ray detectable, and non-sterile variants).
+- **Why text-only (image-mismatch caution):** the only product photo on this page (`big_3351-Surgical-Sponges-Back_72dpi.png`) is, per its own filename, specifically model **3351** — the X-ray-detectable variant with a visible blue radiopaque thread — not the plain sterile 4"x4" pad (model 3354) this record otherwise describes. Using that photo under the plain-pad record would have shown a feature (the radiopaque thread) that model 3354 does not have. Per the image rules ("if the available official photo is for a different model/configuration, do not use it"), no image was attached to this record.
+- **Fields taken from source:** exact model/size/ply/pack table (3322, 3333, 3342, 3343, 3354, etc.), 100% cotton gauze, sterile peel-down pouches for the sterile variants.
+- **Partial-coverage note:** this record covers gauze pads only. Cotton balls are covered by the separate Dynarex Cotton Ball record above (same manufacturer, deliberately two separate `verifiedProducts` entries rather than one record implying a single product covers both halves of the generic entry).
+
+## #82 — Alcohol, Povidone-Iodine, Chlorhexidine (partial coverage)
+
+### Dynarex Sterile Alcohol Prep Pad (item 1116) — accepted, imaged
+- **Official source:** https://dynarex.com/products/disposable-medical-supplies/patient-care/1116-alcohol-prep-pad--sterile (fetched directly).
+- **Fields taken from source:** item 1116 (Large, 100 pads/box, 10 boxes/case); sibling items 1113/1114 (Medium); 70% isopropyl alcohol; single-use, sterile pouch, non-woven.
+- **Image:** obtained. Official product photo (`assets.1.commercebuild.com/.../big_1116_alc-pre-pad_IN-pad_72dpi.png`, 393×393 original, filename confirms model 1116) showing the actual foil packet with legible "dynarex STERILE ALCOHOL PREP PAD, LARGE, ITEM 1116" text, unaltered. Saved to `images/products/82-dynarex-alcohol.jpg` / `.webp` (393×393, not upscaled).
+
+### BD ChloraPrep™ Clear 3 mL Applicator with Sterile Solution (SKU 930400) — accepted, imaged
+- **Manufacturer already approved (BD, from Batch 5 for #137); new product line, not a new manufacturer.**
+- **Official source:** https://www.bd.com/en-us/products-and-solutions/products/product-page.930400 (fetched directly).
+- **Fields taken from source:** SKU 930400, GTIN 00354365400327, 2% w/v chlorhexidine gluconate (CHG) + 70% v/v isopropyl alcohol (IPA), 3 mL fill volume.
+- **Deliberately excluded:** the official page's clinical-marketing language ("more than 60 clinical studies," "antimicrobial persistence for at least 7 days," "trusted... for more than 21 years") — none of this was carried into `verifiedSpecs`, per the no-efficacy/no-superiority-claims rule.
+- **Not duplicated with #137:** #137's BD PosiFlush (a heparin flush syringe) and this ChloraPrep applicator (a skin antiseptic) are genuinely different BD product families/SKUs — confirmed distinct, not the same commercial product reused.
+- **Image:** obtained. Official product photo (served as AVIF by BD's image CDN — decoded via Pillow, which reads AVIF natively, same technique used for #137 in Batch 6) showing the actual sponge-tipped applicator on its ampule base, unaltered. Saved to `images/products/82-chloraprep.jpg` / `.webp` (704×400, not upscaled).
+
+### Povidone-iodine component — deliberately not addressed this batch
+Per instruction, #154's exact Betadine® Solution Swabsticks product (Avrio Health L.P.) was **not** duplicated under #82. No independently distinct povidone-iodine product was researched for #82 this batch given time spent on the other two components; this remains open for a future batch to add a genuinely different povidone-iodine product if one is found (#82 already has partial coverage via alcohol + chlorhexidine, so this is not a blocking gap).
+
+## #87 — Macroset (Adult & Pedia) / Microset / Soluset (partial coverage)
+
+### Baxter BURETROL® Solution Set — accepted, imaged
+- **Official source:** https://catalog.baxter.com/baxterUS/en/Products/Infusion-&-Nutrition/Infusion-Systems-&-Accessories/BURETROL-Solution-Set,-150-mL-Burette-Drip-Chamber-Filter-Valve,-3-CLEARLINK-Luer-Activated-Valves,-60-drops-mL,-105%22-(2-7-m),-Non-DEHP/p/2R8864 (fetched directly).
+- **Terminology preserved, per explicit instruction:** Baxter's own official product name is "**BURETROL**", not "Soluset." The generic Layali entry name ("...Soluset") is preserved unchanged as the canonical entry name, but the verified product's own brand field uses Baxter's actual commercial name, not a forced "Soluset" label.
+- **Fields taken from source:** item number 2R8864, 150 mL burette volume, 60 drops/mL drop factor, 105 in (2.7 m) length, non-DEHP, 48/case.
+- **Image:** obtained. Official catalog photo (`catalog.baxter.com/medias/MP-2R8864-d.jpg`, 1200×428 as served) showing the actual burette chamber and tubing set with legible "Baxter" branding on the graduated cylinder, unaltered. Saved to `images/products/87-baxter-buretrol.jpg` / `.webp` (1200×428).
+
+### B. Braun Infusomat® Space® Pump IV Set with ASV (Microdrip, product code 363901) — accepted, text only
+- **Official source:** https://www.bbraunusa.com/en/products/b/60-drops-ml-primingvolume11mllength129in.html (fetched directly).
+- **Why this counts as "Microset":** 60 drops/mL is the defining microdrip drop factor (as opposed to macrodrip's 10-20 drops/mL) — this was read directly from the product's own specification, not inferred from appearance or assumed.
+- **Compatibility caveat (documented, not hidden):** this set is explicitly designed for use with B. Braun's own Infusomat Space infusion pump, not a plain universal-spike gravity set — recorded in `verifiedSpecs` as "Compatibility" so this isn't presented as a generic gravity microdrip set.
+- **Fields taken from source:** product code 363901, WSN 08021-3639-01, priming volume 11 mL, length 129 in, not made with natural rubber, sterile, 24/case.
+- **Image:** none used. The only image on the official page (`infusomat-space-pumpivsetwithasv6.jpg`) rendered at 500×62 pixels — too small and low-quality to be a genuine product photo (more likely a UI icon/thumbnail sliver) — and per the rule against using or upscaling weak images, this record is text-only.
+
+### Macrodrip component — not resolved this batch
+No single canonical B. Braun or Baxter "macrodrip administration set" product was identified with confidence this session. B. Braun's catalog has many 10/15/20-drops/mL sets, but they are each specialized (blood administration, anesthesia, CARESAFE with filter, etc.) rather than one plain general-purpose macrodrip set that could be confidently presented as "the" macrodrip product without further research. Left unaddressed; #87 already has partial coverage via the two records above.
+
+## #88 — Nasal Cannula / Face Mask / NRM (pending — not resolved this batch)
+
+Investigated Teleflex/Hudson RCI nasal cannula and non-rebreather mask products. **Not accepted:** search results consistently indicate "the Hudson RCI brand is now part of the Medline family" — a corporate-lineage signal similar to several other ambiguous-attribution situations already encountered in this project (Betadine, Medical Action/Halyard, Centrisol/Minntech). No direct, unambiguous official teleflex.com product page was found and confirmed this session (only third-party distributor and Medline listings), so per the rule against relying on reseller pages as primary evidence, #88 was left pending rather than force an attribution that could turn out to be a different corporate entity than expected. Recommend a future batch verify directly on teleflex.com whether Hudson RCI nasal cannulas/masks are still an active Teleflex product line, or whether they now belong to Medline as manufacturer of record.
+
+## Medical Equipment (#89-99) — not reached this batch
+
+Given the volume of solid, defensible research already completed in Priorities A-D (7 accepted product records across 6 canonical entries, all with official sources and most with verified images), Medical Equipment was not started this batch. Per instruction to prioritize quality and recognizable, well-evidenced equipment over rushing through all 11 items, this is deferred to a future batch in full.
+
+## New manufacturers introduced in Batch 7
+
+- **Baxter** — used for #64, #68, #71, #87 (BURETROL). A well-established, major IV-fluid and infusion-systems manufacturer with a directly navigable official product catalog (catalog.baxter.com) giving exact item numbers, NDCs, and specifications for every accepted product.
+- **B. Braun** — used for #67, #87 (Infusomat Space microdrip set). Official product pages on bbraunusa.com with exact product codes and NDCs.
+- **Dynarex Corporation** — used for #77 (cotton balls, gauze pads) and #82 (alcohol prep pads). Official product catalog on dynarex.com with exact item numbers, pack configurations, and (for imaged items) filenames that confirm the exact model photographed.
+
+As with every prior manufacturer introduced in this project, nothing in this data states or implies that Layali Medical Supply is an authorized distributor, partner, or representative of Baxter, B. Braun, or Dynarex, nor that these products carry Philippine FDA registration or confirmed Philippine availability — none of this was independently verified, and none of it is claimed.
+
+## Batch 7 summary of what changed
+
+| Source ID | Before Batch 7 | After Batch 7 |
+|---|---|---|
+| #64 | Pending | Baxter 0.9% Sodium Chloride Injection, USP (imaged) |
+| #67 | Pending | B. Braun Lactated Ringer's Injection USP (imaged) |
+| #68 | Pending | Baxter 5% Dextrose Injection, USP (imaged) |
+| #71 | Pending | Baxter Sterile Water for Injection, USP (imaged) |
+| #72, #73, #74, #75, #79 | Verified (Batch 1-2) | Unchanged — re-confirmed intact, no second manufacturer added |
+| #77 | Pending | Dynarex Cotton Ball (imaged) + Dynarex Gauze Pad family (text only) |
+| #82 | Pending | Dynarex Sterile Alcohol Prep Pad (imaged) + BD ChloraPrep (imaged); povidone-iodine portion still open |
+| #87 | Pending | Baxter BURETROL Solution Set (imaged) + B. Braun Infusomat Space microdrip set (text only); macrodrip portion still open |
+| #88 | Pending | Still pending (Hudson RCI/Teleflex-vs-Medline manufacturer ambiguity, not resolved) |
+| #89-99 | Pending | Not researched this batch (deferred) |
+| Dialysis unresolved set (#116, #117, #119, #126, #129, #133, #147, #148, #149, #157, #158, #159, #191-195) | Pending | Unchanged — explicitly not touched per instruction |
+
+## Date accessed (Batch 7)
+
+Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `80e9b711bb458217bd9553ff155f061b79de5772`.
