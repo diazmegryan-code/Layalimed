@@ -44,6 +44,13 @@ Batch 8 section below, including a corporate-ownership note
 distinguishing "Braun" (thermometers, Kaz USA/Helen of Troy) from "B.
 Braun" (IV solutions, #67/#87) — two unrelated companies.
 
+**Additional manufacturers introduced in Batch 9:** Ethicon (Johnson &
+Johnson MedTech) (#100 only), 3M (Solventum) (#101 — new product line for
+an already-approved manufacturer), Hikma Pharmaceuticals USA Inc. (#102
+only), Swann-Morton (#103 only), and Sklar Corporation (#104, #105, #106)
+— the first batch to research Procedure & Surgical Supplies. See the
+Batch 9 section below for full reasoning.
+
 **Relationship disclaimer:** Nothing in this pilot states or implies that
 Layali Medical Supply is an authorized distributor, exclusive distributor,
 official partner, or manufacturer representative of any of the five
@@ -1191,3 +1198,131 @@ As with every prior manufacturer introduced in this project, nothing in this dat
 ## Date accessed (Batch 8)
 
 Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `0073035142ff1fc35b6dac08d68f171db125f3dd`.
+
+---
+
+# Batch 9 — Procedure & Surgical Supplies
+
+Scope: #100 (Suture Materials), #101 (Sterile Drapes), #102 (Lidocaine),
+#103 (Scalpel Blades), #104 (Forceps), #105 (Needle Holders), #106 (Mayo
+Scissors). Continuing from the fully approved and locked Batch 8 HEAD
+`40e8bc017c3c419b9f1195a112451fe33b3d5df8`. All seven entries were resolved
+to a single strong representative product each; no entry was left pending.
+Quality-over-coverage was still applied where evidence was weaker (e.g.
+#104 has no product photo — left text-only rather than substituting an
+unofficial image).
+
+## #100 — Suture Materials
+
+### Ethicon (Johnson & Johnson MedTech) Coated VICRYL® (polyglactin 910) Suture
+- **Official source:** https://www.jnjmedtech.com/en-EMEA/product/coated-vicryl-polyglactin-910-suture (fetched directly).
+- **Why the EMEA URL, not the US URL:** the intuitive US product URL (`jnjmedtech.com/en-US/product/coated-vicryl-polyglactin-910-suture`) redirects to the "Coated VICRYL™ Plus Antibacterial" (triclosan-coated) variant page, which is a **different product** saturated with SSI-reduction percentage claims, cost-analysis figures, and dozens of citations — none of which satisfy the no-efficacy/no-superiority rule and none of which describe the plain base suture intended as the representative family. The EMEA page for the plain (non-antibacterial) product presented only a minimal, neutral indication statement and a clean product image tied to one exact catalog number.
+- **Fields taken from source:** material (polyglactin 910, braided, coated), absorbable classification, catalog number W9136, USP size 2-0, needle (MH-1 PLUS, 31 mm, 1/2 circle), thread length (75 cm), sterility (EO), CE mark (2797), packaging (12/box) — all read directly off the product image/label, not inferred.
+- **Deliberately excluded:** any wound-selection guidance, procedure recommendations, healing-time claims, or comparative/superiority statements versus other suture materials.
+- **Canonical-entry note:** the generic source entry is "Suture Materials," not one specific material — this VICRYL family record is accepted as representative coverage, not a redefinition of the entry. Absorbable vs. non-absorbable, monofilament vs. braided, and sterile status were verified for this exact SKU rather than assumed from the "VICRYL" name alone.
+- **Image:** obtained. Official product-family box photo showing legible "ETHICON," "Coated VICRYL," "2-0," "W9136," "MH-1 PLUS," "75cm," "STERILE EO," and "CE 2797" text, unaltered. Optimized to `images/products/100-vicryl.jpg` / `.webp` (1200×675).
+
+**Rejected/not pursued:** the US-region "Plus Antibacterial" page was not used as a source for any field (different product, disqualifying marketing content). PROLENE/MONOCRYL/ETHILON and Medtronic/Covidien, B. Braun/Aesculap, and Peters Surgical suture families were not independently investigated this batch once VICRYL produced a clean, exact, well-documented match — not a reflection on those manufacturers' products.
+
+## #101 — Sterile Drapes
+
+### 3M (Solventum) Steri-Drape™ Incise Drape, 1000 Series
+- **Official source:** https://www.solventum.com/en-us/home/f/b00039887/ (fetched directly).
+- **Exact-match reasoning:** the manufacturer's own structured product data on this page explicitly lists **"Category name: Surgical Drapes"** and **"Drape type: Incise"** for catalog number 1051, with **"Brand: Steri-Drape™."** This is the manufacturer itself classifying the exact product as a surgical drape — satisfying the task's requirement not to substitute a non-matching product (bed sheet, isolation gown, equipment cover, table cover) unless the manufacturer explicitly classifies it as a sterile surgical/procedure drape.
+- **Configuration documented:** this is specifically an **incise drape** (adhesive film applied directly to prepped skin at the operative site), not a full-body fenestrated/table drape. Documented explicitly here per the task's "if using a drape family, document the exact family and configuration" instruction.
+- **Catalog-number disambiguation:** the same product listing page also shows catalog number **1040**, but its own `Brand` field reads **"Ioban™"** — a different Solventum sub-brand on the same page — so 1040 was deliberately NOT used, to avoid a brand-identity mismatch. Catalog number 1051 (and 1035NS, not used) are both explicitly branded "Steri-Drape™."
+- **Fields taken from source:** catalog number 1051, Product ID 7100238528, overall size 85 cm × 60 cm (33.46 in × 23.62 in), material (plastic film), antimicrobial=false, not made with natural rubber latex, meets flammability Class 1 (16 CFR 1610).
+- **Image:** obtained, but is the manufacturer's own **official technical/dimensional diagram** for catalog number 1051 (a line-art drawing showing the 85 cm × 60 cm outer dimensions and the 60 cm adhesive-film area), not a lifestyle/photographic product image — documented here per the imagery-honesty rule. Sourced from `assets.solventum.com/is/image/mmmspinco/1051` (1280×1280 original, unaltered). Optimized to `images/products/101-steridrape.jpg` / `.webp` (1200×1200).
+
+**Rejected/not pursued:** catalog number 1040 (rejected — branded "Ioban™," not "Steri-Drape™," on the same page). Cardinal Health, Medline, Mölnlycke, and Halyard/Owens & Minor sterile-drape products were not independently investigated this batch once the Solventum Steri-Drape family produced a clean, manufacturer-classified match.
+
+## #102 — Lidocaine
+
+### Hikma Pharmaceuticals USA Inc. Lidocaine HCl Injection, USP (plain, no epinephrine)
+- **Official sources:** FDA-hosted DailyMed structured product label, https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5523fdfe-69fd-49a5-b51f-73e2223d49a9, cross-checked against the openFDA NDC Directory (`api.fda.gov/drug/ndc.json`, product_ndc 0143-9578/0143-9579, labeler "Hikma Pharmaceuticals USA Inc.", route INFILTRATION/PERINEURAL).
+- **Plain vs. epinephrine-containing, explicitly verified:** the openFDA record's `active_ingredients` field lists only "LIDOCAINE HYDROCHLORIDE" (no epinephrine), and the DailyMed label image itself states "For Infiltration and Nerve Block, NOT For Epidural or Caudal Use" with no epinephrine listed as an ingredient — confirmed as plain lidocaine, not silently treated as interchangeable with a lidocaine+epinephrine product.
+- **Corporate attribution:** label states "Manufactured by: HIKMA FARMACÊUTICA (PORTUGAL), S.A.," "Distributed by: Hikma, Berkeley Heights, NJ 07922." Recorded as "Hikma Pharmaceuticals USA Inc. (manufactured by Hikma Farmacêutica (Portugal), S.A.)" to reflect the label's own stated relationship rather than collapsing it to one name.
+- **Fields taken from source (label-derived, factual only):** active ingredient/strength (lidocaine HCl 10 mg/mL, 1%), preservative (methylparaben), container type (multiple-dose vial), NDC 0143-9172-10 (20 mL vial, 10/pack), Rx-only status, the label's own stated route restriction (infiltration/nerve block; not epidural/caudal).
+- **Medication-safety compliance (explicit checklist):** NO dosing guidance, NO injection-technique instructions, NO maximum-dose information, NO patient-selection criteria, NO contraindication guidance, NO treatment recommendations, NO procedure instructions, and NO efficacy claims were included — only product name, concentration, dosage form, container, packaging, manufacturer, and NDC, consistent with "the website is a B2B catalog, not a clinical reference."
+- **Canonical-placement note:** placed only under #102 (Lidocaine, within Procedure & Surgical Supplies) per the existing architecture; no separate/duplicate medication record was created elsewhere.
+- **Image:** obtained. Official FDA DailyMed package-label photo showing legible "Lidocaine HCl Injection, USP," "1% (10 mg/mL)," "NDC 0143-9172-10," "Hikma," and "For Infiltration and Nerve Block, NOT For Epidural or Caudal Use," unaltered. Optimized to `images/products/102-hikma-lidocaine.jpg` / `.webp` (619×369, not upscaled).
+
+**Rejected/not pursued:** Fresenius Kabi, Pfizer/Hospira, and B. Braun lidocaine products were not independently confirmed with an equally clean official/government-hosted label this batch once the Hikma DailyMed record produced an exact, fully-documented, non-epinephrine match; not a negative finding about those manufacturers.
+
+## #103 — Scalpel Blades
+
+### Swann-Morton Surgical Scalpel Blade No. 10
+- **Official source:** https://swann-morton.com/product/16.php (fetched directly), part of the manufacturer's official "No. 3 Range" blade family listing at https://swann-morton.com/surgical.php.
+- **Genuine medical scalpel blade, not a craft/hobby/industrial blade (explicit task requirement):** Swann-Morton's own site identifies itself as "World Leader In The Manufacture of Surgical Blades, Scalpels & Handles Since 1932," and the No. 10 product page is titled "Surgical Scalpel Blade No.10."
+- **Handle compatibility taken directly from official documentation, not inferred visually:** the product page states "The No.10 fits Handles 3, 3L, 3 Graduated, 5B, 7, 9 and B3" — recorded verbatim, per the task's explicit caution against inferring handle compatibility from visual similarity.
+- **Fields taken from source:** blade number (10), blade shape (curved cutting edge), product family (No. 3 Range), compatible handles (as listed above).
+- **Deliberately excluded:** the page's list of named surgical procedures the blade is used in (radial-artery harvesting, thoracic bronchus incisions, C-section uterine incisions, inguinal hernia repair) — this is procedure-recommendation content and was not carried into `verifiedSpecs`, consistent with product-identification-only.
+- **Image:** obtained. Official product photo showing the physical blade with legible "SWANN MORTON ENGLAND B.S." etching and the blade number "10" stamped on the blade itself, unaltered. Optimized to `images/products/103-swannmorton.jpg` / `.webp` (348×1080).
+
+**Rejected/not pursued:** Feather, B. Braun/Aesculap, Integra, and Aspen Surgical scalpel-blade products were not independently investigated this batch once the Swann-Morton No. 10 page produced a clean, exact, officially-documented match.
+
+## #104 — Forceps
+
+### Sklar Corporation Adson (Ewald) Tissue Forceps
+- **Official source:** https://www.sklarcorp.com/p/Sklar-Adson-Tissue-Forceps-4-3-4-Straight-1x2-Teeth/50-3047 (fetched directly).
+- **Exact commercial/instrument name preserved:** recorded as "Sklar® Adson (Ewald) Tissue Forceps" per the manufacturer's own product title and `Family`/`Surname` fields ("thumb forceps" / "adson") — the canonical "Forceps" source entry was not silently redefined to some other instrument type.
+- **Fields taken from source:** SKU 50-3047, family (thumb forceps), pattern (Adson/Ewald), handle style (thumb, non-locking), curvature (straight), length (4-3/4 in / 121 mm), tip configuration (1x2 teeth), material (stainless steel), sterility (non-sterile), reusable, not made with natural rubber latex.
+- **Deliberately excluded:** no sterilization/reprocessing instructions were added beyond the manufacturer's bare "non-sterile" classification field (no cycle counts, autoclave parameters, or reprocessing procedures — none were present on the source page and none were invented).
+- **Image:** none available. The official product page served only a generic "no image" placeholder SVG (`empty-products.svg`) for this SKU, not an actual product photograph. Left text-only rather than substituting a stock/unofficial forceps photo that might not match this exact SKU.
+
+**Rejected/not pursued:** Aesculap/B. Braun's official forceps documentation was searched (aesculapusa.com, official UDI/GTIN catalog PDFs) but no single-product page with an exact catalog number and image was located within this batch's time budget — Aesculap's site structure surfaces bipolar/electrosurgical forceps and large multi-product PDF brochures rather than individual dressing/tissue-forceps product pages. Integra and Medline forceps products were not independently investigated once the Sklar record produced a clean, exact, officially-documented match.
+
+## #105 — Needle Holders
+
+### Sklar Corporation Mayo-Hegar Needle Holder
+- **Official source:** https://www.sklarcorp.com/p/Sklar-Mayo-Hegar-Needle-Holder-6-Serrated/20-2060 (fetched directly).
+- **Classification confirmed from official documentation, not appearance:** the manufacturer's own `Type` field for this product reads "needle holders" (not hemostat, forceps, or scissors), pattern "Mayo-Hegar," handle style "finger rings with ratchet," working edge "cross-serrated with groove" — this exact terminology was preserved rather than a generic "hemostat-like" description.
+- **Fields taken from source:** SKU 20-2060, length 6 in (152 mm), curvature (straight), material (stainless steel), sterility (non-sterile), reusable, not made with natural rubber latex.
+- **Deliberately excluded:** the page's procedure-context text (oral/gynecological/dermatological/bariatric/large-animal procedure suggestions) — not carried into `verifiedSpecs`, consistent with product-identification-only and the no-procedure-recommendation rule.
+- **Image:** obtained. Official product photo (`cdn.swell.store/sklar-staging/.../cc904207332f00fce5925cb41c19a7ea`, 900×900 WebP original) showing the actual instrument — finger-ring ratchet handles and wide cross-serrated jaws, visually and functionally distinct from a hemostat, forceps, or scissors — unaltered. Optimized to `images/products/105-sklar.jpg` / `.webp` (900×900).
+
+**Rejected/not pursued:** Aesculap/B. Braun, Integra, and Medline needle-holder products were not independently investigated this batch once the Sklar Mayo-Hegar record produced a clean, exact, officially-documented, and correctly-classified match. Crile-Wood and Olsen-Hegar pattern needle holders were not pursued as alternatives once a Mayo-Hegar match was confirmed.
+
+## #106 — Mayo Scissors
+
+### Sklar Corporation Mayo Dissecting Scissors (Straight)
+- **Official source:** https://www.sklarcorp.com/p/Sklar-Mayo-Dissecting-Scissors-6-3-4-Straight/15-1567 (fetched directly).
+- **Straight vs. curved kept separate, per manufacturer treatment:** Sklar's own catalog lists straight (15-1567) and curved Mayo Dissecting Scissors as distinct SKUs within the same product family; the straight variant was selected as the single exact representative model rather than merging the two into one generic description.
+- **Fields taken from source:** SKU 15-1567, family (dissecting scissors), pattern (Mayo), handle style (finger rings), curvature (straight), length 6-3/4 in (171 mm), tip configuration (blunt/blunt), working edge (smooth), material (stainless steel), sterility (non-sterile), reusable, not made with natural rubber latex.
+- **Deliberately excluded:** the page's procedure-context text ("most commonly utilized for cutting or dissecting dense or deep tissue... typically used for cutting surface tissue or sutures... depending on procedure and physician preference") — not carried into `verifiedSpecs`.
+- **Image:** obtained. Official product photo (`cdn.swell.store/sklar-staging/.../4cd4ac0c68f71c56d86fa8ca93c4fd72`, 900×900 WebP original) showing the actual straight scissors with finger-ring handles and blunt/blunt tips, unaltered. Optimized to `images/products/106-sklar.jpg` / `.webp` (900×900).
+
+**Rejected/not pursued:** the curved Mayo Dissecting Scissors variant (same Sklar family, different SKU) was not used for this entry — kept as a documented, distinct alternative should a future batch want to add it separately rather than merge it here. Aesculap/B. Braun, Integra, and Medline Mayo-scissors products were not independently investigated once the Sklar record produced a clean, exact match.
+
+## New manufacturers introduced in Batch 9
+
+- **Ethicon (Johnson & Johnson MedTech)** — used for #100 (Coated VICRYL suture). Corporate relationship: Ethicon is presented as "ETHICON™ | J&J MedTech," a Johnson & Johnson MedTech brand.
+- **3M (Solventum)** — new product line (Steri-Drape Incise Drape, #101) for an already-approved manufacturer (previously used for #89, #150-153, #156).
+- **Hikma Pharmaceuticals USA Inc.** — used for #102 (Lidocaine HCl Injection, USP). Manufactured by Hikma Farmacêutica (Portugal), S.A. per the product's own FDA label.
+- **Swann-Morton** — used for #103 (No. 10 surgical scalpel blade).
+- **Sklar Corporation** — used for #104 (Adson tissue forceps), #105 (Mayo-Hegar needle holder), #106 (Mayo dissecting scissors, straight).
+
+As with every prior manufacturer introduced in this project, nothing in this data states or implies that Layali Medical Supply is an authorized distributor, partner, or representative of any of the above, nor that these products carry Philippine FDA registration or confirmed Philippine availability — none of this was independently verified, and none of it is claimed.
+
+## Instrument-classification validation (#104 / #105 / #106)
+
+Per the batch's explicit caution that forceps, needle holders, and scissors are visually similar in some product photography, each of the three records above was verified against the **manufacturer's own stated instrument type/pattern field**, not visual appearance: #104 is officially typed "forceps" (family: thumb forceps, pattern: Adson/Ewald); #105 is officially typed "needle holders" (pattern: Mayo-Hegar); #106 is officially typed "scissors" (family: dissecting scissors, pattern: Mayo). No instrument was classified by how it looked in a photo.
+
+## Batch 9 summary of what changed
+
+| Source ID | Before Batch 9 | After Batch 9 |
+|---|---|---|
+| #100 | Pending | Ethicon Coated VICRYL suture, W9136 (imaged) |
+| #101 | Pending | 3M (Solventum) Steri-Drape Incise Drape, 1051 (imaged, official technical diagram) |
+| #102 | Pending | Hikma Lidocaine HCl Injection USP 1%, NDC 0143-9172-10 (imaged) |
+| #103 | Pending | Swann-Morton No. 10 surgical scalpel blade (imaged) |
+| #104 | Pending | Sklar Adson (Ewald) Tissue Forceps, 50-3047 (text-only, no official photo available) |
+| #105 | Pending | Sklar Mayo-Hegar Needle Holder, 20-2060 (imaged) |
+| #106 | Pending | Sklar Mayo Dissecting Scissors, straight, 15-1567 (imaged) |
+| #64, #67, #68, #71, #72, #73, #74, #75, #77, #79, #82, #87, #89-96, #98, #154 | Verified (Batch 6-8 and earlier) | Unchanged — re-confirmed intact |
+| #88, #97, #99 | Pending | Unchanged — not touched per instruction |
+| Dialysis unresolved set (#116, #117, #119, #126, #129, #133, #147, #148, #149, #157, #158, #159, #191-195) | Pending | Unchanged — explicitly not touched per instruction |
+
+## Date accessed (Batch 9)
+
+Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `40e8bc017c3c419b9f1195a112451fe33b3d5df8`.
