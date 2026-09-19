@@ -80,6 +80,10 @@ body{background:var(--white)}
 .cat-card .product-photo{aspect-ratio:1/1;background:var(--off)}
 .cat-card .product-photo picture,
 .cat-card .product-photo img{display:block;width:100%;height:100%;object-fit:cover}
+/* Restrained product-card interaction: a subtle image scale on hover,
+   the same single-property pattern already used for .consumables-feature.
+   CSS-only — no JS engine touches this element/property. */
+.cat-card:hover .product-photo img{transform:scale(1.025)}
 .cat-card-body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
 .cat-card-group{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mid)}
 .cat-ref{position:absolute;top:12px;right:12px;font-size:10px;color:var(--mid);background:rgba(255,255,255,.85);padding:3px 7px;z-index:2}
@@ -140,6 +144,9 @@ body{background:var(--white)}
 .cat-fade.is-in{opacity:1}
 @media (prefers-reduced-motion: reduce){
   .cat-fade{opacity:1;transition:none}
+  .product-photo img{transition:none}
+  .cat-card:hover .product-photo img{transform:none}
+  .cat-group-arrow{transition:none}
 }
 
 [hidden]{display:none !important}

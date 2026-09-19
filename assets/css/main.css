@@ -121,6 +121,12 @@ em.accent{color:var(--red);font-style:italic}
 .btn-line--on-dark{color:var(--on-dark);border-color:var(--border-dark)}
 .btn-line--on-dark:hover{color:#FF7A87;border-color:#FF7A87}
 
+/* Arrow child of a CTA — Anime.js (assets/js/animations.js) owns its
+   translateX on hover/focus. No CSS transition here: exactly one engine
+   ever writes this element's transform. Fully visible/static if Anime.js
+   doesn't load — it's just inline text until then. */
+.cta-arrow{display:inline-block}
+
 /* ================= NAV ================= */
 #navbar{
   position:fixed;top:0;left:0;right:0;z-index:500;
@@ -484,6 +490,16 @@ footer{background:var(--charcoal-2);color:var(--on-dark-mid);padding:72px var(--
 .reveal.visible{opacity:1;transform:translateY(0);clip-path:inset(0 0 0 0)}
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1;transform:none;clip-path:none;transition:none}
+}
+
+/* ---- Reduced motion: sitewide hover/decorative-motion guards -----------
+   Functional state (which tab is active, etc.) must still reach its end
+   state — only the animated MOVEMENT is removed. Purely decorative scale
+   effects (image hover-zoom) are removed entirely, not just shortened. */
+@media (prefers-reduced-motion: reduce){
+  .consumables-feature-photo img{transition:none}
+  .consumables-feature:hover .consumables-feature-photo img{transform:none}
+  .hd-tab,.hd-tab-arrow{transition:none}
 }
 
 .gs-parallax{will-change:transform}

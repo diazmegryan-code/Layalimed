@@ -219,6 +219,11 @@ function renderResults(products, headingText, _unused) {
   empty.hidden = true;
   grid.innerHTML = products.map(renderCard).join('');
   wireImageFallbacks(grid);
+  // Anime.js (assets/js/animations.js) listens for this to give the grid a
+  // single, container-level reveal — never per-card, so results stay
+  // immediate. If nothing is listening (Anime.js not loaded / reduced
+  // motion), this is a no-op and the grid is already fully visible.
+  document.dispatchEvent(new CustomEvent('catalog:resultsRendered'));
 }
 
 /* ─── IMAGE SLOT ──────────────────────────────────────────────────────────

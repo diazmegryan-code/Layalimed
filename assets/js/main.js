@@ -72,7 +72,15 @@ document.querySelectorAll('.drawer-links a').forEach((a) => a.addEventListener('
 /* ─── GSAP: hero entrance, light→dark scroll transition, subtle parallax ─
    Loaded from CDN only when motion is allowed; everything still works
    (statically, fully visible) if GSAP fails to load or reduced motion
-   is requested — GSAP only adds choreography on top of visible content. */
+   is requested — GSAP only adds choreography on top of visible content.
+
+   Ownership boundary (see assets/js/animations.js for the full map):
+   GSAP here is scoped to major page choreography ONLY — hero entrance,
+   hero parallax, and the light→dark scroll transition. It does not touch
+   the Hemodialysis tab panels; that small UI swap is Anime.js's job
+   (assets/js/animations.js exposes window.LayaliMotion.panelSwap, called
+   from hdSignature() below). No other script animates the elements/
+   properties listed above. */
 (function motion() {
   if (prefersReducedMotion) return;
 
@@ -241,8 +249,8 @@ document.querySelectorAll('.drawer-links a').forEach((a) => a.addEventListener('
       const isActive = p.dataset.hdActive === key;
       if (isActive && p.hidden) {
         p.hidden = false;
-        if (!prefersReducedMotion && window.gsap) {
-          gsap.fromTo(p, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
+        if (!prefersReducedMotion && window.LayaliMotion && window.LayaliMotion.panelSwap) {
+          window.LayaliMotion.panelSwap(p);
         }
       } else if (!isActive) {
         p.hidden = true;
@@ -371,6 +379,9 @@ function validateField(id, groupId, testFn) {
   const grp = document.getElementById(groupId);
   const ok = testFn(el.value.trim());
   grp.classList.toggle('error', !ok);
+  if (!ok && window.LayaliMotion && window.LayaliMotion.flashInvalid) {
+    window.LayaliMotion.flashInvalid(el);
+  }
   return ok;
 }
 
