@@ -27,6 +27,10 @@ documented separately wherever it appears.
 only) — each explicitly authorized in the Batch 5 task brief for that one
 specific entry. See the Batch 5 section below for full reasoning.
 
+**Additional manufacturer introduced in Batch 6:** Avrio Health L.P.
+(#154 only) — confirmed via the official FDA DailyMed structured product
+label for Betadine® Solution Swabsticks. See the Batch 6 section below.
+
 **Relationship disclaimer:** Nothing in this pilot states or implies that
 Layali Medical Supply is an authorized distributor, exclusive distributor,
 official partner, or manufacturer representative of any of the five
@@ -757,3 +761,136 @@ As with every prior manufacturer introduced in this project, nothing in this dat
 ## Date accessed (Batch 5)
 
 Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `92c4675677b47a0f760f8d39bd040b387d625231`.
+
+---
+
+# Batch 6 — Dressing/routine consumables, remaining PPE, water-treatment
+# consumables, and a high-bar revisit of older unresolved entries
+
+Scope requested: #129, #148–149, #154, #157–159, #191–195, and (only after
+exhausting the above) a high-bar revisit of #116–117, #119, #133, #144,
+#147. Continuing from HEAD `05b9ceb9922c579227a9adda5ef070fa1e622dc3`.
+Quality was explicitly prioritized over coverage this batch: only **one**
+new `verifiedProducts` record was accepted (#154); every other investigated
+candidate is documented below as rejected or deferred, several because a
+promising-looking product turned out on closer inspection to be an
+industrial/non-medical product or to have an unresolved manufacturer
+identity.
+
+## #129 — Catheter dressing kits (pending — substantial new research)
+
+### Investigated: Medical Action® / HALYARD CLEAR SEQUENCE™ Dressing Change Kits
+- **New-manufacturer research (not accepted):** Medical Action Industries is a genuine brand (a subsidiary of Owens & Minor), with an official manufacturer marketing page at https://www.halyardhealth.com/products/infusion-therapy-kits (fetched directly) describing "MEDICAL ACTION® IV Start, Dressing Change and Port Change Kits" and, specifically, "CLEAR SEQUENCE™ Dressing Change Kits" — a genuine, patent-pending kit design that separates dressing removal from application into two sterile fields.
+- **Why not accepted:** the marketing page confirms the brand and kit *category* but does not itself provide an exact SKU, pack configuration, or product photo for a central-line/CVC-specific variant. A dedicated product catalog exists at `products.halyardhealth.com` (search results surfaced pages like "CLEAR SEQUENCE* Procedure Kits-10 Pocket w/Protective Flap" under Infection Prevention > Infusion Therapy > Minor Procedure Kits), but this session could not get that catalog's client-side search/deep-linking to return results (repeated attempts loaded only an unrelated "Featured Products" list of Disney-branded pediatric masks). Per the exact-match and "official source as primary evidence" rules, this was not accepted without a confirmed exact SKU and photo from the manufacturer's own catalog.
+- **Distributor-only SKU (not used as primary evidence):** third-party listings (McKesson, DOTmed, others) reference Medical Action kit numbers 262834 ("Central Line Dressing Change Kit with Tegaderm®"), 78937, and 77925, but per instruction these distributor pages were not treated as primary evidence for accepting a mapping.
+- **Recommendation for a future batch:** retry `products.halyardhealth.com`'s catalog search with more time/different navigation approach, or contact Halyard/Medical Action directly for an exact central-line-specific CLEAR SEQUENCE SKU and photo.
+- #129 remains pending. No canonical entry, structure, or prior work disturbed.
+
+## #148 — Sterile gauze & cotton balls (pending)
+
+Re-confirmed this batch: no plain sterile gauze sponge or cotton ball product was found on any official page of the eight approved manufacturers. 3M/Solventum's only sponge-adjacent products remain antiseptic-soaked applicator sponges (SoluPrep Sponge) and specialized wound-vac/pad dressings (AbThera, Medipore +Pad, Tegaderm +Pad) — none of these are plain sterile gauze. Left pending.
+
+## #149 — ABD pads (pending)
+
+Investigated 3M/Solventum's AbThera™ (open-abdomen negative-pressure wound therapy dressing — a specialized surgical device, not a simple absorbent ABD pad) and Medipore™/Tegaderm™ +Pad (adhesive wound dressings with a small integrated pad, not the bulky standalone abdominal combine pad the generic entry describes). Neither is an exact match for an ordinary ABD pad. Left pending.
+
+## #154 — Povidone iodine
+
+### Avrio Health L.P. (dist.) / Atlantis Consumer Healthcare (packager) — Betadine® Solution Swabsticks
+- **Official source:** FDA DailyMed structured product label, https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0707b259-52a4-4ae6-b176-d093865906e7 (a government-hosted regulatory document reproducing the manufacturer's own FDA-submitted label — fetched and read directly via the page's own rendered text, not a third-party summary).
+- **Why this exact label was used (trademark-licensing caution):** "Betadine" is a trademark with a genuinely tangled licensing history across at least three different corporate entities depending on the exact formulation — confirmed directly by cross-checking two other DailyMed entries before selecting this one:
+  - The betadine.com consumer site is a retail first-aid line run by Avrio Health L.P., loaded with "treats," "helps prevent infection," and other consumer-facing efficacy language.
+  - A different DailyMed entry (setid `b026de1b-...`) for "Betadine 5% Sterile **Ophthalmic** Prep Solution" turned out, on inspection of its own FDA package-photo, to be manufactured for **Alcon Laboratories, Inc.** (a Novartis company) by **Catalent Pharma Solutions, LLC** — a completely different product and manufacturer chain from what a general topical antiseptic search initially suggested, despite bearing the same "Betadine®" trademark (noted on the carton as "Reg. TM of Purdue Products L.P."). This candidate was rejected for #154 specifically because it is an ophthalmic (eye) preparation, not a general antiseptic.
+  - The label actually used (Betadine Solution Swabsticks) cleanly and consistently names one chain start to finish: **Packager: Atlantis Consumer Healthcare, Inc.**; **Distributed by: Avrio Health L.P., Stamford, CT** — no conflicting entity appears anywhere on this specific label, unlike the ophthalmic one. Manufacturer attribution follows what is actually printed on this exact document ("Avrio Health L.P."), not the broader "Purdue Products" trademark-owner claim found in unrelated secondary sources, per the project's standing practice of trusting the exact document over indirect claims.
+- **Fields taken from source:** active ingredient (povidone-iodine solution USP, 10%, equal to 1% available iodine), category (antiseptic), use (skin preparation prior to surgery), form (single-use swabstick), packaging (1-swab and 3-swab configurations, NDC 67618-153-01 / 67618-153-03).
+- **Deliberately excluded:** all consumer-marketing language from betadine.com ("prep like the pros," "no mess, no touch," "supports healthy healing," the sore-throat-gargle cross-sell) and the standard OTC drug-facts phrase "helps reduce bacteria that can potentially cause skin infection" was trimmed to a neutral "Use: Skin preparation prior to surgery" per the no-infection-reduction-claims rule.
+- **Image:** none used. An FDA package photo was found and downloaded during research, but it turned out to belong to the rejected Alcon ophthalmic product (different manufacturer, different formulation) — using it under this entry would have shown a photo for a different model/configuration, which the image rules explicitly prohibit. #154 is text-only.
+
+## #157 — Face shields (pending — new rejected candidate)
+
+### Rejected: Ansell AlphaTec 2300/2000 lines investigated for a face-shield equivalent — none found
+No Ansell, 3M, or other approved-manufacturer *face shield* product beyond the two already rejected in Batch 5 (3M W Series — industrial; 3M EAG-1 — a mask-mounted eye guard) was identified this session. Confirmed the Batch 5 rejections remain correct and were **not** reintroduced. #157 remains pending; a future batch should look specifically for an AAMI/ASTM-rated clinical face shield (as opposed to industrial safety-eyewear-category products) from an approved or newly vetted manufacturer.
+
+## #158 — Isolation gowns & aprons (pending — Ansell retried, still rejected)
+
+### Rejected: Ansell AlphaTec™ 2300 STANDARD Gown Bound – Model 214
+- **Official source:** https://www.ansell.com/us/en/products/alphatec-2300-standard-gown-bound-model-214 (fetched directly this batch — the official ansell.com URL now resolves correctly, unlike the 404s hit in Batch 5).
+- **Why rejected:** despite loading successfully this time, the product itself is explicitly an **industrial chemical-protective garment** — "Medium duty chemical protective barrier," tested to ASTM F1671 (viral penetration, an industrial/lab spec) and EN ISO 13688 (general protective clothing), "Recommended for: Handling structural and body components, Equipment maintenance and repair... Fibre Glass/Resin Applications." Its own "Primary Industries" list is "Life Sciences, Automotive, Agriculture, Food Processing" — no hospital/clinical/patient-care context is stated anywhere on the page. Using this as a medical isolation gown would misrepresent an industrial safety product as clinical PPE, the same category of mistake already made and corrected for #157's 3M W Series rejection. Not mapped to #158.
+- No other Ansell isolation-gown page (or page from any other approved manufacturer) explicitly framed for clinical/hospital use was found this session. #158 remains pending.
+
+## #159 — Shoe covers & head caps (pending — Ansell retried, deferred)
+
+### Investigated, not accepted: Ansell Kimtech™ / KleenGuard™ shoe cover lines
+- **Official sources:** https://www.ansell.com/us/en/products/kimtech-a7-cleanroom-shoe-covers and related Kimtech/KleenGuard/AlphaTec shoe-cover pages (all resolve correctly on ansell.com this batch, unlike Batch 5's 404s).
+- **Why not accepted:** every shoe-cover product found lists "Primary Industries: Life Sciences" (pharmaceutical/lab manufacturing cleanroom contexts) — none explicitly states hospital, clinic, or patient-care use the way #155's GAMMEX page explicitly said "sterile... surgical." One variant (Kimtech A5 Sterile Cleanroom Apparel Boot Covers) is at least sterile, which is a promising signal, but still framed for cleanroom/lab use rather than clinical use. Given this session's repeated pattern of industrial-vs-medical mismatches (see #157/#158 above), this was judged too ambiguous to accept confidently without a clearer hospital-context signal.
+- **Recommendation for a future batch:** check whether Ansell (or another approved manufacturer) has a distinct hospital/healthcare-specific shoe-cover or bouffant-cap line separate from its Life-Sciences-cleanroom Kimtech/KleenGuard products.
+- #159 remains pending.
+
+## #191 — RO filters & RO membranes (pending)
+
+Investigated Fresenius's AquaA/AquaA2/AquaHT water-technology modules and Nipro's LiniXia, RO MEDICAL, and RO MEDICAL BASIC systems. All of these are **whole reverse-osmosis systems or modules**, not standalone replacement membrane elements/cartridges — consistent with the Batch 5 finding, re-confirmed this batch. No distinct replacement-membrane consumable product was identified from either manufacturer's official site. Left pending per the explicit instruction not to map a complete machine/system.
+
+## #192 — Carbon & sediment filters (pending)
+
+No official Fresenius or Nipro product page for a standalone replacement carbon or sediment filter cartridge was found this session (only generic patent literature and unofficial third-party technical explanations of how such filters function within water-treatment trains generally). Left pending.
+
+## #193 — UV lamps (pending)
+
+No official Fresenius or Nipro product page for a standalone replacement UV lamp was found this session. Left pending.
+
+## #194 — Disinfection chemicals (pending — new rejected candidate)
+
+### Rejected: Nipro "Sanacide-R7" peracetic-acid disinfectant
+- **Why investigated:** a genuinely distinct chemistry from #196's citric acid — peracetic acid (4.5%) + hydrogen peroxide + acetic acid, described as a dialysis-machine/dialyzer-reprocessing/RO-system disinfectant, which would be an excellent exact-match candidate for #194 if the manufacturer relationship could be confirmed.
+- **Why rejected:** every source found for this product's specifications was a regional distributor site (Thai Amtec Co., Ltd. — a Thai medical-supply distributor) or a regional Nipro-branded distributor portal (niproinindia.com), **not** Nipro's own global corporate domain (nipro-group.com or nipro.com). Per the explicit rule against relying on distributor/reseller pages as primary evidence, and given this session could not independently confirm Sanacide-R7 as an official Nipro-manufactured product on Nipro's own site, it was **not** added to the catalog. Documented here so a future batch can attempt to verify it directly against nipro-group.com or an official Nipro IFU/technical sheet before reconsidering.
+- #194 remains pending.
+
+## #195 — Citric acid (pending)
+
+No distinct, generic (non-heat-disinfection-specific) citric-acid cleaning/descaling product was found from Nipro or Fresenius this session — every Nipro citric-acid product found (CA-50, Citrix-50H, Citrix-LA) is explicitly framed as a citric-heat or hot-water-immersion disinfection product, i.e., the same conceptual product family already placed under #196. Per the Batch 5 decision (reaffirmed here), none of these were duplicated under #195. #195 remains pending, open for a genuinely distinct generic citric-acid product if one is found in a future batch.
+
+## Priority D — high-bar revisit of older unresolved entries
+
+### #116, #117 — Arterial / Venous bloodline (pending, unchanged)
+Not re-investigated beyond re-confirming the Batch 3 finding remains correct: every Nipro/Fresenius bloodline product found is a **combined** arterial+venous set distinguished only by compatible machine, never separate arterial-only/venous-only products. Per explicit instruction not to split a combined set across #116/#117, both remain pending. No new manufacturer evidence was found this session that would change this conclusion.
+
+### #119 — Pediatric tubing set (pending, unchanged)
+Not re-investigated beyond re-confirming the Batch 3 finding: Fresenius's pediatric hemodialysis material describes the 5008 CorDiax Paed *machine*, not a distinct pediatric bloodline *set* product. Per explicit instruction not to infer "pediatric" from low-volume/small size, #119 remains pending.
+
+### #133 — Liquid bicarbonate (pending — manufacturer identity partially resolved, but product's current commercial status now in doubt)
+- **New finding this batch:** the historical manufacturer identity question flagged in Batch 3 (a Fresenius page's own hero photo showing a bottle branded "Centrisol® ... MINNTECH RENAL SYSTEMS / MEDIVATORS INC.") has been partially resolved via independent, non-Fresenius sources: FDA AccessGUDID device registry and FDA MAUDE adverse-event reports both confirm **CENTRISOL® is a registered trademark of Medivators Inc.**, manufactured by **Minntech Corporation** — entirely independent confirmation, not reliant on the ambiguous Fresenius page.
+- **New complication discovered:** medivators.com now redirects entirely to steris.com (Minntech/Medivators having been absorbed into STERIS Corporation), and STERIS's current Medivators-branded web presence is **exclusively about endoscope reprocessing** — no renal/dialysis/Centrisol/bicarbonate content of any kind was found on the current site. This raises real doubt about whether Centrisol liquid bicarbonate concentrate is still a currently manufactured/available product at all, as opposed to a discontinued/legacy line.
+- **Why still not accepted:** per the rule against inferring stock availability or current commercial status, and since "who manufactures this today, if anyone" remains genuinely unresolved (STERIS's own site shows no trace of the product line), #133 remains pending. This is meaningfully better-documented than before, but still not resolved to the standard required for a customer-facing mapping.
+- The Fresenius/Centrisol/Minntech attribution was **not** revived as a Fresenius-manufacturer claim — consistent with the explicit instruction not to do so without resolving identity, and identity resolution (Minntech/Medivators/STERIS) still leaves current availability unconfirmed.
+
+### #144 — IV cannula & extension tubing (pending, unchanged)
+Not re-investigated this batch. #75 (Terumo SurFlash) was not reused, consistent with the Batch 4 decision. Left pending.
+
+### #147 — Pressure transducer tubing (pending, unchanged — TP-Sure confirmed NOT reintroduced)
+Explicitly re-confirmed this batch: Nipro TP-Sure™ Transducer Protector remains excluded from #147's customer-facing data (verified via direct inspection of `product-catalog.json` before and after this batch's edits — #147 has no `verifiedProducts` key). The rejection documented in the Batch 4 cleanup (TP-Sure is a transducer *protector* accessory, not the tubing itself) stands unchanged. No new manufacturer evidence was found this session for genuine pressure-transducer tubing. Left pending.
+
+## New manufacturers introduced in Batch 6
+
+**Avrio Health L.P.** — used for #154 only (Betadine® Solution Swabsticks), per the official FDA DailyMed structured product label naming it as the distributor on this exact product's regulatory document. No Layali distributorship, partnership, Philippine availability, or Philippine FDA registration is stated or implied.
+
+No other new manufacturers were accepted this batch. Medical Action Industries/HALYARD (#129) and Minntech Corporation/Medivators Inc. (#133) were both researched in depth and found to be genuine brand owners with real official web presences, but neither was introduced into customer-facing data — #129 for lack of a confirmed exact SKU+photo, #133 for unresolved current commercial availability. Nipro's Sanacide-R7 (#194) was investigated but its manufacturer relationship to Nipro could not be confirmed on Nipro's own domain, so no new attribution was made there either.
+
+## Batch 6 summary of what changed
+
+| Source ID | Before Batch 6 | After Batch 6 |
+|---|---|---|
+| #129 | Pending | Still pending (Medical Action/HALYARD CLEAR SEQUENCE identified as a strong future lead; no exact SKU/photo confirmed this session) |
+| #148, #149 | Pending | Still pending (re-confirmed, no in-scope manufacturer match) |
+| #154 | Pending | Avrio Health L.P. Betadine Solution Swabsticks (text only) |
+| #157 | Pending | Still pending (no new candidate found; prior rejections re-confirmed) |
+| #158 | Pending | Still pending (Ansell AlphaTec 2300 gown retried and rejected — industrial, not medical) |
+| #159 | Pending | Still pending (Ansell Kimtech/KleenGuard shoe covers retried — cleanroom-context, not confirmed clinical) |
+| #191, #192, #193 | Pending | Still pending (only whole systems/modules found, correctly not mapped) |
+| #194 | Pending | Still pending (Nipro Sanacide-R7 identified but rejected — distributor-only evidence, not confirmed on Nipro's own domain) |
+| #195 | Pending | Still pending (no distinct non-heat-disinfection citric-acid product found) |
+| #116, #117, #119, #144, #147 | Pending | Unchanged (re-confirmed; #147's TP-Sure exclusion re-verified) |
+| #133 | Pending | Still pending (manufacturer identity partially resolved to Minntech Corporation/Medivators Inc., but current commercial availability now in doubt after finding Medivators' web presence fully absorbed into STERIS's endoscopy-only business) |
+
+## Date accessed (Batch 6)
+
+Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `05b9ceb9922c579227a9adda5ef070fa1e622dc3`.
