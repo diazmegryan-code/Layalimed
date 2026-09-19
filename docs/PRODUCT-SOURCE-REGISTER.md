@@ -51,6 +51,17 @@ only), Swann-Morton (#103 only), and Sklar Corporation (#104, #105, #106)
 — the first batch to research Procedure & Surgical Supplies. See the
 Batch 9 section below for full reasoning.
 
+**Additional manufacturers introduced in Batch 10:** AirLife (SunMed Group
+Holdings, LLC dba AirLife) (#88), GE HealthCare (#97), Precision Medical,
+Inc. and Luxfer Gas Cylinders (#99), and Medcomp / Medical Components,
+Inc. (#126) — the final scheduled product-research batch. Batch 10 also
+corrected a pre-existing corporate-attribution inconsistency: all "3M"
+records (#72, #130, #150, #151, #152, #153, #156) were updated to "3M
+(Solventum)" for consistency with #89/#101, since Solventum (3M's 2024
+healthcare spinoff) is the current manufacturer/trademark holder across
+3M's entire former healthcare portfolio, not only the Littmann and
+Steri-Drape lines already labeled that way. See the Batch 10 section below.
+
 **Relationship disclaimer:** Nothing in this pilot states or implies that
 Layali Medical Supply is an authorized distributor, exclusive distributor,
 official partner, or manufacturer representative of any of the five
@@ -1326,3 +1337,179 @@ Per the batch's explicit caution that forceps, needle holders, and scissors are 
 ## Date accessed (Batch 9)
 
 Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `40e8bc017c3c419b9f1195a112451fe33b3d5df8`.
+
+---
+
+# Batch 10 — Final Product Catalog Research + Catalog QA
+
+**This is the final scheduled product-research batch.** Continuing from the fully approved and locked Batch 9 HEAD `8401843da2f1832193dbd7c10279c79b9070a8fd`. Batch 10 had four priorities in order: (A) resolve selected remaining gaps where strong official evidence was realistically obtainable, (B) audit all existing verified products, (C) clean customer-facing catalog data, (D) formally document unresolved entries and close research. Per the batch's own principle, quality and catalog readiness — not the count of resolved entries — was the goal; several investigated candidates were deliberately left pending.
+
+## Priority A — Newly resolved entries
+
+### #88 — Nasal Cannula / Face Mask / NRM
+
+Revisited per the batch's explicit instruction to determine the CURRENT manufacturer/brand-owner rather than relying on the historical Hudson RCI/Teleflex assumption. Corporate-history research (via independent trade-press sources, not a single distributor page) established: Salter Labs merged into SunMed Holdings in 2019; SunMed Group Holdings, LLC rebranded as "AirLife" in 2023. AirLife's own official product site (myairlife.com) now hosts both the "AirLife™" and "Salter Labs®" sub-brands side by side. This is CURRENT evidence, not legacy Hudson RCI/Vyaire/CareFusion branding, and supersedes any prior assumption about this entry's manufacturer.
+
+Partial coverage, three sub-products under one canonical entry:
+- **AirLife™ Oxygen Cannula** (item 001365 Standard/Economical/Flared and SFT2699 Soft Head Tubing, Adult 7'). Official source: https://myairlife.com/product/airlife-oxygen-cannulas. Text-only — the manufacturer's own page states "Updated product images showing our improved product design are coming soon," so no photo was used rather than substitute an unrelated image.
+- **Salter Labs® Medium Concentration Oxygen Mask** (8110-7-50, Adult, 7' tubing) — a plain oxygen face mask, no reservoir bag. Official source: https://myairlife.com/product/medium-concentration-infant-pediatric-oxygen-masks. Imaged.
+- **Salter Labs® High Concentration Non-Rebreather Oxygen Mask** (8140-7-50, Adult, 7' tubing, with reservoir bag). Official source: https://myairlife.com/product/adult-high-concentration-oxygen-masks. Imaged.
+
+Kept explicitly distinct from #98 (Omron nebulizer) and from CPAP/surgical/N95 masks — none of those product types were used here.
+
+### #97 — ECG Machine
+
+Accepted **GE HealthCare MAC™ 2000 Resting ECG**, a 12-channel electrocardiograph. Official source: https://www.gehealthcare.com/en/products/diagnostic-ecg/resting-ecg/mac-2000. Genuine clinical resting-ECG device (full keyboard, thermal printer, LAN/Wi-Fi/serial/modem/SD-card connectivity) — not a wearable or consumer device. The page's own "Marquette 12SL ECG analysis program with measurement and interpretation" and "helps the clinician make a fast and accurate diagnosis" language was deliberately excluded as diagnostic-interpretation/performance-claim content; only neutral device specs (channels, display size, printer paper format, connectivity, memory) were kept. Imaged with the official studio product photo showing legible "GE Healthcare" and "MAC 2000" branding.
+
+**Rejected/not pursued:** EDAN SE-1200 (EdanUSA's official page had full specs but its own product photo was a placeholder "Awaiting product image"; EDAN's global site showed the SE-1200 **Pro**/SE-1201 Pro Series instead — a different model designation from plain "SE-1200" — and its official page did not expose a clean numeric spec table in the accessible page text). Rather than combine SE-1200's specs with an SE-1200 Pro image (a cross-model mix the exact-model rule forbids), GE HealthCare's MAC 2000 was used instead, since it had both clean specs and a matching studio photo from the same official page.
+
+### #99 — Oxygen Tank with Regulator
+
+Resolved as **two separate verified products from two different manufacturers**, per the task's explicit guidance, with no compatibility claim made between them:
+- **Precision Medical, Inc. EasyDial® Oxygen Regulator** — a genuine medical continuous-flow oxygen regulator (not a welding/industrial regulator), with configurable PSI (21/50), flow range, and CGA connection options as documented by the manufacturer. Official source: https://precisionmedical.com/product/easydial/. Imaged with the official product photo (legible "Precision Medical" and "Oxygen" branding on the gauge).
+- **Luxfer Gas Cylinders L6X® Type 1 Aluminum Medical Oxygen Cylinder** — documented explicitly as an **empty pressure vessel rated for medical oxygen service**, not as a filled/ready-to-use unit. Official source: https://www.luxfercylinders.com/product/l6x-aluminum-cylinder-medical-eu/. No filling pressure, gas-handling, or refill instructions were included — only the cylinder's own rated specifications (water volume, service pressure rating, dimensions, weight, rated oxygen capacity by size) as published by the manufacturer. Image is a **family/group photo** of multiple cylinder sizes (unbranded caps visible, no single exact part number identifiable in the photo) — documented here as family-level imagery, not claimed to represent one exact SKU.
+
+### #126 — Temporary HD Catheter
+
+Accepted **Medcomp (Medical Components, Inc.) Hemo-Cath® ST**, listed by the manufacturer under its own "SHORT TERM HEMODIALYSIS" category — official source: https://medcomp.net/short-tem/hemo-cath-st. This is a genuinely distinct commercial product from a different manufacturer than #125's Teleflex/Arrow Arrowg+ard Blue® ErgoPack® Complete Kit — no canonical duplication risk. Specs: Dual "D" internal lumen design, silicone material, tapered tip, French sizes 8F/11.5F/13.5F (double lumen) and 10F/12F (single lumen), straight or pre-curved configuration. Imaged with the official product photo.
+
+### #147 — Pressure Transducer Tubing
+
+Accepted **BD TruWave™ Pressure Tubing (Male/Female)**, REF codes 50P106 through 50P184 (6 in–84 in lengths), 20/case. Official source: https://www.bd.com/en-us/products-and-solutions/products/product-families/truwave-disposable-pressure-transducers (exact REF codes confirmed via the page's own "Model Numbers" data table). This is genuine pressure-monitoring **tubing** — distinct in kind from the previously-rejected Nipro TP-Sure (a transducer **protector**, not tubing). TP-Sure was NOT reintroduced. Text-only — the official page's available photos show the TruWave transducer/TruClip devices themselves, not the plain tubing accessory, so no image was attached rather than risk showing the wrong component.
+
+## Priority A — Entries investigated but left pending
+
+### #129 — Catheter Dressing Kits (left pending)
+
+A genuine Cardinal Health "Dressing Change Kit including Tegaderm™ CHG" (SKU 03-2901B, a true multi-component kit: ChloraPrep applicator, label, Tegaderm CHG dressing, tape, mask, towel, gauze, skin-barrier wipe, gloves, alcohol pad) was identified via a distributor listing (lifelinemedical.net) that named Cardinal Health as the manufacturer. However, Cardinal Health's own official domain either required portal login (market.cardinalhealth.com) or served its vascular-access-kit catalog only as a direct PDF download that could not be reliably fetched and read within this session. Per the rule against relying on distributor pages as primary evidence, this candidate was **not accepted**. Left pending. Does not duplicate #130 (3M/Solventum Tegaderm CHG dressing alone) since a true kit was the target, not the dressing itself.
+
+### #133 — Liquid Bicarbonate (left pending)
+
+Fresenius Medical Care's own official page for "Liquid Sodium Bicarbonate Concentrate" (https://www.freseniusmedicalcare.com/en-us/products/disposables/concentrates/liquid-sodium-bicarbonate-concentrate/) exists, but — unlike NaturaLyte for the acid-concentrate side (#131/#132) — it is a **generic category landing page with no named commercial product or catalog number**, only a description of the product category. This does not meet the "current, commercially identifiable product" bar the task requires. The previously-unresolved Centrisol/Minntech/Medivators identity was not revived (no new evidence found), and no other current liquid-bicarbonate product identity could be established with confidence. Left pending, distinct from #134 (bicarbonate powder/cartridges), which remains verified and untouched.
+
+### Tier 2 / Tier 3 / bloodline review — deliberately not forced
+
+Per the task's explicit instruction not to spend excessive time forcing Tier 3 or bloodline mappings when evidence is weak, and having already delivered five newly-resolved, well-evidenced entries in Tier 1, the remaining Tier 2 (#148, #149, #157, #158, #159), Tier 3 (#191, #192, #193, #194, #195), and bloodline-review (#116, #117, #119) entries were **not re-researched this batch**. This is a deliberate scope decision, not an oversight: Batch 10's stated principle is that Batch 10 "is NOT successful because it resolves every pending product," and a further deep pass on these — several of which (#191-195) require distinguishing individual replacement filters/membranes/lamps/chemicals from whole systems, and where #116/#117/#119 specifically require manufacturer evidence of standalone (not combined-set) products or an explicit pediatric/neonatal classification — was judged likely to produce weak, forced matches rather than defensible ones within this session. They remain pending; see the Final Unresolved Catalog Entries section below for the exact blocker recorded against each.
+
+## Priority B — Audit of all existing verified products
+
+Every `verifiedProducts` record from Batches 1–9 (64 records across 57 canonical entries prior to this batch) was read back from the live JSON and checked for: canonical source ID, manufacturer, brand, product name, model/reference, source URL, image, customer-facing verified specs, duplication, and corporate attribution.
+
+**Findings:**
+- **Corporate-attribution inconsistency found and corrected:** "3M" (used for #72, #130, #150, #151, #152, #153, #156) vs. "3M (Solventum)" (used for #89, #101). Independent verification confirmed Solventum — 3M's April 2024 healthcare spinoff — is the current manufacturer/trademark holder for 3M's **entire** former healthcare/medical portfolio, not only Littmann and Steri-Drape. This was confirmed directly: #150–#153's own `sourceUrl` fields already pointed to `solventum.com` (the manufacturer label had simply not been updated to match), and a fresh search confirmed Tegaderm CHG's (#130) current official product page is also on solventum.com. **Correction applied:** all seven records' `manufacturer` field updated from `"3M"` to `"3M (Solventum)"`. No specs, images, or source URLs were changed — this was a label-only correction, since the underlying product identity does not change.
+- **#131/#132 NaturaLyte duplicate — investigated and classified (see dedicated section below).**
+- No other duplicate, mismatched-image, or incorrect-source-ID issues were found across the remaining 62 verified records.
+- Other named corporate-attribution pairs from the audit checklist were reviewed and found already correctly stated, with no correction needed: Littmann/Solventum (#89), Welch Allyn→Hillrom→Baxter (#90, #92, both already "Welch Allyn (Baxter)"), Ethicon/J&J MedTech (#100), Hikma USA/Hikma Farmacêutica (#102, both entities already named), Accu-Chek/Roche (#93), Fresenius Medical Care vs. Fresenius Kabi (no cross-contamination present — Fresenius Kabi is not used anywhere in the catalog; all Fresenius-attributed HD items correctly say "Fresenius Medical Care"), B. Braun vs. Braun (no conflation present — Braun-brand thermometers are not used anywhere in the catalog). Halyard/Owens & Minor and Centrisol/Minntech/Medivators are not currently used as accepted manufacturers anywhere in the catalog (both remain pending-adjacent research notes only), so no correction was applicable to either.
+- Avrio Health L.P. / Atlantis Consumer Healthcare (#154) was re-checked against its existing DailyMed source and found unchanged from its original Batch 6 documentation; no new evidence surfaced this batch.
+
+## Priority C — Customer-facing data audit
+
+### #102 Lidocaine — public-spec audit (explicit, required)
+
+The live JSON was inspected directly. **Cleanup WAS required.** The `verifiedSpecs` object contained a field `"Route (per label)": "Infiltration and nerve block; not for epidural or caudal use"` — a route/usage-direction statement, not a procurement-identification fact. This field was **removed**. The `brand` field's parenthetical "(plain, no epinephrine)" was **kept**, since that describes the product's actual composition/identity (distinguishing it from a lidocaine+epinephrine product), not a clinical direction for use. Remaining `verifiedSpecs` after cleanup: active ingredient, form, preservative, container, NDC, Rx status — all product-identification facts, no dosing/injection/treatment/procedure content.
+
+### Other medication audit (#135–138, #154, #174–184)
+
+- #135, #136, #174–184, #183, #184: all remain **pending** (no `verifiedProducts`) — nothing to audit.
+- #137 (BD PosiFlush prefilled heparin lock flush syringe): reviewed, already clean (SKU and form only, no dosing/lock-duration guidance).
+- #138 (Dirinco Citra-Lock 4%): reviewed, already clean (active ingredient percentage and article number only, no lock-duration/concentration-selection guidance).
+- #154 (Avrio Health Betadine Solution Swabsticks): reviewed. The `"Use": "Skin preparation prior to surgery"` field is a neutral product-category descriptor (what kind of antiseptic it is), not a treatment instruction — kept, no change needed.
+- #130 (3M/Solventum Tegaderm CHG): the field `"Indication (per official 3M IFU)": "Central venous or arterial catheters"` was reviewed. This is a device-compatibility fact (what type of catheter the dressing is designed for), not a treatment/procedure direction — the same class of fact as a "Type" or "Designed for" spec elsewhere in the catalog. To reduce any impression of clinical framing, the field label was renamed from `"Indication (per official 3M IFU)"` to `"Designated use (per official 3M IFU)"`. The value itself was not changed.
+
+### Marketing-language audit
+
+The entire `verifiedProducts` structure was programmatically searched for: best, superior, advanced, outstanding, trusted, reliable, clinically proven, recommended, more effective, improved outcomes, high performance, premium, leading, innovative, most accurate, clinically superior, doctor recommended, hospital grade. **Zero matches found.** No `verifiedSpecs` field anywhere in the catalog contains promotional/marketing language. (Branded product names such as "Advanced Comfort Fit" or similar, had any existed, would not have been altered per the task's own instruction that branded terms in product names are not to be stripped merely for sounding promotional — but no such case was present.)
+
+### Duplicate audit
+
+A normalized cross-check (manufacturer + brand + sourceUrl, case-insensitive) was run across all `verifiedProducts` entries in the catalog. **Exactly one cross-ID duplicate exists: #131/#132 (NaturaLyte Liquid Acid Concentrate).** No other duplicate commercial product appears under two different source IDs anywhere in the 119-entry catalog.
+
+#### #131/#132 NaturaLyte — detailed conclusion
+
+**Classification: Case A — legitimate same product family representing two different canonical variant-axes, not an unnecessary duplicate.**
+
+Reasoning: #131's source entry is "Ca 1.0 / 1.25 / 1.5 / 1.75 / 1.8" (calcium-concentration variants) and #132's source entry is "Potassium variants: K2 / K3 / K4" — these are two different variant AXES of acid-concentrate formulation, not two independent products. Fresenius Medical Care's own official product page for NaturaLyte Liquid Acid Concentrate (https://freseniusmedicalcare.com/en-us/products/disposables/concentrates/naturalyte-liquid-acid/) explicitly states it is offered "with the widest variety of formulations in the industry today" — i.e., NaturaLyte is documented by its own manufacturer as one product LINE spanning many Ca/K formulation combinations, not one single fixed-formula SKU. Attaching the same family record to both the Ca-variant entry and the K-variant entry therefore reflects the real commercial structure of this product line, rather than a forced duplication for coverage padding. This is analogous to how #82 already carries multiple manufacturer records under one canonical entry, just inverted (here, one manufacturer record legitimately serves two canonical entries representing its two variant axes).
+
+**Correction applied (non-disruptive, no architecture change):** both records' `verifiedSpecs` were given a new leading field, `"Variant axis represented"`, reading `"Calcium (Ca) concentration variants of the NaturaLyte liquid acid concentrate family"` for #131 and `"Potassium (K) concentration variants of the NaturaLyte liquid acid concentrate family"` for #132. No specific Ca/K formulation catalog numbers were invented — Fresenius's page does not publish a formulation-by-formulation catalog-number table, so none was fabricated. If a future batch obtains formulation-specific catalog numbers directly from Fresenius, they should replace this general family record with the specific ones.
+
+### Image audit
+
+All `image`/`imageWebp` paths referenced anywhere in `product-catalog.json` were checked against the filesystem: **zero missing files, zero broken references.** 16 verified-product records are intentionally text-only (no image) across the whole catalog, including two added this batch (#88's cannula sub-item, #147). One record (#99's Luxfer cylinder) uses a family/group photo rather than a single-SKU photo, disclosed as such above. No wrong-model or mismatched-configuration images were found in the audited set.
+
+## Search, filter, and quote-flow test
+
+Live-server verification (fresh `python -m http.server` instance, per the established cache-avoidance practice from prior batches) confirmed:
+- Search by canonical entry name ("ECG") correctly returns #97.
+- Search by manufacturer/brand ("EasyDial", "AirLife") correctly returns #99 and #88 respectively, with both #99 manufacturers rendering under the one canonical card and no compatibility claim between them.
+- Search by medication name ("Lidocaine") returns #102 with the cleaned spec set — confirmed no route/epidural/nerve-block text renders on the live page.
+- No `sourceUrl` values render anywhere on the customer-facing page (confirmed by inspecting the rendered DOM/text output — only `verifiedSpecs`, `brand`, `manufacturer`, `variants`, and images render).
+- No internal research notes, rejected-candidate names, or `publishStatus`/`dataStatus` values appear in rendered output.
+- Regression: #134 (Fresenius bibag + Nipro NiproCART, two-manufacturer entry) renders correctly, unchanged.
+- No broken image icons observed on any tested card; Request Quote CTA present on every card checked.
+
+## Mobile / browser / console result
+
+- 375px viewport: `document.documentElement.scrollWidth` equals `clientWidth` (375 = 375) — no horizontal overflow.
+- Console: zero errors on the catalog page across all searches performed.
+- Desktop viewport: all tested cards (including the new #88/#97/#99/#102/#126 records) render with correct layout, images, and specs.
+
+---
+
+# FINAL UNRESOLVED CATALOG ENTRIES AFTER BATCH 10
+
+Per Batch 10 instructions, this is the closing record of every canonical entry still lacking an accepted verified product as of the end of Batch 10. These are **not failures** — each remains a valid generic catalog entry and will display with "photo pending / details pending" behavior until a future business need reopens it.
+
+| Source ID | Source entry | Why unresolved | Strongest candidate investigated | Exact blocker | Recommended future action |
+|---|---|---|---|---|---|
+| #112 | Dialyzer surface areas 0.6-2.0 m² | Variant-only entry; not independently researched as a separate product | — | Not a standalone product; represented via #109-111/#113-115 dialyzer records | Only revisit if a business need requires a dedicated surface-area SKU breakdown |
+| #113 | Steam sterilized dialyzer | Not independently researched | — | Sterilization method is a dialyzer attribute, not researched as its own product this project | Fold into a future dialyzer-family deep dive if needed |
+| #114 | EO sterilized dialyzer | Not independently researched | — | Same as #113 | Same as #113 |
+| #115 | HDF-compatible dialyzer | Not independently researched | — | Same as #113 | Same as #113 |
+| #116 | Arterial bloodline | Not re-researched in Batch 10 (deliberate scope decision, see Tier review above) | Combined arterial+venous sets already exist under #118/#120/#125-127 family | Manufacturers largely sell arterial+venous as one combined bloodline set; a genuinely separate, independently-sold arterial-only line was not confirmed | Only accept a standalone arterial line if a manufacturer explicitly sells it apart from a combined set |
+| #117 | Venous bloodline | Same as #116 | Same as #116 | Same as #116 | Same as #116 |
+| #119 | Pediatric tubing set | Same deliberate scope decision | — | No manufacturer page explicitly classifying a product as pediatric/neonatal tubing (vs. inferring from size) was confirmed this batch | Accept only when a manufacturer's own documentation explicitly states pediatric/neonatal classification |
+| #122 | Arterial & venous needle | Not independently researched this project | #121/#123/#124 already cover AVF needle types | Distinguishing a combined "arterial & venous needle" product from #121/#124's needle records was not attempted | Revisit only if a distinct combined-pack product is identified |
+| #129 | Catheter dressing kits | Investigated this batch, left pending | Cardinal Health Dressing Change Kit incl. Tegaderm CHG (SKU 03-2901B), found only via a distributor listing | Cardinal Health's own official source was either login-gated or an unreadable PDF within this session | Fetch and read Cardinal Health's official vascular-access-kit PDF/catalog directly (not via distributor) in a future session |
+| #133 | Liquid bicarbonate | Investigated this batch, left pending | Fresenius Medical Care's own "Liquid Sodium Bicarbonate Concentrate" page | Page is a generic category description with no named product/catalog number | Contact Fresenius or find a dated product catalog naming a specific liquid-bicarbonate SKU |
+| #135 | Heparin vial & syringes | Not independently researched this project | #137 (prefilled heparin syringes) already covers the adjacent entry | Plain heparin vial not separately researched | Research a plain (non-prefilled) heparin vial from BD or another manufacturer if needed |
+| #136 | Low molecular weight heparin | Not independently researched this project | — | No LMWH product researched | Research an exact LMWH product (e.g., enoxaparin) with a genuine current manufacturer if this becomes a stocked line |
+| #140 | Sterile water / D5W (Hemodialysis) | Not independently researched — #71/#68 already cover the general-IV versions | — | Whether HD-specific packaging differs from #68/#71 was not investigated | Revisit only if HD-specific packaging is confirmed to differ from the general IV products already verified |
+| #141 | Syringes 1-50cc (Hemodialysis) | Not independently researched — #73 already covers the general syringe entry | — | Whether an HD-specific syringe product exists distinct from #73 was not investigated | Revisit only with a genuine HD-specific product, avoiding duplication of #73 |
+| #142 | Needles 18G/20G/21G/23G (Hemodialysis) | Same as #141, relative to #74 | — | Same as #141 | Same as #141 |
+| #143 | Drawing needles & filter needles | Not independently researched this project | — | No product researched | Research if a specific need arises |
+| #144 | IV cannula & extension tubing (Hemodialysis) | Not independently researched — explicitly cautioned against blindly reusing #75 | — | No HD-specific product distinct from #75 confirmed | Revisit only with a genuinely distinct HD-specific product |
+| #148 | Sterile gauze & cotton balls (Hemodialysis) | Deliberately not re-forced this batch (partial coverage explicitly acceptable; avoiding #77 duplication) | Dynarex family already used for #77 | Reusing the exact #77 Dynarex SKU here would violate the canonical-duplication rule | Find a genuinely distinct manufacturer/SKU for the HD-specific dressing-supplies context, or leave permanently pending as an #77 cross-reference candidate |
+| #149 | ABD pads | Not re-researched this batch | — | No exact ABD-pad product with official evidence found in prior batches | Research Dynarex, Medline, or Cardinal Health ABD pad product with exact SKU |
+| #157 | Face shields | Not re-researched this batch | 3M industrial shield and EAG-1 (both previously rejected) | Genuine healthcare/procedure face shield with official evidence not yet found | Research Medline, Halyard/Owens & Minor, or Cardinal Health procedure face shields |
+| #158 | Isolation gowns & aprons | Not re-researched this batch | Ansell AlphaTec 2300 (previously rejected — industrial, not healthcare) | Genuine healthcare isolation-gown product with official evidence not yet found | Research Cardinal Health, Medline, or Halyard isolation gowns specifically marketed for healthcare use |
+| #159 | Shoe covers & head caps | Not re-researched this batch | — | No exact healthcare-specific product with official evidence found | Research Medline or Cardinal Health shoe-cover/bouffant-cap products |
+| #160-164 | Surface Disinfection (5 entries) | Not researched this project | — | Out of this project's research scope to date | Research if this subcategory becomes a priority |
+| #165-169 | Water Treatment Monitoring (5 entries) | Not researched this project | — | Same as #160-164 | Same as #160-164 |
+| #170-173 | Waste Disposal (4 entries) | Not researched this project | — | Same as #160-164 | Same as #160-164 |
+| #174-182 | Emergency & Routine HD Medications (9 entries) | Not researched this project | — | Medication-safety complexity deliberately deferred beyond this project's scope | Only pursue with explicit business direction on medication-catalog scope, given heightened clinical-content risk |
+| #183 | Heparin lock | Not independently researched — #138 covers citrate lock only | — | No heparin-lock product researched | Research a distinct heparin-lock product if needed, avoiding #135/#137 duplication |
+| #184 | Citrate lock (Catheter Lock Solutions) | Canonical duplication risk with #138 | #138's Dirinco Citra-Lock 4% already serves the Hemodialysis "Citrate lock solution" entry | Whether #184 should share #138's record or represent a distinct product line was not resolved | Decide cross-reference vs. distinct-product treatment in a future batch |
+| #185-189 | Specimen & Lab Supplies (5 entries) | Not researched this project | — | Out of scope to date | Research if this subcategory becomes a priority |
+| #191 | RO filters & RO membranes | Not re-researched this batch | — | Must be an actual filter/membrane, not a whole RO system — no such exact product confirmed yet | Research Fresenius, GE/Osmonics, or another water-treatment component manufacturer for an exact replacement membrane/filter |
+| #192 | Carbon & sediment filters | Not re-researched this batch | — | Same discipline as #191 — no exact replaceable filter product confirmed yet | Same approach as #191 |
+| #193 | UV lamps | Not re-researched this batch | — | Must be an actual replacement lamp, not an entire UV system | Research the exact replacement-lamp SKU from a water-treatment equipment manufacturer |
+| #194 | Disinfection chemicals | Not re-researched this batch | Nipro Sanacide-R7 (previously rejected — distributor-only evidence) | No current official manufacturer evidence found this batch | Recheck Nipro's own official site for Sanacide-R7 or research an alternative disinfection-chemical manufacturer |
+| #195 | Citric acid (non-heat) | Not re-researched this batch | — | Must remain distinct from #196 (Nipro Citric Acid for Heat Disinfection); no distinct non-heat product confirmed | Research only if a genuinely distinct non-heat citric-acid product can be identified without duplicating #196 |
+
+**Total canonical entries with ≥1 verified product after Batch 10: 62 of 119.**
+**Total canonical entries still pending after Batch 10: 57 of 119.**
+
+---
+
+# Final catalog research freeze
+
+Effective at the end of Batch 10:
+
+- **Routine product-research work on this catalog is frozen.** The systematic, batch-by-batch manufacturer-verification effort that ran across Batches 1–10 is complete.
+- **Unresolved products (the 57 entries listed above) remain pending indefinitely** and will display generic canonical-entry/"details pending" behavior on the website. This is an accepted, intentional end state — not a defect to be immediately fixed.
+- **No Batch 11 product-research cycle is planned.** The next phase of work on this project is the dedicated Animation Pass (separately scoped, UI/motion work only — not product research), which Batch 10 does not begin.
+- **New product-verification work should occur only when one of the following happens:** (1) Layali actually sources a new product and needs it added to the live catalog, (2) supplier or manufacturer documentation becomes newly available for a currently-pending entry, (3) a customer inquiry requires a specific product to be verified and published, or (4) a factual correction to an already-published record is required (e.g., a corporate rebrand, a discontinued product, a broken source link). Each such future update should be scoped as its own small, targeted change — not a re-run of the full batch-research process.
+
+## Date accessed (Batch 10)
+
+Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `8401843da2f1832193dbd7c10279c79b9070a8fd`.
