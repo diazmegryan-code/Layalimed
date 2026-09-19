@@ -14,11 +14,18 @@ Terumo, 3M, Ansell. No other manufacturers were introduced in Batches 1–3.
 
 **Additional manufacturer introduced in Batch 4:** Teleflex (Arrow brand) —
 researched and added under Batch 4's explicit "research permission only"
-grant, specifically for dialysis catheter entries (#125–127) after
-confirming none of the original five make a genuine central-venous
-hemodialysis catheter. See the Batch 4 section below for full reasoning.
-This does not change the status of the original five as the primary pilot
-manufacturers; Teleflex is documented separately wherever it appears.
+grant, specifically for dialysis catheter entries (#125, #127; #126 was
+attached to the same record in an earlier pass and later corrected back to
+pending — see the Batch 4 cleanup note) after confirming none of the
+original five make a genuine central-venous hemodialysis catheter. See the
+Batch 4 section below for full reasoning. This does not change the status
+of the original five as the primary pilot manufacturers; Teleflex is
+documented separately wherever it appears.
+
+**Additional manufacturers introduced in Batch 5:** ICU Medical, Inc.
+(#128 only), BD/Becton Dickinson (#137 only), and Dirinco B.V. (#138
+only) — each explicitly authorized in the Batch 5 task brief for that one
+specific entry. See the Batch 5 section below for full reasoning.
 
 **Relationship disclaimer:** Nothing in this pilot states or implies that
 Layali Medical Supply is an authorized distributor, exclusive distributor,
@@ -582,3 +589,171 @@ No other new manufacturers were introduced. BD/Bard and Medtronic/Covidien were 
 ## Date accessed (Batch 4)
 
 Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `f9641abeb07ade94df56e20c4f684ec10b1501d9`.
+
+---
+
+# Batch 5 — Catheter accessories, catheter-lock/prefilled products,
+# dressing consumables, PPE, machine/water-treatment consumables
+
+Scope requested: #128–129, #137–138, #148–149, #151, #154–159, #190–196.
+Continuing from HEAD `92c4675677b47a0f760f8d39bd040b387d625231`. Three new
+manufacturers were introduced this batch, each explicitly authorized in the
+task brief for a specific entry — see "New manufacturers introduced in
+Batch 5" below.
+
+## #128 — Catheter caps & clamps
+
+### ICU Medical ClearGuard® HD Antimicrobial Barrier Cap
+- **New manufacturer:** ICU Medical, Inc. — explicitly authorized this batch as the suggested candidate for #128.
+- **Official sources:** product page https://www.icumed.com/products/renal-care/clearguard-hd-antimicrobial-barrier-caps-for-hemodialysis-catheters/ (fetched directly) and the official Instructions for Use PDF (`icumed.com/media/2k3bg4xz/lm-0002-rev-g-instructions-for-use-ifu-us.pdf`, fetched and read in full).
+- **Fields taken from source:** two caps per shield (color-coded red/blue lock rings), chlorhexidine acetate coating on rod and lock ring threads (≤2.53 mg total per pair, max 0.6 mg released per pair), single-use, gamma sterilized, indicated for use with hemodialysis catheter hubs, used in place of a standard cap or connector, compatible with heparin/citrate/saline lock solutions, recommended max use time 3 days.
+- **Deliberately excluded:** every clinical-trial statistic and comparative-efficacy claim on the official page and in the IFU (CLABSI/PBC reduction percentages, the Brunelli/Hymes cluster-randomized trial results, "clinically proven," comparisons to Tego+Curos) — per the strict no-clinical-claims/no-infection-prevention-recommendation rule, none of this was carried into `verifiedSpecs`. Only structural/identification facts were kept.
+- **Exact-match reasoning:** this is a genuine, dedicated, standalone dialysis-catheter cap product (not a generic IV needleless connector, and not a repurposed clamp) — the official product name and IFU both confirm it is "a cap for use with hemodialysis catheters."
+- **Image:** obtained. Official technical diagram (`icumed.com/media/wt1dq3ww/centered-image_clearguard_how-it-works.png`, 1108×480 original) showing the actual cap attached to a catheter hub with the manufacturer's own annotations ("Coated with chlorhexidine, a broad-spectrum antimicrobial agent," "Antimicrobial agent remains in desired region due to the existing clamps") — informational/structural, not a marketing or clinical-stat graphic. Unaltered. Optimized to `images/products/128-clearguard.jpg` / `.webp` (1108×480).
+- **Considered but not used:** a marketing stat graphic ("Reduce CLABSIs... by up to 63%") found on the same page — rejected outright as a clinical-claim visual, not a product photo.
+
+## #129 — Catheter dressing kits (pending)
+
+Re-confirmed this batch: no genuine "catheter dressing kit" (or general central-line/CVC dressing-change kit) product was found from any of the eight now-approved manufacturers (Nipro, Fresenius Medical Care, Terumo, 3M/Solventum, Ansell, Teleflex/Arrow, ICU Medical, Dirinco). All standalone dressing-kit products identified in market research (Medical Action Industries, Medline, Bioseal, McKesson) remain outside every approved manufacturer. Per instruction not to reuse #130 (a single dressing product, not a kit) as a substitute, #129 remains pending.
+
+## #137 — Prefilled heparin syringes
+
+### BD PosiFlush™ Prefilled Heparin Lock Flush Syringe
+- **New manufacturer:** BD (Becton, Dickinson and Company) — explicitly authorized this batch for this specific product, following its identification (but non-use) in Batch 4.
+- **Official source:** https://www.bd.com/en-us/products-and-solutions/products/product-page.306424 (fetched directly; SKU, fill volume, and concentration confirmed directly from the official page's own title/URL: "5 mL Syringe 5 mL Heparin Fill, 100 USP units/mL").
+- **Distinguishing saline vs. heparin:** BD sells a separate, visually similar "BD PosiFlush Pre-Filled **Saline** Syringe" product family (product-families/bd-posiflush-pre-filled-saline-syringe) — confirmed distinct from the heparin family by checking the product name/URL directly; only the explicitly heparin-labeled SKUs (306413, 306414, 306423, 306424) were used here, never assumed.
+- **Fields taken from source:** exact SKU 306424 (5 mL syringe, 5 mL heparin fill, 100 USP units/mL); sibling SKUs confirmed via the same product family (306413 = 3 mL/10 U/mL, 306423 = 3 mL/100 U/mL, 306414 = 5 mL/10 U/mL).
+- **Not verified / left out:** any dosing, administration, or clinical-guidance text from the BD usage-guidelines PDF — deliberately not carried into the catalog per the no-dosing rule.
+- **Image:** obtained. Official product photo, SKU 306424 ("...PosiFlush_5mL_Heparin_Blue.png", 704×400 as served by BD's image CDN in AVIF format — decoded via Pillow, which reads AVIF natively), showing the actual prefilled syringe with its blue cap, unaltered. Optimized to `images/products/137-posiflush.jpg` / `.webp` (704×400, not upscaled).
+
+## #138 — Citrate lock solution
+
+### Dirinco B.V. Citra-Lock™ 4%
+- **New manufacturer:** Dirinco B.V. — explicitly authorized this batch as "the actual manufacturer of Citra-Lock."
+- **Official source:** https://www.citra-lock.com/producten/citra-lock-4/ (fetched directly).
+- **Manufacturer identity double-confirmed:** the citra-lock.com site itself states the manufacturer is "Dirinco" (later reading found a third-party summary calling it "Dirinco AG," but the product's own printed label — read directly off the obtained product photo — clearly states "Dirinco B.V., Ketelmeer 1, 5347 JX Oss, The Netherlands." The label was treated as authoritative over the third-party summary, consistent with the project's practice of trusting an examined photograph over indirect claims.
+- **Fields taken from source:** exact product (Citra-Lock™ 4%, 5 mL vial, 20 vials/box, article number 24060201), active ingredient (trisodium citrate 4%), connector type (drip-free Luer-Slip/Luer-Lock).
+- **Deliberately excluded:** all comparative/superiority claims present on the official page — "Citra-Lock superior to taurolock," the itemized "clinical advantage... compared to heparine" bullet list (avoids heparin-associated bleeding, safe for HIT patients, reduction of tPA use, cost efficient, etc.), and the ERBP/ASDIN guideline-recommendation claims. None of this comparative/clinical-efficacy language was carried into `verifiedSpecs`, per the explicit instruction against superiority claims and treatment recommendations.
+- **Image:** obtained. Official product photo (`citra-lock.com/wp-content/uploads/2017/02/citra-lock-4.png`, 960×960 original) showing three vials with a fully legible label ("Citra-Lock™ 4%, 5 ml," CE 0197, "Dirinco B.V." address), unaltered. Optimized to `images/products/138-citralock.jpg` / `.webp` (960×960).
+
+## #148 — Sterile gauze & cotton balls (pending)
+
+No official sterile gauze sponge or cotton ball product was found from any of the eight approved manufacturers this session. The only sponge-related 3M/Solventum hits were SoluPrep antiseptic-soaked applicator sponges (a chemically different product, already used for a different entry family) — not plain sterile gauze. Left pending.
+
+## #149 — ABD pads (pending)
+
+Not researched this batch due to time/scope constraints across the full Batch 5 list. Left pending.
+
+## #151 — Elastic bandage
+
+### 3M Coban™ Self-Adherent Wrap
+- **Official source:** https://www.solventum.com/en-us/home/f/b00003205/ (fetched directly).
+- **Fields taken from source:** self-adherent elastic wrap (sticks only to itself, no adhesive/clips/pins/tape needed), contains natural rubber latex, non-sterile, catalog numbers 1581/1581B/1582/1582B/1583/1583B/1583R/1583W/1584/1584B/1586, official 3M category name "Elastic Bandages & Tapes" (directly matching the Layali generic entry name).
+- **Product-type note:** Coban is a cohesive/self-adherent wrap rather than a traditional woven (Ace-style) elastic bandage — flagged for transparency, but accepted since 3M's own product-category taxonomy places it under "Elastic Bandages & Tapes."
+- **Deliberately excluded:** the "can be worn for up to 7 days... as part of a venous leg ulcer management program" and "used under the supervision of a wound care specialist" treatment-protocol language — not carried into `verifiedSpecs`.
+- **Image:** obtained. Official product photo (`s7d9.scene7.com/is/image/mmmspinco/msd-elastic-bandages-tapes-coban-self-adherent-wrap-latex-b00003205-pdp-mainimage1-glbl`, 1280×1280 original) showing four color rolls (pink, tan, white, blue) with legible "3M Coban" printed on each roll core, unaltered. Optimized to `images/products/151.jpg` / `.webp` (1200×1200).
+
+## #154 — Povidone iodine (pending)
+
+Every manufacturer found selling povidone-iodine antiseptic swabsticks (Medline, PDI Healthcare, Dynarex, Lights Medical) is outside the eight approved manufacturers for this project. None of Nipro/Fresenius/Terumo/3M/Ansell/Teleflex/ICU Medical/Dirinco appear to manufacture a povidone-iodine product. Left pending.
+
+## #155 — Sterile & clean gloves
+
+### Ansell GAMMEX™ Non-Latex Sensitive
+- **Official source:** https://www.ansell.com/us/en/products/gammex-non-latex-sensitive (fetched directly).
+- **Distinct from #79:** #79 (Ansell MICRO-TOUCH Nitrile E.P.) is a non-sterile examination glove; GAMMEX is Ansell's sterile surgical glove brand family — confirmed via the product's own tagline ("Non-latex, sterile neoprene surgical gloves") and via the packaging photo obtained, which explicitly shows "Powder-Free" and pair-count labeling consistent with a sterile surgical product, not an exam-glove box.
+- **Fields taken from source:** material (neoprene, non-latex, chemical accelerator-free), sterility (sterile), powder status (powder-free per the obtained packaging photo).
+- **Not verified / left out:** the "30% thinner" and "ultra-thin technology" marketing comparison claims — not included as they compare against "standard Ansell neoprene surgical gloves" rather than describing this product's own absolute specs.
+- **Image:** obtained. Official inner-box packaging photo (`ansell.com/-/media/.../gammex-non-latex-sensitive---inner-box---horizontal---ergo.ashx`, 480×480 original) showing a fully legible "GAMMEX Non-Latex Sensitive" box with size 7½, "Powder-Free," and "50 Pairs" printed on it, unaltered. Optimized to `images/products/155-gammex.jpg` / `.webp` (480×480, not upscaled).
+
+## #156 — Surgical masks & N95 masks
+
+### 3M VFlex™ Health Care Particulate Respirator & Surgical Mask 1804
+- **Official source:** https://www.3m.com/3M/en_US/p/d/v100553014/ (fetched directly), cross-referenced with the 1800-series family page (`b00038115`).
+- **Distinct from #72:** #72 already uses the 3M 1860 (cup-shaped, stapled ear loops). The VFlex 1804 is a genuinely separate 3M product line — flat-fold, V-pleat design, its own NIOSH approval number (TC-84A-7789) — not the same SKU or a relabeled duplicate. Confirmed visually distinct via the obtained product photo (flat-fold VFlex shape vs. 1860's molded cup shape).
+- **Fields taken from source:** NIOSH N95 approval, FDA clearance as a surgical mask, flat-fold V-pleat design, fluid resistance tested per ASTM F1862, available in Small/Standard sizes.
+- **Image:** obtained. Official product photo (`multimedia.3m.com/mws/media/2636709J/3m-vflex-health-care-particulate-respirator-and-surgical-mask-1804-n95.jpg`, requested at `?width=1200` = 1200×1200), fully legible "3M VFlex 1804, Surgical N95 Respirator, NIOSH TC-84A-7789" markings, unaltered. Saved to `images/products/156-vflex.jpg` / `.webp` (1200×1200).
+
+### Rejected: 3M W Series Face Shields & Visors (considered for #156/#157, not used)
+Investigated as a possible #157 candidate. **Rejected** — the official 3M page explicitly states "For industrial/occupational use only. Not for consumer sale or use," is categorized under 3M's industrial Personal Protective Equipment line (not Medical), and its suggested applications are automotive/construction/welding/mining/oil & gas — not clinical/healthcare use. Using an industrial safety-glasses-adjacent face shield as dialysis-center medical PPE would misrepresent the product's actual intended use. Not mapped to any entry.
+
+## #157 — Face shields (pending)
+
+### Investigated / rejected: 3M™ Attachable Face Shield, EAG-1
+- **Official source:** https://www.solventum.com/en-hk/home/f/b5005026000/ (the en-us equivalent 404'd; the en-hk page for the same global catalog number EAG-1 was used instead).
+- **Why not used:** the page states "3M™ Attachable Face Shield, EAG-1 is transitioning to Solventum™ **Adhesive Eye Shield**" and its own packaging (read directly from the obtained product photo) identifies it as "マスクにくっつくアイガード" (an eye guard that attaches to a mask) — a small adhesive eye-protection film sized for mounting onto a surgical mask, not a standard hemodialysis-unit face shield. Given the ambiguity between "eye guard accessory" and "face shield" as the generic Layali entry intends, this was judged too weak a match to accept confidently. Not mapped to #157.
+- #157 remains pending; a future batch should look specifically for a full clinical face shield (not an industrial visor, not a mask-mounted eye guard) from an approved manufacturer.
+
+## #158 — Isolation gowns & aprons (pending)
+
+Investigated Ansell's AlphaTec/MICROGARD isolation gown line, but every result found was a third-party distributor listing (Zoro, Capitol Scientific, Magid Glove, Northern Safety) rather than a live official ansell.com product page — direct navigation to guessed ansell.com URLs for this product family returned 404s this session. Per the rule to prefer official manufacturer sources over distributor/reseller pages, #158 was left pending rather than cite a distributor listing as the primary source. Worth a retry in a future batch with a corrected official URL.
+
+## #159 — Shoe covers & head caps (pending)
+
+Investigated Ansell EDGE shoe cover series (67-050, 67-100). Both guessed official ansell.com product URLs returned 404 this session (same issue as #158); only distributor listings (Fisher Scientific, Medline, Capitol Scientific) were reachable. Left pending for the same reason as #158.
+
+## #190 — Dialysis fluid filters
+
+### Fresenius Medical Care DIASAFE®plus
+- **Official source:** https://freseniusmedicalcare.com/en-gb/healthcare-professionals/haemodialysis/dialyser/diasafeplus-dialysis-fluid-filter/ (fetched directly).
+- **Exact-match reasoning:** a genuine replacement filter cartridge (not a whole machine) — confirmed by the product photo, which shows a single cartridge with a screw-lock connector, not a dialysis machine or system.
+- **Fields taken from source:** function (end-of-line ultrapure dialysis fluid filter), membrane (Fresenius Polysulfone®), surface area (2.2 m²), connection system (DIAFIX™ lock system).
+- **Image:** obtained. Official product photo (`freseniusmedicalcare.com/.../csm-spe001-diasafeplus-dialyzer-....jpeg`, 728×410 original) showing the actual cartridge with legible "DIASAFE plus ONLINE plus" and "Fresenius Medical Care" branding, CE mark, unaltered. Optimized to `images/products/190-diasafe.jpg` / `.webp` (728×410, not upscaled).
+
+## #191 — RO filters & RO membranes (pending)
+
+Investigated Nipro's LiniXia, RO MEDICAL, RO MEDICAL BASIC, and Phoenix One/One DS product lines, and Fresenius's AquaA2. All of these are **whole reverse-osmosis systems/machines**, not standalone replacement RO membrane/filter consumables — per the explicit instruction not to treat a machine as a consumable, none were mapped to #191. No distinct replacement-membrane product (as opposed to a complete RO unit) was identified from an approved manufacturer this session. Left pending.
+
+## #192 — Carbon & sediment filters (pending)
+
+Not researched this batch due to time/scope constraints. Left pending.
+
+## #193 — UV lamps (pending)
+
+Not researched this batch due to time/scope constraints. Left pending.
+
+## #194 — Disinfection chemicals (pending)
+
+Not researched this batch due to time/scope constraints; see #196 below for the one disinfection-related chemical that was resolved (attached there, not here — see reasoning in the #196 entry). Left pending.
+
+## #195 — Citric acid (pending)
+
+See #196 below — Nipro's "Citric Acid for Heat Disinfection" was deliberately placed under #196, not #195, because its official name and stated use are specific to heat-disinfection procedures rather than a generic citric-acid product. #195 remains open for a distinct generic citric-acid product (e.g. one used in general cleaning/descaling rather than specifically machine heat-disinfection) if verified in a future batch.
+
+## #196 — Heat disinfectant chemicals
+
+### Nipro Citric Acid for Heat Disinfection
+- **Official source:** https://www.nipro-group.com/en/our-offer/products-services/citric-acid-heat-disinfection (fetched directly).
+- **#194/#195/#196 placement reasoning:** the product's own official name is "Citric Acid for Heat Disinfection" and its description states the resulting solution "is to be used in accordance with the hemodialysis machine manufacturer's citric-heat disinfection procedure instructions" — the heat-disinfection use case is the product's defining, named characteristic, not an incidental application of generic citric acid. It was therefore placed under #196 (Heat disinfectant chemicals) rather than #195 (Citric acid) or #194 (Disinfection chemicals, a broader/different category), and is **not** duplicated across any of the three entries.
+- **Fields taken from source:** composition (USP grade anhydrous citric acid, mixed with AAMI-quality water to yield a 50% solution), use (per hemodialysis machine manufacturer's citric-heat disinfection procedure), regulatory note (explicitly "Not licensed for use in Canada" per the manufacturer's own page — recorded as-is, not smoothed over).
+- **Deliberately excluded:** "highly effective disinfectant properties," "gentler on machine components relative to more caustic disinfecting agents" — comparative/efficacy marketing language, not carried into `verifiedSpecs`.
+- **Image:** none obtained — no product photo was found on the official page (only an unrelated "Acid Concentrate" related-product thumbnail).
+
+## New manufacturers introduced in Batch 5
+
+- **ICU Medical, Inc.** — used for #128 only. Explicitly authorized this batch as the suggested candidate for a genuine catheter cap product.
+- **BD (Becton, Dickinson and Company)** — used for #137 only. Explicitly authorized this batch, following its identification (but deliberate non-use) in Batch 4.
+- **Dirinco B.V.** — used for #138 only. Explicitly authorized this batch as "the actual manufacturer of Citra-Lock."
+
+As with every prior manufacturer introduced in this project, nothing in this data states or implies that Layali Medical Supply is an authorized distributor, partner, representative, or that these products carry Philippine FDA registration or confirmed Philippine availability — none of that was independently verified, and none of it is claimed.
+
+## Batch 5 summary of what changed
+
+| Source ID | Before Batch 5 | After Batch 5 |
+|---|---|---|
+| #128 | Pending | ICU Medical ClearGuard HD Antimicrobial Barrier Cap (imaged) |
+| #129 | Pending | Still pending (re-confirmed, no in-scope kit product) |
+| #137 | Pending | BD PosiFlush Prefilled Heparin Lock Flush Syringe (imaged) |
+| #138 | Pending | Dirinco B.V. Citra-Lock 4% (imaged) |
+| #148, #149, #154 | Pending | Still pending (no in-scope manufacturer match, or not researched) |
+| #151 | Pending | 3M Coban Self-Adherent Wrap (imaged) |
+| #155 | Pending | Ansell GAMMEX Non-Latex Sensitive (imaged) |
+| #156 | Pending | 3M VFlex 1804 (imaged) |
+| #157, #158, #159 | Pending | Still pending (candidates investigated and rejected/deferred — see sections above) |
+| #190 | Pending | Fresenius Medical Care DIASAFEplus (imaged) |
+| #191, #192, #193, #194, #195 | Pending | Still pending (#191 candidates were whole machines, rejected; #192–195 not researched or intentionally left for #196's chemical) |
+| #196 | Pending | Nipro Citric Acid for Heat Disinfection (text only) |
+
+## Date accessed (Batch 5)
+
+Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `92c4675677b47a0f760f8d39bd040b387d625231`.
