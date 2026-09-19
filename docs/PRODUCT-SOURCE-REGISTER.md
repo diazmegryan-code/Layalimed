@@ -36,6 +36,14 @@ label for Betadine® Solution Swabsticks. See the Batch 6 section below.
 first batch to research and verify non-dialysis (Medical Consumables)
 products. See the Batch 7 section below for full reasoning.
 
+**Additional manufacturers introduced in Batch 8:** 3M (Solventum) (#89
+only — new product line, existing manufacturer), Welch Allyn/Baxter
+(#90, #92), Nonin (#91), Roche (#93), seca (#94, #95), ADC (#96), and
+Omron (#98) — the first batch to research Medical Equipment. See the
+Batch 8 section below, including a corporate-ownership note
+distinguishing "Braun" (thermometers, Kaz USA/Helen of Troy) from "B.
+Braun" (IV solutions, #67/#87) — two unrelated companies.
+
 **Relationship disclaimer:** Nothing in this pilot states or implies that
 Layali Medical Supply is an authorized distributor, exclusive distributor,
 official partner, or manufacturer representative of any of the five
@@ -1035,3 +1043,151 @@ As with every prior manufacturer introduced in this project, nothing in this dat
 ## Date accessed (Batch 7)
 
 Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `80e9b711bb458217bd9553ff155f061b79de5772`.
+
+---
+
+# Batch 8 — Medical Equipment
+
+Scope requested: #89-99 (Medical Equipment), continuing from HEAD
+`0073035142ff1fc35b6dac08d68f171db125f3dd`. Quality over coverage was
+explicitly the top priority: 9 of 11 entries were resolved with one
+strong representative commercial product each (not manufacturer
+comparisons); #97 (ECG Machine) and #99 (Oxygen Tank with Regulator)
+were deliberately left pending rather than force weak matches. Six new
+manufacturers were introduced, each verified against its own official
+domain, with particular attention paid to corporate-ownership chains
+that have already caused attribution problems elsewhere in this project
+(Littmann/3M/Solventum, Welch Allyn/Hillrom/Baxter).
+
+## #89 — Stethoscope
+
+### 3M (Solventum) Littmann® Classic III™ Stethoscope, model 5861
+- **Official source:** https://www.littmann.com/en-us/home/f/b00037556/ (fetched directly).
+- **Corporate-ownership verification (explicit task requirement):** the page's own footer states "© Solventum 2025. Solventum... and Littmann... are trademarks of Solventum or its affiliates" — confirming the CURRENT manufacturer/trademark holder is Solventum (3M's healthcare spinoff), consistent with how #150-153/#156 already attribute their 3M/Solventum products in this catalog. The product still carries "3M™" branding on packaging and in its own product name, so `manufacturer` is recorded as "3M (Solventum)" rather than silently defaulting to old 3M branding or silently switching to Solventum alone.
+- **Exact model selected:** catalog number 5861 (Champagne-finish chestpiece, black tube) — chosen specifically because it has its own unambiguous official hero photo directly tied to that catalog number (`5861-01-HERO-0-1x`), avoiding the risk of mixing specs from a different color/finish variant in the same family.
+- **Fields taken from source:** overall length 27.17 in (69 cm), overall diameter 1.69 in (4.3 cm), net weight 150 g, single-lumen binaural construction, not made with natural rubber latex, no phthalate plasticizers, includes large/small ear tips + non-chill bell sleeve + instructions, 5-year warranty.
+- **Deliberately excluded:** all acoustic-performance/superiority marketing language ("more than twice as loud as the next leading brand," "outstanding acoustic sensitivity," "hear the hard stuff," etc.) — none of this was carried into `verifiedSpecs`, per the no-performance-superiority-claims rule.
+- **Image:** obtained. Official hero photo (`assets.solventum.com/is/image/mmmspinco/5861-01-HERO-0-1x`, requested at 1200×1200) showing the actual stethoscope with its "L" Littmann logo engraved on the chestpiece, unaltered. Optimized to `images/products/89-littmann.jpg` / `.webp` (1200×1200).
+
+## #90 — BP Apparatus / Sphygmomanometer
+
+### Welch Allyn (Baxter) DuraShock™ Bronze Series DS44 Integrated Aneroid, model DS44-11
+- **Official source:** https://www.hillrom.com/en/products/bronze-series-ds44-integrated-and-pocket-aneroids/ (this URL redirects fully to catalog.baxter.com, confirming current corporate consolidation).
+- **Corporate-ownership verification:** confirmed the current official presentation of Welch Allyn products is entirely through Baxter's own catalog.baxter.com domain (Hillrom, which acquired Welch Allyn in 2015, was itself acquired by Baxter in 2021) — recorded as "Welch Allyn (Baxter)" to preserve both the product brand and the current corporate owner.
+- **Exact-type verification (explicit task requirement):** this is a genuine **manual/aneroid** sphygmomanometer (gauge + inflation bulb + cuff), NOT an automatic/electronic consumer BP monitor — confirmed both by the product name ("Aneroid") and by the product photo itself, which shows a hand-inflated bulb and analog gauge dial.
+- **Fields taken from source:** item number DS44ANEROID; gear-free DuraShock shock-resistant movement (withstands a 30-inch drop per AAMI standard, per general DuraShock family description); exact photographed configuration confirmed as model DS44-11 (adult cuff, FlexiPort) via the image filename.
+- **Image:** obtained. Official catalog photo (`catalog.baxter.com/medias/WA-DS44-wFlexiPort-DS44-11-d.jpg`, 1200×1200 as served) showing the actual aneroid gauge with legible "Welch Allyn" text and "Shock Resistant" markings, navy cuff labeled "ADULT 11," unaltered. Optimized to `images/products/90-welchallyn.jpg` / `.webp` (1200×1200).
+
+## #91 — Pulse Oximeter
+
+### Nonin Onyx® Vantage 9590 Fingertip Pulse Oximeter
+- **Official source:** https://www.nonin.com/products/9590/ (fetched directly).
+- **Why Nonin over Masimo:** Masimo's MightySat Rx is an app-connected wearable requiring Bluetooth pairing with a companion app, with heavier marketing language around its measurement technology; the Nonin Onyx Vantage 9590 is a simpler, genuinely standalone fingertip device, better matching the task's preference for "an exact standalone product."
+- **Fields taken from source:** fit range 8 mm to 25.4 mm (0.3-1.0 in), weight under 2 oz, power (2 AAA batteries, up to 6,000 spot checks), water resistance exceeding IP32, 4-year warranty, includes lanyard and batteries.
+- **Deliberately excluded:** "Reliable Performance... accurate measurements for diverse skin pigmentations and even for patients with low perfusion," "PureSAT technology captures... quickly and accurately," and all diagnostic/accuracy claims — none carried into `verifiedSpecs`, per the no-diagnostic-claims rule.
+- **Image:** obtained. Official product photo (`nonin.com/wp-content/uploads/beans/images/Product-Image-9590-Black-Straight-...jpg`, 1200×1000 as served) showing the actual device with legible "NONIN" logo and "%SpO2" display, unaltered. Optimized to `images/products/91-nonin.jpg` / `.webp` (1200×1000).
+
+## #92 — Thermometer
+
+### Welch Allyn (Baxter) SureTemp® Plus 690 Electronic Thermometer
+- **Official source:** https://pro.baxter.com/products/diagnostics-examination/physical-exam-diagnostics/suretemp-plus-thermometers (fetched directly; the page's own footer states "Baxter, Hillrom, Welch Allyn... and SureTemp Plus are trademarks of Baxter International Inc. or its subsidiaries").
+- **Corporate-ownership caution avoided:** deliberately did NOT use the Braun ThermoScan ear thermometer line, since research surfaced that the clinical "ThermoScan PRO" line is manufactured by Kaz USA, Inc. under license to the Braun trademark — a licensing chain unrelated to (and easily confused with) "B. Braun" (already used for #67/#87 in Batch 7, a completely different German company, B. Braun Melsungen AG). Choosing Welch Allyn/Baxter instead avoided this ambiguity entirely.
+- **Exact-type verification (explicit task requirement):** this is a **contact digital thermometer** with an interchangeable oral/rectal/axillary probe — explicitly NOT an infrared, ear, or forehead thermometer. Recorded as such in `verifiedSpecs`.
+- **Exact model control (avoiding cross-model spec mixing):** the official page presents a feature-comparison table for models 690 vs. 692 side by side. Only 690's own row of that table was used (LCD display without backlight, Recall button only, no pulse-timer/location-ID features) — none of 692's distinct features (backlit display, pulse timer/monitor mode, theft-deterrent location ID field) were attributed to 690.
+- **Image:** obtained via careful cropping. The only image on the page was a two-thermometer family photo (`p1.aprimocdn.net/hillrom/.../FLC_SureTemp-Plus-Thermometers-F_family_...jpg`); the LEFT unit in that photo visibly lacks a pulse-timer button and location-ID field — matching model 690's own documented feature set exactly — so it was cropped out and used; the RIGHT unit (which has both those features, matching 692) was excluded. Optimized to `images/products/92-welchallyn-suretemp.jpg` / `.webp` (673×1200).
+
+## #93 — Glucometer with Strips
+
+### Roche Accu-Chek® Guide Blood Glucose Meter + Accu-Chek® Guide Test Strips
+- **Official sources:** https://www.accu-chek.com/products/meters/guide and https://www.accu-chek.com/products/strips/guide (both fetched directly).
+- **Compatibility verified, not assumed:** accu-chek.com's own compatibility page states test strips are "compatible with Accu-Chek Guide, Guide Me, and Guide Link meters only" — the meter+strip pairing recorded here is the manufacturer's own stated compatible combination, not an assumption from matching product names.
+- **Safety note (not carried into catalog data):** the meter's official page carries a live "URGENT MEDICAL DEVICE REMOVAL" notice for nine specific serial numbers (a display-unit-configuration issue, mg/dL vs. mmol/L). This is a serial-number-specific recall, not a permanent characteristic of the commercial product line, and was not included in the catalog (no serial numbers, recall status, or operational details belong in customer-facing product identification).
+- **Fields taken from source:** SmartPack spill-resistant test-strip vial, blood sample applied anywhere along the strip edge, Bluetooth pairing with the mySugr app (a device feature, recorded neutrally, not a clinical claim).
+- **Deliberately excluded:** "Advanced accuracy... Accu-Chek's most accurate ever," the "10/10 accuracy: 95% of measured glucose results..." statistic, and all diabetes-management/glucose-target content — none of this belongs in a B2B catalog identification record.
+- **Image:** obtained (two images — meter and strips are visually and physically distinct products, imaged separately). Official meter photo (`accu-chek.com/.../Accu-Chek-Guide-meter-front-400x400_0.png`, 400×400) showing the actual meter display; official test-strip vial photo (`.../Guide-25ct-Test-Strips-Contents-400x400_0.png`, 400×400) showing the vial with legible "Roche" branding. Both unaltered. Optimized to `images/products/93-accuchek-guide.jpg` / `.webp` and `images/products/93-accuchek-strips.jpg` / `.webp` (400×400 each, not upscaled).
+
+## #94 — Weighing Scale
+
+### seca 700 Mechanical Column Scale
+- **Official source:** https://www.seca.com/en_us/products/all-products/product-details/seca700.html (fetched directly).
+- **Genuine clinical/professional device (explicit task requirement):** a mechanical beam-balance column scale with transport castors, explicitly not a household/consumer smart scale.
+- **Fields taken from source:** capacity 220 kg / 485 lbs, graduation 50 g / 1/8 lb, dimensions 520×1556×520 mm, net weight 16.2 kg, includes the seca 220 telescopic measuring rod (24-78 in range) for combined height+weight measurement, transport castors, reset-to-zero function, CE 0123 certified.
+- **Canonical-duplication note:** the seca 220 rod bundled with this scale is a genuinely distinct, independently sold seca product (its own model number); #95 below uses a different, independently verified seca product (the seca 213 portable stadiometer), not the bundled seca 220, avoiding any risk of the same exact commercial item appearing under two source IDs.
+- **Image:** obtained. Official product photo (`seca.com/uploads/tx_secaproducts/seca-700__220__front_feature_PNG_01.png`) showing the actual scale with legible "seca" branding on the beam, unaltered. Optimized to `images/products/94-seca.jpg` / `.webp` (255×625, not upscaled).
+
+## #95 — Height Measuring Device
+
+### seca 213 Portable Stadiometer
+- **Official source:** https://www.seca.com/en_us/products/all-products/product-details/seca213.html (fetched directly).
+- **Genuine standalone stadiometer, not a tape measure (explicit task requirement).**
+- **Fields taken from source:** measuring range 20-205 cm (8-81 in), graduation 1 mm / 1/8 in, dimensions 337×2165×590 mm, net weight 2.4 kg, CE 0123 certified.
+- **Image:** obtained. Official product photo (`seca.com/uploads/tx_secaproducts/seca-213_PNG.png`) showing the actual stadiometer with legible red "seca" logo on the headpiece, unaltered. Optimized to `images/products/95-seca.jpg` / `.webp` (282×795, not upscaled).
+
+## #96 — Penlight
+
+### ADC (American Diagnostic Corporation) Adlite Plus™ Disposable Penlight
+- **Official source:** https://www.adctoday.com/products/356 (fetched directly).
+- **Genuine medical diagnostic penlight, not a generic flashlight (explicit task requirement):** ADC is a dedicated medical-device manufacturer (self-described "Core Medical Device Manufacturer," ISO 13485 certified), and this product is explicitly marketed as a "disposable diagnostic penlight."
+- **Why ADC over Welch Allyn:** the Welch Allyn Professional PenLite (model 76600) had no confirmed official manufacturer product page this session — only third-party distributor listings (AliMed, Tiger Medical, etc.) were found, so per the rule against relying on reseller pages as primary evidence, it was not used. ADC's own official adctoday.com page gave a clean, direct, exact-model source instead.
+- **Fields taken from source:** REF 356BK (Black), UPC 634782040246, 4-1/2 in long, 1/2 in diameter, sealed concentric beam, activated by depressing the pocket clip, available in 8 color/configuration variants.
+- **Deliberately excluded:** "Rigorous Quality Control," "Award-Winning Customer Service," "The Best Design and the Finest Components," and other general corporate-marketing sections on the page — none of this is product-specific and none was carried into `verifiedSpecs`.
+- **Image:** obtained. Official product photo (`adctoday.com/sites/default/files/styles/main_product_image/public/356BK-web.jpg`, 1000×844 as served) showing the actual black penlight, unaltered. Optimized to `images/products/96-adc.jpg` / `.webp` (1000×844).
+
+## #97 — ECG Machine (pending — not researched this batch)
+
+Not researched this batch given the volume of solid, defensible research already completed for #89-96 and #98. A future batch should investigate an exact clinical electrocardiograph model (not a wearable/consumer device) from an established manufacturer (GE HealthCare, Philips, Nihon Kohden, Schiller, Edan), verifying exact model, channel/lead count, and display/printing characteristics only where officially documented.
+
+## #98 — Nebulizing Machine
+
+### Omron CompAir® Compressor Tabletop Nebulizer System, model NE-C801
+- **Official source:** https://omronhealthcare.com/products/compair-compressor-tabletop-nebulizer-system-ne-c801 (fetched directly).
+- **Genuine compressor+nebulizer-cup system (explicit task requirement):** confirmed distinct from an oxygen mask, oxygen concentrator, or ventilator — the product photo itself shows a genuine compressor unit with a nebulizer medication cup, mouthpiece, and air tubing.
+- **Fields taken from source:** model NE-C801, UPC 073796458010, weight 9.5 oz, dimensions 142×98×72 mm, NDC 73796-0458-01, tabletop (not handheld), AC-adapter powered, sound level approx. 52 dBA while in use, particle size 3 μm (MMAD), includes unit/nebulizer kit/mouthpiece/air tube/AC adapter/4 air filters/storage bag/instruction manual.
+- **Deliberately excluded:** "administers medication as effectively as tabletop models three times its size," "greater probability to penetrate into the deep lung," "affordable and efficient alternative," and the "similar to the sound of an electric toothbrush" comparison — none of this comparative/clinical-performance language was carried into `verifiedSpecs`. The raw sound-level (dBA) and particle-size (μm) figures were kept as neutral physical measurements, consistent with how drop-factor and osmolarity figures have been kept elsewhere in this catalog.
+- **Image:** obtained. Official product photo (`omronhealthcare.com/images/.../nec801-hero-600x600.jpg`, requested at 1600×1600) showing the actual compressor unit with legible "OMRON" branding, nebulizer cup, and tubing, unaltered. Optimized to `images/products/98-omron.jpg` / `.webp` (1200×1200).
+
+## #99 — Oxygen Tank with Regulator (pending — not researched this batch)
+
+Not researched this batch. Per the explicit task caution, this entry requires particular care to avoid: implying a cylinder sold empty contains oxygen, implying untested regulator/cylinder compatibility, publishing filling-pressure or medical-gas claims sourced from reseller pages, or using industrial welding-oxygen equipment as medical equipment. A future batch should research a medical-gas cylinder and a medical-gas regulator as potentially separate verified products (partial coverage explicitly allowed) from a manufacturer with genuine medical-gas-equipment documentation.
+
+## New manufacturers introduced in Batch 8
+
+- **3M (Solventum)** — used for #89 (Littmann Classic III). Consistent with the existing 3M/Solventum attribution pattern already used for #150-153/#156.
+- **Welch Allyn (Baxter)** — used for #90 (DS44 sphygmomanometer) and #92 (SureTemp Plus 690 thermometer). Corporate chain verified: Welch Allyn → Hillrom (2015 acquisition) → Baxter (2021 acquisition); official product pages now live entirely on catalog.baxter.com / pro.baxter.com.
+- **Nonin** — used for #91 (Onyx Vantage 9590 pulse oximeter).
+- **Roche** — used for #93 (Accu-Chek Guide meter + test strips).
+- **seca** — used for #94 (seca 700 scale) and #95 (seca 213 stadiometer).
+- **ADC (American Diagnostic Corporation)** — used for #96 (Adlite Plus penlight).
+- **Omron** — used for #98 (CompAir NE-C801 nebulizer).
+
+As with every prior manufacturer introduced in this project, nothing in this data states or implies that Layali Medical Supply is an authorized distributor, partner, or representative of any of the above, nor that these products carry Philippine FDA registration or confirmed Philippine availability — none of this was independently verified, and none of it is claimed.
+
+## Corporate/brand relationships requiring ongoing clarification
+
+- **Littmann / 3M / Solventum:** current manufacturer and trademark holder is Solventum; product retains 3M™ branding. Recorded as "3M (Solventum)."
+- **Welch Allyn / Hillrom / Baxter:** current official presentation is entirely through Baxter's own domains (catalog.baxter.com, pro.baxter.com); hillrom.com URLs now redirect there. Recorded as "Welch Allyn (Baxter)."
+- **Braun (thermometers) vs. B. Braun (IV solutions, #67/#87):** confirmed these are two completely unrelated companies. Braun-branded clinical thermometers (ThermoScan PRO line) are manufactured by Kaz USA, Inc. under license to the Braun trademark (itself now part of Helen of Troy Limited) — this project deliberately avoided this product line for #92 specifically to prevent confusion with "B. Braun" (B. Braun Melsungen AG, a German company, already used elsewhere in this catalog). Documented here so no future batch conflates the two.
+
+## Batch 8 summary of what changed
+
+| Source ID | Before Batch 8 | After Batch 8 |
+|---|---|---|
+| #89 | Pending | 3M (Solventum) Littmann Classic III, model 5861 (imaged) |
+| #90 | Pending | Welch Allyn (Baxter) DuraShock DS44 Aneroid, model DS44-11 (imaged) |
+| #91 | Pending | Nonin Onyx Vantage 9590 (imaged) |
+| #92 | Pending | Welch Allyn (Baxter) SureTemp Plus 690 (imaged, cropped from family photo) |
+| #93 | Pending | Roche Accu-Chek Guide meter + Guide test strips (both imaged) |
+| #94 | Pending | seca 700 mechanical column scale (imaged) |
+| #95 | Pending | seca 213 portable stadiometer (imaged) |
+| #96 | Pending | ADC Adlite Plus penlight, model 356BK (imaged) |
+| #97 | Pending | Still pending (not researched this batch) |
+| #98 | Pending | Omron CompAir NE-C801 nebulizer (imaged) |
+| #99 | Pending | Still pending (not researched this batch -- deliberately deferred per task's own caution about this entry) |
+| #64, #67, #68, #71, #72, #73, #74, #75, #77, #79, #82, #87 | Verified (Batch 7 and earlier) | Unchanged — re-confirmed intact |
+| #88 | Pending | Unchanged — not touched per instruction |
+| #154 | Verified (Batch 6) | Unchanged — re-confirmed intact |
+| Dialysis unresolved set (#116, #117, #119, #126, #129, #133, #147, #148, #149, #157, #158, #159, #191-195) | Pending | Unchanged — explicitly not touched per instruction |
+
+## Date accessed (Batch 8)
+
+Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `0073035142ff1fc35b6dac08d68f171db125f3dd`.
