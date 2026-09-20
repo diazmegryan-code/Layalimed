@@ -1710,3 +1710,56 @@ Before finalizing, every new record was checked against: (1) was any product for
 ## Date accessed (Batch 11)
 
 Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `240f9b49c06b199c32f53561660bc503317f6528`.
+
+---
+
+# Batch 11 — Integrity Correction
+
+An independent review of the Batch 11 work above identified two real integrity issues, corrected in this pass from HEAD `48b758495288a629ff3064acd2a5025be238996d`. **This is a corrective audit of existing records, not a new research cycle** — no web search, no new manufacturer pages, no new products, and no new images were introduced. See `docs/CATALOG-COMPLETION-REPORT.md` for the corrected completion metrics, the full Partial Coverage Audit table, and the Clinical/Administration Language Audit table; this section documents the reasoning and the exact edits.
+
+## Issue 1 — Clinical/administration language in medication records
+
+All 119 records (not just #174–182) were searched for route, indication, administration, dosage, treatment, patient-selection, and related terms. Every match was individually classified as procurement identity, legitimate device specification, or unnecessary clinical guidance; only the latter was removed. Three fields were changed:
+
+- **#174 EPOGEN**: `"Route": "Intravenous or subcutaneous injection"` removed outright — pure administration-route guidance with no product-identity value.
+- **#181 Hikma Acetaminophen Injection**: `"Form": "For intravenous infusion"` reworded to `"Container": "Premixed bag (ready-to-use)"`. The product genuinely is packaged as a ready-to-use IV bag rather than a vial requiring reconstitution — a real container/SKU distinction — so the underlying fact was kept, but reworded away from administration-route framing ("for intravenous infusion" reads as an instruction; "premixed bag" reads as a container-type fact).
+- **#127 Teleflex Arrow-Clark VectorFlow Chronic Hemodialysis Catheter**: `"Population": "Adult patients"` removed (patient-selection information, not product identity — this device isn't the pediatric-classified variant of anything else in the catalog, so the field carried no differentiating value). `"Insertion site": "Preferentially internal jugular vein; alternately subclavian; catheters >40cm intended for femoral insertion"` was reworded to `"Insertion site (length-based variant)": "Catheters longer than 40cm are the femoral-insertion length variant"` — the "preferentially IJ, alternately subclavian" clause is generic clinical-preference guidance that applies regardless of which length of catheter is purchased (no product-differentiating value), while the femoral/length correspondence is a genuine physical-variant fact from the manufacturer's own brochure, so only that part was kept.
+
+Everything else the searches surfaced was reviewed and kept as legitimate procurement identity or device specification — most importantly, "single-dose"/"multi-dose" vial and ampule language (a real packaging/SKU distinction used throughout the medication entries and #102/#135, not administration guidance) and `"Use"`/`"Designated use"` device-category fields already established as acceptable in Batch 10 (e.g. #154's "skin preparation prior to surgery," #125/#127's acute-vs-tunneled catheter classification, #169's dialysis-center water-testing application). No field was deleted merely for containing a word like "patient" or "dose" in isolation — each was read in context before a decision was made. Full A/B/C classification table is in the completion report.
+
+## Issue 2 — Compound source entries marked fully verified with only partial coverage
+
+Every one of the 119 `catalogEntry` strings was programmatically scanned for `&`, `/`, and `" and "` (44 entries matched) plus two entries worth checking by inspection despite no matching punctuation (#82's comma-separated "Alcohol, Povidone-Iodine, Chlorhexidine" and #99's "Oxygen Tank with Regulator") — 46 in total (44 automatically flagged + 2 added manually since the illustrative list named them). Each was read in full (both the source `catalogEntry` and every `verifiedProducts` record already in the JSON) and classified using the variant-axis vs. materially-distinct-component distinction:
+
+- **Variant axis** (a verified product family reasonably covers it without a dedicated SKU per value): needle/syringe gauge and size ranges (#121, #141, #142), calcium/potassium concentration levels (#131/#132), dual-rated single products that satisfy two named terms at once (#72's 3M 1860 respirator-and-surgical-mask, #130's Tegaderm CHG dressing, #153's SoluPrep CHG+alcohol swab, #156's 3M VFlex), and straightforward same-device synonyms (#90 "BP Apparatus / Sphygmomanometer" — one device, two names).
+- **Materially distinct component**: two different active pharmaceutical ingredients, two different device/garment types, or a component with no evidence anywhere in the catalog. Where every named component already had its own verified product (directly, or via a legitimate cross-reference to a product already verified elsewhere — no new research), the entry stayed `"verified"`. Where a materially distinct component had no coverage anywhere in the catalog, the entry became `"partially-verified"`.
+
+**Eight entries became `partially-verified`** (full reasoning and the missing component for each is in the completion report's Partial Coverage Audit table): #79 (latex glove variant missing), #87 (standard Macroset missing — both currently-verified products are microdrip-rate, not macro-drip), #128 (catheter clamps missing), #139 (500 mL saline size not confirmed), #150 (silk-type tape missing), #158 (aprons missing), #175 (ferric carboxymaltose missing — the task's own worked example), #187 (specimen labels missing — the task's own worked example).
+
+**Six entries reached full coverage via a cross-reference to a product already independently verified elsewhere in the catalog** (not new research): #75 (IV Tubing via #145's Terumo Terufusion Administration Set), #82 (Povidone-Iodine via #154's Avrio Health Betadine), #135 (prefilled-syringe format via #137's BD PosiFlush), #144 (IV cannula via #75's own Terumo SurFlash), #155 (non-sterile/"clean" glove via #79's Ansell MICRO-TOUCH Nitrile), #79 (sterile glove via #155's Ansell GAMMEX — #79 itself remains partially-verified overall because the latex component is still missing).
+
+### Public-facing text leak found and fixed during this correction
+
+Implementing those six new cross-references initially reused the same technique already present in three pre-existing Batch 11 records (#183→#137, #184→#138, #194→#160): a note such as "Cross-reference: same product already verified at #155" was appended to the product's `variants` array. Rendering the affected cards live in a browser (rather than trusting the JSON alone) showed this note displaying as an ordinary customer-facing chip on the public catalog page — `catalog.js` renders every `variants` array entry as a visible `.cat-variant-chip`, with no distinction between a real product variant and an internal note. This was a genuine defect, not a hypothetical one, and it predates this correction pass (the three original #183/#184/#194 notes had the same problem, undetected in Batch 11).
+
+**Fix:** all nine such notes (six new + three pre-existing) were removed from `variants`, leaving each cross-referenced product's genuine specs intact. The cross-reference relationship itself is documented only in this file and in the completion report — never in the live customer-facing JSON. Live re-rendering after the fix confirmed zero occurrences of "cross-reference" or any internal source-ID citation anywhere in the rendered catalog (checked across every website group). #131/#132's pre-existing "Variant axis represented: Calcium (Ca) concentration variants..." spec-row text was reviewed and deliberately left as-is — it doesn't cite an internal source ID or use QA/research jargon, and reads as a legitimate, customer-comprehensible product-family descriptor rather than an internal note.
+
+## `dataStatus` / `publishStatus` handling
+
+Before making any change, `assets/js/catalog.js` was re-read in full (again) to reconfirm that `dataStatus` drives no rendering or filtering behavior — confirmed, as in the original Batch 11 pass. `dataStatus` was therefore recomputed truthfully across all 119 records: `"verified"` (100 records — has `verifiedProducts` and every materially distinct named component is covered, directly or via cross-reference), `"partially-verified"` (8 records — has `verifiedProducts` but a materially distinct named component is not covered anywhere in the catalog), or `"research-exhausted-generic"` (11 records — unchanged from the original Batch 11 pass). `publishStatus` was left untouched at `"hold"` for all 119 records — product-identity verification and business publish approval remain separate decisions, exactly as before.
+
+## No new research performed
+
+Every fix in this section reused facts and products already present in the JSON before this correction began. No manufacturer website was searched, no new manufacturer was introduced, no new product was added, and no new image was captured. The eight entries that remain `partially-verified` are left that way deliberately — per the task's own instruction, "a partial status is acceptable... we want truthful catalog maturity, not a perfect-looking metric."
+
+## Final corrected completion metrics
+
+- Fully verified: **100**
+- Partially verified: **8**
+- Research exhausted / generic: **11**
+- Pending / unresearched: **0**
+- 100 + 8 + 11 = 119.
+
+## Date accessed (Batch 11 correction)
+
+This correction was performed in a single work session on `layali-2.0-redesign`, continuing from HEAD `48b758495288a629ff3064acd2a5025be238996d`, using only evidence already present in the repository — no external sources were accessed.
