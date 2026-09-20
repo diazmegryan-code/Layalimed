@@ -443,6 +443,15 @@ em.accent{color:var(--red);font-style:italic}
 .cred-detail-value{font-weight:600;text-align:right}
 @media (max-width:880px){.cred-layout{grid-template-columns:1fr}}
 
+.cred-physician{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;margin-top:56px;padding-top:56px;border-top:1px solid var(--border-dark)}
+.cred-physician-photo img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:1px solid var(--border-dark)}
+.cred-physician-name{font-family:var(--serif);font-weight:700;font-size:19px;margin-top:6px}
+.cred-physician-role{font-size:12.5px;color:#FF6B7A;font-weight:600;letter-spacing:.3px;margin-top:2px;margin-bottom:12px}
+.cred-physician-desc{font-size:14px;line-height:1.7;color:var(--on-dark-mid);max-width:56ch}
+.cred-physician-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.cred-physician-tag{border:1px solid var(--border-dark);color:var(--on-dark-mid);font-size:10.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;padding:5px 11px}
+@media (max-width:640px){.cred-physician{grid-template-columns:1fr;text-align:center;justify-items:center}.cred-physician-tags{justify-content:center}}
+
 /* ================= FOOTER ================= */
 footer{background:var(--charcoal-2);color:var(--on-dark-mid);padding:72px var(--edge) 32px}
 .footer-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid var(--border-dark)}

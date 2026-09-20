@@ -375,9 +375,9 @@ document.addEventListener('keydown', (e) => {
 })();
 
 /* ─── QUOTE FORM: validation + EmailJS + MedCRM dual-submit ────────────────
-   Preserved as-is from the production form (index.html, main branch) —
-   same field ids, same EmailJS keys, same MedCRM endpoint. Only the
-   surrounding markup/CSS changed for this redesign. */
+   Same EmailJS keys and MedCRM endpoint as the production form. Email was
+   added to the EmailJS payload only -- website_leads (MedCRM) has no email
+   column, so it is intentionally left out of that fetch body. */
 function showToast(msg, isError = false) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -397,6 +397,7 @@ function validateField(id, groupId, testFn) {
 }
 
 const phPattern = /^(\+?63|0)9\d{9}$/;
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validateForm() {
   const results = [
@@ -404,16 +405,17 @@ function validateForm() {
     validateField('f-lastname', 'fg-lastname', (v) => v.length > 0),
     validateField('f-clinic', 'fg-clinic', (v) => v.length > 0),
     validateField('f-phone', 'fg-phone', (v) => phPattern.test(v.replace(/\s/g, ''))),
+    validateField('f-email', 'fg-email', (v) => emailPattern.test(v)),
     validateField('f-category', 'fg-category', (v) => v !== ''),
     validateField('f-message', 'fg-message', (v) => v.length >= 10),
   ];
   return results.every(Boolean);
 }
 
-['f-firstname', 'f-lastname', 'f-clinic', 'f-phone', 'f-category', 'f-message'].forEach((id) => {
+['f-firstname', 'f-lastname', 'f-clinic', 'f-phone', 'f-email', 'f-category', 'f-message'].forEach((id) => {
   const map = {
     'f-firstname': 'fg-firstname', 'f-lastname': 'fg-lastname', 'f-clinic': 'fg-clinic',
-    'f-phone': 'fg-phone', 'f-category': 'fg-category', 'f-message': 'fg-message',
+    'f-phone': 'fg-phone', 'f-email': 'fg-email', 'f-category': 'fg-category', 'f-message': 'fg-message',
   };
   const el = document.getElementById(id);
   if (el) el.addEventListener('input', () => document.getElementById(map[id]).classList.remove('error'));
@@ -445,7 +447,7 @@ async function handleSubmit() {
   // real visitors never do. Feign success instead of erroring.
   if (document.getElementById('f-website').value.trim() !== '') {
     showToast("✓ Inquiry sent! We'll contact you soon.");
-    document.querySelectorAll('#fg-firstname input,#fg-lastname input,#fg-clinic input,#fg-phone input,#fg-category select,#fg-message textarea')
+    document.querySelectorAll('#fg-firstname input,#fg-lastname input,#fg-clinic input,#fg-phone input,#fg-email input,#fg-category select,#fg-message textarea')
       .forEach((el) => (el.value = ''));
     return;
   }
@@ -461,12 +463,15 @@ async function handleSubmit() {
     from_name: firstName + ' ' + lastName,
     clinic: document.getElementById('f-clinic').value.trim(),
     phone: document.getElementById('f-phone').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
     category: document.getElementById('f-category').value,
     message: document.getElementById('f-message').value.trim(),
   };
 
   // MedCRM lead intake fires independently of EmailJS, not awaited/chained,
   // so a slow or unreachable CRM never delays the EmailJS toast below.
+  // NOTE: the website_leads table/leads-public.js route has no email column
+  // -- do not send one here until the backend schema adds support.
   fetch(CRM_API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -486,7 +491,7 @@ async function handleSubmit() {
       btn.disabled = false;
       btn.textContent = 'Send Inquiry →';
       showToast("✓ Inquiry sent! We'll contact you soon.");
-      document.querySelectorAll('#fg-firstname input,#fg-lastname input,#fg-clinic input,#fg-phone input,#fg-category select,#fg-message textarea')
+      document.querySelectorAll('#fg-firstname input,#fg-lastname input,#fg-clinic input,#fg-phone input,#fg-email input,#fg-category select,#fg-message textarea')
         .forEach((el) => (el.value = ''));
     }, 1200);
     return;
@@ -495,7 +500,7 @@ async function handleSubmit() {
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
     showToast("✓ Inquiry sent! We'll contact you soon.");
-    ['f-firstname', 'f-lastname', 'f-clinic', 'f-phone', 'f-category', 'f-message']
+    ['f-firstname', 'f-lastname', 'f-clinic', 'f-phone', 'f-email', 'f-category', 'f-message']
       .forEach((id) => (document.getElementById(id).value = ''));
   } catch (err) {
     console.error('EmailJS error:', err);
