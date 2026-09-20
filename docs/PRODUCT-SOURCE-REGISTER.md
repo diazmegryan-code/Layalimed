@@ -1818,3 +1818,40 @@ Two domains (`www.bd.com`, `catalog.baxter.com`) block direct `curl` requests to
 ## Products intentionally left without new imagery this pass
 
 The remaining gap-list items beyond what's listed above (additional Priority 1/2/3/4 entries not yet reached: e.g. #87, #88, #104, #111, #118, #120, #122, #129, #131/#132, #141, #144, #146, #147, #160/#194, #161-164, #169, #174-176, #179-182, #191, #195, #196) were not attempted this pass. This is a partial completion of the full image gap list, not a claim that "every verified product now has an image" -- see `docs/PRODUCT-IMAGE-COMPLETION-REPORT.md` for the honest baseline/final counts and what remains open for a future image batch.
+
+---
+
+# Customer-Facing Metadata Cleanup
+
+Continuing from `c77764f755e0788e5f6788adc252e4661d167e96` on `layali-2.0-redesign`. This is a surgical data-hygiene fix, not new research: no manufacturer, model number, verified spec value beyond the five listed below, `dataStatus`, `publishStatus`, or image field was touched.
+
+## What was wrong
+
+`catalog.js` renders every key/value pair in a `verifiedProducts[].verifiedSpecs` object as a visible spec row on the public catalog card, with no filtering by key name. A prior pass ("Batch 11 Integrity Correction") fixed an identical leak pattern in the `variants` array (internal "Cross-reference: ..." notes rendering as customer-facing chips) but never scanned `verifiedSpecs`, so five internal research/provenance notes — written under the key `"Variant axis represented"` (and one under `"Use"`) — were shipping to the live catalog UI, citing internal source IDs (`#68`, `#71`, `#73`, `#93`, `#196`) and, in one case, literal QA process language ("was not independently confirmed this session").
+
+## Affected records and exact edits
+
+| Source ID | Product | Before | After |
+|---|---|---|---|
+| 140 | Baxter 5% Dextrose Injection, USP | `verifiedSpecs: {"Variant axis represented": "Same Baxter VIAFLEX D5W product family already verified at #68 -- cross-referenced here for the hemodialysis-context entry; a distinct HD-specific package size was not independently confirmed this session"}` | `verifiedSpecs` key removed entirely (object now absent, matching the existing convention used by 23 other records with no specs) |
+| 140 | Baxter Sterile Water for Injection, USP | `verifiedSpecs: {"Variant axis represented": "Same Baxter VIAFLEX Sterile Water product family already verified at #71 -- cross-referenced here for the hemodialysis-context entry"}` | `verifiedSpecs` key removed entirely |
+| 141 | Terumo SS Series Syringe | `verifiedSpecs: {"Variant axis represented": "Full documented Terumo syringe size range, extending the family already used at #73"}` | `verifiedSpecs` key removed entirely |
+| 189 | Roche Accu-Chek Guide Test Strips | `verifiedSpecs: {"Variant axis represented": "Blood glucose test strip component, cross-referenced from the already-verified #93 Accu-Chek Guide meter+strips record"}` | `verifiedSpecs: {"Type": "Blood glucose test strip"}` — genuine customer-facing descriptor kept, internal citation and key name removed |
+| 195 | Rockwell Medical Dry Citric Acid Descale | `verifiedSpecs.Use: "Cleaning/descaling accessory for hemodialysis water systems (distinct from #196's heat-disinfection product)"` | `verifiedSpecs.Use: "Cleaning/descaling accessory for hemodialysis water systems (not a heat-disinfection product)"` — genuine differentiating fact kept, internal source-ID citation removed |
+
+## Why these were internal-only
+
+In every case, the removed text's only informational content beyond what the record's own `manufacturer`/`brand`/`variants` fields already state was a statement about *this catalog's own internal verification process* — which other internal source ID the same product family was independently verified under, or a note about what was/wasn't confirmed "this session." None of that is a product fact a procurement customer can act on; it is QA/provenance bookkeeping that belongs only in this register. For #189 and #195, a genuine product fact was embedded alongside the internal note ("this is a blood glucose test strip"; "this is a cleaning/descaling product, not a heat-disinfection one") — that fact was kept and reworded into plain customer language with the internal citation stripped out, rather than deleting the whole field.
+
+The underlying internal reasoning that was removed from the JSON is preserved here for future reference: #140's Dextrose and Sterile Water entries are the same Baxter VIAFLEX product families already verified at #68 and #71 respectively (this hemodialysis-context entry did not independently confirm a distinct HD-specific package size). #141's Terumo SS Series syringe entry uses the same verified size range already documented at #73. #189's Accu-Chek Guide Test Strips is the same product already verified at #93's Accu-Chek Guide meter+strips record. #195's Dry Citric Acid Descale is a cleaning/descaling product, explicitly distinct from #196's Nipro CA-50 heat-disinfection product (both are legitimate, separate hemodialysis water-system products, not duplicates).
+
+## Global audit result
+
+All 119 records' customer-rendered fields (`verifiedSpecs`, `variants`, `manufacturer`, `brand`, `modelReference`, `packSizeUom`, plus entry-level `variants`/`catalogEntry`) were scanned case-insensitively for: cross-reference/cross referenced/cross-referenced, verified at, already verified, source id, source #, see #, same as #, this session, this batch, not independently, independently confirmed, research, evidence, tier 1–4, provenance, QA, pending verification, family-level verification, and any `#<2-3 digit number>` pattern. **1,124 customer-facing strings were scanned; exactly 5 matches were found, and all 5 were the records listed above — no additional source IDs were affected.** Re-running the same scan after the fix returned **zero** matches.
+
+## Confirmation
+
+- Genuine specifications (sizes, gauges, concentrations, model/reference numbers, packaging, materials, physical properties, and the two reworded product-family descriptors) were preserved.
+- No product added or removed; no manufacturer, model/catalog number, `dataStatus`, or `publishStatus` changed; no image/imageWebp field or file touched. A field-by-field diff against the prior commit confirms the only changes anywhere in the 119-record JSON are the five `verifiedSpecs` edits above.
+- Catalog integrity unchanged: 119 records / 119 unique IDs, `highestSourceId` 196, 100 verified / 8 partially-verified / 11 research-exhausted-generic / 0 pending, 21 categories, 5 website groups, `finalSkuCount` null, `publishStatus` hold × 119, 135 `verifiedProducts` objects with 84 carrying an image (71 canonical entries with at least one image) — all identical to the pre-cleanup baseline.
+- Live-rendered the catalog and searched the DOM output for all four affected records (#140, #141, #189, #195) plus the three pre-existing cross-references (#160/#194 Minncare) — zero internal citations or QA language visible anywhere in the rendered text.
