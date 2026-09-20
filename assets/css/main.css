@@ -461,7 +461,24 @@ footer{background:var(--charcoal-2);color:var(--on-dark-mid);padding:72px var(--
 .footer-col a{color:var(--on-dark-mid);text-decoration:none;font-size:13.5px}
 .footer-col a:hover{color:#fff}
 .footer-bottom{max-width:var(--container);margin:0 auto;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px}
+.footer-bottom a{color:var(--on-dark-mid);text-decoration:underline}
+.footer-bottom a:hover{color:#fff}
 @media (max-width:820px){.footer-grid{grid-template-columns:1fr;gap:32px}}
+
+/* ================= RFQ FORM: privacy / sensitive-info notes ================= */
+.fg-note{font-size:12px;line-height:1.6;color:var(--mid);margin-top:-10px;margin-bottom:20px}
+.form-consent-note{font-size:12.5px;line-height:1.65;color:var(--mid);margin-bottom:16px}
+.form-consent-note a{color:var(--red);text-decoration:underline}
+
+/* ================= LEGAL / PRIVACY PAGE ================= */
+.legal-hero{padding:calc(var(--nav-h) + 64px) var(--edge) 24px;max-width:760px;margin:0 auto}
+.legal-updated{font-size:13px;color:var(--mid);margin-top:12px}
+.legal-body{max-width:760px;margin:0 auto;padding:24px var(--edge) 100px}
+.legal-body p{font-size:15px;line-height:1.8;color:var(--mid);margin-bottom:16px}
+.legal-body h2{font-family:var(--serif);font-weight:700;font-size:clamp(21px,2.2vw,26px);margin-top:48px;margin-bottom:16px}
+.legal-body ul{padding-left:22px;margin-bottom:16px}
+.legal-body li{font-size:15px;line-height:1.8;color:var(--mid);margin-bottom:8px}
+.legal-body a{color:var(--red);text-decoration:underline}
 
 /* ================= SEARCH OVERLAY ================= */
 #search-overlay{
