@@ -38,6 +38,9 @@ document.addEventListener('click', (e) => {
   }
 });
 document.querySelectorAll('.drawer-links a').forEach((a) => a.addEventListener('click', closeMenu));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.getElementById('mobileDrawer').classList.contains('open')) closeMenu();
+});
 
 /* ─── CATALOG GROUPS (fixed order/labels — the locked architecture) ─────── */
 const GROUPS = [

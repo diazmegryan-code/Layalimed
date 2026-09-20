@@ -16,6 +16,7 @@ gtag('config', 'G-R8SCPLCRVW');
 <meta name="robots" content="index,follow"/>
 <meta name="geo.region" content="PH-QUE"/>
 <meta name="geo.placename" content="Dolores, Quezon, Philippines"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="canonical" href="https://layalimed.com/"/>
 <meta property="og:title" content="Layali Medical Supply | Medical Consumables &amp; Hemodialysis Supply Philippines"/>
 <meta property="og:description" content="Essential supplies. Reliable care. Premium medical consumables and hemodialysis supply for clinics, RHUs, dialysis centers, and hospitals across the Philippines."/>
@@ -79,6 +80,7 @@ gtag('config', 'G-R8SCPLCRVW');
   </div>
 </div>
 
+<main>
 <!-- HERO -->
 <section id="hero">
   <div class="hero-copy">
@@ -99,7 +101,6 @@ gtag('config', 'G-R8SCPLCRVW');
     </div>
   </div>
   <div class="hero-visual hero-visual--placeholder">
-    <span class="placeholder-tag placeholder-tag--corner">Development Placeholder</span>
     <div class="hero-collage">
       <div class="hero-collage-item hero-collage-item--lg">
         <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="22" y="7" width="20" height="50" rx="10"/><line x1="27" y1="18" x2="37" y2="18"/><line x1="27" y1="46" x2="37" y2="46"/><rect x="17" y="24" width="5" height="8" rx="1.5"/><rect x="42" y="24" width="5" height="8" rx="1.5"/></svg>
@@ -118,7 +119,6 @@ gtag('config', 'G-R8SCPLCRVW');
         <span>Consumables Selection</span>
       </div>
     </div>
-    <p class="hero-visual-note">Reserved for verified product photography</p>
   </div>
 </section>
 
@@ -229,50 +229,45 @@ gtag('config', 'G-R8SCPLCRVW');
 
     <div class="hd-interactive reveal">
       <div class="hd-tablist" role="tablist" aria-orientation="vertical" aria-label="Hemodialysis categories">
-        <button type="button" class="hd-tab is-active" role="tab" aria-selected="true" tabindex="0" aria-controls="hd-visual-panel" data-hd="dialyzers">
+        <button type="button" id="hd-tab-dialyzers" class="hd-tab is-active" role="tab" aria-selected="true" tabindex="0" aria-controls="hd-panel-dialyzers" data-hd="dialyzers">
           <span>Dialyzers</span><span class="hd-tab-arrow">→</span>
         </button>
-        <button type="button" class="hd-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="hd-visual-panel" data-hd="tubing">
+        <button type="button" id="hd-tab-tubing" class="hd-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="hd-panel-tubing" data-hd="tubing">
           <span>Blood Tubing Sets</span><span class="hd-tab-arrow">→</span>
         </button>
-        <button type="button" class="hd-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="hd-visual-panel" data-hd="needles">
+        <button type="button" id="hd-tab-needles" class="hd-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="hd-panel-needles" data-hd="needles">
           <span>AV Fistula Needles</span><span class="hd-tab-arrow">→</span>
         </button>
-        <button type="button" class="hd-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="hd-visual-panel" data-hd="concentrates">
+        <button type="button" id="hd-tab-concentrates" class="hd-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="hd-panel-concentrates" data-hd="concentrates">
           <span>Concentrates</span><span class="hd-tab-arrow">→</span>
         </button>
-        <button type="button" class="hd-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="hd-visual-panel" data-hd="treatment">
+        <button type="button" id="hd-tab-treatment" class="hd-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="hd-panel-treatment" data-hd="treatment">
           <span>Treatment Consumables</span><span class="hd-tab-arrow">→</span>
         </button>
       </div>
 
       <div class="hd-visual" id="hd-visual-panel">
-        <div class="hd-visual-inner" data-hd-active="dialyzers" data-searchable data-search-name="Dialyzers" data-search-category="Dialyzers">
-          <span class="placeholder-tag">Development Placeholder</span>
+        <div class="hd-visual-inner" id="hd-panel-dialyzers" role="tabpanel" aria-labelledby="hd-tab-dialyzers" data-hd-active="dialyzers" data-searchable data-search-name="Dialyzers" data-search-category="Dialyzers">
           <svg class="hd-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="22" y="7" width="20" height="50" rx="10"/><line x1="27" y1="18" x2="37" y2="18"/><line x1="27" y1="46" x2="37" y2="46"/><rect x="17" y="24" width="5" height="8" rx="1.5"/><rect x="42" y="24" width="5" height="8" rx="1.5"/></svg>
           <p class="product-desc">Hollow-fiber dialyzers for hospital and center-based hemodialysis treatment.</p>
           <a href="#quote" class="product-cta">Request Quote</a>
         </div>
-        <div class="hd-visual-inner" data-hd-active="tubing" hidden data-searchable data-search-name="AV Blood Tubing Sets" data-search-category="Blood Tubing Sets">
-          <span class="placeholder-tag">Development Placeholder</span>
+        <div class="hd-visual-inner" id="hd-panel-tubing" role="tabpanel" aria-labelledby="hd-tab-tubing" data-hd-active="tubing" hidden data-searchable data-search-name="AV Blood Tubing Sets" data-search-category="Blood Tubing Sets">
           <svg class="hd-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 34c8-18 16 18 24 0s16-18 24 0"/><circle cx="6" cy="34" r="3"/><circle cx="54" cy="34" r="3"/></svg>
           <p class="product-desc">Arterial and venous bloodline sets for single-use dialysis treatment.</p>
           <a href="#quote" class="product-cta">Request Quote</a>
         </div>
-        <div class="hd-visual-inner" data-hd-active="needles" hidden data-searchable data-search-name="AV Fistula Needles" data-search-category="AV Fistula Needles">
-          <span class="placeholder-tag">Development Placeholder</span>
+        <div class="hd-visual-inner" id="hd-panel-needles" role="tabpanel" aria-labelledby="hd-tab-needles" data-hd-active="needles" hidden data-searchable data-search-name="AV Fistula Needles" data-search-category="AV Fistula Needles">
           <svg class="hd-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="12" y1="52" x2="46" y2="18"/><circle cx="48" cy="16" r="4"/><rect x="4" y="46" width="16" height="7" rx="2"/></svg>
           <p class="product-desc">Fistula needle sets for vascular access during dialysis sessions.</p>
           <a href="#quote" class="product-cta">Request Quote</a>
         </div>
-        <div class="hd-visual-inner" data-hd-active="concentrates" hidden data-searchable data-search-name="Acid &amp; Bicarbonate Concentrates" data-search-category="Concentrates">
-          <span class="placeholder-tag">Development Placeholder</span>
+        <div class="hd-visual-inner" id="hd-panel-concentrates" role="tabpanel" aria-labelledby="hd-tab-concentrates" data-hd-active="concentrates" hidden data-searchable data-search-name="Acid &amp; Bicarbonate Concentrates" data-search-category="Concentrates">
           <svg class="hd-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="16" y="20" width="32" height="34" rx="4"/><rect x="26" y="10" width="12" height="12" rx="2"/></svg>
           <p class="product-desc">Dialysate concentrates for treatment preparation.</p>
           <a href="#quote" class="product-cta">Request Quote</a>
         </div>
-        <div class="hd-visual-inner" data-hd-active="treatment" hidden data-searchable data-search-name="Treatment Consumables" data-search-category="Treatment Consumables">
-          <span class="placeholder-tag">Development Placeholder</span>
+        <div class="hd-visual-inner" id="hd-panel-treatment" role="tabpanel" aria-labelledby="hd-tab-treatment" data-hd-active="treatment" hidden data-searchable data-search-name="Treatment Consumables" data-search-category="Treatment Consumables">
           <svg class="hd-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="10" y="26" width="28" height="20" rx="3"/><rect x="26" y="14" width="28" height="20" rx="3"/></svg>
           <p class="product-desc">Additional consumables used during hemodialysis treatment sessions.</p>
           <a href="#quote" class="product-cta">Request Quote</a>
@@ -316,10 +311,10 @@ gtag('config', 'G-R8SCPLCRVW');
     <div class="deliveries-layout">
       <div class="reveal">
         <div class="delivery-stage" id="deliveryStage">
-          <div class="delivery-slide is-active"><img src="images/deliveries/delivery-01-primary.jpg" alt="Medical supplies packed for delivery, including bundled gauze swabs, face masks, and PPE cartons inside a Layali Medical Supply delivery vehicle" loading="lazy"></div>
-          <div class="delivery-slide"><img src="images/deliveries/delivery-02.jpg" alt="Boxes of 3-ply face masks with earloop stacked for delivery" loading="lazy"></div>
-          <div class="delivery-slide"><img src="images/deliveries/delivery-03.jpg" alt="Sealed 3M medical supply cartons prepared for delivery" loading="lazy"></div>
-          <div class="delivery-slide"><img src="images/deliveries/delivery-04.jpg" alt="Boxes of alcohol prep pads stacked for delivery" loading="lazy"></div>
+          <div class="delivery-slide is-active" role="button" tabindex="0" aria-label="View photo 1 full size"><img src="images/deliveries/delivery-01-primary.jpg" alt="Medical supplies packed for delivery, including bundled gauze swabs, face masks, and PPE cartons inside a Layali Medical Supply delivery vehicle" loading="lazy"></div>
+          <div class="delivery-slide" role="button" tabindex="0" aria-label="View photo 2 full size"><img src="images/deliveries/delivery-02.jpg" alt="Boxes of 3-ply face masks with earloop stacked for delivery" loading="lazy"></div>
+          <div class="delivery-slide" role="button" tabindex="0" aria-label="View photo 3 full size"><img src="images/deliveries/delivery-03.jpg" alt="Sealed 3M medical supply cartons prepared for delivery" loading="lazy"></div>
+          <div class="delivery-slide" role="button" tabindex="0" aria-label="View photo 4 full size"><img src="images/deliveries/delivery-04.jpg" alt="Boxes of alcohol prep pads stacked for delivery" loading="lazy"></div>
         </div>
         <div class="delivery-dots">
           <button class="delivery-dot is-active" aria-label="Photo 1"></button>
@@ -362,13 +357,13 @@ gtag('config', 'G-R8SCPLCRVW');
 
       <form class="quote-form reveal" onsubmit="event.preventDefault(); handleSubmit();">
         <div class="fg-row">
-          <div class="fg" id="fg-firstname"><label>First Name</label><input type="text" id="f-firstname" placeholder="Juan"/><span class="ferr">Please enter your first name.</span></div>
-          <div class="fg" id="fg-lastname"><label>Last Name</label><input type="text" id="f-lastname" placeholder="Dela Cruz"/><span class="ferr">Please enter your last name.</span></div>
+          <div class="fg" id="fg-firstname"><label for="f-firstname">First Name</label><input type="text" id="f-firstname" placeholder="Juan"/><span class="ferr">Please enter your first name.</span></div>
+          <div class="fg" id="fg-lastname"><label for="f-lastname">Last Name</label><input type="text" id="f-lastname" placeholder="Dela Cruz"/><span class="ferr">Please enter your last name.</span></div>
         </div>
-        <div class="fg" id="fg-clinic"><label>Clinic / Hospital Name</label><input type="text" id="f-clinic" placeholder="Barangay Health Center, etc."/><span class="ferr">Please enter your clinic or hospital name.</span></div>
-        <div class="fg" id="fg-phone"><label>Contact Number</label><input type="tel" id="f-phone" placeholder="+63 9XX XXX XXXX"/><span class="ferr">Please enter a valid Philippine mobile number.</span></div>
+        <div class="fg" id="fg-clinic"><label for="f-clinic">Clinic / Hospital Name</label><input type="text" id="f-clinic" placeholder="Barangay Health Center, etc."/><span class="ferr">Please enter your clinic or hospital name.</span></div>
+        <div class="fg" id="fg-phone"><label for="f-phone">Contact Number</label><input type="tel" id="f-phone" placeholder="+63 9XX XXX XXXX"/><span class="ferr">Please enter a valid Philippine mobile number.</span></div>
         <div class="fg" id="fg-category">
-          <label>Product Category</label>
+          <label for="f-category">Product Category</label>
           <select id="f-category">
             <option value="">Select a category</option>
             <optgroup label="Medical Consumables">
@@ -389,7 +384,7 @@ gtag('config', 'G-R8SCPLCRVW');
           </select>
           <span class="ferr">Please select a product category.</span>
         </div>
-        <div class="fg" id="fg-message"><label>Message / Requirements</label><textarea id="f-message" placeholder="List the products or quantities you need..."></textarea><span class="ferr">Please describe your requirements.</span></div>
+        <div class="fg" id="fg-message"><label for="f-message">Message / Requirements</label><textarea id="f-message" placeholder="List the products or quantities you need..."></textarea><span class="ferr">Please describe your requirements.</span></div>
         <div class="fg" id="fg-website" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="f-website">Leave this field blank</label><input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"/></div>
         <button type="submit" class="form-btn" id="submitBtn">Send Inquiry →</button>
       </form>
@@ -416,6 +411,7 @@ gtag('config', 'G-R8SCPLCRVW');
     </div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>

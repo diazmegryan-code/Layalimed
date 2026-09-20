@@ -53,6 +53,9 @@ document.addEventListener('click', (e) => {
   }
 });
 document.querySelectorAll('.drawer-links a').forEach((a) => a.addEventListener('click', closeMenu));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.getElementById('mobileDrawer').classList.contains('open')) closeMenu();
+});
 
 /* ─── REVEAL ON SCROLL ─────────────────────────────────────────────────── */
 (function reveal() {
@@ -173,7 +176,15 @@ document.querySelectorAll('.drawer-links a').forEach((a) => a.addEventListener('
   function goTo(i) { index = (i + slides.length) % slides.length; render(); startTimer(); }
 
   dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
-  slides.forEach((s, i) => s.addEventListener('click', () => openLightbox(i)));
+  slides.forEach((s, i) => {
+    s.addEventListener('click', () => openLightbox(i));
+    s.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(i);
+      }
+    });
+  });
 
   const stage = document.querySelector('.delivery-stage');
   if (stage) {
