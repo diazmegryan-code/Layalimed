@@ -1503,6 +1503,8 @@ Per Batch 10 instructions, this is the closing record of every canonical entry s
 
 # Final catalog research freeze
 
+**Amended by Batch 11 below:** the business explicitly reopened research after this freeze to resolve every remaining pending entry. See "Batch 11 — Catalog Completion" for the outcome. The freeze itself is restored once Batch 11 is complete — no further product-research cycle is planned beyond it.
+
 Effective at the end of Batch 10:
 
 - **Routine product-research work on this catalog is frozen.** The systematic, batch-by-batch manufacturer-verification effort that ran across Batches 1–10 is complete.
@@ -1513,3 +1515,198 @@ Effective at the end of Batch 10:
 ## Date accessed (Batch 10)
 
 Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `8401843da2f1832193dbd7c10279c79b9070a8fd`.
+
+---
+
+# Batch 11 — Catalog Completion (research reopened)
+
+The Batch 10 freeze above was explicitly reopened by the business for the sole purpose of resolving every remaining pending entry, continuing from HEAD `240f9b49c06b199c32f53561660bc503317f6528`. This section documents the outcome. See `docs/CATALOG-COMPLETION-REPORT.md` for the full per-entry summary table (source ID, final state, manufacturer/product, evidence level, image, notes) — this section carries the narrative research trail; that report carries the at-a-glance table.
+
+**Outcome: all 57 previously-pending entries now carry an intentional final state.** 46 became newly VERIFIED, 11 became RESEARCH-EXHAUSTED-GENERIC (a serious search was completed but no sufficiently exact, non-forced manufacturer mapping could be established). No entry was left ambiguously "pending" — see item-by-item reasoning below and in the completion report.
+
+**`dataStatus` note:** `dataStatus` and `publishStatus` were confirmed (by reading `catalog.js` in full) to be dead fields — nothing in the frontend renders or filters on either one; only the presence/absence of `verifiedProducts` drives customer-facing "photo/specifications pending" behavior. This made it safe to give `dataStatus` real, honest values across all 119 records without any risk to runtime behavior: `"verified"` for every record carrying at least one `verifiedProducts` entry (108, including the 62 already verified pre-Batch-11 whose status label was simply corrected to match reality), and `"research-exhausted-generic"` for the 11 below. `publishStatus` was deliberately left at `"hold"` for all 119 records — publication approval is a separate business decision this batch does not make.
+
+## Dialyzers — attribute entries, not standalone products
+
+- **#112** (surface areas 0.6–2.0 m²), **#113** (steam sterilized), **#114** (EO sterilized), **#115** (HDF-compatible): all four are attributes of dialyzer *models*, not independent commercial products. #109's Nipro ELISIO-H (0.9–2.5 m²), #110's Nipro SUREFLUX L (0.3–2.1 m²), and #109's Fresenius FX CorDiax (0.6–2.5 m², INLINE steam sterilization) already document the surface-area range and steam-sterilization attribute; #111's Nipro SUREFLUX already documents "(online) HDF" as a stated application. A targeted search for an EO-sterilized dialyzer from an established manufacturer (B. Braun, Baxter, Nikkiso) found no official page naming one. Status: `research-exhausted-generic` for all four, with the attribute already visible to customers via the #109–111 records.
+
+## Bloodline Sets
+
+- **#116** (arterial bloodline, standalone) / **#117** (venous bloodline, standalone): re-confirmed this batch — both NiproSet and Fresenius CombiSet sell arterial+venous as one combined bloodline set. No independently-sold arterial-only or venous-only line was found. `research-exhausted-generic`.
+- **#119** (pediatric tubing set): Fresenius's CombiSet True Flow family was checked directly — it has a "low volume" configuration SKU, but the manufacturer's own page does not label it pediatric/neonatal. No established manufacturer explicitly names a "pediatric bloodline" product. `research-exhausted-generic`.
+
+## AV Fistula Needles
+
+### #122 — B. Braun (Medisystems) AV Fistula Needle Set, Twin Pack, Fixed Wing
+- **New manufacturer.** Official source: https://www.bbraunusa.com/en/products/b5/av-fistula-needleset15gax1-1434twinpackfw.html (fetched directly).
+- This is a genuine combined arterial+venous SET product — Product Code D9-2015MGP (15 Ga × 1-1/4 in), WSN 08021-0000-52, MasterGuard Plus anti-stick needle protector, fixed-wing twin pack (120 pairs + 10 single needles per case), 36-month shelf life. A 17 Ga × 1 in variant exists at the sibling URL.
+- Distinct from Nipro's single-needle-type records already at #121/#123/#124 — this is the "set" product the source entry actually describes.
+
+## Dialysis Catheters
+
+### #129 — BD StatLock PICC/CVC Stabilization Device Dressing Change Kit (resolves the task's named hard case)
+- Official source: https://www.bd.com/en-in/products-and-solutions/products/product-families/statlock-picc-cvc-stabilization-device-dressing-change-kit (fetched directly; the en-us equivalent path 404'd this session).
+- Confirmed genuine multi-component **kit**, not a single dressing: mask, gloves, measuring tape, transparent dressing, gauze, alcohol pads, drape, label, adhesive strips, with select configurations adding an antimicrobial disk, BIOPATCH, ChloraPrep applicator, or Tegaderm dressing. StatLock device offered in CV Plus or PICC Plus variants.
+- No specific catalog/REF number was invented — the page references a family of kit numbers without a single clean table this session, so this is recorded family-level (manufacturer + brand + real component list), consistent with the project's "never infer a catalog number" rule.
+
+## Acid Concentrates & Bicarbonate
+
+### #133 — Liquid bicarbonate (resolves the task's other named hard case, by confirming it stays unresolved)
+- Re-checked this batch: Fresenius Medical Care's own "Liquid Sodium Bicarbonate Concentrate" page is still a generic category description with no named product or catalog number. No new evidence changed the Batch 10 conclusion. `research-exhausted-generic`.
+
+## Anticoagulation & Priming Fluids
+
+### #135 — Fresenius Kabi USA Heparin Sodium Injection, USP
+- Official source: https://products.fresenius-kabi.us/product-55.html (fetched directly).
+- Glass vials, single- and multi-dose; 1,000 / 5,000 / 10,000 / 20,000 USP units/mL; fill volumes 0.5–30 mL; 25 vials/box.
+
+### #136 — Fresenius Kabi USA Enoxaparin Sodium Injection, USP (LMWH)
+- Official source: https://products.fresenius-kabi.us/product-362.html (fetched directly).
+- Prefilled syringes, preservative-free; strengths from 30 mg/0.3 mL to 150 mg/mL; packs of 10.
+
+### #140 — Baxter D5W / Sterile Water for Injection, USP (VIAFLEX) — cross-reference, not a distinct product
+- Cross-referenced to the exact same Baxter records already verified at #68 (D5W) and #71 (Sterile Water), same source URLs. A distinct HD-specific package size was investigated (McKesson/distributor listings referenced 250 mL/500 mL Baxter catalog numbers) but the evidence was internally inconsistent (one catalog number recurred across different listed sizes), so no separate size-specific catalog number is claimed here — recorded honestly as the same 1000 mL VIAFLEX family, cross-referenced rather than duplicated.
+
+## Syringes & Needles (Hemodialysis)
+
+### #141 — Terumo syringe family, extended to 1–50cc
+- Terumo's own conventional needles/syringes sellsheet (terumotmp.com) confirms the documented Terumo syringe line spans the full 1–50cc range, extending the family already used at #73 (which only had 1/3/5/10cc variants recorded). No new individual catalog numbers invented for the 20cc/50cc sizes.
+
+### #142 — BD PrecisionGlide Hypodermic Needle, 18G/20G/21G/23G
+- One exact confirmed catalog number: **305195** (18 Ga × 1 in, pink hub, thin wall, regular bevel) — https://www.bd.com/en-us/products-and-solutions/products/product-page.305195 (fetched directly). BD's own hypodermic catalog documents the family spans 18/20/21/23G; individual REF numbers for the other three gauges were not fetched this session and are not invented.
+
+### #143 — BD Blunt Fill Needle + BD Blunt 5 Micron Filter Needle
+- **BD Blunt Fill Needle**, REF 305180, 18 Ga × 1-1/2 in — https://www.bd.com/en-us/products-and-solutions/products/product-page.305180
+- **BD Blunt 5 Micron Filter Needle**, REF 305211, 18 Ga × 1-1/2 in, 100/shelfpack, 1,000/case — https://www.bd.com/en-us/products-and-solutions/products/product-page.305211 (fetched directly)
+- Exact match for "drawing needles & filter needles" as two distinct, named BD products.
+
+## IV Supplies
+
+### #144 — ICU Medical Ultra Small Bore Extension Set
+- **New manufacturer.** Official source: https://www.icumed.com/products/infusion-therapy/infusion-consumables/ultra-small-bore-extension-sets/ (fetched directly; the ecatalog.icumed.com product-level page had an expired TLS certificate and was not used).
+- Exact reorder codes: MX448HFB (7 in, 1.0 mL priming, 1.2 micron filter), MX453H2L (4 in, 0.5 mL, bifurcated T-connector), MX453HL (7 in, 0.4 mL, T-connector), MX612H (4 in, 0.4 mL, bifurcated), MX613H (4 in, 0.5 mL, trifurcated). Non-DEHP, latex-free, lipid-resistant, sterile, 50/box.
+- Distinct product type (extension tubing) from #75's Terumo SurFlash cannula — no duplication; the "extension tubing" half of this source entry.
+
+## Dressing Supplies
+
+### #148 — Sterile gauze & cotton balls (Hemodialysis) — stays unresolved
+- Dynarex's broader gauze/cotton catalog (now directly accessible via dynarex.com, unlike in Batch 10) was reviewed again in full. Reusing Dynarex — already the manufacturer at #77 — for a different item number within the same family was judged not to add a genuinely distinct product identity, consistent with the Batch 10 caution against this exact shortcut. Medline (Cloudflare bot-check blocked all fetch attempts this session) and Cardinal Health (ordering/catalog details gated behind "Contact us," same limitation documented for #129 in Batch 10) offered no alternative official evidence. `research-exhausted-generic`.
+
+### #149 — Dynarex Combine/ABD Pad
+- Official source: https://dynarex.com/products/disposable-medical-supplies/first-responder-supplies/3501-combine-pads-1pouch--sterile (fetched directly).
+- REORDER #s: 3501 (5"×9" sterile, 20/box, 20 bx/cs), 3502 (8"×7.5" sterile, 12/box), 3503 (8"×10" sterile, 24/box, 15 bx/cs), 3511 (5"×9" non-sterile, 576/cs), 3513 (8"×10" non-sterile, 432/cs).
+- A genuinely distinct product category from #77 (cotton ball/gauze pad) — no duplication concern.
+
+## Personal Protective Equipment
+
+### #157 — HALYARD Face Shield (resolves a previously-rejected candidate)
+- **New manufacturer.** Official source: https://products.halyardhealth.com/halyard-face-shield (fetched via browser; WebFetch returned only the page title).
+- SKU/Global SKU# 41204. Foam band, adjustable headband, fog-resistant, wearable with glasses/goggles, full-length and 3/4-length options. A genuine healthcare procedure product — resolves the Batch 10 rejection of the 3M industrial shield and EAG-1 candidates.
+
+### #158 — Cardinal Health AAMI Level 2 Medium Weight Isolation Gown (resolves a previously-rejected candidate)
+- Official source: https://www.cardinalhealth.com/en/product-solutions/medical/infection-control/infection-control-apparel/isolation-gowns/full-back/aami-level-2-medium-weight-isolation-gown.html (fetched via browser).
+- Genuine healthcare-specific full-back isolation gown — resolves the Batch 10 rejection of the industrial Ansell AlphaTec 2300. Exact order/catalog number not obtainable — Cardinal Health's site gates ordering details behind "Contact us" (same systemic limitation as #129 in Batch 10); recorded at product-name level, no number invented.
+
+### #159 — Dynarex Shoe Cover + Dynarex Nurse Bouffant Cap
+- Official sources (both fetched directly via browser): https://dynarex.com/products/disposable-medical-supplies/infection-control/2131-shoe-cover--universal-size-non-conductive and https://dynarex.com/products/disposable-medical-supplies/infection-control/2113-nurse-cap
+- Shoe covers: REORDER #2131 (Universal, non-conductive), #2132 (non-conductive/non-skid), #2134 (X-Large, non-conductive/non-skid), 150 pairs/unit. Nurse bouffant caps: #2101/2102/2103 (21 in, white/green/blue) and #2111/2112/2113 (24 in, white/green/blue), 100/box, 5 bx/cs.
+
+## Surface Disinfection
+
+### #160 — Mar Cor Purification Minncare HD Disinfectant (resolves a previously-rejected candidate)
+- **New manufacturer.** Mar Cor Purification, Inc. (a Cantel Medical/STERIS company). Peracetic acid + hydrogen peroxide blend. US FDA 510(k)-cleared specifically for water-system disinfection in kidney dialysis applications — a genuinely dialysis-purpose-built product, resolving the Batch 10 rejection of Nipro Sanacide-R7 (distributor-only evidence).
+- Sources: https://mcpur.com/product/minncare-hd-disinfectant/ (manufacturer's own product listing page loaded, but full composition/package-size fields did not render in the fetch this session) plus corroborating trade/regulatory coverage (Infection Control Today, Healio Nephrology, PR Newswire's FDA-clearance announcement, all independently naming the same manufacturer and product).
+- **Explicit regulatory caution:** "US FDA 510(k)-cleared" is stated here strictly as a US regulatory fact about the device abroad. It is NOT presented, and must never be presented, as Philippine FDA authorization or availability.
+
+### #161 — The Clorox Company, Clorox Healthcare Bleach Germicidal Cleaner Spray
+- **New manufacturer.** Official SDS confirms product name and manufacturer: https://www.thecloroxcompany.com/sds/clorox-healthcare-bleach-germicidal-cleaner/ (doc code USA001050). Sodium Hypochlorite 0.65%, 1:10 bleach dilution, ready-to-use; 22 oz/32 oz spray bottles. Item numbers 068967/068970 corroborated across multiple independent retailer listings.
+
+### #162 — PDI Super Sani-Cloth Germicidal Disposable Wipe
+- **New manufacturer.** Official source: https://pdihc.com/products/environment-of-care/super-sani-cloth-germicidal-disposable-wipe/ (fetched directly). Active ingredients: isopropanol + two quaternary ammonium compounds. Full SKU table: A22480 (softpack, 80ct), Q55172 (large canister, 160ct), P86984 (X-large canister, 75ct), H04082 (large packets, 50ct), U87295 (X-large packets, 50ct). The manufacturer's marketing superlative ("the number one disinfecting wipe in healthcare") was deliberately excluded from `verifiedSpecs`.
+
+### #163 — Cumberland Swan (Vi-Jon Inc.) 70% Isopropyl Alcohol
+- Confirmed via DailyMed (NIH/FDA official drug-label database — Tier 2 government source), NDC 0869-0810-43, 16 oz bottle, 12 bottles/case.
+
+### #164 — Clorox Healthcare Hydrogen Peroxide Cleaner Disinfectant
+- Item 30828, Hydrogen Peroxide 1.4% (bleach-free), 32 oz spray bottle (128 oz refill also available). Source: https://www.cloroxpro.com/products/clorox-healthcare/hydrogen-peroxide-cleaner-disinfectants/, item number corroborated via independent retailer listings (Staples, spectrumchemical.com item 323993).
+
+## Water Treatment Monitoring
+
+All four Hach products below were fetched directly from hach.com; each catalog number appears in the product's own URL:
+
+- **#165** — Hach Free & Total Chlorine Test Strips, catalog **2793944**, 0–10 mg/L, 250 tests individually wrapped.
+- **#166** — Hach Total Hardness Test Kit, Model 5-B, catalog **145300**, drop-count EDTA titration, 1–30 gpg (17–513 mg/L as CaCO₃), ~100 tests/kit.
+- **#167** — Hach Conductivity Standard Solution, catalog **LZW9710.99**, 1413 µS/cm ±12 at 25 °C, 0.01M KCl, 250 mL bottle.
+- **#168** — Hach pH Paper, catalog **2601300**, 0–14 pH range, 100/pk.
+- **#169** — Associates of Cape Cod, Inc. (ACC) Pyrosate® Kit (gel-clot LAL endotoxin test). ACC's own LAL Reagents overview page (https://acciusa.com/bet-products/lal-reagents) explicitly states its LAL reagents are relied on by "renal dialysis centers" for water testing; the individual Pyrosate product page 404'd this session, so this is recorded at family/product-name level.
+
+## Waste Disposal
+
+- **#170** — BD Multiuse One-Piece Sharps Container, REF **305490**, 8.2 qt (7.8 L), hinge cap with petals, red. https://www.bd.com/en-us/products-and-solutions/products/product-page.305490
+- **#171** — Stericycle Red Bags for Biohazardous Waste (**new manufacturer/brand**), official store.stericycle.com SKUs including KP2323-P (10 gal), 1523M-P (13 gal), R05-P (5 gal). https://store.stericycle.com/store/medical-waste-bags/biohazard-bags/
+- **#172** — Stericycle 5 Gallon Biohazardous Waste Pail with Lid, SKU **5GALPL**, reusable, screw-top lid, carrying handle, explicitly "for use with KP2323" (the exact bag SKU used at #171). https://store.stericycle.com/5-gallon-biohazardous-waste-pail-with-lid/
+- **#173** — Stericycle Zip Style Specimen Bags with Document Pocket, SKU **IGLIP69R**, listed on the same official catalog page as #171.
+
+BD's own "Bio-Bag" system was investigated and correctly rejected for #171/#172 — it is an unrelated laboratory culture-isolation pouch product, not an infectious-waste bag.
+
+## Emergency & Routine HD Medications (identity-only; extra-strict per project rules)
+
+All nine entries below were verified using DailyMed (NIH/FDA official drug-label database) and, where available, the manufacturer's own product page. Only generic name, brand, manufacturer, strength, dosage form, and package presentation were extracted — no dosing, administration, or treatment-recommendation language was carried into `verifiedSpecs`.
+
+- **#174** — Amgen, Inc. EPOGEN (epoetin alfa). Single-dose vials 2,000/3,000/4,000/10,000 Units/mL; multi-dose 20,000 Units/2 mL and /mL (benzyl-alcohol preservative in multi-dose only).
+- **#175** — American Regent, Inc. VENOFER (iron sucrose injection, USP), 20 mg elemental iron/mL, single-dose vials 50 mg/2.5 mL, 100 mg/5 mL, 200 mg/10 mL.
+- **#176** — American Regent, Inc. Calcium Gluconate Injection, USP 10% (0.465 mEq/mL calcium), 10 mL/50 mL single-dose vials, 100 mL pharmacy bulk package.
+- **#177** — Amphastar Pharmaceuticals (via International Medication Systems, Ltd.) 50% Dextrose Injection, USP, 25 g/50 mL, Luer-Jet prefilled syringe, NDC 76329-3302-01; **plus** Fresenius Kabi USA Sodium Bicarbonate Injection, USP, 2.5 mEq/5 mL and 50 mEq/50 mL single-dose vials.
+- **#178** — Pfizer SOLU-CORTEF (hydrocortisone sodium succinate for injection, USP), 100/250/500/1,000 mg vials; **plus** Fresenius Kabi USA Diphenhydramine Hydrochloride Injection, USP, NDC 63323-664-01, 50 mg/mL, 25×1 mL single-dose vials.
+- **#179** — American Regent, Inc. Epinephrine Injection, USP, 1 mg/mL, single-dose ampules, NDC 0517-1171-01/-10 (ampule form deliberately chosen over the Adrenaclick-style auto-injector formulation also found this session, which is a self-administration device, not the crash-cart ampule/vial form the source entry implies); **plus** Amneal Pharmaceuticals/Amphastar (International Medication Systems) Atropine Sulfate Injection, USP.
+- **#180** — Hospira, Inc. Dopamine Hydrochloride Injection, USP; **plus** Baxter Healthcare Corporation Norepinephrine Bitartrate Injection, USP, 4 mg/4 mL (1 mg/mL base), single-dose amber glass vials, NDC 43066-997-01/-10.
+- **#181** — West-Ward Pharmaceuticals Corp. (a Hikma company) Ondansetron Injection, USP, 2 mg/mL, 2 mL single-dose vial (4 mg total); **plus** Hikma Pharmaceuticals USA Inc. Acetaminophen Injection, 1,000 mg/100 mL (10 mg/mL), for IV infusion.
+- **#182** — Mylan Pharmaceuticals Inc. Midodrine Hydrochloride tablet; **plus** Baxter Healthcare Corporation OSMITROL (Mannitol Injection, USP) 20%, VIAFLEX plastic container, 250 mL (NDC 0338-0357-02) / 500 mL (NDC 0338-0357-03).
+
+## Catheter Lock Solutions — cross-references, not new research
+
+- **#183** (Heparin lock): cross-referenced to the exact same BD PosiFlush® Prefilled Heparin Lock Flush Syringe already verified at #137 (SKU 306424, 5 mL, 100 USP units/mL). The source document places the identical commercial product under two different subcategories (Anticoagulation & Priming Fluids vs. Catheter Lock Solutions) — this is the same pattern already established for #131/#132's NaturaLyte variant-axis case, applied here to a subcategory-placement duplicate rather than a variant-axis duplicate.
+- **#184** (Citrate lock): cross-referenced to the exact same Dirinco B.V. Citra-Lock® 4% already verified at #138 (article 24060201), for the same reason. This resolves the Batch 10 open question of "whether #184 should share #138's record or represent a distinct product line" — it shares it, explicitly documented as such.
+
+## Specimen & Lab Supplies
+
+- **#185** — BD Vacutainer SST Tube, REF **367986** (5 mL, gold Hemogard closure, clot activator/gel), plus BD Vacutainer EDTA Tube, REF **367899**. Both fetched/confirmed directly at bd.com.
+- **#186** — BD BACTEC Standard Aerobic Medium, catalog **442027**. https://www.bd.com/en-us/products-and-solutions/products/product-page.442027
+- **#187** — BD Vacutainer Stretch Latex-Free Tourniquet, REF **367203**. The "specimen labels" half of this source entry was not independently branded/verified — partial coverage, consistent with the precedent already set at #99 (Luxfer-only coverage of a two-part entry).
+- **#188** — Cardinal Health Specimen Collection Container with Integrated Transfer Device, Yellow Cap, 120 mL, catalog **CHB13905A**. Cardinal's own descriptive page (fetched via browser) confirms the exact product description; the catalog number itself is corroborated via McKesson's citation of Cardinal's own number (Tier 3 supporting evidence, used because Cardinal's ordering-details page is gated).
+- **#189** — BD Microtainer Contact-Activated Lancet, REF **366594** (2.0 mm penetration, 1.5 mm blade width, blue/high-flow), for the "lancets" half; the "blood glucose strips" half is cross-referenced to the already-verified #93 Accu-Chek Guide Test Strips (Roche).
+
+## Dialysis Machine Consumables (extra-strict: must be an actual replaceable component, never a whole system)
+
+### #191 — DuPont Water Solutions FilmTec™ reverse-osmosis membrane elements
+- **New manufacturer.** Official source: https://www.dupont.com/water/applications/high-purity-water-for-dialysis.html (fetched directly). DuPont's own page explicitly markets FilmTec™ elements to help "dialysis original equipment manufacturers produce safe and consistent high purity water" for hemodialysis systems, with a heat-sanitizable line (up to 85 °C). This is a genuine replaceable membrane *element*, not a whole RO system. No specific model designation (e.g., a TW30/BW30-style code) was confirmed for the dialysis-specific line this session, so none is claimed.
+
+### #192 — Carbon & sediment filters — stays unresolved
+- Fresenius Medical Care's own description of pre-filtration is whole-system-level ("more than 2,000 different parts," sand/carbon/softener system with no single catalog item named). 3M/Solventum carbon filter cartridges found are consumer/beverage-grade, with no dialysis/medical marketing. `research-exhausted-generic`.
+
+### #193 — UV lamps — stays unresolved
+- Atlantic Ultraviolet and similar UV-lamp suppliers found this session are general water-purification manufacturers with no confirmed dialysis-specific or medical-grade marketing — the same discipline applied to the earlier-rejected industrial PPE candidates (#157/#158) applies here: no genuinely dialysis-purpose-built product was found. `research-exhausted-generic`.
+
+### #194 — Disinfection chemicals — cross-reference, not new research
+- Cross-referenced to the exact same Mar Cor Purification Minncare HD Disinfectant already verified at #160. #160's "Dialysis machine disinfectant" (filed under Surface Disinfection) and #194's "Disinfection chemicals" (filed under Dialysis Machine Consumables) describe the same underlying water-system disinfectant from two different subcategory placements in the source document — the same cross-reference pattern used for #183/#184.
+
+### #195 — Rockwell Medical Dry Citric Acid Descale
+- **New manufacturer.** Official source: https://www.rockwellmed.com/hemodialysis-products/ (fetched directly). 5% and 2% concentrations, explicitly marketed for cleaning/descaling (not heat disinfection) — genuinely distinct from #196's Nipro CA-50 heat-disinfection product, satisfying the explicit instruction to keep these two separate.
+
+## Adversarial self-audit before commit
+
+Before finalizing, every new record was checked against: (1) was any product forced just to raise the verified count — no; 9 candidates across this batch were deliberately left `research-exhausted-generic` despite real research effort, including both of the task's two explicitly named hard cases being genuinely re-examined (#129 resolved, #133 confirmed still unresolved); (2) does every manufacturer/product match the source entry's actual requirement — yes, checked individually above, including explicitly rejecting a wrong-form-factor epinephrine auto-injector and a lab-culture "Bio-Bag" false match; (3) does every catalog number belong to the exact product cited — yes, no cross-model or cross-variant number mixing; (4) were any images added without a confirmed exact match — no new images were added this batch at all (see below); (5) was Philippine availability, FDA-Philippines registration, or Layali authorization ever implied — no, and the one place a regulatory fact appears (#160/#194's US FDA 510(k) clearance) is explicitly flagged as US-only; (6) was any clinical/dosing/treatment language introduced for the nine medication entries — no, only generic name/manufacturer/strength/form/package; (7) was weak marketplace-only evidence ever used as the sole basis for "verified" — no; Tier 4 marketplace listings were used only for discovery (finding a model/catalog number to independently confirm on Tier 1–3 sources), never as sole evidence, except where explicitly disclosed as Tier 3 corroboration (e.g., #188's Cardinal Health catalog number, corroborated via McKesson because Cardinal's own ordering page is gated).
+
+## Images
+
+**No new product images were added in this batch.** Every one of the 46 newly-verified records and the two cross-reference records (#183/#184) was left without an `image`/`imageWebp` field. This was a deliberate choice: per the project's own image standard ("no image is better than a wrong image"), no image was captured, downloaded, or optimized with confirmed provenance for any new product this session — adding one without that provenance work would have been exactly the shortcut the standard exists to prevent. The 56 pre-existing image references from Batches 1–10 were validated (all resolve on disk, zero missing/broken files) and are otherwise untouched. Future batches may add photography for these 46 records following the existing `images/products/<sourceId>-<manufacturer>.jpg` convention, sourced only from the same official pages already cited above.
+
+## Final completion metrics
+
+- Baseline (end of Batch 10): 62 verified, 57 pending.
+- End of Batch 11: **108 verified**, **11 research-exhausted-generic**, **0 unresearched/pending**. 108 + 11 = 119.
+- Catalog architecture unchanged throughout: 119 canonical entries, 119 unique source IDs, highest source ID 196, 21 source categories, 5 website groups, `finalSkuCount` remains `null`/TBD (entry count was never converted into SKU count).
+
+## Date accessed (Batch 11)
+
+Sources above were accessed in a single work session on `layali-2.0-redesign`, continuing from HEAD `240f9b49c06b199c32f53561660bc503317f6528`.
