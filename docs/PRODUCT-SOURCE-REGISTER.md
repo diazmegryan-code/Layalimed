@@ -1978,3 +1978,16 @@ One 600x600 white tile per brand in `images/products/brand-logos/<brand>.png` + 
 ## Reporting note
 
 Product objects now fall into three groups: **110 with a real product photo**, **23 with a brand-logo tile** (paths under `images/products/brand-logos/`), and **2 with neither**. Logo tiles are not product photography and should still be replaced by real photos when they become available.
+
+---
+
+# Homepage Featured Consumables Images (2026-10-29)
+
+These two images are used on the homepage "Featured Consumables" tiles only; they are not catalog entries and are not referenced from `product-catalog.json`.
+
+| Homepage tile | Local file(s) | Source | Match | Processing |
+|---|---|---|---|---|
+| Alcohol Prep Pads | `images/products/82-dynarex-alcohol-home.jpg/.webp` | Tight crop of the verified Dynarex Sterile Alcohol Prep Pad photo already used for catalog entry #82 (source: https://dynarex.com/products/disposable-medical-supplies/patient-care/1116-alcohol-prep-pad--sterile) | Exact Dynarex item 1116, large pad | Whitespace trimmed and squared to 326x326 for the 84 px tile. The catalog photo is unchanged. |
+| 3-Ply Earloop Masks | `images/products/home-indoplas-3ply-earloop-mask.jpg/.webp` | Marketplace listing, by owner instruction: Lazada Philippines, "Indoplas Disposable Face Mask 3-Ply with Earloop", https://www.lazada.com.ph/products/pdp-i551306.html. Direct image: https://img.lazcdn.com/g/p/2ec4b4e5dddfa630ce04b4cd7a65061f.jpg (gallery image 8 of 9) | Indoplas branded product (box reads "Face Masks, 3 ply with earloop, 50 pcs", Indoplas Philippines). The listing's own images carry Indoplas branding and a Lazada "Official Store" banner, but the seller identity was not independently confirmed. | Cropped to the box only (marketplace banner, caption icons and the Indoplas logo header removed), padded to a 5:4 white canvas, resized to 1200x960. No colour or content changes. |
+
+**Notes on the mask image.** No official Indoplas website with product photos could be found (searched 2026-10-29); the only sources are Lazada/Shopee listings and a reseller page. The marketplace image was used on the owner's explicit instruction, replacing a delivery-carton photo. The photograph belongs to Indoplas or its seller; confirming Indoplas's permission to use it, or replacing it with the company's own photo of the stock Layali supplies, is recommended before launch. Other gallery images from the same listing (mask close-ups, FDA advisory scan) were reviewed and not used.
