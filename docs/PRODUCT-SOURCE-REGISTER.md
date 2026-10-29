@@ -2016,3 +2016,15 @@ Terumo (7 catalog products) is not shown: terumo.com and terumo.co.jp return 403
 
 - Homepage scope wording: "Focus Categories" became "Core Categories"; the trust strip reads "Our two core product areas"; the About paragraph no longer says Layali focuses "exclusively" on consumables and hemodialysis and now notes that the catalog also lists medical equipment, procedure and surgical supplies, and medications.
 - Catalog card wording: "photo & specifications pending verification" became "Photo & specifications available on request" (and the two shorter variants), and "Photo pending" became "Photo on request", so no internal verification status is shown to customers.
+
+---
+
+# Brand Logo Tiles: update (2026-10-29)
+
+- **Added tile `vi-jon`** for #163 (Cumberland Swan / Vi-Jon 70% isopropyl alcohol). Source: https://www.vijon.com/wp-content/uploads/2024/01/vijon-logo.jpg (Vi-Jon's own site; 300x113, shown about 1.5x). It is the manufacturer's logo, not the Swan product-brand logo; Swan's own site (swanbrand.com) did not respond. The same trademark caveat applies as for the other tiles.
+- **Still without a logo:** #182 Mylan midodrine. mylan.com and viatris.com returned 503 on 2026-10-29 (retried). Third-party copies were not used.
+- **Counts after this update:** 110 product objects with a real photo, 24 with a brand-logo tile, 1 with neither (#182 midodrine).
+
+## Quote form: hemodialysis category prefill (same day)
+
+Catalog quote links carry the product's catalog subcategory. Hemodialysis subcategories that were not in the form's dropdown used to fall back to the first Hemodialysis option ("Dialyzers"), so emails for catheters, PPE, disinfectants and similar items were labelled "Dialyzers". The form now has an "Other Hemodialysis Supplies" option (it still sends MedCRM the existing "Hemodialysis Supplies" category, so the CRM contract is unchanged), and four catalog subcategories map to their real equivalents: Dialyzers / Artificial Kidneys to Dialyzers, Bloodline Sets to Blood Tubing Sets, Acid Concentrates & Bicarbonate to Concentrates, Dressing Supplies to Treatment Consumables. Checked against the 24 distinct category/group combinations produced by all 135 catalog quote links.

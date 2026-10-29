@@ -401,7 +401,9 @@ document.addEventListener('keydown', (e) => {
   const categoryEl = document.getElementById('f-category');
   if (categoryEl && category) {
     const options = Array.from(categoryEl.options);
-    const match = options.find(o => o.text === category) || options.find(o => o.dataset.group === group);
+    const aliases = { 'Dialyzers / Artificial Kidneys': 'Dialyzers', 'Bloodline Sets': 'Blood Tubing Sets', 'Acid Concentrates & Bicarbonate': 'Concentrates', 'Dressing Supplies': 'Treatment Consumables' };
+    const wanted = aliases[category] || category;
+    const match = options.find(o => o.text === wanted) || options.find(o => o.dataset.group === group && o.dataset.fallback) || options.find(o => o.dataset.group === group);
     if (match) categoryEl.selectedIndex = options.indexOf(match);
   }
 })();
