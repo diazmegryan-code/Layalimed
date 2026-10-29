@@ -165,6 +165,7 @@ em.accent{color:var(--red);font-style:italic}
   transition:background .2s var(--ease),transform .2s var(--ease);
 }
 .nav-cta:hover{background:var(--red-d);transform:translateY(-1px)}
+.nav-cta-short{display:none}
 
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px}
 .hamburger span{width:22px;height:1.5px;background:var(--ink);transition:.3s var(--ease)}
@@ -435,7 +436,7 @@ em.accent{color:var(--red);font-style:italic}
 /* ================= BRANDS ================= */
 #brands{background:var(--off);overflow:hidden}
 .marquee{width:100%;overflow:hidden;margin-top:44px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.marquee-track{display:flex;gap:64px;width:max-content;animation:marquee 34s linear infinite}
+.marquee-track{display:flex;gap:64px;width:max-content;animation:marquee 90s linear infinite}
 @media (prefers-reduced-motion: reduce){.marquee-track{animation:none;overflow-x:auto}}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .brand-plate{display:flex;align-items:center;height:44px}
@@ -585,3 +586,16 @@ footer{background:var(--charcoal-2);color:var(--on-dark-mid);padding:72px var(--
 }
 
 .gs-parallax{will-change:transform}
+
+/* Narrow screens: keep the header on one line and the hero stats in one row */
+@media (max-width:600px){
+  .nav-right{gap:12px}
+  .nav-cta{white-space:nowrap;padding:9px 12px;font-size:12px}
+  .hero-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .hero-chip-num{font-size:28px}
+  .hero-chip-label{font-size:10px;letter-spacing:.8px}
+}
+@media (max-width:400px){
+  .nav-cta-full{display:none}
+  .nav-cta-short{display:inline}
+}

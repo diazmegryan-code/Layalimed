@@ -1991,3 +1991,28 @@ These two images are used on the homepage "Featured Consumables" tiles only; the
 | 3-Ply Earloop Masks | `images/products/home-indoplas-3ply-earloop-mask.jpg/.webp` | Marketplace listing, by owner instruction: Lazada Philippines, "Indoplas Disposable Face Mask 3-Ply with Earloop", https://www.lazada.com.ph/products/pdp-i551306.html. Direct image: https://img.lazcdn.com/g/p/2ec4b4e5dddfa630ce04b4cd7a65061f.jpg (gallery image 8 of 9) | Indoplas branded product (box reads "Face Masks, 3 ply with earloop, 50 pcs", Indoplas Philippines). The listing's own images carry Indoplas branding and a Lazada "Official Store" banner, but the seller identity was not independently confirmed. | Cropped to the box only (marketplace banner, caption icons and the Indoplas logo header removed), padded to a 5:4 white canvas, resized to 1200x960. No colour or content changes. |
 
 **Notes on the mask image.** No official Indoplas website with product photos could be found (searched 2026-10-29); the only sources are Lazada/Shopee listings and a reseller page. The marketplace image was used on the owner's explicit instruction, replacing a delivery-carton photo. The photograph belongs to Indoplas or its seller; confirming Indoplas's permission to use it, or replacing it with the company's own photo of the stock Layali supplies, is recommended before launch. Other gallery images from the same listing (mask close-ups, FDA advisory scan) were reviewed and not used.
+
+---
+
+# Homepage Brand Strip (2026-10-29)
+
+The homepage "Brands in Our Catalog" strip previously hotlinked four logos from Wikimedia (Fresenius, Baxter, Nipro, Medtronic) under the heading "Manufacturers We Work With". Medtronic has no products in the catalog, and the heading implied a manufacturer relationship that the catalog does not establish. The strip now shows self-hosted logos of seven manufacturers that account for most of the catalog, under the heading "Brands you will find in our catalog", with the line "Our catalog references products from these manufacturers. Availability and pricing are confirmed in your quotation." Catalog product counts at the time: BD 15, Nipro 12, 3M (Solventum) 9, Fresenius Medical Care 7, Baxter 6, Dynarex 6, B. Braun 3.
+
+Files are in `images/brands/` (transparent PNG, 88 px tall, trimmed). SVG sources were rendered with PyMuPDF; no colours or shapes were altered. Accessed 2026-10-29. The trademark caveat in "Brand Logo Tiles" above applies: the logos identify manufacturers only and do not imply authorization or partnership.
+
+| File | Source |
+|---|---|
+| `bd.png` | https://www.bd.com/content/dam/bd-assets/bd-com/en-us/logos/bd/header-bd-logo.svg |
+| `nipro.png` | https://www.nipro.com/themes/custom/nipro/dist/app-drupal/images/NIPRO-Logo.svg |
+| `solventum-3m.png` | https://www.solventum.com/content/dam/public/language-masters/en/entp/image/logo/solventum-logo-horz-black.svg (3M's health-care business is now Solventum; the catalog lists "3M (Solventum)") |
+| `fresenius-medical-care.png` | https://freseniusmedicalcare.com/content/dam/fresenius-medical-care/global/en/images/home/FMC-logo.svg |
+| `baxter.png` | https://www.baxter.com/themes/custom/cosmos/logo.svg |
+| `dynarex.png` | https://assets.1.commercebuild.com/e5679379b58995ada200c19806353331/contents/global/Dynarex_150b2.png (270x90 source, shown slightly enlarged) |
+| `b-braun.png` | https://www.bbraunusa.com/content/dam/b-braun/master/website-6/en/00_home-and-miscellaneous/logo/bbraun-logo-full.svg |
+
+Terumo (7 catalog products) is not shown: terumo.com and terumo.co.jp return 403 to automated requests and no logo file could be retrieved from its other sites.
+
+## Related copy changes the same day
+
+- Homepage scope wording: "Focus Categories" became "Core Categories"; the trust strip reads "Our two core product areas"; the About paragraph no longer says Layali focuses "exclusively" on consumables and hemodialysis and now notes that the catalog also lists medical equipment, procedure and surgical supplies, and medications.
+- Catalog card wording: "photo & specifications pending verification" became "Photo & specifications available on request" (and the two shorter variants), and "Photo pending" became "Photo on request", so no internal verification status is shown to customers.

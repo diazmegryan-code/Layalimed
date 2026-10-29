@@ -260,7 +260,7 @@ function renderPhoto(p) {
   }
   return `<div class="product-photo product-photo--placeholder cat-photo-empty">
         <svg class="cat-photo-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="6" y="10" width="36" height="28" rx="2"/><circle cx="16" cy="20" r="3.5"/><path d="M42 30l-10-9-9 8-6-5-11 9"/></svg>
-        <span class="placeholder-label">Photo pending</span>
+        <span class="placeholder-label">Photo on request</span>
       </div>`;
 }
 
@@ -274,7 +274,7 @@ function wireImageFallbacks(container) {
       const wrap = img.closest('.product-photo');
       if (!wrap) return;
       wrap.className = 'product-photo product-photo--placeholder cat-photo-empty';
-      wrap.innerHTML = '<svg class="cat-photo-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="6" y="10" width="36" height="28" rx="2"/><circle cx="16" cy="20" r="3.5"/><path d="M42 30l-10-9-9 8-6-5-11 9"/></svg><span class="placeholder-label">Photo pending</span>';
+      wrap.innerHTML = '<svg class="cat-photo-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="6" y="10" width="36" height="28" rx="2"/><circle cx="16" cy="20" r="3.5"/><path d="M42 30l-10-9-9 8-6-5-11 9"/></svg><span class="placeholder-label">Photo on request</span>';
     }, { once: true });
   });
 }
@@ -367,12 +367,12 @@ function renderCard(p) {
   const verifiedProductsHtml = renderVerifiedProducts(p);
 
   const hasSpecs = !!detailsHtml || !!verifiedProductsHtml;
-  const pendingParts = [];
-  if (!findPhotoSource(p)) pendingParts.push('photo');
-  if (!hasSpecs) pendingParts.push('specifications');
-  const pendingHtml = pendingParts.length
-    ? `<span class="cat-status-pill">${pendingParts.join(' & ')} pending verification</span>`
+  const hasPhoto = !!findPhotoSource(p);
+  const requestText = !hasPhoto && !hasSpecs ? 'Photo & specifications available on request'
+    : !hasSpecs ? 'Specifications available on request'
+    : !hasPhoto ? 'Photo available on request'
     : '';
+  const pendingHtml = requestText ? `<span class="cat-status-pill">${requestText}</span>` : '';
 
   return `
     <article class="cat-card">
