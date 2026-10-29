@@ -234,48 +234,84 @@ gtag('config', 'G-R8SCPLCRVW');
 
     <div class="hd-circuit reveal">
       <div class="hd-circuit-head"><span class="hd-circuit-title" id="hd-circuit-title">One treatment, five product areas</span><span class="hd-circuit-hint">Select a part to explore it</span></div>
-      <svg class="hd-circuit-svg" viewBox="0 0 960 320" role="group" aria-label="Simplified hemodialysis circuit: AV fistula needles connect the patient to blood tubing, which runs through the dialyzer; concentrates feed the dialysate; treatment consumables surround each session." focusable="false">
+      <svg class="hd-circuit-svg" viewBox="0 0 1000 500" role="group" aria-label="Illustrated hemodialysis circuit: AV fistula needles connect the patient's arm to blood tubing and a blood pump; blood runs through the fibers of the dialyzer while dialysate, made from concentrates and treated water, flows the opposite way along the outside of the fibers; treatment consumables are used around each session." focusable="false">
   <defs>
-    <marker id="hdArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1.5 1.5L8.5 5L1.5 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="hdArrowBlood" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1.5 1.5L8 5L1.5 8.5" fill="none" stroke="#FF7A87" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="hdArrowDia" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1.5 1.5L8 5L1.5 8.5" fill="none" stroke="#E9E7E2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></marker>
   </defs>
-  <rect class="hd-env" x="16" y="16" width="928" height="288" rx="18" aria-hidden="true"/>
-  <path class="hd-line" d="M120 120V84H400V130" marker-end="url(#hdArrow)"/>
-  <path class="hd-line" d="M560 190V236H120V204" marker-end="url(#hdArrow)"/>
-  <path class="hd-line hd-line--dash" d="M798 160H606" marker-end="url(#hdArrow)"/>
-  <text class="hd-note" x="700" y="148" text-anchor="middle">dialysate</text>
-  <text class="hd-note" x="340" y="256" text-anchor="middle">return to patient</text>
 
-  <g class="hd-node" data-hd-node="treatment" role="button" tabindex="0" aria-label="5. Treatment consumables">
-    <rect class="hd-pill" x="48" y="1" width="244" height="30" rx="15"/>
-    <circle class="hd-badge" cx="68" cy="16" r="10"/><text class="hd-badge-num" x="68" y="20" text-anchor="middle">5</text>
-    <text class="hd-label" x="86" y="21">Treatment consumables</text>
+  <g class="hd-legend" aria-hidden="true">
+    <path class="hd-blood" d="M24 30H62"/><text class="hd-note" x="72" y="35">Blood</text>
+    <path class="hd-dia" d="M140 30H178"/><text class="hd-note" x="188" y="35">Dialysate</text>
+  </g>
+
+  <g class="hd-static" aria-hidden="true">
+    <circle class="hd-shape" cx="230" cy="262" r="24"/>
+    <circle class="hd-roller" cx="230" cy="250" r="3.5"/><circle class="hd-roller" cx="240.4" cy="268" r="3.5"/><circle class="hd-roller" cx="219.6" cy="268" r="3.5"/>
+    <text class="hd-note" x="230" y="312" text-anchor="middle">blood pump</text>
+    <text class="hd-note" x="66" y="424" text-anchor="middle">patient's arm</text>
+    <rect class="hd-shape" x="626" y="104" width="160" height="44" rx="10"/>
+    <text class="hd-note" x="706" y="131" text-anchor="middle">dialysate</text>
+    <path class="hd-dia" d="M660 74V102" marker-end="url(#hdArrowDia)"/>
+    <path class="hd-dia" d="M710 74V102" marker-end="url(#hdArrowDia)"/>
+    <path class="hd-dia" d="M936 126H790" marker-end="url(#hdArrowDia)"/>
+    <text class="hd-note" x="862" y="116" text-anchor="middle">treated water</text>
+    <path class="hd-dia" d="M741 148V188" marker-end="url(#hdArrowDia)"/>
+    <path class="hd-dia" d="M509 334V372" marker-end="url(#hdArrowDia)"/>
+    <text class="hd-note" x="509" y="394" text-anchor="middle">to drain</text>
   </g>
 
   <g class="hd-node" data-hd-node="needles" role="button" tabindex="0" aria-label="3. AV fistula needles">
-    <circle class="hd-ring" cx="120" cy="160" r="40"/>
-    <path class="hd-glyph" d="M102 178L134 146M134 146l5-5M127 153l-6-6M120 160l-6-6"/>
-    <circle class="hd-badge" cx="188" cy="160" r="10"/><text class="hd-badge-num" x="188" y="164" text-anchor="middle">3</text>
-    <text class="hd-label" x="206" y="165">AV fistula needles</text>
+    <rect class="hd-hit" x="14" y="146" width="212" height="262"/>
+    <rect class="hd-shape hd-arm" x="24" y="200" width="84" height="200" rx="42"/>
+    <path class="hd-vein" d="M66 214C50 250 82 282 66 312S50 362 66 388"/>
+    <path class="hd-needle" d="M108 262H72M108 340H72"/>
+    <circle class="hd-hub" cx="114" cy="262" r="5.5"/><circle class="hd-hub" cx="114" cy="340" r="5.5"/>
+    <rect class="hd-pill" x="24" y="154" width="172" height="32" rx="16"/><circle class="hd-badge" cx="44" cy="170" r="10"/><text class="hd-badge-num" x="44" y="174" text-anchor="middle">3</text>
+    <text class="hd-label" x="62" y="175">AV fistula needles</text>
   </g>
 
   <g class="hd-node" data-hd-node="tubing" role="button" tabindex="0" aria-label="2. Blood tubing sets">
-    <rect class="hd-pill" x="176" y="69" width="172" height="30" rx="15"/>
-    <circle class="hd-badge" cx="196" cy="84" r="10"/><text class="hd-badge-num" x="196" y="88" text-anchor="middle">2</text>
-    <text class="hd-label" x="214" y="89">Blood tubing sets</text>
+    <path class="hd-hit-line" d="M120 262H206M254 262H408M810 262H840V450H170V340H122"/>
+    <path class="hd-blood hd-tube" d="M120 262H206"/>
+    <path class="hd-blood hd-tube" d="M254 262H406" marker-end="url(#hdArrowBlood)"/>
+    <path class="hd-blood hd-tube" d="M812 262H840V450H170V340H124" marker-end="url(#hdArrowBlood)"/>
+    <rect class="hd-pill" x="434" y="434" width="168" height="32" rx="16"/><circle class="hd-badge" cx="454" cy="450" r="10"/><text class="hd-badge-num" x="454" y="454" text-anchor="middle">2</text>
+    <text class="hd-label" x="472" y="455">Blood tubing sets</text>
   </g>
 
   <g class="hd-node" data-hd-node="dialyzers" role="button" tabindex="0" aria-label="1. Dialyzers">
-    <rect class="hd-ring" x="360" y="132" width="240" height="56" rx="28"/>
-    <path class="hd-glyph" d="M392 146V174M572 146V174M410 146H554M410 160H554M410 174H554"/>
-    <circle class="hd-badge" cx="440" cy="212" r="10"/><text class="hd-badge-num" x="440" y="216" text-anchor="middle">1</text>
-    <text class="hd-label" x="458" y="217">Dialyzers</text>
+    <rect class="hd-hit" x="404" y="184" width="414" height="190"/>
+    <rect class="hd-shape" x="440" y="218" width="340" height="88" rx="12"/>
+    <rect class="hd-shape" x="410" y="244" width="30" height="36" rx="4"/>
+    <rect class="hd-shape" x="780" y="244" width="30" height="36" rx="4"/>
+    <rect class="hd-shape" x="730" y="190" width="22" height="28" rx="3"/>
+    <rect class="hd-shape" x="498" y="306" width="22" height="28" rx="3"/>
+    <path class="hd-fibers" d="M452 232H768M452 243H768M452 253H768M452 272H768M452 283H768M452 293H768"/>
+    <path class="hd-blood" d="M540 262H706" marker-end="url(#hdArrowBlood)"/>
+    <path class="hd-dia hd-dia--thin" d="M730 225H530" marker-end="url(#hdArrowDia)"/>
+    <path class="hd-dia hd-dia--thin" d="M730 300H530" marker-end="url(#hdArrowDia)"/>
+    <rect class="hd-pill" x="556" y="340" width="130" height="32" rx="16"/><circle class="hd-badge" cx="576" cy="356" r="10"/><text class="hd-badge-num" x="576" y="360" text-anchor="middle">1</text>
+    <text class="hd-label" x="594" y="361">Dialyzers</text>
   </g>
 
   <g class="hd-node" data-hd-node="concentrates" role="button" tabindex="0" aria-label="4. Concentrates">
-    <circle class="hd-ring" cx="840" cy="160" r="40"/>
-    <path class="hd-glyph" d="M826 142h28v8l6 6v26a4 4 0 0 1-4 4h-32a4 4 0 0 1-4-4v-26l6-6z"/>
-    <circle class="hd-badge" cx="782" cy="222" r="10"/><text class="hd-badge-num" x="782" y="226" text-anchor="middle">4</text>
-    <text class="hd-label" x="800" y="227">Concentrates</text>
+    <rect class="hd-hit" x="430" y="8" width="214" height="84"/>
+    <rect class="hd-hit" x="640" y="8" width="150" height="84"/>
+    <path class="hd-shape" d="M652 22h16v6l8 9v32a4 4 0 0 1-4 4h-24a4 4 0 0 1-4-4V37l8-9z"/>
+    <path class="hd-shape" d="M702 22h16v6l8 9v32a4 4 0 0 1-4 4h-24a4 4 0 0 1-4-4V37l8-9z"/>
+    <rect class="hd-pill" x="452" y="38" width="150" height="32" rx="16"/><circle class="hd-badge" cx="472" cy="54" r="10"/><text class="hd-badge-num" x="472" y="58" text-anchor="middle">4</text>
+    <text class="hd-label" x="490" y="59">Concentrates</text>
+  </g>
+
+  <g class="hd-node" data-hd-node="treatment" role="button" tabindex="0" aria-label="5. Treatment consumables">
+    <rect class="hd-hit" x="862" y="290" width="132" height="176"/>
+    <rect class="hd-env" x="872" y="372" width="116" height="84" rx="12"/>
+    <rect class="hd-shape" x="888" y="388" width="32" height="32" rx="3"/><rect class="hd-shape" x="896" y="396" width="16" height="16" rx="2"/>
+    <circle class="hd-shape" cx="954" cy="404" r="14"/><circle class="hd-shape" cx="954" cy="404" r="5"/>
+    <rect class="hd-shape" x="900" y="432" width="30" height="12" rx="2"/><path class="hd-needle" d="M890 438H900M930 438H950M946 432v12"/>
+    <rect class="hd-pill" x="866" y="300" width="126" height="52" rx="26"/><circle class="hd-badge" cx="887" cy="326" r="10"/><text class="hd-badge-num" x="887" y="330" text-anchor="middle">5</text>
+    <text class="hd-label hd-label--sm" x="904" y="323">Treatment</text><text class="hd-label hd-label--sm" x="904" y="339">consumables</text>
   </g>
 </svg>
       <ol class="hd-circuit-steps">
