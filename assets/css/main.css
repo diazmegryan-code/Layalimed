@@ -523,6 +523,7 @@ footer{background:var(--charcoal-2);color:var(--on-dark-mid);padding:72px var(--
 .footer-bottom{max-width:var(--container);margin:0 auto;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px}
 .footer-bottom a{color:var(--on-dark-mid);text-decoration:underline}
 .footer-bottom a:hover{color:#fff}
+.footer-trademark{max-width:var(--container);margin:0 auto;padding-top:12px;font-size:11px;line-height:1.5;color:var(--on-dark-mid)}
 @media (max-width:820px){.footer-grid{grid-template-columns:1fr;gap:32px}}
 
 /* ================= RFQ FORM: privacy / sensitive-info notes ================= */
