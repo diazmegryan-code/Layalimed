@@ -1907,3 +1907,34 @@ All images are Tier 1 (official manufacturer page or the manufacturer's own asse
 - Cropped/padded #131, #188 and #145 so the card's square `object-fit: cover` crop no longer clips the product or shows rulers (unmodified downloads kept in `images/products/originals/`).
 - Added JPG/PNG fallbacks for the five WebP-only images and WebP companions for the PNG/JPG-only images, so every image object follows the existing `image` + `imageWebp` convention.
 - No catalog data other than `image`/`imageWebp` was touched.
+
+---
+
+# Product Image Completion Pass 3 (Claude, browser-assisted)
+
+Continuing from `d27aa88` on `layali-2.0-redesign`. Sourced directly from manufacturer pages and manufacturer-owned asset hosts, all Tier 1, all accessed 2026-10-29. No product data, `dataStatus` or `publishStatus` was changed; only `image`/`imageWebp` fields were added, and every image has a JPG/PNG + WebP pair.
+
+## New images
+
+| Source ID | Manufacturer / product | Local file(s) | Source page | Direct image URL | Match | Processing |
+|---|---|---|---|---|---|---|
+| 88 | AirLife (SunMed) Oxygen Cannula | `88-airlife-cannula.jpg/.webp` | https://myairlife.com/product/airlife-oxygen-cannulas | https://myairlife.com/wp-content/uploads/2026/09/Screenshot-2026-09-03-at-10.27.47-AM.png | Family-level (the page covers several cannula styles; this is its lead image, captioned "Soft Head Tubing Nasal Cannula") | The file is named like a screenshot but is the manufacturer's own product image (served as WebP). White margins trimmed, squared to 1212x1212. The small manufacturer caption is part of the image and was left in. |
+| 144 | ICU Medical Ultra Small Bore Extension Set | `144-icumedical-extension-set.jpg/.webp` | https://www.icumed.com/products/infusion-therapy/infusion-consumables/ultra-small-bore-extension-sets/ | https://www.icumed.com/media/yidhutpf/ultra-small-bore-extension-sets.png | Family-level (the product family's lead image; shows an extension set with an in-line filter) | White margins trimmed, squared to 1000x1000. |
+| 189 | Roche Accu-Chek Guide Test Strips | `189-roche-accuchek-guide-strips.png/.webp` | https://www.accu-chek.com/products/strips/guide | https://www.accu-chek.com/sites/g/files/papvje226/files/2023-06/Guide-25ct-Test-Strips-Contents-500x500.png | Exact (25-count Guide vial with strips) | Unmodified 500x500 transparent PNG. The unreferenced `93-accuchek-strips.jpg` in this folder is the same artwork at lower resolution. |
+| 118 | Fresenius Medical Care CombiSet True Flow bloodlines | `118-fresenius-combiset.jpg/.webp` | https://freseniusmedicalcare.com/en-us/products/disposables/bloodlines/combiset/ | https://freseniusmedicalcare.com/content/dam/fmcna/live/products/disposables/bloodlines/FMCNA_ProductResize__0014_Photography_Combiset_Bloodlines_20190110_259_Hero.jpg | Family-level (the CombiSet family hero photo) | Cropped from 2400x1200 to the 1200x1200 window containing the bloodline set (no resampling). Original kept in `originals/118-fresenius-combiset-original.jpg`. |
+| 175 | American Regent VENOFER (iron sucrose injection, USP) | `175-americanregent-venofer.png/.webp` | https://www.venofer.com/ (official Venofer site) | https://www.venofer.com/images/1-0-Home/vnf-vials-img2.png | Exact product (2.5 mL, 5 mL and 10 mL Venofer vials) | Native 379x414, padded with transparency to a 414x414 square. Not upscaled. Partially-verified entry: shows Venofer only; ferric carboxymaltose is not depicted or implied. |
+| 178 | Pfizer SOLU-CORTEF 500 mg ACT-O-VIAL | `178-pfizer-solucortef.jpg/.webp` | https://www.pfizerhospitalus.com/products?molecule%5B0%5D=53259 (Pfizer Hospital US catalog; lists "Solu-Cortef 500 mg Single-Dose ACT-O-Vial, NDC 00009-0016-12" with this image) | https://www.pfizerhospitalus.com/sites/default/files/prod/child/images/0009-0016-12_2025-4mL%20AOV.jpg | Exact for the 500 mg vial (one strength of the verified product) | Source is 6241x6241 (5.4 MB). Whitespace trimmed, squared, downscaled to 1200x1200. The 5 MB original is not stored; the URL above reproduces it. |
+
+## Reviewed and not added (do not repeat these searches)
+
+- **#87 B. Braun Infusomat Space IV set:** the manufacturer only serves a 500x62 pixel image (a thin line of tubing); too small to use.
+- **#146 Nipro stopcock:** re-checked. Nipro Canada's page captions its photo "17-469N shown above" and lists 17-369C only in a table. No exact image exists.
+- **#147 BD TruWave tubing:** re-checked. BD's page shows transducers only.
+- **#111 SUREFLUX, #139 Nipro saline, #196 Nipro citric acid:** nipro-group.com now serves a Cloudflare bot-verification page to both scripts and the browser. Not bypassed. Needs a manual download from a normal browser, or another official source.
+- **#191 DuPont FilmTec:** DuPont's dialysis and medical-water pages carry only banner images, no membrane element photo.
+- **#195 Rockwell citric acid:** no dry citric acid descale photo located on the product page (only concentrate/CitraPure family images).
+- **#160/#194 Minncare HD:** the mcpur.com product page redirects to the homepage; Xylem's Mar Cor brand page shows water systems only.
+- **#82/#154 Betadine swabsticks:** no official product-page image found (betadine.com product page is gone; the DailyMed images are 865x94 and 112x487 label strips). The brand is now owned by Atlantis Consumer Healthcare; the catalog still lists Avrio Health.
+- **#163 Cumberland Swan isopropyl alcohol:** no official product page located; only distributor listings (Fisher blocks scripted access) and a flat DailyMed label.
+- **#120 5008X CAREset:** not retried; the manufacturer page shows the full system.
+- **Medications #174, #176, #177, #179, #180, #181, #182:** DailyMed's images were downloaded and reviewed. They are flat carton/label artwork, not product photographs: die-line cartons with "IMPRINT AREA" placeholders and dummy lot/expiry text, test barcodes, diagrams and structure drawings. Judged unsuitable for a premium catalog and not used. DailyMed has no images at all for calcium gluconate. Manufacturer sites: epogen.com shows lifestyle imagery only; American Regent's catalog lists a 30 mL epinephrine product (NDC 0517-3030-01), not the cataloged 0517-1171 product, and has no calcium gluconate listing; no official Hikma, Amphastar, Hospira dopamine or Baxter packshot pages were located. If official package-label artwork is acceptable, the best DailyMed candidates are the single-label images (for example Hikma acetaminophen bag label, Swan 70% alcohol label), but this was not adopted.

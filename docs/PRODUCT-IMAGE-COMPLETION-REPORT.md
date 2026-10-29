@@ -154,3 +154,37 @@ Shared images mean the effective number of distinct images still needed is about
 
 - Provenance for these images was originally written in four separate notes by the sourcing agent and has now been consolidated into the register.
 - Open decision: whether official package-label images (for example from DailyMed) are acceptable for medications. The earlier brief allowed them; the sourcing agent's notes said not to use label artwork.
+
+
+---
+
+# Addendum: Pass 3 (Claude, browser-assisted), 2026-10-29
+
+Starting point: `d27aa88`. Per-image provenance is in `docs/PRODUCT-SOURCE-REGISTER.md` under "Product Image Completion Pass 3".
+
+| | Before Pass 3 | After Pass 3 |
+|---|---|---|
+| Product objects with an image | 104 | **110** |
+| Product objects without an image | 31 | **25** |
+| Entries with at least one image | 89 | **90** |
+| Entries with no image | 30 | **29** (11 are placeholders left empty on purpose) |
+| Referenced image files | 186 | 198, all decode, 0 broken |
+
+Unchanged: 119 records, 100 / 8 / 11 / 0 status split, 21 categories, 5 groups, `finalSkuCount` null, `publishStatus` hold on all 119; only `image`/`imageWebp` fields changed. Live check of all five catalog groups: 0 broken images, 0 console errors.
+
+**Added:** #88 (AirLife cannula), #144 (ICU Medical extension set), #189 (Roche strips), #118 (Fresenius CombiSet), #175 (Venofer), #178 (Solu-Cortef 500 mg).
+
+## Still without an image (25 product objects)
+
+- **Medical Consumables (2):** #82 Betadine, #87 B. Braun IV set.
+- **Hemodialysis (12):** #111 SUREFLUX, #120 5008X CAREset, #139 Nipro saline, #146 Nipro stopcock, #147 BD TruWave tubing, #154 Betadine, #160 and #194 Minncare HD, #163 isopropyl alcohol, #191 DuPont RO membrane, #195 Rockwell citric acid, #196 Nipro citric acid.
+- **Medications (11):** #174 Epogen, #176 calcium gluconate, #177 Amphastar dextrose, and both products on each of #179, #180, #181, #182.
+
+## Why these remain
+
+- **Blocked by bot protection (not bypassed):** #111, #139, #196 (nipro-group.com).
+- **No exact official image exists:** #146 (model mismatch), #147 (transducers only), #87 (62 px tall), #195, #191, #160/#194.
+- **No official product photo located:** #82/#154, #163, and the medications above. DailyMed offers only flat label/carton artwork, which was not used. The open decision is whether official label artwork is acceptable for medications.
+- **Not retried:** #120.
+
+Realistic ways to close more of the gap: manual downloads of the three Nipro pages from a normal browser; a decision on label artwork for medications; or real Layali photography for the medication and disinfectant lines.
