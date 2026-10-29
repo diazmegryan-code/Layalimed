@@ -1938,3 +1938,43 @@ Continuing from `d27aa88` on `layali-2.0-redesign`. Sourced directly from manufa
 - **#163 Cumberland Swan isopropyl alcohol:** no official product page located; only distributor listings (Fisher blocks scripted access) and a flat DailyMed label.
 - **#120 5008X CAREset:** not retried; the manufacturer page shows the full system.
 - **Medications #174, #176, #177, #179, #180, #181, #182:** DailyMed's images were downloaded and reviewed. They are flat carton/label artwork, not product photographs: die-line cartons with "IMPRINT AREA" placeholders and dummy lot/expiry text, test barcodes, diagrams and structure drawings. Judged unsuitable for a premium catalog and not used. DailyMed has no images at all for calcium gluconate. Manufacturer sites: epogen.com shows lifestyle imagery only; American Regent's catalog lists a 30 mL epinephrine product (NDC 0517-3030-01), not the cataloged 0517-1171 product, and has no calcium gluconate listing; no official Hikma, Amphastar, Hospira dopamine or Baxter packshot pages were located. If official package-label artwork is acceptable, the best DailyMed candidates are the single-label images (for example Hikma acetaminophen bag label, Swan 70% alcohol label), but this was not adopted.
+
+---
+
+# Brand Logo Tiles (owner decision, 2026-10-29)
+
+**Decision:** for every verified product with no defensible manufacturer photo, the catalog card shows the manufacturer/brand logo instead of the "photo pending" placeholder. This is an owner instruction, not a verification result: a logo identifies the manufacturer named in the catalog record, and **does not establish** Layali availability, distribution rights, authorization, or any manufacturer partnership (the existing publication holds are unchanged).
+
+**Risk to confirm before launch:** manufacturer logos are registered trademarks. Showing them on a distributor site is commonly done to identify products, but it can be read as implying an authorized-reseller relationship. `images/products/README.md` previously said not to add manufacturer logos without confirmed usage rights; that confirmation has not been obtained. Suggested mitigations: have the owner confirm usage rights, and add a short footer line such as "Brand names and logos are trademarks of their respective owners and are used for identification only." No site text was changed in this pass.
+
+## How tiles are built
+
+One 600x600 white tile per brand in `images/products/brand-logos/<brand>.png` + `.webp` (lossless), shared by every product of that brand. Logos are the manufacturers' own files, centred and scaled to at most 400 px wide; trimming of empty canvas and scaling are the only changes. SVG logos were rendered to PNG with PyMuPDF (installed locally with `pip install pymupdf`; not a project dependency). Two logos needed their own stylesheet applied inline to render correctly (Nipro: CSS class colours inlined and `<polyline>` converted to an identical `<polygon>`). No colours, shapes or proportions were altered. Dates accessed: 2026-10-29.
+
+## Tiles and sources
+
+| Tile | Source file | Used by (source IDs) | Notes |
+|---|---|---|---|
+| `betadine` | https://betadine.com/wp-content/uploads/2019/05/betadine-consumer-logo_footer.svg (betadine.com) | 82, 154 | Brand site. The brand is now owned by Atlantis Consumer Healthcare; the catalog still lists Avrio Health. |
+| `bbraun` | https://www.bbraunusa.com/content/dam/b-braun/master/website-6/en/00_home-and-miscellaneous/logo/bbraun-logo-full.svg | 87 | Includes the "Sharing Expertise" tagline as part of the logo. |
+| `nipro` | https://www.nipro.com/themes/custom/nipro/dist/app-drupal/images/NIPRO-Logo.svg | 111, 139, 146, 196 | nipro-group.com is blocked by bot protection; this is Nipro's own corporate logo from nipro.com. |
+| `fresenius-medical-care` | https://freseniusmedicalcare.com/content/dam/fresenius-medical-care/global/en/images/home/FMC-logo.svg | 120 | |
+| `bd` | https://www.bd.com/content/dam/bd-assets/bd-com/en-us/logos/bd/header-bd-logo.svg | 147 | Fetched through the browser (bd.com blocks scripts); saved unchanged. |
+| `mar-cor` | https://mcpur.com/wp-content/uploads/2025/08/MarCor_Xylem_Color.png | 160, 194 | Mar Cor / Xylem logo, as used on mcpur.com. |
+| `dupont` | https://www.dupont.com/content/dam/dupont/global-assets/logos/DuPont_logo_140x55_rgb1.png | 191 | Only a 140x55 file is published; shown at about 2.9x its native size (soft but legible). |
+| `rockwell-medical` | https://www.rockwellmed.com/site/templates/_assets/img/common/rockwellmed_logo.png | 195 | |
+| `epogen` | https://www.epogen.com/-/media/Themes/Amgen/Epogen-com/Epogen-com/Image/Redesign/common/epogen-logo.svg | 174 | Product-brand logo (Amgen's EPOGEN). |
+| `american-regent` | https://americanregent.com/media/3384/header.svg | 176, 179 (epinephrine) | Wordmark only (the horizontal logo's gradient mark does not render reliably). |
+| `amphastar` | https://amphastar.com/images/logo_amp.jpg | 177, 179 (atropine) | 212x63 source, shown at about 2.2x. Used for the Amneal / Amphastar (IMS) atropine product as well. |
+| `pfizer-hospital` | https://www.pfizerhospitalus.com/sites/default/files/2025-07/logo-phus.svg | 180 (dopamine) | Hospira's own site is no longer reachable; Hospira is a Pfizer company and its catalog now lives on Pfizer Hospital US. |
+| `baxter` | https://www.baxter.com/themes/custom/cosmos/logo.svg | 180 (norepinephrine), 182 (Osmitrol) | |
+| `hikma` | https://www.hikma.com/media/ma3j3uhz/logocoral.svg | 181 (both products) | Also used for the West-Ward (a Hikma company) ondansetron product. |
+
+## Left without a logo
+
+- **#163 Cumberland Swan / Vi-Jon isopropyl alcohol** and **#182 Mylan midodrine:** no official, reachable company or brand site with a logo file was found (Vi-Jon timed out, Mylan/Viatris returned 503), and third-party copies were not used. These two still show the standard "photo pending" state.
+- The 11 research-exhausted placeholder entries have no manufacturer and therefore no logo.
+
+## Reporting note
+
+Product objects now fall into three groups: **110 with a real product photo**, **23 with a brand-logo tile** (paths under `images/products/brand-logos/`), and **2 with neither**. Logo tiles are not product photography and should still be replaced by real photos when they become available.

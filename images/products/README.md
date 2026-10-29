@@ -56,3 +56,12 @@ all, so a bad path never shows a broken-image icon.
   is worse than an honest placeholder.
 - Don't add brand/manufacturer logos into product photos unless that brand
   relationship and usage right has been separately confirmed.
+
+## Brand-logo tiles (owner decision, 2026-10-29)
+
+Products with no defensible manufacturer photo show a manufacturer logo tile
+from `brand-logos/` (one 600x600 white tile per brand, shared across
+products) instead of the placeholder. These are not product photos and do not
+imply a manufacturer relationship or authorization. Usage rights have not been
+separately confirmed; see "Brand Logo Tiles" in
+`docs/PRODUCT-SOURCE-REGISTER.md` for sources and the trademark caveat.

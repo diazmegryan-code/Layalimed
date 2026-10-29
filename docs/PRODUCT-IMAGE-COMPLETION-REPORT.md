@@ -188,3 +188,21 @@ Unchanged: 119 records, 100 / 8 / 11 / 0 status split, 21 categories, 5 groups, 
 - **Not retried:** #120.
 
 Realistic ways to close more of the gap: manual downloads of the three Nipro pages from a normal browser; a decision on label artwork for medications; or real Layali photography for the medication and disinfectant lines.
+
+
+---
+
+# Addendum: Pass 4, brand-logo tiles (owner decision), 2026-10-29
+
+Starting point: `3d040bf`. Details and sources are in `docs/PRODUCT-SOURCE-REGISTER.md` under "Brand Logo Tiles".
+
+| | After Pass 3 | After Pass 4 |
+|---|---|---|
+| Product objects with a real product photo | 110 | 110 |
+| Product objects showing a brand-logo tile | 0 | **23** |
+| Product objects with neither | 25 | **2** (#163 Swan alcohol, #182 Mylan midodrine) |
+| Referenced image files | 198 | 226, all decode, 0 broken |
+
+Unchanged: 119 records, 100 / 8 / 11 / 0 status split, 21 categories, 5 groups, `finalSkuCount` null, `publishStatus` hold on all 119; only `image`/`imageWebp` fields changed. Live check of all five catalog groups: 0 broken images, 0 console errors, no horizontal overflow.
+
+Logo tiles stand in for photos and carry the trademark caveat described in the register. The catalog metrics above deliberately keep "real photo" and "logo tile" separate so the logo tiles are not mistaken for product photography.
