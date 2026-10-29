@@ -1855,3 +1855,55 @@ All 119 records' customer-rendered fields (`verifiedSpecs`, `variants`, `manufac
 - No product added or removed; no manufacturer, model/catalog number, `dataStatus`, or `publishStatus` changed; no image/imageWebp field or file touched. A field-by-field diff against the prior commit confirms the only changes anywhere in the 119-record JSON are the five `verifiedSpecs` edits above.
 - Catalog integrity unchanged: 119 records / 119 unique IDs, `highestSourceId` 196, 100 verified / 8 partially-verified / 11 research-exhausted-generic / 0 pending, 21 categories, 5 website groups, `finalSkuCount` null, `publishStatus` hold × 119, 135 `verifiedProducts` objects with 84 carrying an image (71 canonical entries with at least one image) — all identical to the pre-cleanup baseline.
 - Live-rendered the catalog and searched the DOM output for all four affected records (#140, #141, #189, #195) plus the three pre-existing cross-references (#160/#194 Minncare) — zero internal citations or QA language visible anywhere in the rendered text.
+
+---
+
+# Product Image Completion Pass 2 (ChatGPT-sourced, Claude-reviewed)
+
+Continuing from `ecf7a86` on `layali-2.0-redesign`. Images were sourced by ChatGPT directly from manufacturer pages (raw notes: `docs/CATALOG-PHOTO-BATCH-2026-10-29.md`, `...BATCH2...`, `...BATCH3...`, `docs/CATALOG-PHOTO-REVIEW-2026-10-29.md`, and `docs/BLOOD-TUBING-IMAGE-SOURCE.md`), then independently reviewed by Claude: field-level JSON diff against the prior commit (only `image`/`imageWebp` changed), decode/extension validation of every referenced file, and a visual check that each photo shows the stated product. **No product data, `dataStatus` or `publishStatus` was changed.** Date accessed for all rows: 2026-10-29.
+
+All images are Tier 1 (official manufacturer page or the manufacturer's own asset host). No marketplace, reseller, stock or AI-generated image was used.
+
+## New images
+
+| Source ID | Manufacturer / product | Local file(s) | Source page | Direct image URL | Match | Processing |
+|---|---|---|---|---|---|---|
+| 75, 145 | Terumo Terufusion Administration Set | `145-terumo-administration.png/.webp` | https://www.terumo-europe.com/en/medical-care-solutions/products/product-type/infusion-pumps-and-accessories/administration-set | https://www.terumo-europe.com/en/medical-care-solutions/products/product-type/infusion-pumps-and-accessories/media_14930b1e432cc4f726f5942c8bbe35405716faef4.png | Family-level (named product family; manufacturer image has no catalog number) | Native 266x451 (largest the manufacturer serves; re-checked). Padded to a 451x451 white canvas so the card crop shows the whole set. Not upscaled. Original kept in `originals/`. |
+| 104 | Sklar Adson (Ewald) Tissue Forceps | `104-manufacturer.jpg/.webp` | https://www.sklarcorp.com/p/Sklar-Adson-Tissue-Forceps-4-3-4-Straight-1x2-Teeth/50-3047 | https://cdn.swell.store/sklar-staging/6a7532936f065c00126998c8/8fdde61bf85fc538382f595618b27d24 | Exact | Unchanged. The address contains "staging" because it is Sklar's store bucket name; the live product page itself references this exact URL (confirmed 2026-10-29). JPG fallback generated from the WebP. |
+| 122 | B. Braun (Medisystems) AV Fistula Needle Set, Twin Pack, Fixed Wing | `122-manufacturer.jpg/.webp` | https://www.bbraunusa.com/en/products/b5/av-fistula-needleset15gax1-1434twinpackfw.html | https://www.bbraunusa.com/adobe/dynamicmedia/deliver/dm-aid--f2a5b567-b759-445b-b512-c5166bf9a7e6/av-fistula-needleset15gax114twi.jpg?width=1200&preferwebp=true | Exact | Unchanged. JPG fallback generated from the WebP. |
+| 129 | BD StatLock PICC/CVC Stabilization Device Dressing Change Kit | `129-manufacturer.png/.webp` | https://www.bd.com/en-in/products-and-solutions/products/product-families/statlock-picc-cvc-stabilization-device-dressing-change-kit | https://www.bd.com/content/dam/bd-assets/bd-com/en-us/images/product-family/medication-delivery-solutions/statlock-picccvc-stabilization-device-dressing-change-kit/statlock-picc-cvc-stabilization-device-dressing-change-kit_RC_201776898.png | Exact (kit's own product-family page) | Manufacturer AVIF asset converted to PNG by ChatGPT, composition unchanged. 400x273. |
+| 131, 132 | Fresenius Medical Care NaturaLyte Liquid Acid Concentrate | `131-manufacturer.jpg/.webp` | https://freseniusmedicalcare.com/en-us/products/disposables/concentrates/naturalyte-liquid-acid/ | https://freseniusmedicalcare.com/content/dam/fmcna/live/products/disposables/concentrates/naturalyte-liquid-acid/FMCNA_ProductResize__0020_Photography_Liquid_Acid_Naturallyte__20190107_561_Hero.jpg | **Family-level** (jug shown is one formulation: 2.0 K / 2.5 Ca, catalog no. 08-2251-0; K2 is within #132's range, but Ca 2.5 is not in #131's listed calcium range) | Cropped from 2400x1200 to the 1050x1050 region containing the jug (the card crop was clipping the jug). No resampling. Original kept in `originals/131-fresenius-naturalyte-original.jpg`. |
+| 158 | Cardinal Health AAMI Level 2 Medium Weight Isolation Gown | `158-manufacturer.jpg/.webp` | https://www.cardinalhealth.com/en/product-solutions/medical/infection-control/infection-control-apparel/isolation-gowns/full-back/aami-level-2-medium-weight-isolation-gown.html | https://cardinalhealth.scene7.com/is/image/cardinalcorpprod/product-image-aami-level-2-medium-weight-isolation-gown-front?id=Q1urs2&wid=580&hei=580&fmt=jpg&dpr=off | Exact | Unchanged. Garment is shown worn by a model (manufacturer's own product shot). Partially-verified entry: the gown only, no aprons depicted. |
+| 161 | Clorox Healthcare Bleach Germicidal Cleaner (32 fl oz spray) | `161-clorox-bleach-spray.png/.webp` | https://www.cloroxpro.com/products/clorox-healthcare/bleach-germicidal-disinfectants/ | https://images.ctfassets.net/y7shn3z27tn6/6TLjqz8lJq5Xtf2onM5tzU/ce6b1c417c5d89ac7e38b0537bc66ad2/PNG_for_PowerPoint-chc-us-bgc-spray-32oz-front-729969689704_120364.111.png | Exact | Transparent WebP unchanged; PNG fallback generated from it. |
+| 162 | PDI Super Sani-Cloth Germicidal Disposable Wipe | `162-pdi-super-sani-cloth.png/.webp` | https://pdihc.com/products/environment-of-care/super-sani-cloth-germicidal-disposable-wipe/ | https://pdihc.com/wp-content/uploads/2018/08/Super-Sani-Cloth-Large-Canister_Q55172_front_png.png | Exact product; pictured item is the large 160-count canister, Q55172 | Unchanged. WebP companion added. |
+| 164 | Clorox Healthcare Hydrogen Peroxide Cleaner Disinfectant (32 fl oz spray) | `164-clorox-hydrogen-peroxide.png/.webp` | https://www.cloroxpro.com/products/clorox-healthcare/hydrogen-peroxide-cleaner-disinfectants/ | https://images.ctfassets.net/y7shn3z27tn6/24vqZ6aC5Y4bYivTG0MLCs/25c2cda1e68cc8737abe873b9e252048/PNG_for_PowerPoint-chc-us-chp-spray-32oz-front-044600308289_120364.110.png | Exact (UPC in filename contains item 30828) | Transparent WebP unchanged; PNG fallback generated from it. |
+| 169 | Associates of Cape Cod Pyrosate Kit | `169-manufacturer.png/.webp` | https://acciusa.com/bet-products/lal-reagents | https://acciusa.com/assets/products/pyrosate.png | Exact | Unchanged. WebP companion added. |
+| 187 | BD Vacutainer Stretch Latex-Free Tourniquet (REF 367203) | `187-manufacturer.png/.webp` | https://www.bd.com/en-us/products-and-solutions/products/product-page.367203 | https://www.bd.com/content/dam/bd-assets/bd-com/all-sites-sku-images/integrated-diagnostic-solutions/vacutainer-stretch-tourniquet_C_PAS_BC_0616-0058.png?resize=704x400&rt=fit | Exact (page for the REF) | Unchanged. Partially-verified entry: tourniquet only; specimen labels are not depicted. |
+| 188 | Cardinal Health Specimen Collection Container with Integrated Transfer Device, Yellow Cap | `188-manufacturer.jpg/.webp` | https://www.cardinalhealth.com/en/product-solutions/medical/laboratory-products/specimen-collection/specimen-containers.html | https://cardinalhealth.scene7.com/is/image/corpmarketdms7prod/product-image-size-yellow-cap-120ml?id=eE1sN0&wid=580&hei=580&fmt=jpg&dpr=off | **Family-level** (120 mL yellow-cap container with transfer device; catalog no. CHB13905A not confirmed in the image) | Cropped to remove the manufacturer's inch-ruler scale and padded to a square white canvas. Original kept in `originals/188-cardinal-specimen-container-original.jpg`. |
+
+## Existing images reused (no new file)
+
+| Source ID | Reuses | Why |
+|---|---|---|
+| 118 (Nipro NiproSet) | `118-niproset.jpg/.webp` | Source in `docs/BLOOD-TUBING-IMAGE-SOURCE.md` (Nipro Australia product page, a regional Nipro site; the catalog's page on file is nipro-group.com). Treated as family-level: the page describes machine-specific configurations. WebP companion added. |
+| 140 (Baxter D5W, Sterile Water) | `68-baxter.*`, `71-baxter.*` | Same manufacturer, product, 1000 mL container and product URL as #68 / #71. This also removes the need for the Baxter re-fetch that failed in the earlier pass. |
+| 141 (Terumo SS Series syringe) | `73.*` | Family-level: shows the Terumo SS Series family, not each size. |
+| 183 (BD PosiFlush) | `137-posiflush.*` | Same manufacturer URL and REF 306424. |
+| 184 (Citra-Lock 4%) | `138-citralock.*` | Same product URL and article 24060201. |
+
+## Reviewed, not added (do not repeat these searches)
+
+- **#146 Nipro three-way stopcock:** the manufacturer image shows model 17-469N, not catalog model 17-369C. Rejected as a different model.
+- **#111 SUREFLUX (pediatric), #139 Nipro saline, #196 Nipro citric acid:** manufacturer pages blocked for the sourcing agent. A shared family URL alone does not establish a pediatric-specific image.
+- **#120 5008X CAREset:** the page shows the complete 5008X system, not a standalone bloodline.
+- **#147 BD TruWave pressure tubing:** source shows transducers/systems, not the standalone male/female tubing.
+- **#160, #194 Minncare HD:** the on-file product link redirects to the manufacturer homepage.
+- **#191 DuPont FilmTec:** the application page offers document thumbnails only, no membrane product photo.
+- **#195 Rockwell citric acid:** the page shows related concentrate photos, not the dry citric acid descale product.
+- **#154, #163 and the Medications entries #174-#182:** DailyMed label references were reviewed but no product photo was confirmed; DailyMed PDFs could not be opened by the sourcing agent. Whether official package-label images are acceptable for medications is an open decision.
+
+## Fixes applied by Claude during review
+
+- Cropped/padded #131, #188 and #145 so the card's square `object-fit: cover` crop no longer clips the product or shows rulers (unmodified downloads kept in `images/products/originals/`).
+- Added JPG/PNG fallbacks for the five WebP-only images and WebP companions for the PNG/JPG-only images, so every image object follows the existing `image` + `imageWebp` convention.
+- No catalog data other than `image`/`imageWebp` was touched.

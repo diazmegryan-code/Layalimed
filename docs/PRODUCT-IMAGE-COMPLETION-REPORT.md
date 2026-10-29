@@ -115,3 +115,42 @@ Not assessed in detail this pass — this is a photography-sourcing pass, not a 
 - Files changed: `assets/data/product-catalog.json` (24 `image`/`imageWebp` field additions only), 48 new files under `images/products/` (24 raster + 24 WebP), `docs/PRODUCT-SOURCE-REGISTER.md` (new "Product Image Completion Pass" section appended), `docs/PRODUCT-IMAGE-COMPLETION-REPORT.md` (this file, new)
 - `main`, `CNAME`, GitHub Pages configuration, DNS, MedCRM, Railway, BLACKBOX, EmailJS behavior, homepage content, privacy content, and animation code: **untouched**
 - No PR opened, no merge, no deployment — per instruction, work stops after push to `origin/layali-2.0-redesign`
+
+
+---
+
+# Addendum: Pass 2 (ChatGPT-sourced, Claude-reviewed), 2026-10-29
+
+Starting point: `ecf7a86` (84 of 135 product objects with an image). Full per-image provenance is in `docs/PRODUCT-SOURCE-REGISTER.md` under "Product Image Completion Pass 2".
+
+## Metrics
+
+| | Before Pass 2 | After Pass 2 |
+|---|---|---|
+| `verifiedProducts` objects | 135 | 135 |
+| ...with an image | 84 | **104** |
+| ...without an image | 51 | **31** |
+| Canonical entries with at least one image | 71 | **89** |
+| Canonical entries with no image | 48 | **30** (11 are research-exhausted placeholders and are intentionally left without images) |
+| Referenced image files | 168 | 185, all decode, 0 broken, extensions match |
+
+Unchanged: 119 records, 100 / 8 / 11 / 0 status split, 21 categories, 5 groups, `finalSkuCount` null, `publishStatus` hold on all 119. A field-level diff against the prior commit shows only `image` / `imageWebp` fields changed.
+
+## Result by entry
+
+- **Added new manufacturer image:** 75/145, 104, 122, 129, 131/132, 158, 161, 162, 164, 169, 187, 188 (see register for exact vs family-level).
+- **Reused an existing image:** 118, 140 (both products), 141, 183, 184.
+- **Not added (reasons in the register):** 111, 120, 139, 146, 147, 160/194, 191, 195, 196, and all Medications.
+
+## Still without an image (31 product objects, 19 entries with verified products)
+
+- **Medical Consumables:** #82 Betadine (shared with #154), #87 B. Braun IV set (partial record), #88 AirLife cannula.
+- **Hemodialysis:** #111 SUREFLUX, #118 Fresenius CombiSet (the Nipro product on this entry has an image), #120 5008X CAREset, #139 Nipro saline (partial record), #144 ICU Medical extension set, #146 Nipro stopcock, #147 BD TruWave tubing, #154 Betadine, #160/#194 Minncare HD (shared), #163 isopropyl alcohol, #189 Roche test strips (BD Microtainer on this entry has an image), #191 DuPont RO membrane, #195 Rockwell citric acid, #196 Nipro citric acid.
+- **Medications:** #174, #175 (partial record), #176, #177 (Amphastar only), #178 (SOLU-CORTEF only), #179, #180, #181, #182 (both products each).
+
+Shared images mean the effective number of distinct images still needed is about 26.
+
+## Notes
+
+- Provenance for these images was originally written in four separate notes by the sourcing agent and has now been consolidated into the register.
+- Open decision: whether official package-label images (for example from DailyMed) are acceptable for medications. The earlier brief allowed them; the sourcing agent's notes said not to use label artwork.
