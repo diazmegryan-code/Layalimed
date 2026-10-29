@@ -130,10 +130,10 @@ gtag('config', 'G-R8SCPLCRVW');
 <!-- TRUST STRIP -->
 <div id="trust">
   <div class="trust-row">
-    <div class="trust-item"><span class="trust-dot"></span><div><strong>FDA-Licensed Distributor</strong><span>License CDRRHR-RIVA-MDI/W-2074863</span></div></div>
-    <div class="trust-item"><span class="trust-dot"></span><div><strong>Medical Consumables &amp; Hemodialysis</strong><span>Our two core product areas</span></div></div>
-    <div class="trust-item"><span class="trust-dot"></span><div><strong>Southern Luzon &amp; Metro Manila</strong><span>Quezon, Lucena, Laguna, Batangas</span></div></div>
-    <div class="trust-item"><span class="trust-dot"></span><div><strong>Based in Dolores, Quezon</strong><span>Local team</span></div></div>
+    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4"/><path d="M10 14l2 2 4-4"/></svg><div><strong>FDA-Licensed Distributor</strong><span>License CDRRHR-RIVA-MDI/W-2074863</span></div></div>
+    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="11" height="11"/><rect x="9" y="9" width="11" height="11"/></svg><div><strong>Medical Consumables &amp; Hemodialysis</strong><span>Our two core product areas</span></div></div>
+    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="6" r="1.6"/><circle cx="19" cy="6" r="1.6"/><circle cx="5" cy="18" r="1.6"/><circle cx="19" cy="18" r="1.6"/><path d="M10.5 10.5L6 7M13.5 10.5L18 7M10.5 13.5L6 17M13.5 13.5L18 17"/></svg><div><strong>Southern Luzon &amp; Metro Manila</strong><span>Quezon, Lucena, Laguna, Batangas</span></div></div>
+    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-7.6 7-12a7 7 0 1 0-14 0c0 4.4 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><div><strong>Based in Dolores, Quezon</strong><span>Local team</span></div></div>
   </div>
 </div>
 
@@ -232,6 +232,62 @@ gtag('config', 'G-R8SCPLCRVW');
       <p class="hd-tagline">Precision where it matters.</p>
     </div>
 
+    <div class="hd-circuit reveal">
+      <div class="hd-circuit-head"><span class="hd-circuit-title" id="hd-circuit-title">One treatment, five product areas</span><span class="hd-circuit-hint">Select a part to explore it</span></div>
+      <svg class="hd-circuit-svg" viewBox="0 0 960 320" role="group" aria-label="Simplified hemodialysis circuit: AV fistula needles connect the patient to blood tubing, which runs through the dialyzer; concentrates feed the dialysate; treatment consumables surround each session." focusable="false">
+  <defs>
+    <marker id="hdArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1.5 1.5L8.5 5L1.5 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <rect class="hd-env" x="16" y="16" width="928" height="288" rx="18" aria-hidden="true"/>
+  <path class="hd-line" d="M120 120V84H400V130" marker-end="url(#hdArrow)"/>
+  <path class="hd-line" d="M560 190V236H120V204" marker-end="url(#hdArrow)"/>
+  <path class="hd-line hd-line--dash" d="M798 160H606" marker-end="url(#hdArrow)"/>
+  <text class="hd-note" x="700" y="148" text-anchor="middle">dialysate</text>
+  <text class="hd-note" x="340" y="256" text-anchor="middle">return to patient</text>
+
+  <g class="hd-node" data-hd-node="treatment" role="button" tabindex="0" aria-label="5. Treatment consumables">
+    <rect class="hd-pill" x="48" y="1" width="244" height="30" rx="15"/>
+    <circle class="hd-badge" cx="68" cy="16" r="10"/><text class="hd-badge-num" x="68" y="20" text-anchor="middle">5</text>
+    <text class="hd-label" x="86" y="21">Treatment consumables</text>
+  </g>
+
+  <g class="hd-node" data-hd-node="needles" role="button" tabindex="0" aria-label="3. AV fistula needles">
+    <circle class="hd-ring" cx="120" cy="160" r="40"/>
+    <path class="hd-glyph" d="M102 178L134 146M134 146l5-5M127 153l-6-6M120 160l-6-6"/>
+    <circle class="hd-badge" cx="188" cy="160" r="10"/><text class="hd-badge-num" x="188" y="164" text-anchor="middle">3</text>
+    <text class="hd-label" x="206" y="165">AV fistula needles</text>
+  </g>
+
+  <g class="hd-node" data-hd-node="tubing" role="button" tabindex="0" aria-label="2. Blood tubing sets">
+    <rect class="hd-pill" x="176" y="69" width="172" height="30" rx="15"/>
+    <circle class="hd-badge" cx="196" cy="84" r="10"/><text class="hd-badge-num" x="196" y="88" text-anchor="middle">2</text>
+    <text class="hd-label" x="214" y="89">Blood tubing sets</text>
+  </g>
+
+  <g class="hd-node" data-hd-node="dialyzers" role="button" tabindex="0" aria-label="1. Dialyzers">
+    <rect class="hd-ring" x="360" y="132" width="240" height="56" rx="28"/>
+    <path class="hd-glyph" d="M392 146V174M572 146V174M410 146H554M410 160H554M410 174H554"/>
+    <circle class="hd-badge" cx="440" cy="212" r="10"/><text class="hd-badge-num" x="440" y="216" text-anchor="middle">1</text>
+    <text class="hd-label" x="458" y="217">Dialyzers</text>
+  </g>
+
+  <g class="hd-node" data-hd-node="concentrates" role="button" tabindex="0" aria-label="4. Concentrates">
+    <circle class="hd-ring" cx="840" cy="160" r="40"/>
+    <path class="hd-glyph" d="M826 142h28v8l6 6v26a4 4 0 0 1-4 4h-32a4 4 0 0 1-4-4v-26l6-6z"/>
+    <circle class="hd-badge" cx="782" cy="222" r="10"/><text class="hd-badge-num" x="782" y="226" text-anchor="middle">4</text>
+    <text class="hd-label" x="800" y="227">Concentrates</text>
+  </g>
+</svg>
+      <ol class="hd-circuit-steps">
+      <li><button type="button" class="hd-step" data-hd-node="dialyzers"><span class="hd-step-num">1</span><span class="hd-step-text"><strong>Dialyzers</strong><span>The filter the blood circuit runs through during treatment.</span></span></button></li>
+      <li><button type="button" class="hd-step" data-hd-node="tubing"><span class="hd-step-num">2</span><span class="hd-step-text"><strong>Blood tubing sets</strong><span>Carry blood from the patient's access to the dialyzer and back.</span></span></button></li>
+      <li><button type="button" class="hd-step" data-hd-node="needles"><span class="hd-step-num">3</span><span class="hd-step-text"><strong>AV fistula needles</strong><span>Connect the patient's vascular access to the blood tubing.</span></span></button></li>
+      <li><button type="button" class="hd-step" data-hd-node="concentrates"><span class="hd-step-num">4</span><span class="hd-step-text"><strong>Concentrates</strong><span>Mixed with water to make the dialysate that flows through the dialyzer.</span></span></button></li>
+      <li><button type="button" class="hd-step" data-hd-node="treatment"><span class="hd-step-num">5</span><span class="hd-step-text"><strong>Treatment consumables</strong><span>Dressings and supplies used around each session.</span></span></button></li>
+      </ol>
+      <p class="hd-circuit-caption" id="hd-circuit-caption" aria-live="polite"></p>
+    </div>
+
     <div class="hd-interactive reveal">
       <div class="hd-tablist" role="tablist" aria-orientation="vertical" aria-label="Hemodialysis categories">
         <button type="button" id="hd-tab-dialyzers" class="hd-tab is-active" role="tab" aria-selected="true" tabindex="0" aria-controls="hd-panel-dialyzers" data-hd="dialyzers">
@@ -260,7 +316,7 @@ gtag('config', 'G-R8SCPLCRVW');
             </picture>
           </div>
           <div class="hd-product-info">
-            <span class="hd-product-brand">Nipro / ELISIO-H</span>
+            <span class="hd-product-brand"><span class="hd-brand-plate"><img src="images/brands/nipro.png" alt="Nipro" width="358" height="88" loading="lazy"></span><span class="hd-brand-model">ELISIO-H</span></span>
             <h3 class="hd-product-name">High-flux dialyzers</h3>
             <p class="product-desc">Explore dialyzers in our catalog and tell us the model and quantity your facility needs.</p>
             <div class="hd-product-actions">
@@ -274,7 +330,7 @@ gtag('config', 'G-R8SCPLCRVW');
             <img src="images/products/118-niproset.jpg" alt="NiproSet blood tubing set with clear tubing and red and blue components" width="1296" height="1296" loading="lazy" decoding="async">
           </div>
           <div class="hd-product-info">
-            <span class="hd-product-brand">Nipro / NiproSet</span>
+            <span class="hd-product-brand"><span class="hd-brand-plate"><img src="images/brands/nipro.png" alt="Nipro" width="358" height="88" loading="lazy"></span><span class="hd-brand-model">NiproSet</span></span>
             <h3 class="hd-product-name">Blood tubing sets</h3>
             <p class="product-desc">Share your machine model, tubing reference, and quantity so our team can review your requirements.</p>
             <div class="hd-product-actions">
@@ -291,7 +347,7 @@ gtag('config', 'G-R8SCPLCRVW');
             </picture>
           </div>
           <div class="hd-product-info">
-            <span class="hd-product-brand">Nipro / SafeTouch AVF</span>
+            <span class="hd-product-brand"><span class="hd-brand-plate"><img src="images/brands/nipro.png" alt="Nipro" width="358" height="88" loading="lazy"></span><span class="hd-brand-model">SafeTouch AVF</span></span>
             <h3 class="hd-product-name">AV fistula needles</h3>
             <p class="product-desc">Tell us your required gauge, needle and tubing lengths, and quantity so we can review your request.</p>
             <div class="hd-product-actions">
@@ -308,7 +364,7 @@ gtag('config', 'G-R8SCPLCRVW');
             </picture>
           </div>
           <div class="hd-product-info">
-            <span class="hd-product-brand">Fresenius Medical Care / bibag</span>
+            <span class="hd-product-brand"><span class="hd-brand-plate"><img src="images/brands/fresenius-medical-care.png" alt="Fresenius Medical Care" width="428" height="88" loading="lazy"></span><span class="hd-brand-model">bibag</span></span>
             <h3 class="hd-product-name">Dry bicarbonate</h3>
             <p class="product-desc">Share your product reference, pack size, and quantity. Explore the catalog for other concentrate formats.</p>
             <div class="hd-product-actions">
@@ -325,7 +381,7 @@ gtag('config', 'G-R8SCPLCRVW');
             </picture>
           </div>
           <div class="hd-product-info">
-            <span class="hd-product-brand">3M (Solventum) / Tegaderm</span>
+            <span class="hd-product-brand"><span class="hd-brand-plate"><img src="images/brands/solventum-3m.png" alt="Solventum (3M)" width="351" height="88" loading="lazy"></span><span class="hd-brand-model">Tegaderm</span></span>
             <h3 class="hd-product-name">Dressings &amp; consumables</h3>
             <p class="product-desc">Explore dressing supplies, or request the pictured Tegaderm I.V. dressing with your required reference and quantity.</p>
             <div class="hd-product-actions">
@@ -395,9 +451,21 @@ gtag('config', 'G-R8SCPLCRVW');
       </div>
       <div class="reveal">
         <p class="lede">Every carton we send out is packed, checked, and dispatched by our own team in Dolores, Quezon — before it reaches a clinic, RHU, or dialysis center anywhere across Southern Luzon and Metro Manila.</p>
+        <figure class="coverage reveal">
+          <svg viewBox="0 0 420 300" role="img" aria-label="Delivery coverage diagram: Layali's base in Dolores, Quezon, with routes out to Metro Manila, Laguna, Batangas, and Lucena." focusable="false">
+            <path class="cov-line" d="M250 140L96 56M250 140L62 146M250 140L100 240M250 140L338 232"/>
+            <g class="cov-node"><circle cx="96" cy="56" r="7"/><text x="96" y="36" text-anchor="middle">Metro Manila</text></g>
+            <g class="cov-node"><circle cx="62" cy="146" r="7"/><text x="62" y="126" text-anchor="middle">Laguna</text></g>
+            <g class="cov-node"><circle cx="100" cy="240" r="7"/><text x="100" y="268" text-anchor="middle">Batangas</text></g>
+            <g class="cov-node"><circle cx="338" cy="232" r="7"/><text x="338" y="260" text-anchor="middle">Lucena</text></g>
+            <g class="cov-hub"><circle cx="250" cy="140" r="26" class="cov-hub-halo"/><circle cx="250" cy="140" r="13"/><text x="250" y="104" text-anchor="middle">Dolores, Quezon</text><text x="250" y="186" text-anchor="middle" class="cov-hub-sub">Layali base</text></g>
+          </svg>
+          <figcaption>Delivery coverage from our Dolores base. Schematic, not to scale.</figcaption>
+        </figure>
         <a href="#quote" class="btn-line" style="margin-top:24px">See what we can supply you <span class="cta-arrow">→</span></a>
       </div>
     </div>
+    <div class="emblem-divider" aria-hidden="true"><img src="images/layali-emblem.png" alt="" width="133" height="140" loading="lazy"></div>
   </div>
 </section>
 
@@ -418,6 +486,11 @@ gtag('config', 'G-R8SCPLCRVW');
         <div class="eyebrow">Get In Touch</div>
         <h2 class="h2">Request a <em class="accent">Quote</em></h2>
         <p class="lede" style="margin-top:20px">Tell us what your facility needs, and our team will follow up on business days.</p>
+        <ol class="quote-steps">
+          <li><span class="quote-step-num">1</span><div><strong>Send your list</strong><span class="quote-step-text">Tell us the products, sizes, and quantities your facility needs.</span></div></li>
+          <li><span class="quote-step-num">2</span><div><strong>We confirm</strong><span class="quote-step-text">Our team confirms availability and pricing and replies on business days.</span></div></li>
+          <li><span class="quote-step-num">3</span><div><strong>We deliver</strong><span class="quote-step-text">Once your quote is approved, our team packs and dispatches from Dolores, Quezon.</span></div></li>
+        </ol>
         <div style="margin-top:40px;display:flex;flex-direction:column;gap:14px;font-size:14px">
           <a href="tel:+639173199572" class="icon-line" style="text-decoration:none;color:var(--ink);font-weight:600"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4.5c0-.6.4-1 1-1H7.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg> +63 917 319 9572</a>
           <span class="icon-line" style="color:var(--mid)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-7.6 7-12a7 7 0 1 0-14 0c0 4.4 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg> Office 07 Sta. Lucia, Dolores, Quezon PH 4326</span>
@@ -479,8 +552,9 @@ gtag('config', 'G-R8SCPLCRVW');
         <p class="lede lede--on-dark" style="margin-top:16px">Layali Medical Supply is built around two core areas, medical consumables and hemodialysis essentials, so clinics, RHUs, and dialysis centers get a partner who knows these categories deeply. Our catalog also lists medical equipment, procedure and surgical supplies, and medications.</p>
       </div>
       <div class="cred-license reveal">
-        <div class="cred-license-title">FDA License to Operate</div>
-        <div class="cred-detail"><span class="cred-detail-label">License Number</span><span class="cred-detail-value">CDRRHR-RIVA-MDI/W-2074863</span></div>
+        <div class="cred-license-head"><svg class="cred-license-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4"/><path d="M10 14l2 2 4-4"/></svg><div class="cred-license-title">FDA License to Operate</div></div>
+        <div class="cred-license-numlabel">License Number</div>
+        <div class="cred-license-number">CDRRHR-RIVA-MDI/W-2074863</div>
         <div class="cred-detail"><span class="cred-detail-label">Address</span><span class="cred-detail-value">Sta. Lucia, Dolores, Quezon</span></div>
         <div class="cred-detail"><span class="cred-detail-label">Coverage</span><span class="cred-detail-value">Quezon, Lucena, Laguna, Batangas, Metro Manila</span></div>
       </div>

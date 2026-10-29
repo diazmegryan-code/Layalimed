@@ -288,6 +288,51 @@ document.addEventListener('keydown', (e) => {
   });
 })();
 
+/* ─── HEMODIALYSIS CIRCUIT INFOGRAPHIC ───────────────────────────────────
+   Each part of the diagram (and its mobile step list) selects the matching
+   tab above; the highlighted part follows the active tab, however it was
+   changed (click, hover, or keyboard). */
+(function hdCircuit() {
+  const nodes = Array.from(document.querySelectorAll('[data-hd-node]'));
+  const tabs = Array.from(document.querySelectorAll('.hd-tab'));
+  const caption = document.getElementById('hd-circuit-caption');
+  if (!nodes.length || !tabs.length) return;
+
+  const text = {
+    dialyzers: 'Dialyzers: the filter the blood circuit runs through during treatment.',
+    tubing: 'Blood tubing sets: carry blood from the patient\'s access to the dialyzer and back.',
+    needles: 'AV fistula needles: connect the patient\'s vascular access to the blood tubing.',
+    concentrates: 'Concentrates: mixed with water to make the dialysate that flows through the dialyzer.',
+    treatment: 'Treatment consumables: dressings and supplies used around each session.',
+  };
+
+  function sync() {
+    const active = tabs.find((t) => t.classList.contains('is-active'));
+    const key = active && active.dataset.hd;
+    nodes.forEach((n) => {
+      const on = n.dataset.hdNode === key;
+      n.classList.toggle('is-active', on);
+      if (n.matches('button')) n.setAttribute('aria-pressed', String(on));
+    });
+    if (caption && key) caption.textContent = text[key] || '';
+  }
+
+  function select(key) {
+    const tab = tabs.find((t) => t.dataset.hd === key);
+    if (tab) tab.click();
+  }
+
+  nodes.forEach((n) => {
+    n.addEventListener('click', () => select(n.dataset.hdNode));
+    n.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(n.dataset.hdNode); }
+    });
+  });
+  const observer = new MutationObserver(sync);
+  tabs.forEach((t) => observer.observe(t, { attributes: true, attributeFilter: ['class'] }));
+  sync();
+})();
+
 /* Full-catalog search. Results open the existing catalog search view. */
 (function search() {
   const overlay = document.getElementById('search-overlay');
@@ -367,7 +412,13 @@ document.addEventListener('keydown', (e) => {
    column, so it is intentionally left out of that fetch body. */
 function showToast(msg, isError = false) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
+  t.textContent = '';
+  if (!isError) {
+    const mark = new Image();
+    mark.src = 'images/layali-emblem.png'; mark.alt = ''; mark.className = 'toast-emblem'; mark.setAttribute('aria-hidden', 'true');
+    t.appendChild(mark);
+  }
+  t.appendChild(document.createTextNode(msg));
   t.className = 'show' + (isError ? ' error-toast' : '');
   setTimeout(() => { t.className = ''; }, 4500);
 }
