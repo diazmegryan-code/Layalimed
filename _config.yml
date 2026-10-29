@@ -1,0 +1,8 @@
+# GitHub Pages (Jekyll) publishes the repository root. Keep internal working
+# notes and tooling files out of the public site.
+exclude:
+  - docs
+  - AGENTS.md
+  - CLAUDE.md
+  - .claude
+  - images/products/originals
