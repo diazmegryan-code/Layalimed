@@ -4,25 +4,9 @@
    ecommerce-marketplace or admin-dashboard styling.
    ============================================================ */
 
-/* Dark catalog: the page and card surfaces use the site's charcoal world so
-   the white-background product photos stand out. The tokens are re-pointed
-   for this page only, so every rule below picks the dark values up. */
-body{
-  --white:var(--charcoal-2);--off:var(--charcoal-3);
-  --ink:var(--on-dark);--mid:rgba(243,242,239,.66);--border:var(--border-dark);
-  background:var(--charcoal);color:var(--on-dark);
-}
-.cat-subfilter:hover{border-color:#FF7A87}
-.cat-search input::placeholder{color:rgba(243,242,239,.45)}
-.cat-search input:focus{border-color:#FF7A87}
-.cat-group-tile:focus-visible,.cat-subfilter:focus-visible{outline-color:#FF7A87}
-/* photos sit on white so manufacturer shots with white backgrounds blend in */
-.cat-card .product-photo,.cat-verified-thumb{background:#fff}
-.cat-ref{background:rgba(255,255,255,.9);color:#5a5b61}
-.cat-card .product-cta,.cat-empty .btn-line{color:var(--on-dark);border-color:var(--border-dark)}
-.cat-card .product-cta:hover{color:#FF7A87;border-color:#FF7A87}
-.cat-card{box-shadow:0 0 0 1px var(--border-dark)}
-footer{border-top:1px solid var(--border-dark)}
+/* Slightly deeper off-white page so the white cards and white-background
+   product photos stand out. Cards stay white. */
+body{--page:#DDD9D1;--line:#C9C4BB;background:var(--page)}
 
 /* ---------- catalog hero / intro ---------- */
 .cat-hero{padding:calc(var(--nav-h) + 64px) var(--edge) 48px;max-width:var(--container);margin:0 auto}
@@ -169,12 +153,10 @@ footer{border-top:1px solid var(--border-dark)}
 
 [hidden]{display:none !important}
 
-/* dark-page accents: the brand red is too dark on charcoal, so use the light red the dark sections already use */
-body .eyebrow{color:#FF6B7A}
-body .eyebrow::before{background:#FF6B7A}
-body em.accent{color:#FF7A87}
-body .cat-group-num,body .cat-crumb:hover,body .cat-subfilter:hover{color:#FF7A87}
-/* hairlines come from each tile/card outline, so partly filled grid rows stay dark */
-.cat-grid,.cat-groups{background:transparent}
-.cat-group-tile{box-shadow:0 0 0 1px var(--border-dark)}
-body .cat-subfilter.is-active{background:var(--on-dark);border-color:var(--on-dark);color:var(--charcoal)}
+/* separators and photo panels tuned for the deeper page tone */
+.cat-groups,.cat-grid{background:transparent;gap:2px}
+.cat-group-tile,.cat-card{box-shadow:0 0 0 1px var(--line)}
+.cat-card .product-photo,.cat-verified-thumb{background:#fff}
+.cat-search input{border-bottom-color:#B9B4AA}
+.cat-subfilter{border-color:#C4BFB5}
+footer{margin-top:0}
