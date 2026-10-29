@@ -38,11 +38,16 @@ function toggleMenu() {
   const ham = document.querySelector('.hamburger');
   const isOpen = drawer.classList.toggle('open');
   ham.classList.toggle('open', isOpen);
+  ham.setAttribute('aria-expanded', String(isOpen));
+  ham.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 function closeMenu() {
   document.getElementById('mobileDrawer').classList.remove('open');
-  document.querySelector('.hamburger').classList.remove('open');
+  const ham = document.querySelector('.hamburger');
+  ham.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
+  ham.setAttribute('aria-label', 'Open menu');
   document.body.style.overflow = '';
 }
 document.addEventListener('click', (e) => {
@@ -88,10 +93,10 @@ document.addEventListener('keydown', (e) => {
   if (prefersReducedMotion) return;
 
   const g = document.createElement('script');
-  g.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+  g.src = 'assets/vendor/gsap.min.js';
   g.onload = () => {
     const st = document.createElement('script');
-    st.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js';
+    st.src = 'assets/vendor/ScrollTrigger.min.js';
     st.onload = initGsap;
     document.head.appendChild(st);
   };
@@ -129,7 +134,7 @@ document.addEventListener('keydown', (e) => {
       const lerp = (a, b, t) => Math.round(a + (b - a) * t);
       const setVars = (t) => {
         const bg = light.bg.map((c, i) => lerp(c, dark.bg[i], t));
-        const fg = light.fg.map((c, i) => lerp(c, dark.fg[i], t));
+        const fg = t < 0.58 ? light.fg : dark.fg; // switch text colour at the contrast crossover
         transitionEl.style.setProperty('--transition-bg', `rgb(${bg.join(',')})`);
         transitionEl.style.setProperty('--transition-fg', `rgb(${fg.join(',')})`);
       };
@@ -430,6 +435,8 @@ function validateField(id, groupId, testFn) {
   const grp = document.getElementById(groupId);
   const ok = testFn(el.value.trim());
   grp.classList.toggle('error', !ok);
+  el.setAttribute('aria-invalid', String(!ok));
+  if (!ok) el.setAttribute('aria-describedby', 'err-' + id.slice(2)); else el.removeAttribute('aria-describedby');
   if (!ok && window.LayaliMotion && window.LayaliMotion.flashInvalid) {
     window.LayaliMotion.flashInvalid(el);
   }
@@ -458,7 +465,11 @@ function validateForm() {
     'f-phone': 'fg-phone', 'f-email': 'fg-email', 'f-category': 'fg-category', 'f-message': 'fg-message',
   };
   const el = document.getElementById(id);
-  if (el) el.addEventListener('input', () => document.getElementById(map[id]).classList.remove('error'));
+  if (el) el.addEventListener('input', () => {
+    document.getElementById(map[id]).classList.remove('error');
+    el.setAttribute('aria-invalid', 'false');
+    el.removeAttribute('aria-describedby');
+  });
 });
 
 // EmailJS setup: Public Key / Service ID / Template ID (unchanged from production)
@@ -479,7 +490,7 @@ function ensureEmailJS() {
   emailReady = new Promise((resolve, reject) => {
     const s = document.createElement('script');
     const timer = setTimeout(() => { s.remove(); reject(new Error('Email service unavailable')); }, 15000);
-    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    s.src = 'assets/vendor/emailjs.min.js';
     s.onload = () => {
       clearTimeout(timer);
       try { window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); resolve(window.emailjs); }

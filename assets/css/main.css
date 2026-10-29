@@ -429,7 +429,7 @@ em.accent{color:var(--red);font-style:italic}
   background:var(--transition-bg,var(--white));
   display:flex;align-items:center;justify-content:center;
   color:var(--transition-fg,var(--ink));
-  transition:background .1s linear;
+  transition:background .1s linear,color .25s ease;
 }
 .transition-copy{text-align:center;max-width:640px;padding:0 var(--edge)}
 .transition-copy .eyebrow{justify-content:center}
@@ -532,6 +532,7 @@ footer{background:var(--charcoal-2);color:var(--on-dark-mid);padding:72px var(--
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .footer-col a{color:var(--on-dark-mid);text-decoration:none;font-size:13.5px}
 .footer-col a:hover{color:#fff}
+.footer-col li span{font-size:13.5px;line-height:1.6}
 .footer-bottom{max-width:var(--container);margin:0 auto;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px}
 .footer-bottom a{color:var(--on-dark-mid);text-decoration:underline}
 .footer-bottom a:hover{color:#fff}
@@ -694,3 +695,19 @@ footer{background:var(--charcoal-2);color:var(--on-dark-mid);padding:72px var(--
   .cov-node text,.cov-hub text{font-size:18px}
   .cov-hub .cov-hub-sub{font-size:15px}
 }
+
+/* ================= ACCESSIBILITY + TOUCH ================= */
+.skip-link{position:absolute;left:12px;top:-64px;z-index:1000;background:var(--charcoal);color:#fff;padding:12px 18px;font-size:14px;text-decoration:none;border-radius:2px;transition:top .2s var(--ease)}
+.skip-link:focus{top:12px;outline:2px solid #FF7A87;outline-offset:2px}
+.fg input:focus-visible,.fg select:focus-visible,.fg textarea:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+/* larger touch targets without changing the layout */
+.nav-icon-btn,.hamburger,.delivery-dot{position:relative}
+.nav-icon-btn::after,.hamburger::after{content:"";position:absolute;inset:-9px}
+.delivery-dot::after{content:"";position:absolute;inset:-10px}
+@media (pointer:coarse){
+  .product-cta,.btn-line,.hd-product-browse,.footer-col a,.footer-bottom a{position:relative}
+  .product-cta::after,.btn-line::after,.hd-product-browse::after,.footer-col a::after,.footer-bottom a::after{content:"";position:absolute;inset:-10px -4px}
+}
+/* light-to-dark transition: keep the headline readable at the midpoint */
+#transition .eyebrow{color:inherit}
+#transition .accent{color:inherit;text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:.2em}

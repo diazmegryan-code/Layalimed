@@ -23,11 +23,16 @@ function toggleMenu() {
   const ham = document.querySelector('.hamburger');
   const isOpen = drawer.classList.toggle('open');
   ham.classList.toggle('open', isOpen);
+  ham.setAttribute('aria-expanded', String(isOpen));
+  ham.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 function closeMenu() {
   document.getElementById('mobileDrawer').classList.remove('open');
-  document.querySelector('.hamburger').classList.remove('open');
+  const ham = document.querySelector('.hamburger');
+  ham.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
+  ham.setAttribute('aria-label', 'Open menu');
   document.body.style.overflow = '';
 }
 document.addEventListener('click', (e) => {
@@ -454,3 +459,9 @@ document.getElementById('cat-back').addEventListener('click', () => {
 document.getElementById('cat-empty-reset').addEventListener('click', () => {
   document.getElementById('cat-back').click();
 });
+
+/* Deep link from the header search icon: jump straight into the search box. */
+if (location.hash === '#cat-search-input') {
+  const searchBox = document.getElementById('cat-search-input');
+  if (searchBox) { searchBox.scrollIntoView({ block: 'center' }); searchBox.focus(); }
+}

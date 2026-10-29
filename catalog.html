@@ -24,18 +24,20 @@ gtag('config', 'G-R8SCPLCRVW');
 <meta property="og:url" content="https://layalimed.com/catalog.html"/>
 <meta property="og:site_name" content="Layali Medical Supply"/>
 <meta property="og:image" content="https://layalimed.com/og-image.png"/>
-<meta property="og:image:width" content="400"/>
-<meta property="og:image:height" content="320"/>
-<meta name="twitter:card" content="summary"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Product Catalog | Layali Medical Supply"/>
 <meta name="twitter:description" content="Browse Layali Medical Supply's full product catalog: Medical Consumables, Hemodialysis, Medical Equipment, Procedure & Surgical Supplies, and Medications."/>
 <meta name="twitter:image" content="https://layalimed.com/og-image.png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preload" href="assets/fonts/dmsans-normal-300.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="assets/fonts/cormorantgaramond-normal-400.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="stylesheet" href="assets/css/fonts.css"/>
 <link rel="stylesheet" href="assets/css/main.css"/>
 <link rel="stylesheet" href="assets/css/catalog.css"/>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- NAV -->
 <nav id="navbar" class="solid">
@@ -44,14 +46,16 @@ gtag('config', 'G-R8SCPLCRVW');
       <img class="logo-img" src="images/layali-logo.png" alt="Layali Medical Supply" width="438" height="140">
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#consumables">Consumables</a></li>
+      <li><a href="index.html#consumables">Products</a></li>
       <li><a href="index.html#hemodialysis">Hemodialysis</a></li>
+      <li><a href="index.html#brands">Brands</a></li>
+      <li><a href="index.html#deliveries">Deliveries</a></li>
       <li><a href="index.html#credentials">About</a></li>
     </ul>
     <div class="nav-right">
+      <a href="catalog.html#cat-search-input" class="nav-icon-btn" aria-label="Search products"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
       <a href="index.html#quote" class="nav-cta"><span class="nav-cta-full">Request a Quote</span><span class="nav-cta-short" aria-hidden="true">Quote</span></a>
-      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -61,9 +65,10 @@ gtag('config', 'G-R8SCPLCRVW');
 <!-- MOBILE DRAWER -->
 <div class="drawer" id="mobileDrawer">
   <ul class="drawer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#consumables">Consumables</a></li>
+    <li><a href="index.html#consumables">Products</a></li>
     <li><a href="index.html#hemodialysis">Hemodialysis</a></li>
+    <li><a href="index.html#brands">Brands</a></li>
+    <li><a href="index.html#deliveries">Deliveries</a></li>
     <li><a href="index.html#credentials">About</a></li>
   </ul>
   <a href="index.html#quote" class="drawer-cta">Request a Quote</a>
@@ -72,7 +77,7 @@ gtag('config', 'G-R8SCPLCRVW');
   </div>
 </div>
 
-<main>
+<main id="main">
 <!-- CATALOG HERO -->
 <div class="cat-hero">
   <div class="eyebrow">Full Product Catalog</div>
@@ -129,6 +134,7 @@ gtag('config', 'G-R8SCPLCRVW');
       <ul>
         <li><a href="tel:+639173199572">+63 917 319 9572</a></li>
         <li><span>Office 07 Sta. Lucia,<br>Dolores, Quezon PH 4326</span></li>
+        <li><span>Mon–Sat, 8:00 AM–5:00 PM</span></li>
       </ul>
     </div>
   </div>

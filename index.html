@@ -27,18 +27,20 @@ gtag('config', 'G-R8SCPLCRVW');
 <meta property="og:url" content="https://layalimed.com/"/>
 <meta property="og:site_name" content="Layali Medical Supply"/>
 <meta property="og:image" content="https://layalimed.com/og-image.png"/>
-<meta property="og:image:width" content="400"/>
-<meta property="og:image:height" content="320"/>
-<meta name="twitter:card" content="summary"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Layali Medical Supply | Medical Consumables &amp; Hemodialysis Supply Philippines"/>
 <meta name="twitter:description" content="Essential supplies. Reliable care. Premium medical consumables and hemodialysis supply for clinics, RHUs, dialysis centers, and hospitals across the Philippines."/>
 <meta name="twitter:image" content="https://layalimed.com/og-image.png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preload" href="assets/fonts/dmsans-normal-300.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="assets/fonts/cormorantgaramond-normal-400.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="stylesheet" href="assets/css/fonts.css"/>
 <link rel="stylesheet" href="assets/css/main.css"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"MedicalBusiness","name":"Layali Medical Supply","url":"https://layalimed.com/","image":"https://layalimed.com/og-image.png","telephone":"+63-917-319-9572","priceRange":"$$","description":"Premium B2B distributor of medical consumables and hemodialysis supplies.","address":{"@type":"PostalAddress","streetAddress":"Office 07 Sta. Lucia","addressLocality":"Dolores","addressRegion":"Quezon","postalCode":"4326","addressCountry":"PH"},"areaServed":["Quezon","Lucena","Laguna","Batangas","Metro Manila"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:00"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MedicalBusiness","name":"Layali Medical Supply","url":"https://layalimed.com/","image":"https://layalimed.com/og-image.png","telephone":"+63-917-319-9572","description":"Premium B2B distributor of medical consumables and hemodialysis supplies.","address":{"@type":"PostalAddress","streetAddress":"Office 07 Sta. Lucia","addressLocality":"Dolores","addressRegion":"Quezon","postalCode":"4326","addressCountry":"PH"},"areaServed":["Quezon","Lucena","Laguna","Batangas","Metro Manila"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:00"}]}</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- NAV -->
 <nav id="navbar">
@@ -50,7 +52,7 @@ gtag('config', 'G-R8SCPLCRVW');
       <li><a href="#consumables">Products</a></li>
       <li><a href="#hemodialysis">Hemodialysis</a></li>
       <li><a href="#brands">Brands</a></li>
-      <li><a href="#deliveries">Our Work</a></li>
+      <li><a href="#deliveries">Deliveries</a></li>
       <li><a href="#credentials">About</a></li>
     </ul>
     <div class="nav-right">
@@ -58,7 +60,7 @@ gtag('config', 'G-R8SCPLCRVW');
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       </button>
       <a href="#quote" class="nav-cta"><span class="nav-cta-full">Request a Quote</span><span class="nav-cta-short" aria-hidden="true">Quote</span></a>
-      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -71,7 +73,7 @@ gtag('config', 'G-R8SCPLCRVW');
     <li><a href="#consumables">Products</a></li>
     <li><a href="#hemodialysis">Hemodialysis</a></li>
     <li><a href="#brands">Brands</a></li>
-    <li><a href="#deliveries">Our Work</a></li>
+    <li><a href="#deliveries">Deliveries</a></li>
     <li><a href="#credentials">About</a></li>
   </ul>
   <a href="#quote" class="drawer-cta">Request a Quote</a>
@@ -81,7 +83,7 @@ gtag('config', 'G-R8SCPLCRVW');
   </div>
 </div>
 
-<main>
+<main id="main">
 <!-- HERO -->
 <section id="hero">
   <div class="hero-copy">
@@ -90,7 +92,7 @@ gtag('config', 'G-R8SCPLCRVW');
       <span class="hero-h1-line" style="display:block;overflow:hidden"><span style="display:block">Essential supplies.</span></span>
       <span class="hero-h1-line" style="display:block;overflow:hidden"><span class="accent" style="display:block;font-style:italic;color:var(--red)">Reliable care.</span></span>
     </h1>
-    <p class="hero-sub">Layali Medical Supply is a focused B2B distributor of medical consumables and hemodialysis essentials — serving clinics, RHUs, and dialysis centers across Southern Luzon and Metro Manila.</p>
+    <p class="hero-sub">Layali Medical Supply is a focused B2B distributor of medical consumables and hemodialysis essentials — serving clinics, RHUs, dialysis centers, and hospitals across Southern Luzon and Metro Manila.</p>
     <div class="hero-actions">
       <a href="#quote" class="btn btn-primary">Request a Quote <span class="cta-arrow">→</span></a>
       <a href="catalog.html" class="btn btn-ghost">Explore Products</a>
@@ -133,7 +135,7 @@ gtag('config', 'G-R8SCPLCRVW');
     <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4"/><path d="M10 14l2 2 4-4"/></svg><div><strong>FDA-Licensed Distributor</strong><span>License CDRRHR-RIVA-MDI/W-2074863</span></div></div>
     <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="11" height="11"/><rect x="9" y="9" width="11" height="11"/></svg><div><strong>Medical Consumables &amp; Hemodialysis</strong><span>Our two core product areas</span></div></div>
     <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="6" r="1.6"/><circle cx="19" cy="6" r="1.6"/><circle cx="5" cy="18" r="1.6"/><circle cx="19" cy="18" r="1.6"/><path d="M10.5 10.5L6 7M13.5 10.5L18 7M10.5 13.5L6 17M13.5 13.5L18 17"/></svg><div><strong>Southern Luzon &amp; Metro Manila</strong><span>Quezon, Lucena, Laguna, Batangas</span></div></div>
-    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-7.6 7-12a7 7 0 1 0-14 0c0 4.4 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><div><strong>Based in Dolores, Quezon</strong><span>Local team</span></div></div>
+    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-7.6 7-12a7 7 0 1 0-14 0c0 4.4 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><div><strong>Based in Dolores, Quezon</strong><span>Packed and dispatched by our own team</span></div></div>
   </div>
 </div>
 
@@ -143,7 +145,7 @@ gtag('config', 'G-R8SCPLCRVW');
   <div class="container world-intro reveal">
     <div class="eyebrow">Medical Consumables</div>
     <h2 class="h2">Everyday essentials your facility <em class="accent">depends on</em></h2>
-    <p class="lede" style="margin-top:20px">Daily-use clinical consumables, stocked and ready for facilities that can't afford supply gaps.</p>
+    <p class="lede" style="margin-top:20px">Daily-use clinical consumables for facilities that can't afford supply gaps.</p>
     <div class="world-chips">
       <span class="chip">Injection &amp; Infusion</span>
       <span class="chip">PPE &amp; Infection Control</span>
@@ -165,7 +167,7 @@ gtag('config', 'G-R8SCPLCRVW');
         <span class="product-cat">PPE &amp; Infection Control</span>
         <h3 class="h3">3-Ply Earloop Masks</h3>
         <p class="product-desc">Bulk-carton surgical masks for daily facility use.</p>
-        <a href="#quote" class="product-cta">Request Quote</a>
+        <a href="index.html?product=3-Ply%20Earloop%20Masks&amp;category=PPE%20%26%20Infection%20Control&amp;group=Medical%20Consumables#quote" class="product-cta">Request Quote</a>
       </div>
     </article>
 
@@ -182,7 +184,7 @@ gtag('config', 'G-R8SCPLCRVW');
           <h3 class="product-name">Alcohol Prep Pads</h3>
           <p class="product-desc">Individually wrapped prep pads for routine injection-site and line care.</p>
         </div>
-        <a href="#quote" class="product-cta">Request Quote</a>
+        <a href="index.html?product=Alcohol%20Prep%20Pads&amp;category=Injection%20%26%20Infusion&amp;group=Medical%20Consumables#quote" class="product-cta">Request Quote</a>
       </li>
 
       <li class="consumables-list-item" data-searchable data-search-name="Wound Care Essentials" data-search-category="Wound Care">
@@ -194,7 +196,7 @@ gtag('config', 'G-R8SCPLCRVW');
           <h3 class="product-name">Wound Care Essentials</h3>
           <p class="product-desc">Dressings and wound-management consumables for clinic and ward use.</p>
         </div>
-        <a href="#quote" class="product-cta">Request Quote</a>
+        <a href="index.html?product=Wound%20Care%20Essentials&amp;category=Wound%20Care&amp;group=Medical%20Consumables#quote" class="product-cta">Request Quote</a>
       </li>
 
       <li class="consumables-list-item" data-searchable data-search-name="Patient Care Consumables" data-search-category="Patient Care">
@@ -206,7 +208,7 @@ gtag('config', 'G-R8SCPLCRVW');
           <h3 class="product-name">Patient Care Consumables</h3>
           <p class="product-desc">Everyday bedside and ward-care items for clinics and RHUs.</p>
         </div>
-        <a href="#quote" class="product-cta">Request Quote</a>
+        <a href="index.html?product=Patient%20Care%20Consumables&amp;category=Patient%20Care&amp;group=Medical%20Consumables#quote" class="product-cta">Request Quote</a>
       </li>
     </ul>
   </div>
@@ -218,7 +220,7 @@ gtag('config', 'G-R8SCPLCRVW');
 <!-- LIGHT → DARK TRANSITION -->
 <div id="transition" data-nav-theme="dark">
   <div class="transition-copy reveal">
-    <div class="eyebrow" style="color:var(--red)">Moving Into</div>
+    <div class="eyebrow">Moving Into</div>
     <h2 class="h2">From clinic essentials to <em class="accent">dialysis-grade precision</em></h2>
   </div>
 </div>
@@ -530,18 +532,19 @@ gtag('config', 'G-R8SCPLCRVW');
         <div style="margin-top:40px;display:flex;flex-direction:column;gap:14px;font-size:14px">
           <a href="tel:+639173199572" class="icon-line" style="text-decoration:none;color:var(--ink);font-weight:600"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4.5c0-.6.4-1 1-1H7.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg> +63 917 319 9572</a>
           <span class="icon-line" style="color:var(--mid)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-7.6 7-12a7 7 0 1 0-14 0c0 4.4 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg> Office 07 Sta. Lucia, Dolores, Quezon PH 4326</span>
+          <span class="icon-line" style="color:var(--mid)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Mon–Sat, 8:00 AM–5:00 PM</span>
         </div>
       </div>
 
       <form class="quote-form reveal" onsubmit="event.preventDefault(); handleSubmit();">
         <div class="fg-row">
-          <div class="fg" id="fg-firstname"><label for="f-firstname">First Name</label><input type="text" id="f-firstname" placeholder="Juan"/><span class="ferr">Please enter your first name.</span></div>
-          <div class="fg" id="fg-lastname"><label for="f-lastname">Last Name</label><input type="text" id="f-lastname" placeholder="Dela Cruz"/><span class="ferr">Please enter your last name.</span></div>
+          <div class="fg" id="fg-firstname"><label for="f-firstname">First Name</label><input type="text" id="f-firstname" placeholder="Juan" autocomplete="given-name"/><span class="ferr" id="err-firstname">Please enter your first name.</span></div>
+          <div class="fg" id="fg-lastname"><label for="f-lastname">Last Name</label><input type="text" id="f-lastname" placeholder="Dela Cruz" autocomplete="family-name"/><span class="ferr" id="err-lastname">Please enter your last name.</span></div>
         </div>
-        <div class="fg" id="fg-clinic"><label for="f-clinic">Clinic / Hospital Name</label><input type="text" id="f-clinic" placeholder="Barangay Health Center, etc."/><span class="ferr">Please enter your clinic or hospital name.</span></div>
+        <div class="fg" id="fg-clinic"><label for="f-clinic">Clinic / Hospital Name</label><input type="text" id="f-clinic" placeholder="Barangay Health Center, etc." autocomplete="organization"/><span class="ferr" id="err-clinic">Please enter your clinic or hospital name.</span></div>
         <div class="fg-row">
-          <div class="fg" id="fg-phone"><label for="f-phone">Contact Number</label><input type="tel" id="f-phone" placeholder="+63 9XX XXX XXXX"/><span class="ferr">Please enter a valid Philippine mobile number.</span></div>
-          <div class="fg" id="fg-email"><label for="f-email">Email Address</label><input type="email" id="f-email" placeholder="you@clinic.com" autocomplete="email"/><span class="ferr">Please enter a valid email address.</span></div>
+          <div class="fg" id="fg-phone"><label for="f-phone">Contact Number</label><input type="tel" id="f-phone" placeholder="+63 9XX XXX XXXX" autocomplete="tel"/><span class="ferr" id="err-phone">Please enter a valid Philippine mobile number.</span></div>
+          <div class="fg" id="fg-email"><label for="f-email">Email Address</label><input type="email" id="f-email" placeholder="you@clinic.com" autocomplete="email"/><span class="ferr" id="err-email">Please enter a valid email address.</span></div>
         </div>
         <div class="fg" id="fg-category">
           <label for="f-category">Product Category</label>
@@ -567,9 +570,9 @@ gtag('config', 'G-R8SCPLCRVW');
             <option value="Supportive Medications" data-group="Medications">Medications</option>
             <option value="Consumables &amp; Supplies">General Inquiry</option>
           </select>
-          <span class="ferr">Please select a product category.</span>
+          <span class="ferr" id="err-category">Please select a product category.</span>
         </div>
-        <div class="fg" id="fg-message"><label for="f-message">Message / Requirements</label><textarea id="f-message" placeholder="List the products or quantities you need..."></textarea><span class="ferr">Please describe your requirements.</span><p class="fg-note">Please do not include patient medical information or other sensitive personal information in your inquiry.</p></div>
+        <div class="fg" id="fg-message"><label for="f-message">Message / Requirements</label><textarea id="f-message" placeholder="List the products or quantities you need..."></textarea><span class="ferr" id="err-message">Please describe your requirements.</span><p class="fg-note">Please do not include patient medical information or other sensitive personal information in your inquiry.</p></div>
         <div class="fg" id="fg-website" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="f-website">Leave this field blank</label><input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"/></div>
         <p class="form-consent-note">By submitting this form, you acknowledge that Layali Medical Supply will use the information you provide to respond to your inquiry and quotation request. See our <a href="privacy.html">Privacy Notice</a>.</p>
         <button type="submit" class="form-btn" id="submitBtn">Send Inquiry →</button>
@@ -632,7 +635,7 @@ gtag('config', 'G-R8SCPLCRVW');
         <li><a href="#consumables">Medical Consumables</a></li>
         <li><a href="#hemodialysis">Hemodialysis</a></li>
         <li><a href="#brands">Brands</a></li>
-        <li><a href="#deliveries">Our Work</a></li>
+        <li><a href="#deliveries">Deliveries</a></li>
         <li><a href="#quote">Request a Quote</a></li>
       </ul>
     </div>
@@ -641,6 +644,7 @@ gtag('config', 'G-R8SCPLCRVW');
       <ul>
         <li><a href="tel:+639173199572">+63 917 319 9572</a></li>
         <li><span>Office 07 Sta. Lucia,<br>Dolores, Quezon PH 4326</span></li>
+        <li><span>Mon–Sat, 8:00 AM–5:00 PM</span></li>
         <li><a href="#credentials">FDA License CDRRHR-RIVA-MDI/W-2074863</a></li>
       </ul>
     </div>

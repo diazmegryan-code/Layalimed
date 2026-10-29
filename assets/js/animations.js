@@ -35,7 +35,7 @@
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
-  var ANIME_SRC = 'https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js';
+  var ANIME_SRC = 'assets/vendor/anime.umd.min.js';
 
   // Small, shared motion vocabulary -- consistency over ad-hoc numbers.
   var MOTION = {

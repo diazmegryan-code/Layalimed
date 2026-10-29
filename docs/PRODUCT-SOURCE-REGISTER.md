@@ -2028,3 +2028,18 @@ Terumo (7 catalog products) is not shown: terumo.com and terumo.co.jp return 403
 ## Quote form: hemodialysis category prefill (same day)
 
 Catalog quote links carry the product's catalog subcategory. Hemodialysis subcategories that were not in the form's dropdown used to fall back to the first Hemodialysis option ("Dialyzers"), so emails for catheters, PPE, disinfectants and similar items were labelled "Dialyzers". The form now has an "Other Hemodialysis Supplies" option (it still sends MedCRM the existing "Hemodialysis Supplies" category, so the CRM contract is unchanged), and four catalog subcategories map to their real equivalents: Dialyzers / Artificial Kidneys to Dialyzers, Bloodline Sets to Blood Tubing Sets, Acid Concentrates & Bicarbonate to Concentrates, Dressing Supplies to Treatment Consumables. Checked against the 24 distinct category/group combinations produced by all 135 catalog quote links.
+
+---
+
+# Site audit follow-ups (2026-10-29)
+
+Not product data; recorded here so the changes are traceable.
+
+- **Self-hosted assets.** GSAP 3.12.5, ScrollTrigger, Anime.js 4.5.0 and @emailjs/browser now load from `assets/vendor/` (see its README) and the Cormorant Garamond / DM Sans fonts from `assets/fonts/` (latin subset, SIL OFL 1.1). No page requests Google Fonts or jsDelivr any more; only Google Tag Manager / Analytics remain external. `privacy.html` was updated to match (font-provider sentence, "Last updated" date). The site owner should confirm they are happy with that wording change.
+- **Social card.** `og-image.png` regenerated at 1200x630 from the existing logo (no new artwork); `twitter:card` is now `summary_large_image`.
+- **Removed** `"priceRange":"$$"` from the JSON-LD (not a fact we were given).
+- **Hours.** "Mon-Sat, 8:00 AM-5:00 PM" shown in the footer and the quote contact block. Taken from the `openingHoursSpecification` already in the page's JSON-LD (Mon-Sat 08:00-17:00); `docs/CONTENT-ASSET-REQUIREMENTS.md` still lists it as "confirm still accurate".
+- **Accessibility.** Skip link and `<main id="main">`, `aria-expanded`/`aria-controls` on the hamburger (all pages), `aria-invalid`/`aria-describedby` and autocomplete hints on the quote form, larger touch targets via pseudo-elements, transition headline switches colour at the contrast crossover (lowest measured ratio 4.3:1 on a large headline, mid-scroll only).
+- **Navigation parity.** `catalog.html` and `privacy.html` use the homepage menu (Products / Hemodialysis / Brands / Deliveries / About) plus a search icon linking to `catalog.html#cat-search-input`.
+- **Consumables tiles** now prefill the quote form (product + category), like the catalog links.
+- **Copy.** "Our Work" is now "Deliveries"; "Local team" is now "Packed and dispatched by our own team"; "stocked and ready" removed (no stock claim); hero now says "hospitals" too.
