@@ -481,6 +481,7 @@ async function handleSubmit() {
       })(),
     ]);
     if (delivered.email && delivered.crm) {
+      quoteDeliveries.delete(key);
       showToast('✓ Inquiry sent! We will contact you soon.');
       ['f-firstname', 'f-lastname', 'f-clinic', 'f-phone', 'f-email', 'f-category', 'f-message'].forEach(id => { document.getElementById(id).value = ''; });
     } else if (delivered.email || delivered.crm) {
