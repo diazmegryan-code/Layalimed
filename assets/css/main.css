@@ -145,6 +145,7 @@ em.accent{color:var(--red);font-style:italic}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
 .logo-img{display:block;height:56px;width:auto;max-width:none}
 .logo-img--footer{height:72px}
+@media (max-width:600px){.logo-img{height:40px}.logo-img--footer{height:60px}}
 
 .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
 .nav-links a{
@@ -291,6 +292,9 @@ em.accent{color:var(--red);font-style:italic}
   background-image:repeating-linear-gradient(135deg,var(--border) 0 1px,transparent 1px 10px);
 }
 .consumables-list-photo--placeholder .placeholder-label{font-size:9px;letter-spacing:.5px}
+.consumables-list-photo--wordmark{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px;border:1px solid var(--border)}
+.consumables-list-photo--wordmark::before{content:"";display:block;width:14px;height:2px;background:var(--red);margin-bottom:6px}
+.wordmark-label{font-family:var(--serif);font-weight:700;font-size:9px;line-height:1.2;letter-spacing:.02em;text-transform:uppercase;color:var(--ink)}
 .consumables-list-copy .product-cat{display:block;margin-bottom:4px}
 .consumables-list-copy .product-name{font-size:17px;margin-bottom:4px}
 .consumables-list-copy .product-desc{max-width:42ch}
@@ -300,6 +304,8 @@ em.accent{color:var(--red);font-style:italic}
   .consumables-editorial{grid-template-columns:1fr;gap:40px}
   .consumables-list-item{grid-template-columns:64px 1fr;row-gap:10px}
   .consumables-list-photo{width:64px;height:64px;flex:0 0 64px}
+  .consumables-list-photo--wordmark{padding:3px}
+  .wordmark-label{font-size:7.5px;letter-spacing:0}
   .consumables-list-item .product-cta{grid-column:2;justify-self:start}
 }
 
