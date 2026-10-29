@@ -288,79 +288,65 @@ document.addEventListener('keydown', (e) => {
   });
 })();
 
-/* ─── SEARCH OVERLAY (client-side, scoped to homepage content) ─────────── */
+/* Full-catalog search. Results open the existing catalog search view. */
 (function search() {
   const overlay = document.getElementById('search-overlay');
-  const openBtns = document.querySelectorAll('[data-search-open]');
-  const closeBtn = document.getElementById('search-close');
+  if (!overlay) return;
   const input = document.getElementById('search-input');
   const results = document.getElementById('search-results');
-  if (!overlay) return;
-
-  const index = Array.from(document.querySelectorAll('[data-searchable]')).map((el) => ({
-    name: el.dataset.searchName,
-    category: el.dataset.searchCategory,
-    target: el,
-  }));
-
-  function open() {
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => input.focus(), 200);
-    renderResults('');
-  }
+  const closeBtn = document.getElementById('search-close');
+  let opener;
   function close() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
     input.value = '';
+    if (opener) opener.focus();
   }
-  function renderResults(q) {
-    const query = q.trim().toLowerCase();
-    const matches = query
-      ? index.filter((item) => item.name.toLowerCase().includes(query) || item.category.toLowerCase().includes(query))
-      : index;
-
-    results.innerHTML = '';
-    if (!matches.length) {
-      results.innerHTML = '<p class="search-empty">No matches yet — try “dialyzer”, “mask”, or “wound care.”</p>';
-      return;
-    }
-    matches.forEach((item) => {
-      const btn = document.createElement('button');
-      btn.className = 'search-result';
-      btn.innerHTML = `<span class="search-result-name">${item.name}</span><span>${item.category}</span>`;
-      btn.addEventListener('click', () => {
-        close();
-        item.target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
-        item.target.classList.add('search-highlight');
-        setTimeout(() => item.target.classList.remove('search-highlight'), 1600);
-      });
-      results.appendChild(btn);
-    });
+  function render() {
+    const q = input.value.trim();
+    results.replaceChildren();
+    const link = document.createElement('a');
+    link.className = 'search-result';
+    link.href = 'catalog.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+    link.textContent = q ? 'Search all products for “' + q + '” →' : 'Explore the full product catalog →';
+    results.appendChild(link);
   }
-
-  openBtns.forEach((b) => b.addEventListener('click', open));
+  function open(button) {
+    opener = button || document.activeElement;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    render();
+    input.focus();
+  }
+  document.querySelectorAll('[data-search-open]').forEach(b => b.addEventListener('click', () => open(b)));
   closeBtn.addEventListener('click', close);
-  input.addEventListener('input', (e) => renderResults(e.target.value));
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) close();
-    if (e.key === '/' && !overlay.classList.contains('open') && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-      e.preventDefault();
-      open();
+  input.addEventListener('input', render);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); window.location.href = results.querySelector('a').href; }
+  });
+  document.addEventListener('keydown', e => {
+    if (overlay.classList.contains('open')) {
+      if (e.key === 'Escape') close();
+      if (e.key === 'Tab') {
+        const items = Array.from(overlay.querySelectorAll('button, input, a[href]')).filter(el => !el.disabled);
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    } else if (e.key === '/' && !e.ctrlKey && !e.metaKey && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) && !document.activeElement.isContentEditable) {
+      e.preventDefault(); open();
     }
   });
 })();
 
-/* ─── QUOTE PREFILL FROM CATALOG ─────────────────────────────────────────
-   If a visitor arrives from a catalog product's "Request Quote" link
-   (index.html?product=...&category=...#quote), prefill the message field
-   and, if the category text happens to match an existing dropdown option
-   exactly, preselect it. This never touches validation or submission —
-   it only sets initial field values before the visitor reviews the form. */
+/* Catalog quote links preserve product/subcategory in the message.
+   Match the visible subcategory first, otherwise use its catalog group.
+   Option values route to the existing CRM category contract. */
 (function prefillFromCatalog() {
   const params = new URLSearchParams(window.location.search);
   const product = params.get('product');
   const category = params.get('category');
+  const group = params.get('group');
   if (!product && !category) return;
 
   const messageEl = document.getElementById('f-message');
@@ -369,8 +355,9 @@ document.addEventListener('keydown', (e) => {
   }
   const categoryEl = document.getElementById('f-category');
   if (categoryEl && category) {
-    const match = Array.from(categoryEl.options).find((o) => o.text === category);
-    if (match) categoryEl.value = match.value;
+    const options = Array.from(categoryEl.options);
+    const match = options.find(o => o.text === category) || options.find(o => o.dataset.group === group);
+    if (match) categoryEl.selectedIndex = options.indexOf(match);
   }
 })();
 
@@ -430,82 +417,79 @@ const EMAILJS_TEMPLATE_ID = 'template_vr2e83d';
 // backend/src/routes/leads-public.js in the medcrm repo). Not a secret.
 const CRM_API_URL = 'https://medcrm-production.up.railway.app/api/leads';
 
-(function initEmailJS() {
-  const s = document.createElement('script');
-  s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-  s.onload = () => emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  document.head.appendChild(s);
-})();
+// Keep confirmed deliveries for this page session so retries only send to failed channels.
+const quoteDeliveries = new Map();
+let quoteSending = false;
+let emailReady;
+function ensureEmailJS() {
+  if (emailReady) return emailReady;
+  emailReady = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    const timer = setTimeout(() => { s.remove(); reject(new Error('Email service unavailable')); }, 15000);
+    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    s.onload = () => {
+      clearTimeout(timer);
+      try { window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); resolve(window.emailjs); }
+      catch (err) { reject(err); }
+    };
+    s.onerror = () => { clearTimeout(timer); s.remove(); reject(new Error('Email service unavailable')); };
+    document.head.appendChild(s);
+  }).catch(err => { emailReady = null; throw err; });
+  return emailReady;
+}
 
 async function handleSubmit() {
-  if (!validateForm()) {
-    showToast('Please fix the highlighted fields.', true);
+  if (quoteSending) return;
+  if (!validateForm()) { showToast('Please fix the highlighted fields.', true); return; }
+  if (document.getElementById('f-website').value.trim()) {
+    showToast('Inquiry received. Thank you.');
     return;
   }
-
-  // Honeypot -- see #fg-website. Bots that fill every field trip this;
-  // real visitors never do. Feign success instead of erroring.
-  if (document.getElementById('f-website').value.trim() !== '') {
-    showToast("✓ Inquiry sent! We'll contact you soon.");
-    document.querySelectorAll('#fg-firstname input,#fg-lastname input,#fg-clinic input,#fg-phone input,#fg-email input,#fg-category select,#fg-message textarea')
-      .forEach((el) => (el.value = ''));
-    return;
-  }
-
+  const value = id => document.getElementById(id).value.trim();
+  const params = {
+    from_name: value('f-firstname') + ' ' + value('f-lastname'),
+    clinic: value('f-clinic'), phone: value('f-phone'), email: value('f-email'),
+    category: document.getElementById('f-category').selectedOptions[0].text,
+    message: value('f-message'),
+  };
+  const payload = {
+    first_name: value('f-firstname'), last_name: value('f-lastname'),
+    clinic: params.clinic, phone: params.phone,
+    category: value('f-category'), message: 'Website category: ' + params.category + '\n\n' + params.message, website: '',
+  };
+  const key = JSON.stringify({ params, payload });
+  const delivered = quoteDeliveries.get(key) || { crm: false, email: false };
+  quoteDeliveries.set(key, delivered);
   const btn = document.getElementById('submitBtn');
+  quoteSending = true;
   btn.disabled = true;
   btn.textContent = 'Sending…';
-
-  const firstName = document.getElementById('f-firstname').value.trim();
-  const lastName = document.getElementById('f-lastname').value.trim();
-
-  const params = {
-    from_name: firstName + ' ' + lastName,
-    clinic: document.getElementById('f-clinic').value.trim(),
-    phone: document.getElementById('f-phone').value.trim(),
-    email: document.getElementById('f-email').value.trim(),
-    category: document.getElementById('f-category').value,
-    message: document.getElementById('f-message').value.trim(),
-  };
-
-  // MedCRM lead intake fires independently of EmailJS, not awaited/chained,
-  // so a slow or unreachable CRM never delays the EmailJS toast below.
-  // NOTE: the website_leads table/leads-public.js route has no email column
-  // -- do not send one here until the backend schema adds support.
-  fetch(CRM_API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      first_name: firstName,
-      last_name: lastName,
-      clinic: params.clinic,
-      phone: params.phone,
-      category: params.category,
-      message: params.message,
-      website: document.getElementById('f-website').value,
-    }),
-  }).catch((err) => console.error('CRM lead intake error:', err));
-
-  if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.textContent = 'Send Inquiry →';
-      showToast("✓ Inquiry sent! We'll contact you soon.");
-      document.querySelectorAll('#fg-firstname input,#fg-lastname input,#fg-clinic input,#fg-phone input,#fg-email input,#fg-category select,#fg-message textarea')
-        .forEach((el) => (el.value = ''));
-    }, 1200);
-    return;
-  }
-
   try {
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-    showToast("✓ Inquiry sent! We'll contact you soon.");
-    ['f-firstname', 'f-lastname', 'f-clinic', 'f-phone', 'f-email', 'f-category', 'f-message']
-      .forEach((id) => (document.getElementById(id).value = ''));
-  } catch (err) {
-    console.error('EmailJS error:', err);
-    showToast('Failed to send. Please contact us via Viber at +63 917 319 9572.', true);
+    await Promise.allSettled([
+      delivered.crm ? Promise.resolve() : (async () => {
+        const response = await fetch(CRM_API_URL, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload), signal: AbortSignal.timeout(20000),
+        });
+        if (!response.ok) throw new Error('CRM request failed: ' + response.status);
+        delivered.crm = true;
+      })(),
+      delivered.email ? Promise.resolve() : (async () => {
+        const service = await ensureEmailJS();
+        await service.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+        delivered.email = true;
+      })(),
+    ]);
+    if (delivered.email && delivered.crm) {
+      showToast('✓ Inquiry sent! We will contact you soon.');
+      ['f-firstname', 'f-lastname', 'f-clinic', 'f-phone', 'f-email', 'f-category', 'f-message'].forEach(id => { document.getElementById(id).value = ''; });
+    } else if (delivered.email || delivered.crm) {
+      showToast('Inquiry received. One delivery step failed; your details are kept. Retry to finish.', true);
+    } else {
+      showToast('Unable to confirm delivery. Your details are kept. Retry or call +63 917 319 9572.', true);
+    }
   } finally {
+    quoteSending = false;
     btn.disabled = false;
     btn.textContent = 'Send Inquiry →';
   }

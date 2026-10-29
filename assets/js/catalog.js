@@ -362,7 +362,7 @@ function renderCard(p) {
     ? `<div class="cat-variants">${p.variants.map((v) => `<span class="cat-variant-chip">${escapeHtml(v)}</span>`).join('')}</div>`
     : '';
   const groupLabel = p.websiteGroup !== state.group && state.view !== 'group' ? `${escapeHtml(p.websiteGroup)} · ` : '';
-  const quoteHref = 'index.html?product=' + encodeURIComponent(p.catalogEntry) + '&category=' + encodeURIComponent(p.websiteSubcategory) + '#quote';
+  const quoteHref = 'index.html?product=' + encodeURIComponent(p.catalogEntry) + '&category=' + encodeURIComponent(p.websiteSubcategory) + '&group=' + encodeURIComponent(p.websiteGroup) + '#quote';
   const detailsHtml = renderVerifiedDetails(p);
   const verifiedProductsHtml = renderVerifiedProducts(p);
 
