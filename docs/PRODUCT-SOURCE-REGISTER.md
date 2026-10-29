@@ -2043,3 +2043,7 @@ Not product data; recorded here so the changes are traceable.
 - **Navigation parity.** `catalog.html` and `privacy.html` use the homepage menu (Products / Hemodialysis / Brands / Deliveries / About) plus a search icon linking to `catalog.html#cat-search-input`.
 - **Consumables tiles** now prefill the quote form (product + category), like the catalog links.
 - **Copy.** "Our Work" is now "Deliveries"; "Local team" is now "Packed and dispatched by our own team"; "stocked and ready" removed (no stock claim); hero now says "hospitals" too.
+
+## White-background Baxter IV bag images: #68, #71, #140 (2026-10-29)
+
+The Baxter catalog photos for 5% Dextrose Injection (`68-baxter.*`) and Sterile Water for Injection (`71-baxter.*`) were shot against dark/grey vignette backgrounds. The bag was cut out of the photo (OpenCV GrabCut, then edge smoothing) and placed on plain white. The bag, label and tubing pixels are the manufacturer's own and are not retouched; only the background was replaced. #140 (Sterile water / D5W) reuses the same two files, so it changed with them. Dimensions are unchanged (900x1200, 798x1200). The unmodified photos are kept in `images/products/originals/68-baxter-original.jpg` and `71-baxter-original.jpg`. Edges are slightly soft at full size (the bag is translucent); they read cleanly at catalog size.
