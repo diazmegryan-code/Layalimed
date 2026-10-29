@@ -143,12 +143,8 @@ em.accent{color:var(--red);font-style:italic}
   display:flex;align-items:center;justify-content:space-between;
 }
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-mark{width:34px;height:34px;flex:0 0 34px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:16px}
-.logo-text strong{display:block;font-family:var(--serif);font-weight:700;font-size:17px;line-height:1.15;color:var(--ink)}
-.logo-text span{display:block;font-size:9.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--mid)}
-#navbar.on-dark-section .logo-text strong{color:var(--on-dark)}
-#navbar.on-dark-section .logo-text span{color:var(--on-dark-mid)}
-#navbar.on-dark-section .logo-mark{color:var(--on-dark)}
+.logo-img{display:block;height:56px;width:auto;max-width:none}
+.logo-img--footer{height:72px}
 
 .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
 .nav-links a{
