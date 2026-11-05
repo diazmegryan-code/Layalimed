@@ -2067,3 +2067,10 @@ The homepage category section is now two panels: a dark Hemodialysis panel and a
 ## Quote list (2026-11-05)
 
 Catalog cards have an "Add to quote list" button. The list is kept in the visitor's browser (localStorage, `assets/js/quote-list.js`), shown by a floating tray, and appears in the homepage quote form with a quantity box per item. On send, the items and quantities are written into the existing message text, so the EmailJS and MedCRM payloads keep the same fields. The category is the matching one for a single-category list and "General Inquiry" (existing value "Consumables & Supplies") for mixed lists. The list clears after both deliveries succeed. `privacy.html` gained one sentence about the local-storage list and its "Last updated" date changed to November 5, 2026; the site owner should confirm that wording.
+
+## Speed pass (2026-11-05)
+
+No product data changed. The homepage downloaded about 1.25 MB before and about 0.67 MB after (cold load, all lazy images fetched, measured on the local preview; uncompressed).
+
+- **Images:** the logo, emblem, seven brand logos, the Nipro blood tubing photo and the four delivery photos now ship as WebP inside `<picture>` (the original JPG/PNG stays as the fallback). The first delivery photo has a 700 px WebP for the carousel; the lightbox loads the full-size WebP. Delivery images gained width/height to avoid layout shift. `picture.pw` is `display:contents`, so the wrappers do not affect layout.
+- **Scripts:** GSAP, ScrollTrigger and Anime.js (about 235 KB of JavaScript) were removed. The hero entrance, hero parallax and the light-to-dark scroll transition now use the Web Animations API plus one passive, rAF-throttled scroll listener in `main.js`. The panel swap, catalog reveal and validation flash use `element.animate()` in `animations.js`. The CTA arrow nudge is CSS. Same effects and timings; all of it is skipped when reduced motion is requested.

@@ -77,88 +77,80 @@ document.addEventListener('keydown', (e) => {
   els.forEach((el) => io.observe(el));
 })();
 
-/* ─── GSAP: hero entrance, light→dark scroll transition, subtle parallax ─
-   Loaded from CDN only when motion is allowed; everything still works
-   (statically, fully visible) if GSAP fails to load or reduced motion
-   is requested — GSAP only adds choreography on top of visible content.
-
-   Ownership boundary (see assets/js/animations.js for the full map):
-   GSAP here is scoped to major page choreography ONLY — hero entrance,
-   hero parallax, and the light→dark scroll transition. It does not touch
-   the Hemodialysis tab panels; that small UI swap is Anime.js's job
-   (assets/js/animations.js exposes window.LayaliMotion.panelSwap, called
-   from hdSignature() below). No other script animates the elements/
-   properties listed above. */
+/* ─── MOTION: hero entrance, hero parallax, light→dark scroll transition ─
+   Native Web Animations API plus one passive scroll listener (no animation
+   library). Skipped entirely when reduced motion is requested; content is
+   fully visible without it. Small interface effects live in
+   assets/js/animations.js; CTA arrows are plain CSS. */
 (function motion() {
-  if (prefersReducedMotion) return;
+  if (prefersReducedMotion || typeof Element.prototype.animate !== 'function') return;
 
-  const g = document.createElement('script');
-  g.src = 'assets/vendor/gsap.min.js';
-  g.onload = () => {
-    const st = document.createElement('script');
-    st.src = 'assets/vendor/ScrollTrigger.min.js';
-    st.onload = initGsap;
-    document.head.appendChild(st);
-  };
-  document.head.appendChild(g);
+  const OUT_QUART = 'cubic-bezier(0.165, 0.84, 0.44, 1)';   // power3.out
+  const IN_OUT_QUINT = 'cubic-bezier(0.86, 0, 0.07, 1)';    // power4.inOut
 
-  function initGsap() {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Hero entrance
-    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-      .from('.hero-copy .eyebrow', { opacity: 0, y: 16, duration: 0.6 })
-      .from('.hero-h1-line', { yPercent: 110, opacity: 0, duration: 0.9, stagger: 0.08 }, '-=0.3')
-      .from('.hero-sub', { opacity: 0, y: 16, duration: 0.6 }, '-=0.4')
-      .from('.hero-actions', { opacity: 0, y: 16, duration: 0.6 }, '-=0.4')
-      .from('.hero-chips', { opacity: 0, y: 16, duration: 0.6 }, '-=0.4')
-      .from('.hero-visual', { clipPath: 'inset(0 0 100% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=1');
-
-    // Safety net: on very throttled devices/tabs (rAF deprioritized while
-    // backgrounded), guarantee the hero is fully visible within 2.5s rather
-    // than leaving it stuck mid-reveal indefinitely.
-    setTimeout(() => { if (heroTl.progress() < 1) heroTl.progress(1); }, 2500);
-
-    // Subtle hero parallax
-    gsap.to('.hero-collage', {
-      yPercent: 6,
-      ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
+  // Hero entrance. fill:'backwards' holds the "from" state during each delay,
+  // so there is no flash before an element animates in.
+  function reveal(targets, from, to, duration, delay, easing, stagger) {
+    document.querySelectorAll(targets).forEach((el, i) => {
+      el.animate([from, to], { duration: duration * 1000, delay: (delay + i * (stagger || 0)) * 1000, easing, fill: 'backwards' });
     });
-
-    // Light -> dark scroll transition: interpolate CSS vars on #transition
-    const transitionEl = document.getElementById('transition');
-    if (transitionEl) {
-      const light = { bg: [255, 255, 255], fg: [23, 24, 27] };
-      const dark = { bg: [17, 18, 20], fg: [243, 242, 239] };
-      const lerp = (a, b, t) => Math.round(a + (b - a) * t);
-      const setVars = (t) => {
-        const bg = light.bg.map((c, i) => lerp(c, dark.bg[i], t));
-        const fg = t < 0.58 ? light.fg : dark.fg; // switch text colour at the contrast crossover
-        transitionEl.style.setProperty('--transition-bg', `rgb(${bg.join(',')})`);
-        transitionEl.style.setProperty('--transition-fg', `rgb(${fg.join(',')})`);
-      };
-      setVars(0);
-      ScrollTrigger.create({
-        trigger: transitionEl,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true,
-        onUpdate: (self) => setVars(self.progress),
-      });
-    }
-
-    ScrollTrigger.refresh();
   }
+  const rise = [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }];
+  reveal('.hero-copy .eyebrow', rise[0], rise[1], 0.6, 0, OUT_QUART);
+  reveal('.hero-h1-line > span', { opacity: 0, transform: 'translateY(110%)' }, { opacity: 1, transform: 'translateY(0)' }, 0.9, 0.3, OUT_QUART, 0.08);
+  reveal('.hero-sub', rise[0], rise[1], 0.6, 0.88, OUT_QUART);
+  reveal('.hero-actions', rise[0], rise[1], 0.6, 1.08, OUT_QUART);
+  reveal('.hero-chips', rise[0], rise[1], 0.6, 1.28, OUT_QUART);
+  reveal('.hero-visual', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }, 1.1, 0.88, IN_OUT_QUINT);
+
+  // Scroll-linked effects share one rAF-throttled passive listener.
+  const hero = document.getElementById('hero');
+  const collage = document.querySelector('.hero-collage');
+  const transitionEl = document.getElementById('transition');
+  const light = { bg: [255, 255, 255], fg: [23, 24, 27] };
+  const dark = { bg: [17, 18, 20], fg: [243, 242, 239] };
+  const lerp = (a, b, t) => Math.round(a + (b - a) * t);
+  const clamp01 = (v) => Math.min(1, Math.max(0, v));
+
+  function setTransitionVars(t) {
+    const bg = light.bg.map((c, i) => lerp(c, dark.bg[i], t));
+    const fg = t < 0.58 ? light.fg : dark.fg; // switch text colour at the contrast crossover
+    transitionEl.style.setProperty('--transition-bg', `rgb(${bg.join(',')})`);
+    transitionEl.style.setProperty('--transition-fg', `rgb(${fg.join(',')})`);
+  }
+
+  function update() {
+    const vh = window.innerHeight;
+    if (hero && collage) {
+      const r = hero.getBoundingClientRect();
+      // 0 when the hero top meets the viewport top, 1 when its bottom does
+      const p = clamp01(-r.top / (r.height || 1));
+      collage.style.transform = `translate3d(0, ${(p * 6).toFixed(3)}%, 0)`;
+    }
+    if (transitionEl) {
+      const r = transitionEl.getBoundingClientRect();
+      // 0 when its top meets the viewport bottom, 1 when its bottom meets the viewport top
+      setTransitionVars(clamp01((vh - r.top) / (vh + r.height)));
+    }
+  }
+  let queued = false;
+  function onScroll() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; update(); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
 })();
 
 /* ─── DELIVERY CAROUSEL + LIGHTBOX ─────────────────────────────────────── */
 (function deliveries() {
   const deliveryPhotos = [
-    { src: 'images/deliveries/delivery-01-primary.jpg', alt: 'Medical supplies packed for delivery, including bundled gauze swabs, face masks, and PPE cartons inside a Layali Medical Supply delivery vehicle' },
-    { src: 'images/deliveries/delivery-02.jpg', alt: 'Boxes of 3-ply face masks with earloop stacked for delivery' },
-    { src: 'images/deliveries/delivery-03.jpg', alt: 'Sealed 3M medical supply cartons prepared for delivery' },
-    { src: 'images/deliveries/delivery-04.jpg', alt: 'Boxes of alcohol prep pads stacked for delivery' },
+    { src: 'images/deliveries/delivery-01-primary.webp', alt: 'Medical supplies packed for delivery, including bundled gauze swabs, face masks, and PPE cartons inside a Layali Medical Supply delivery vehicle' },
+    { src: 'images/deliveries/delivery-02.webp', alt: 'Boxes of 3-ply face masks with earloop stacked for delivery' },
+    { src: 'images/deliveries/delivery-03.webp', alt: 'Sealed 3M medical supply cartons prepared for delivery' },
+    { src: 'images/deliveries/delivery-04.webp', alt: 'Boxes of alcohol prep pads stacked for delivery' },
   ];
 
   const slides = Array.from(document.querySelectorAll('.delivery-slide'));
@@ -489,7 +481,7 @@ function showToast(msg, isError = false) {
   t.textContent = '';
   if (!isError) {
     const mark = new Image();
-    mark.src = 'images/layali-emblem.png'; mark.alt = ''; mark.className = 'toast-emblem'; mark.setAttribute('aria-hidden', 'true');
+    mark.src = 'images/layali-emblem.webp'; mark.alt = ''; mark.className = 'toast-emblem'; mark.setAttribute('aria-hidden', 'true');
     t.appendChild(mark);
   }
   t.appendChild(document.createTextNode(msg));
