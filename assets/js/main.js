@@ -405,13 +405,80 @@ document.addEventListener('keydown', (e) => {
   }
   const categoryEl = document.getElementById('f-category');
   if (categoryEl && category) {
-    const options = Array.from(categoryEl.options);
-    const aliases = { 'Dialyzers / Artificial Kidneys': 'Dialyzers', 'Bloodline Sets': 'Blood Tubing Sets', 'Acid Concentrates & Bicarbonate': 'Concentrates', 'Dressing Supplies': 'Treatment Consumables' };
-    const wanted = aliases[category] || category;
-    const match = options.find(o => o.text === wanted) || options.find(o => o.dataset.group === group && o.dataset.fallback) || options.find(o => o.dataset.group === group);
-    if (match) categoryEl.selectedIndex = options.indexOf(match);
+    selectCategoryOption(category, group);
   }
 })();
+
+function selectCategoryOption(category, group) {
+  const categoryEl = document.getElementById('f-category');
+  if (!categoryEl) return;
+  const options = Array.from(categoryEl.options);
+  const aliases = { 'Dialyzers / Artificial Kidneys': 'Dialyzers', 'Bloodline Sets': 'Blood Tubing Sets', 'Acid Concentrates & Bicarbonate': 'Concentrates', 'Dressing Supplies': 'Treatment Consumables' };
+  const wanted = aliases[category] || category;
+  const match = options.find(o => o.text === wanted) || options.find(o => o.dataset.group === group && o.dataset.fallback) || options.find(o => o.dataset.group === group);
+  if (match) categoryEl.selectedIndex = options.indexOf(match);
+}
+
+/* ─── QUOTE LIST (items added from the catalog; see assets/js/quote-list.js) ─── */
+let categoryAuto = true; // the category follows the list until the visitor picks one themselves
+(function quoteListUI() {
+  const QL = window.QuoteList;
+  const box = document.getElementById('quoteListBox');
+  if (!QL || !box) return;
+  const itemsEl = document.getElementById('qlItems');
+  const countEl = document.getElementById('qlCount');
+  const label = document.getElementById('messageLabel');
+  const messageEl = document.getElementById('f-message');
+  const categoryEl = document.getElementById('f-category');
+  if (categoryEl) categoryEl.addEventListener('change', () => { categoryAuto = false; });
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+
+  function syncCategory(items) {
+    if (!categoryEl || !categoryAuto || !items.length) return;
+    const groups = new Set(items.map(i => i.group));
+    const subs = new Set(items.map(i => i.sub));
+    if (subs.size === 1) selectCategoryOption(items[0].sub, items[0].group);
+    else if (groups.size === 1) selectCategoryOption('', items[0].group);
+    else { const opts = Array.from(categoryEl.options); const general = opts.find(o => o.text === 'General Inquiry'); if (general) categoryEl.selectedIndex = opts.indexOf(general); }
+  }
+
+  function render() {
+    const items = QL.all();
+    box.hidden = items.length === 0;
+    countEl.textContent = items.length + (items.length === 1 ? ' item' : ' items');
+    if (label) label.textContent = items.length ? 'Additional notes (optional)' : 'Message / Requirements';
+    if (messageEl) messageEl.placeholder = items.length ? 'Anything else we should know: delivery date, preferred brands, questions…' : 'List the products or quantities you need...';
+    itemsEl.innerHTML = items.map(i => `
+      <li class="ql-item" data-id="${esc(i.id)}">
+        <span class="ql-name">${esc(i.name)}<span class="ql-meta">${esc(i.sub || i.group)}</span></span>
+        <input class="ql-qty" type="text" maxlength="40" value="${esc(i.qty || '')}" placeholder="Qty, e.g. 10 boxes" aria-label="Quantity for ${esc(i.name)}">
+        <button type="button" class="ql-remove" aria-label="Remove ${esc(i.name)} from the quote list">&times;</button>
+      </li>`).join('');
+    syncCategory(items);
+  }
+
+  itemsEl.addEventListener('input', (e) => {
+    const input = e.target.closest('.ql-qty');
+    if (input) QL.setQty(input.closest('.ql-item').dataset.id, input.value);
+  });
+  itemsEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.ql-remove');
+    if (btn) QL.remove(btn.closest('.ql-item').dataset.id);
+  });
+  document.getElementById('qlClear').addEventListener('click', () => QL.clear());
+  document.addEventListener('quotelist:change', render);
+  render();
+})();
+
+function buildQuoteMessage(note) {
+  const items = window.QuoteList ? window.QuoteList.all() : [];
+  if (!items.length) return note;
+  const lines = items.map((i, idx) =>
+    (idx + 1) + '. ' + i.name + ' (' + [i.group, i.sub].filter(Boolean).join(' · ') + ') [Ref. ' + i.id + ']' + (i.qty ? ' — Qty: ' + i.qty : ''));
+  return 'Quote request: ' + items.length + (items.length === 1 ? ' item' : ' items') + '\n' + lines.join('\n') +
+    (note ? '\n\nAdditional notes:\n' + note : '');
+}
 
 /* ─── QUOTE FORM: validation + EmailJS + MedCRM dual-submit ────────────────
    Same EmailJS keys and MedCRM endpoint as the production form. Email was
@@ -454,7 +521,7 @@ function validateForm() {
     validateField('f-phone', 'fg-phone', (v) => phPattern.test(v.replace(/\s/g, ''))),
     validateField('f-email', 'fg-email', (v) => emailPattern.test(v)),
     validateField('f-category', 'fg-category', (v) => v !== ''),
-    validateField('f-message', 'fg-message', (v) => v.length >= 10),
+    validateField('f-message', 'fg-message', (v) => v.length >= 10 || (window.QuoteList && window.QuoteList.count() > 0)),
   ];
   return results.every(Boolean);
 }
@@ -514,7 +581,7 @@ async function handleSubmit() {
     from_name: value('f-firstname') + ' ' + value('f-lastname'),
     clinic: value('f-clinic'), phone: value('f-phone'), email: value('f-email'),
     category: document.getElementById('f-category').selectedOptions[0].text,
-    message: value('f-message'),
+    message: buildQuoteMessage(value('f-message')),
   };
   const payload = {
     first_name: value('f-firstname'), last_name: value('f-lastname'),
@@ -547,6 +614,8 @@ async function handleSubmit() {
     if (delivered.email && delivered.crm) {
       quoteDeliveries.delete(key);
       showToast('✓ Inquiry sent! We will contact you soon.');
+      if (window.QuoteList) window.QuoteList.clear();
+      categoryAuto = true;
       ['f-firstname', 'f-lastname', 'f-clinic', 'f-phone', 'f-email', 'f-category', 'f-message'].forEach(id => { document.getElementById(id).value = ''; });
     } else if (delivered.email || delivered.crm) {
       showToast('Inquiry received. One delivery step failed; your details are kept. Retry to finish.', true);

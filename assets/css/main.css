@@ -801,3 +801,53 @@ footer{background:var(--charcoal-2);color:var(--on-dark-mid);padding:72px var(--
   .browse-arrow{top:50%;right:16px;margin-top:-9px}
 }
 @media (prefers-reduced-motion:reduce){.nav-menu,.nav-chev,.browse-arrow,.browse-list a{transition:none}.browse-list a:hover{transform:none}}
+
+/* ================= QUOTE LIST ================= */
+.cat-card-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;margin-top:14px}
+.cat-card-actions .product-cta{margin-top:0}
+.cat-add{
+  display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--ink);
+  border:1px solid var(--ink);padding:8px 14px;font:600 12.5px var(--sans);letter-spacing:.3px;cursor:pointer;
+  transition:background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease);
+}
+.cat-add-icon{font-size:15px;line-height:1;width:12px;text-align:center}
+.cat-add:hover,.cat-add:focus-visible{border-color:var(--red);color:var(--red)}
+.cat-add:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.cat-add.is-added{background:var(--charcoal);border-color:var(--charcoal);color:#fff}
+.cat-add.is-added:hover{background:var(--red);border-color:var(--red);color:#fff}
+
+.quote-tray{
+  position:fixed;left:24px;bottom:24px;z-index:450;display:flex;align-items:center;gap:10px;
+  background:var(--charcoal);color:#fff;text-decoration:none;padding:12px 18px;
+  font-size:13.5px;font-weight:600;box-shadow:0 12px 28px rgba(17,18,20,.25);
+  animation:trayIn .3s var(--ease-out,ease-out);
+}
+.quote-tray[hidden]{display:none}
+.quote-tray:hover{background:#000}
+.quote-tray:focus-visible{outline:2px solid #FF7A87;outline-offset:3px}
+.quote-tray-count{min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--red);display:inline-flex;align-items:center;justify-content:center;font-size:12px}
+.quote-tray-go{color:rgba(255,255,255,.7);font-weight:500}
+@keyframes trayIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (max-width:600px){
+  .quote-tray{left:16px;right:16px;bottom:16px;justify-content:space-between}
+  .quote-tray-go{margin-left:auto}
+  #scrollTop{bottom:84px !important}
+}
+
+.quote-list-box{grid-column:1 / -1;margin-bottom:22px;background:var(--paper);border:1px solid var(--border);padding:20px 22px}
+.ql-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.ql-head strong{font-family:var(--serif-text);font-size:18px}
+.ql-count{font-size:12.5px;color:var(--mid)}
+.ql-clear{margin-left:auto;background:none;border:none;color:var(--mid);font:600 12.5px var(--sans);cursor:pointer;text-decoration:underline;padding:4px}
+.ql-clear:hover{color:var(--red)}
+.ql-items{list-style:none;margin:0;padding:0}
+.ql-item{display:grid;grid-template-columns:1fr 34px;gap:10px 12px;align-items:center;padding:14px 0;border-top:1px solid var(--border)}
+.ql-name{grid-column:1 / -1;font-size:14px;font-weight:600;line-height:1.35}
+.ql-meta{display:block;font-size:12px;font-weight:400;color:var(--mid);margin-top:2px}
+.ql-qty{width:100%;border:1px solid var(--border);background:#fff;padding:9px 10px;font:inherit;font-size:13px}
+.ql-qty:focus{outline:2px solid var(--red);outline-offset:1px}
+.ql-remove{width:34px;height:34px;border:1px solid var(--border);background:#fff;font-size:20px;line-height:1;color:var(--mid);cursor:pointer}
+.ql-remove:hover,.ql-remove:focus-visible{border-color:var(--red);color:var(--red)}
+.ql-hint{font-size:12.5px;color:var(--mid);margin-top:10px;line-height:1.6}
+.ql-hint a{color:var(--red)}
+@media (prefers-reduced-motion:reduce){.quote-tray{animation:none}}

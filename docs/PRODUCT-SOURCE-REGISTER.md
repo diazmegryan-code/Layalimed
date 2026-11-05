@@ -2063,3 +2063,7 @@ Cormorant Garamond stays for large headings. A sturdier serif, Newsreader (self-
 ## "Browse by category" redesign (2026-11-05)
 
 The homepage category section is now two panels: a dark Hemodialysis panel and a light "Supplies & more" panel, each with six tiles that carry a line icon. Icons come from Tabler Icons (MIT) plus three original drawings (dialyzer, bloodline set, catheter); see `assets/icons/README.md`. Links are unchanged.
+
+## Quote list (2026-11-05)
+
+Catalog cards have an "Add to quote list" button. The list is kept in the visitor's browser (localStorage, `assets/js/quote-list.js`), shown by a floating tray, and appears in the homepage quote form with a quantity box per item. On send, the items and quantities are written into the existing message text, so the EmailJS and MedCRM payloads keep the same fields. The category is the matching one for a single-category list and "General Inquiry" (existing value "Consumables & Supplies") for mixed lists. The list clears after both deliveries succeed. `privacy.html` gained one sentence about the local-storage list and its "Last updated" date changed to November 5, 2026; the site owner should confirm that wording.

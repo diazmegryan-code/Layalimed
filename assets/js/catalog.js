@@ -393,7 +393,10 @@ function renderCard(p) {
         ${detailsHtml}
         ${verifiedProductsHtml}
         ${pendingHtml}
-        <a href="${quoteHref}" class="product-cta">Request Quote</a>
+        <div class="cat-card-actions">
+          <button type="button" class="cat-add" data-add="${p.sourceId}" aria-pressed="false"><span class="cat-add-icon" aria-hidden="true">+</span><span class="cat-add-text">Add to quote list</span></button>
+          <a href="${quoteHref}" class="product-cta">Request Quote</a>
+        </div>
       </div>
     </article>`;
 }
@@ -468,3 +471,29 @@ if (location.hash === '#cat-search-input') {
   const searchBox = document.getElementById('cat-search-input');
   if (searchBox) { searchBox.scrollIntoView({ block: 'center' }); searchBox.focus(); }
 }
+
+/* ─── QUOTE LIST (shared with the quote form; see assets/js/quote-list.js) ─── */
+function syncAddButtons() {
+  if (!window.QuoteList) return;
+  document.querySelectorAll('.cat-add').forEach((btn) => {
+    const on = window.QuoteList.has(btn.dataset.add);
+    btn.setAttribute('aria-pressed', String(on));
+    btn.classList.toggle('is-added', on);
+    btn.querySelector('.cat-add-icon').textContent = on ? '\u2713' : '+';
+    btn.querySelector('.cat-add-text').textContent = on ? 'In quote list' : 'Add to quote list';
+    btn.setAttribute('aria-label', (on ? 'Remove from quote list: ' : 'Add to quote list: ') + btn.closest('.cat-card').querySelector('.product-name').textContent);
+  });
+}
+document.getElementById('cat-grid').addEventListener('click', (e) => {
+  const btn = e.target.closest('.cat-add');
+  if (!btn || !window.QuoteList) return;
+  const id = btn.dataset.add;
+  if (window.QuoteList.has(id)) { window.QuoteList.remove(id); return; }
+  const p = CATALOG.find((x) => String(x.sourceId) === String(id));
+  if (!p) return;
+  if (!window.QuoteList.add({ id: p.sourceId, name: p.catalogEntry, group: p.websiteGroup, sub: p.websiteSubcategory })) {
+    alert('Your quote list is full (' + window.QuoteList.max + ' items). Please send this request first, then start a new list.');
+  }
+});
+document.addEventListener('quotelist:change', syncAddButtons);
+document.addEventListener('catalog:resultsRendered', syncAddButtons);
