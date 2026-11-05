@@ -785,6 +785,3 @@ footer{background:var(--charcoal-2);color:var(--on-dark-mid);padding:72px var(--
   .browse-list a{padding:18px 18px}
 }
 @media (prefers-reduced-motion:reduce){.nav-menu,.nav-chev,.browse-arrow{transition:none}}
-
-/* TEMPORARY font comparison: add ?fonts=old to any page URL to see the previous fonts (see assets/js/font-compare.js). */
-html.fonts-old{--serif-text:var(--serif);--mono:var(--sans)}
