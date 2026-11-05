@@ -2059,3 +2059,7 @@ Navigation change only; no product data touched. "Products" in the header now op
 ## Font update, on the preview branch only (2026-11-05)
 
 Cormorant Garamond stays for large headings. A sturdier serif, Newsreader (self-hosted, latin subset, optical size pinned to 14 and weights 400-700, about 41 KB), now sets small serif text (product names, card and menu titles, footer headings). DM Sans stays for body text. DM Mono (about 30 KB for two weights) sets short identifiers in catalog cards (model, item number, NDC, SKU), the "Ref." labels and the FDA license number. Fonts are licensed under the SIL Open Font License 1.1. The temporary `?fonts=old` comparison switch was removed before going live.
+
+## "Browse by category" redesign (2026-11-05)
+
+The homepage category section is now two panels: a dark Hemodialysis panel and a light "Supplies & more" panel, each with six tiles that carry a line icon. Icons come from Tabler Icons (MIT) plus three original drawings (dialyzer, bloodline set, catheter); see `assets/icons/README.md`. Links are unchanged.
