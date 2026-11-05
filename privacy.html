@@ -45,7 +45,24 @@ gtag('config', 'G-R8SCPLCRVW');
       <img class="logo-img" src="images/layali-logo.png" alt="Layali Medical Supply" width="438" height="140">
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#consumables">Products</a></li>
+      <li class="nav-has-menu">
+        <a href="catalog.html" class="nav-products">Products <svg class="nav-chev" width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1.5 3.5L5 7l3.5-3.5"/></svg></a>
+        <div class="nav-menu">
+          <form class="nav-menu-search" action="catalog.html" method="get" role="search">
+            <label class="vh" for="nav-menu-q">Search products</label>
+            <input id="nav-menu-q" type="search" name="q" placeholder="Search products, e.g. &ldquo;dialyzer&rdquo;" autocomplete="off">
+            <button type="submit" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+          </form>
+          <ul class="nav-menu-list">
+        <li><a href="catalog.html?group=consumables"><strong>Medical Consumables</strong><span>Injection, PPE, wound and patient care</span></a></li>
+        <li><a href="catalog.html?group=hemodialysis"><strong>Hemodialysis</strong><span>Dialyzers, bloodlines, access, concentrates</span></a></li>
+        <li><a href="catalog.html?group=equipment"><strong>Medical Equipment</strong><span>Diagnostic equipment</span></a></li>
+        <li><a href="catalog.html?group=procedure"><strong>Procedure &amp; Surgical Supplies</strong><span>Procedure consumables and instruments</span></a></li>
+        <li><a href="catalog.html?group=medications"><strong>Medications</strong><span>Kept separate from other categories</span></a></li>
+          </ul>
+          <a class="nav-menu-all" href="catalog.html">Browse the full catalog <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </li>
       <li><a href="index.html#hemodialysis">Hemodialysis</a></li>
       <li><a href="index.html#brands">Brands</a></li>
       <li><a href="index.html#deliveries">Deliveries</a></li>
@@ -64,7 +81,15 @@ gtag('config', 'G-R8SCPLCRVW');
 <!-- MOBILE DRAWER -->
 <div class="drawer" id="mobileDrawer">
   <ul class="drawer-links">
-    <li><a href="index.html#consumables">Products</a></li>
+    <li><a href="catalog.html">Products</a>
+    <ul class="drawer-sub">
+      <li><a href="catalog.html?group=consumables">Medical Consumables</a></li>
+      <li><a href="catalog.html?group=hemodialysis">Hemodialysis</a></li>
+      <li><a href="catalog.html?group=equipment">Medical Equipment</a></li>
+      <li><a href="catalog.html?group=procedure">Procedure &amp; Surgical Supplies</a></li>
+      <li><a href="catalog.html?group=medications">Medications</a></li>
+    </ul>
+  </li>
     <li><a href="index.html#hemodialysis">Hemodialysis</a></li>
     <li><a href="index.html#brands">Brands</a></li>
     <li><a href="index.html#deliveries">Deliveries</a></li>
@@ -209,5 +234,6 @@ document.addEventListener('keydown', (e) => {
 });
 </script>
 <style>#scrollTop.visible{opacity:1;pointer-events:auto}</style>
+<script src="assets/js/nav-menu.js" defer></script>
 </body>
 </html>

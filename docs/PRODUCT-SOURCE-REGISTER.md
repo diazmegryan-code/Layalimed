@@ -2051,3 +2051,7 @@ The Baxter catalog photos for 5% Dextrose Injection (`68-baxter.*`) and Sterile 
 ## Contact details confirmed (2026-11-05)
 
 The site owner confirmed the opening hours (Mon-Sat 8:00 AM-5:00 PM), supplied the sales email address `sales@layalimed.com`, and confirmed the quote-step, diagram-caption, partner-physician and privacy-notice wording as written. The email is now shown on the homepage contact block, the mobile menu and footers of all three pages, the privacy notice contact line, and the JSON-LD.
+
+## Easier route to products (2026-11-05)
+
+Navigation change only; no product data touched. "Products" in the header now opens a menu (the five catalog groups, a search box, and a link to the full catalog) on all three pages, and goes to `catalog.html` when clicked. The homepage hero has a catalog search box, and a "Browse by category" section after the hero links straight to catalog categories (`catalog.html?group=...&sub=...`, using the existing deep-link support). The mobile menu lists the five groups under Products. `assets/js/nav-menu.js` adds Escape-to-dismiss for the menu.
