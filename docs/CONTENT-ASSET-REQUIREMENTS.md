@@ -136,7 +136,8 @@ Everything below is either carried over from the pre-redesign production site, c
 ### Contact information
 - Phone: `+63 917 319 9572`
 - Address: "Office 07 Sta. Lucia, Dolores, Quezon PH 4326"
-- Business hours in JSON-LD: Monday–Saturday, 08:00–17:00 — confirm still accurate.
+- Business hours: Monday–Saturday, 08:00–17:00 — confirmed by the site owner 2026-11-05.
+- Sales email: sales@layalimed.com — provided by the site owner 2026-11-05; shown in the quote contact block, drawer, footers, privacy notice and JSON-LD.
 
 ### Product availability wording
 - "Development Placeholder" and "Photo pending" labels must be removed before production.

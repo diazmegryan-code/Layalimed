@@ -2047,3 +2047,7 @@ Not product data; recorded here so the changes are traceable.
 ## White-background Baxter IV bag images: #68, #71, #140 (2026-10-29)
 
 The Baxter catalog photos for 5% Dextrose Injection (`68-baxter.*`) and Sterile Water for Injection (`71-baxter.*`) were shot against dark/grey vignette backgrounds. The bag was cut out of the photo (OpenCV GrabCut, then edge smoothing) and placed on plain white. The bag, label and tubing pixels are the manufacturer's own and are not retouched; only the background was replaced. #140 (Sterile water / D5W) reuses the same two files, so it changed with them. Dimensions are unchanged (900x1200, 798x1200). The unmodified photos are kept in `images/products/originals/68-baxter-original.jpg` and `71-baxter-original.jpg`. Edges are slightly soft at full size (the bag is translucent); they read cleanly at catalog size.
+
+## Contact details confirmed (2026-11-05)
+
+The site owner confirmed the opening hours (Mon-Sat 8:00 AM-5:00 PM), supplied the sales email address `sales@layalimed.com`, and confirmed the quote-step, diagram-caption, partner-physician and privacy-notice wording as written. The email is now shown on the homepage contact block, the mobile menu and footers of all three pages, the privacy notice contact line, and the JSON-LD.
