@@ -2055,3 +2055,7 @@ The site owner confirmed the opening hours (Mon-Sat 8:00 AM-5:00 PM), supplied t
 ## Easier route to products (2026-11-05)
 
 Navigation change only; no product data touched. "Products" in the header now opens a menu (the five catalog groups, a search box, and a link to the full catalog) on all three pages, and goes to `catalog.html` when clicked. The homepage hero has a catalog search box, and a "Browse by category" section after the hero links straight to catalog categories (`catalog.html?group=...&sub=...`, using the existing deep-link support). The mobile menu lists the five groups under Products. `assets/js/nav-menu.js` adds Escape-to-dismiss for the menu.
+
+## Font update, on the preview branch only (2026-11-05)
+
+Cormorant Garamond stays for large headings. A sturdier serif, Newsreader (self-hosted, latin subset, optical size pinned to 14 and weights 400-700, about 41 KB), now sets small serif text (product names, card and menu titles, footer headings). DM Sans stays for body text. DM Mono (about 30 KB for two weights) sets short identifiers in catalog cards (model, item number, NDC, SKU), the "Ref." labels and the FDA license number. Fonts are licensed under the SIL Open Font License 1.1. `assets/js/font-compare.js` is temporary: adding `?fonts=old` to a page URL shows the previous fonts (`?fonts=new` switches back); remove it, and the `html.fonts-old` rule in `main.css`, once the fonts are decided.

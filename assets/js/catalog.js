@@ -290,6 +290,9 @@ function wireImageFallbacks(container) {
    the catalog yet — every row below currently evaluates to nothing — but
    the moment verified data is added to product-catalog.json, it will
    appear automatically with no further code changes. */
+/* short identifiers (model, item number, NDC, SKU) are set in the mono face; long free text stays in the sans */
+const CODE_KEYS = /^(model|item number|ndc|sku|catalog number|part number|ref)$/i;
+
 function renderVerifiedDetails(p) {
   const rows = [];
   if (p.brand) rows.push(['Brand', p.brand]);
@@ -302,7 +305,7 @@ function renderVerifiedDetails(p) {
     });
   }
   if (!rows.length) return '';
-  return `<dl class="cat-details">${rows.map(([k, v]) => `<div class="cat-detail-row"><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(String(v))}</dd></div>`).join('')}</dl>`;
+  return `<dl class="cat-details">${rows.map(([k, v]) => `<div class="cat-detail-row${CODE_KEYS.test(k) && String(v).length <= 24 ? ' cat-detail-row--code' : ''}"><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(String(v))}</dd></div>`).join('')}</dl>`;
 }
 
 /* ─── VERIFIED MANUFACTURER PRODUCTS ─────────────────────────────────────
@@ -322,7 +325,7 @@ function renderOneVerifiedProduct(vp, showOwnThumb) {
     });
   }
   const detailsHtml = rows.length
-    ? `<dl class="cat-details">${rows.map(([k, v]) => `<div class="cat-detail-row"><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(String(v))}</dd></div>`).join('')}</dl>`
+    ? `<dl class="cat-details">${rows.map(([k, v]) => `<div class="cat-detail-row${CODE_KEYS.test(k) && String(v).length <= 24 ? ' cat-detail-row--code' : ''}"><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(String(v))}</dd></div>`).join('')}</dl>`
     : '';
   const variantsHtml = (vp.variants && vp.variants.length)
     ? `<div class="cat-variants">${vp.variants.map((v) => `<span class="cat-variant-chip">${escapeHtml(v)}</span>`).join('')}</div>`
